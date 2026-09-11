@@ -50,23 +50,51 @@
       max-width: 720px;
       margin-bottom: clamp(30px, 5vw, 54px);
     }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--lime);
-      color: var(--green-dark);
-      font-size: 13px;
-      font-weight: 700;
+    .site-nav {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+      width: min(1050px, 100%);
+      margin-bottom: clamp(28px, 4vw, 42px);
     }
-    .badge::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
+    .nav-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      min-height: 58px;
+      padding: 13px 14px;
+      border: 2px solid var(--green-dark);
+      border-radius: 18px;
+      background: var(--green-dark);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.1;
+      text-align: center;
+      text-decoration: none;
+    }
+    .nav-button.live-alt {
+      border-color: var(--coral);
+      background: var(--coral);
+      color: var(--green-dark);
+    }
+    .nav-button.soon {
+      flex-direction: column;
+      gap: 3px;
+      border-color: #cfd7cf;
+      background: #e8ede7;
+      color: #59645f;
+    }
+    .nav-button.soon small {
+      color: #748079;
+      font: 600 9px "IBM Plex Mono", monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .nav-button:focus-visible {
+      outline: 3px solid rgba(255, 104, 71, .45);
+      outline-offset: 3px;
     }
     h1 {
       margin: 18px 0 12px;
@@ -523,6 +551,7 @@
 
     @media (max-width: 780px) {
       .page { padding-inline: 18px; }
+      .site-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .layout { grid-template-columns: 1fr; }
       .results { position: static; }
       .step { border-radius: 20px; }
@@ -542,6 +571,8 @@
 
     @media (max-width: 430px) {
       .page { padding-inline: 16px; }
+      .site-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .nav-button { min-height: 54px; padding: 10px 9px; font-size: 13px; }
       h1 { font-size: 43px; }
       .chips { grid-template-columns: 1fr 1fr; }
       .chip { padding-inline: 7px; font-size: 12px; }
@@ -559,10 +590,18 @@
     }
   </style>
 </head>
-<body><div style="background:#101828;color:#fff;padding:10px 20px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;font-weight:800;"><a href="/" style="color:#fff;text-decoration:none;">&#8592; GetHowMuch</a></div>
+<body>
   <main class="page">
+    <nav class="site-nav" aria-label="More GetHowMuch calculators">
+      <a class="nav-button" href="/">Home</a>
+      <a class="nav-button live-alt" href="/dividends/">Dividend Income</a>
+      <a class="nav-button soon" href="/"><span>CPF</span><small>soon</small></a>
+      <a class="nav-button soon" href="/"><span>Home Loan</span><small>soon</small></a>
+      <a class="nav-button soon" href="/"><span>Car &amp; COE</span><small>soon</small></a>
+      <a class="nav-button soon" href="/"><span>Maid Cost</span><small>soon</small></a>
+    </nav>
+
     <header class="intro">
-      <span class="badge">2026 CPF · YA2026 tax</span>
       <h1>How much of your pay do you keep?</h1>
       <p class="subline">Your 2026 CPF deduction, with YA2026 income tax shown as a monthly set-aside.</p>
     </header>
