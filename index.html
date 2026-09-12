@@ -350,7 +350,7 @@
               <span class="tick" style="left:calc(27px + (100% - 54px)*0.655)"><i></i>S&amp;P 500 ~10%</span>
             </div>
             <div class="range-ends"><span>0.5%</span><span>15%</span></div>
-            <p class="field-helper">What your investments earn each year. Set it near where your money actually sits — the starting point is the average S-REIT payout in 2026.</p>
+            <p class="field-helper">What your investments earn each year. Set it near where your money actually sits — the starting point is the average S-REIT payout in 2026. Prices are assumed to rise 2.5% a year, so your payouts grow to hold their buying power.</p>
           </div>
         </details>
       </div>
@@ -393,6 +393,10 @@
         <summary>What annual return should I assume?</summary>
         <p>The default is 5.7%, the average S-REIT yield in 2026. Use around 1.5% if your money sits in fixed deposits; only go higher if you invest for the long term.</p>
       </details>
+      <details>
+        <summary>Does this account for inflation?</summary>
+        <p>Yes. Prices are assumed to rise 2.5% a year, roughly Singapore's long-run average, and your monthly payouts grow at that rate — so the lump sum shown keeps its buying power in today's dollars.</p>
+      </details>
     </section>
     <footer class="site-foot"><a href="/">GetHowMuch</a> · Estimates for planning only. Not financial advice. © 2026</footer>
   </main>
@@ -423,6 +427,10 @@
       };
 
       const $ = (id) => document.getElementById(id);
+      // Fixed planning assumption, not a user control: prices rise 2.5% a year,
+      // roughly Singapore's long-run CPI average. Monthly payouts grow at this
+      // rate so they keep their buying power; inputs are in today's dollars.
+      const INFLATION = 0.025;
       const targetInput = $('target-income');
       const commitments = $('commitments');
       const assets = $('assets');
@@ -448,15 +456,22 @@
         const years = clamp(untilVal - ageVal, 1, 60);
         const monthlyNeed = target + commitmentValue;
         const safeYield = Math.max(annualYield, 0.005);
+        const monthlyGrowth = Math.pow(1 + INFLATION, 1 / 12) - 1;
         let totalCapital, sustainableMonthly, note;
         if (capitalMode === 'keep') {
-          totalCapital = monthlyNeed * 12 / safeYield;
-          sustainableMonthly = assetValue * safeYield / 12;
+          // Payouts must grow with inflation forever, so only the real yield can be spent.
+          const realYield = Math.max(safeYield - INFLATION, 0.005);
+          totalCapital = monthlyNeed * 12 / realYield;
+          sustainableMonthly = assetValue * realYield / 12;
           note = 'Capital stays intact — you live off the returns.';
         } else {
           const monthlyRate = annualYield / 12;
           const months = years * 12;
-          const factor = monthlyRate > 0 ? (1 - Math.pow(1 + monthlyRate, -months)) / monthlyRate : months;
+          // Growing annuity: payouts rise with inflation each year.
+          const spread = monthlyRate - monthlyGrowth;
+          const factor = Math.abs(spread) < 1e-9
+            ? months / (1 + monthlyRate)
+            : (1 - Math.pow((1 + monthlyGrowth) / (1 + monthlyRate), months)) / spread;
           totalCapital = monthlyNeed * factor;
           sustainableMonthly = factor > 0 ? assetValue / factor : 0;
           note = 'Drawn down to S$0 over ' + years + (years === 1 ? ' year' : ' years');
@@ -622,6 +637,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "The default is 5.7%, the average S-REIT yield in 2026. Use around 1.5% if your money sits in fixed deposits; only go higher if you invest for the long term."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this account for inflation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Prices are assumed to rise 2.5% a year, roughly Singapore's long-run average, and your monthly payouts grow at that rate — so the lump sum shown keeps its buying power in today's dollars."
       }
     }
   ]
