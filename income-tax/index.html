@@ -74,19 +74,20 @@
       align-items: center;
       justify-content: center;
       min-width: 0;
-      min-height: 56px;
-      padding: 12px 10px;
+      min-height: 52px;
+      padding: 10px 8px;
       border: 1px solid var(--line);
-      border-radius: 16px;
+      border-radius: 14px;
       background: #fff;
       color: var(--ink);
       font-family: inherit;
-      font-size: 14px;
+      font-size: 12.5px;
       font-weight: 700;
       line-height: 1.1;
       text-align: center;
       text-decoration: none;
     }
+    .nav-button:active { transform: scale(.97); }
     .nav-button.active {
       border-color: var(--brand);
       background: var(--brand);
@@ -99,7 +100,7 @@
     .brand {
       display: inline-block;
       margin: 4px 0 16px;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 17px;
       letter-spacing: -.5px;
       color: var(--ink);
@@ -115,7 +116,7 @@
     }
     .site-foot a { color: var(--ink); font-weight: 800; text-decoration: none; }
     h1 {
-      margin: 18px 0 12px;
+      margin: 0 0 10px;
       max-width: 680px;
       font-size: clamp(36px, 9vw, 64px);
       line-height: 1;
@@ -125,7 +126,7 @@
     .subline {
       margin: 0;
       color: var(--muted);
-      font-size: clamp(17px, 2.2vw, 21px);
+      font-size: 16px;
       line-height: 1.45;
     }
 
@@ -138,8 +139,8 @@
       padding: clamp(22px, 3vw, 30px);
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: 0 4px 18px rgba(26, 48, 39, .035);
+      border-radius: 20px;
+      box-shadow: 0 12px 32px rgba(16, 24, 40, .06);
       min-width: 0;
     }
     .step-head {
@@ -156,10 +157,10 @@
       letter-spacing: -.02em;
     }
     .step-num {
-      color: var(--green);
+      color: var(--brand-ink);
       font-family: "Space Mono", monospace;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
     }
     .helper {
       margin: 0 0 22px;
@@ -183,7 +184,7 @@
     #salaryInput {
       width: min(220px, calc(100% - 76px));
       border: 0;
-      border-bottom: 2px solid var(--ink);
+      border-bottom: 4px solid var(--ink);
       border-radius: 0;
       padding: 4px 0 6px;
       color: var(--ink);
@@ -197,45 +198,50 @@
     }
     #salaryInput::-webkit-outer-spin-button,
     #salaryInput::-webkit-inner-spin-button { appearance: none; margin: 0; }
-    #salaryInput:focus { border-color: var(--green); }
+    #salaryInput:focus { border-color: var(--brand); }
     .per-month { align-self: end; padding-bottom: 7px; color: var(--muted); font: 500 13px "Space Grotesk", sans-serif; }
 
-    .range-wrap { padding: 5px 10px 0; }
+    .range-wrap { padding: 0; }
     input[type="range"] {
-      width: 100%;
-      height: 30px;
-      margin: 0;
+      display: block;
+      width: calc(100% - 40px);
+      height: 48px;
+      margin: 8px 20px 0;
+      appearance: none;
+      -webkit-appearance: none;
       background: transparent;
       cursor: pointer;
-      accent-color: var(--green);
       touch-action: pan-y;
     }
     input[type="range"]::-webkit-slider-runnable-track {
-      height: 7px;
+      height: 8px;
       border-radius: 99px;
-      background: linear-gradient(to right, var(--green) 0 var(--fill, 20%), #d7ded7 var(--fill, 20%) 100%);
+      background: linear-gradient(to right, var(--green) var(--fill, 20%), var(--line) var(--fill, 20%));
     }
     input[type="range"]::-webkit-slider-thumb {
       width: 30px;
       height: 30px;
-      margin-top: -11.5px;
+      margin-top: -11px;
+      -webkit-appearance: none;
       appearance: none;
-      border: 4px solid white;
+      border: 3px solid var(--green);
       border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 2px 7px rgba(16, 34, 28, .25);
+      background: #fff;
+      box-shadow: 0 2px 7px rgba(16, 34, 28, .22);
     }
-    input[type="range"]::-moz-range-track { height: 7px; border-radius: 99px; background: #d7ded7; }
-    input[type="range"]::-moz-range-progress { height: 7px; border-radius: 99px; background: var(--green); }
+    input[type="range"]::-moz-range-track { height: 8px; border-radius: 99px; background: var(--line); }
+    input[type="range"]::-moz-range-progress { height: 8px; border-radius: 99px; background: var(--green); }
     input[type="range"]::-moz-range-thumb {
-      width: 23px; height: 23px; border: 4px solid white; border-radius: 50%; background: var(--green); box-shadow: 0 2px 7px rgba(16,34,28,.25);
+      width: 24px; height: 24px; border: 3px solid var(--green); border-radius: 50%; background: #fff; box-shadow: 0 2px 7px rgba(16,34,28,.22);
     }
+    input[type="range"]:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
     .range-labels {
       display: flex;
       justify-content: space-between;
-      margin-top: 5px;
+      margin-top: -6px;
+      padding: 0 20px;
       color: var(--muted);
-      font: 500 11px "Space Mono", monospace;
+      font: 500 9px "Space Mono", monospace;
     }
 
     .chips {
@@ -268,13 +274,12 @@
     .results {
       overflow: hidden;
       border-radius: 26px;
-      background: var(--brand);
+      background: linear-gradient(165deg, var(--brand), var(--brand-deep));
       color: white;
-      box-shadow: var(--shadow);
+      box-shadow: 0 24px 56px rgba(108, 76, 241, .28);
     }
     .hero-result {
       padding: clamp(26px, 4vw, 40px);
-      background: var(--brand);
     }
     .result-kicker {
       display: flex;
@@ -349,7 +354,7 @@
       background: rgba(255,255,255,.15);
       border-top: 1px solid rgba(255,255,255,.15);
     }
-    .detail { padding: 20px clamp(18px, 3vw, 28px); background: var(--brand); }
+    .detail { padding: 20px clamp(18px, 3vw, 28px); }
     .detail span { display: block; color: rgba(255,255,255,.8); font-size: 12px; line-height: 1.3; }
     .detail strong { display: block; margin-top: 7px; font: 700 19px "Space Mono", monospace; }
     .detail small { display: block; margin-top: 4px; color: rgba(255,255,255,.8); font-size: 11px; }

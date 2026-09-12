@@ -74,17 +74,16 @@
     .tool-nav button {
       display: flex;
       min-width: 0;
-      min-height: 58px;
+      min-height: 52px;
       align-items: center;
       justify-content: center;
       gap: 3px;
       padding: 10px 8px;
       border: 1px solid var(--line);
-      border-radius: 999px;
+      border-radius: 14px;
       background: var(--white);
       color: var(--ink);
-      box-shadow: 0 2px 0 rgba(20,23,17,.08);
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 800;
       line-height: 1.1;
       text-align: center;
@@ -95,14 +94,15 @@
     }
 
     .tool-nav a:hover { border-color: #cdd1c7; background: #eef0e9; }
-    .tool-nav .active { border-color: var(--brand); background: var(--brand); color: var(--white); box-shadow: 0 3px 0 var(--brand-deep); }
+    .tool-nav .active { border-color: var(--brand); background: var(--brand); color: var(--white); }
+    .tool-nav a:active { transform: scale(.97); }
     .tool-nav .soon { flex-direction: column; border-color: #dde0d8; background: #e9ebe5; color: #858a80; box-shadow: none; cursor: default; }
     .tool-nav small { font: 500 8px "Space Mono", ui-monospace, monospace; letter-spacing: .07em; text-transform: uppercase; }
 
     .brand {
       display: inline-block;
       margin: 4px 0 16px;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 17px;
       letter-spacing: -.5px;
       color: var(--ink);
@@ -120,16 +120,12 @@
     .site-foot a { color: var(--ink); font-weight: 800; text-decoration: none; }
 
     .intro {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 18px;
-      margin: 2px 2px 18px;
+      display: block;
+      margin: 2px 2px 28px;
     }
 
     .intro h1 {
-      margin: 0;
-      max-width: 360px;
+      margin: 0 0 10px;
       font-size: clamp(36px, 9vw, 64px);
       line-height: 1;
       letter-spacing: -.045em;
@@ -137,11 +133,11 @@
     }
 
     .intro p {
-      margin: 0 0 3px;
-      flex: 0 0 auto;
+      margin: 0;
       color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 500;
     }
 
     .converter {
@@ -165,8 +161,8 @@
 
     .money-card.to {
       color: var(--white);
-      background: var(--brand);
-      box-shadow: 0 14px 36px rgba(108,76,241,.25);
+      background: linear-gradient(165deg, var(--brand), var(--brand-deep));
+      box-shadow: 0 24px 56px rgba(108,76,241,.28);
     }
 
     /* Swap button straddles the seam between the cards: anchor it to the
@@ -300,6 +296,8 @@
     .swap:hover { background: var(--brand-deep); }
     .swap:active { transform: translate(-50%, 2px); }
     .swap svg { width: 22px; height: 22px; }
+
+    #rateText { color: var(--gold-deep); font-weight: 700; }
 
     .rate-panel {
       display: flex;
@@ -454,7 +452,7 @@
     }
 
     button:focus-visible, input:focus-visible {
-      outline: 3px solid rgba(192,127,16,.35);
+      outline: 3px solid rgba(108,76,241,.4);
       outline-offset: 3px;
     }
 

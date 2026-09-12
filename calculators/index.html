@@ -31,13 +31,18 @@
   html{ scroll-behavior:smooth; }
   body{
     font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    color:var(--ink); background:#ffffff;
+    color:var(--ink); background:#f6f7f4;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
 
   /* ---------- full-bleed violet hero (mockup A) ---------- */
-  .hero{ background:var(--brand); color:#fff; margin:0 calc(50% - 50vw); }
+  .hero{
+    background:
+      radial-gradient(circle at 82% 12%, rgba(255,255,255,.16), transparent 42%),
+      linear-gradient(165deg, var(--brand), var(--brand-deep));
+    color:#fff; margin:0 calc(50% - 50vw);
+  }
   .hero-inner{ max-width:720px; margin:0 auto; padding:40px 24px 52px; }
   .wordmark{
     display:inline-block; margin-bottom:34px;
@@ -66,8 +71,10 @@
   .card{
     display:block; background:#fff; border:1px solid var(--line); border-radius:22px;
     padding:24px 20px; text-decoration:none; color:var(--ink);
-    transition:transform .12s ease;
+    box-shadow:0 12px 32px rgba(16,24,40,.06);
+    transition:transform .14s ease, box-shadow .14s ease;
   }
+  .card:hover{ transform:translateY(-3px); box-shadow:0 18px 44px rgba(16,24,40,.10); }
   .card:active{ transform:scale(0.97); }
   .tile{
     width:56px; height:56px; border-radius:18px; background:var(--brand-soft);
@@ -78,6 +85,18 @@
   .card h2{ font-size:20px; font-weight:700; letter-spacing:-.02em; line-height:1.2; }
   .card p{ margin-top:8px; font-size:14.5px; line-height:1.5; color:var(--muted); }
   .card .go{ display:inline-block; margin-top:14px; font-weight:700; font-size:14px; color:var(--brand-ink); }
+  .card-tax .tile{ background:#e3f2e9; }
+  .card-tax .tile svg{ stroke:#0a6c4e; }
+  .card-tax .go{ color:#0a6c4e; }
+  .card-cpf .tile{ background:#ddf5ee; }
+  .card-cpf .tile svg{ stroke:#0e9f7e; }
+  .card-cpf .go{ color:#0e9f7e; }
+  .card-car .tile{ background:#e3eafa; }
+  .card-car .tile svg{ stroke:#2d63f6; }
+  .card-car .go{ color:#2d63f6; }
+  .card-fx .tile{ background:#faf0d7; }
+  .card-fx .tile svg{ stroke:#c07f10; }
+  .card-fx .go{ color:#c07f10; }
 
   /* ---------- why ---------- */
   .why{ margin:34px 0 8px; background:var(--ink); color:#fff; border-radius:26px; padding:30px 26px; }
@@ -138,25 +157,25 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <p>How much do you need to retire on dividends?</p>
       <span class="go">Calculate →</span>
     </a>
-    <a class="card" href="/income-tax/">
+    <a class="card card-tax" href="/income-tax/">
       <span class="tile" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M8.5 7h7"/><circle cx="9" cy="12" r=".8"/><circle cx="12" cy="12" r=".8"/><circle cx="15" cy="12" r=".8"/><circle cx="9" cy="16" r=".8"/><circle cx="12" cy="16" r=".8"/><circle cx="15" cy="16" r=".8"/></svg></span>
       <h2>Income Tax</h2>
       <p>How much income tax will you pay? Your take-home after CPF and tax.</p>
       <span class="go">Calculate →</span>
     </a>
-    <a class="card" href="/cpf/">
+    <a class="card card-cpf" href="/cpf/">
       <span class="tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z"/><path d="M12 8.5v7"/><path d="M9.7 10.5h4.6"/><path d="M9.7 13.5h4.6"/></svg></span>
       <h2>CPF</h2>
       <p>What will you actually have at 55 and 65?</p>
       <span class="go">Calculate →</span>
     </a>
-    <a class="card" href="/car-coe/">
+    <a class="card card-car" href="/car-coe/">
       <span class="tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5l1.6-4.3a2 2 0 0 1 1.9-1.2h9a2 2 0 0 1 1.9 1.2L20 12.5"/><rect x="3" y="12.5" width="18" height="5" rx="2"/><circle cx="7.5" cy="17.5" r="1.6"/><circle cx="16.5" cy="17.5" r="1.6"/></svg></span>
       <h2>Car &amp; COE</h2>
       <p>What does that car truly cost per month? Petrol or EV.</p>
       <span class="go">Calculate →</span>
     </a>
-    <a class="card" href="/forex/">
+    <a class="card card-fx" href="/forex/">
       <span class="tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8.5h12.5L13.5 5.5"/><path d="M20 15.5H7.5l3 3"/></svg></span>
       <h2>Currency</h2>
       <p>How much is that in Singapore dollars? Mid-market rates.</p>

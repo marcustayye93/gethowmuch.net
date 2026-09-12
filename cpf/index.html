@@ -65,7 +65,7 @@
     .brand {
       display: inline-block;
       margin: 4px 0 16px;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 17px;
       letter-spacing: -.5px;
       color: var(--ink);
@@ -82,7 +82,21 @@
     .subhead {
       margin: 0 0 clamp(28px, 4vw, 40px);
       color: var(--muted);
-      font-size: clamp(17px, 2.2vw, 21px);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+    .eyebrow {
+      margin: 0 0 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--brand-ink);
+    }
+    .intro {
+      margin: 0 0 clamp(28px, 4vw, 40px);
+      color: var(--muted);
+      font-size: 16px;
       line-height: 1.45;
     }
     .tool-nav {
@@ -96,14 +110,14 @@
       align-items: center;
       justify-content: center;
       min-width: 0;
-      min-height: 56px;
-      padding: 12px 8px;
-      border-radius: 16px;
+      min-height: 52px;
+      padding: 10px 8px;
+      border-radius: 14px;
       background: #fff;
       border: 1px solid var(--line);
       color: var(--ink);
       font-weight: 700;
-      font-size: 14px;
+      font-size: 12.5px;
       line-height: 1.1;
       text-decoration: none;
       text-align: center;
@@ -123,6 +137,7 @@
     @media (max-width: 639px) {
       .tool-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .tool-nav a { font-size: 13px; }
+      .tool-nav a:active { transform: scale(.97); }
     }
 
     .site-foot {
@@ -140,8 +155,8 @@
       padding: 28px 26px 30px;
       border-radius: 26px;
       color: #fff;
-      background: var(--brand);
-      box-shadow: 0 24px 56px rgba(108, 76, 241, .25);
+      background: linear-gradient(165deg, var(--brand), var(--brand-deep));
+      box-shadow: 0 24px 56px rgba(108, 76, 241, .28);
     }
     .hero-label {
       margin: 0 0 10px;
@@ -167,7 +182,7 @@
     }
 
     .section-title {
-      margin: clamp(28px, 5vw, 44px) 2px 14px;
+      margin: 0 2px 14px;
       font-size: 24px;
       font-weight: 700;
       line-height: 1.2;
@@ -179,8 +194,10 @@
     }
     .input-card {
       padding: 22px;
-      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      border-radius: 20px;
       margin-bottom: 12px;
+      box-shadow: 0 12px 32px rgba(16, 24, 40, .06);
     }
     .input-head {
       display: flex;
@@ -204,12 +221,12 @@
       flex: 0 0 auto;
       display: flex;
       align-items: center;
-      padding: 5px 8px;
-      border: 1.5px solid var(--line);
-      border-radius: 10px;
-      background: #fbfcfe;
+      padding: 0 2px 4px;
+      border: 0;
+      border-bottom: 4px solid var(--ink);
+      background: transparent;
     }
-    .number-shell:focus-within { border-color: var(--teal); }
+    .number-shell:focus-within { outline: 3px solid var(--brand); outline-offset: 3px; }
     .number-shell .prefix, .number-shell .suffix {
       color: var(--muted);
       font-weight: 700;
@@ -229,14 +246,17 @@
     }
     .number-shell.money input { width: 82px; }
 
-    .range-wrap { padding: 18px 14px 0; }
+    .range-wrap { padding: 6px 0 0; }
     input[type="range"] {
-      width: 100%;
-      height: 28px;
-      margin: 0;
+      display: block;
+      width: calc(100% - 40px);
+      height: 48px;
+      margin: 8px 20px 0;
       appearance: none;
+      -webkit-appearance: none;
       background: transparent;
       cursor: pointer;
+      touch-action: pan-y;
     }
     input[type="range"]::-webkit-slider-runnable-track {
       height: 8px;
@@ -244,28 +264,31 @@
       background: linear-gradient(to right, var(--teal) 0 var(--fill, 50%), #dce4ef var(--fill, 50%) 100%);
     }
     input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
       appearance: none;
       width: 30px;
       height: 30px;
       margin-top: -11px;
-      border: 4px solid #fff;
+      border: 3px solid var(--teal);
       border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 3px 10px rgba(9, 51, 135, .3);
+      background: #fff;
+      box-shadow: 0 2px 7px rgba(9, 51, 135, .22);
     }
+    input[type="range"]:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
     input[type="range"]::-moz-range-track { height: 8px; border-radius: 99px; background: #dce4ef; }
     input[type="range"]::-moz-range-progress { height: 8px; border-radius: 99px; background: var(--teal); }
     input[type="range"]::-moz-range-thumb {
-      width: 22px; height: 22px; border: 4px solid #fff; border-radius: 50%;
+      width: 24px; height: 24px; border: 3px solid var(--teal); border-radius: 50%;
       background: var(--teal); box-shadow: 0 3px 10px rgba(14,95,76,.3);
     }
     .range-scale {
       display: flex;
       justify-content: space-between;
-      margin-top: 3px;
+      margin-top: -6px;
+      padding: 0 20px;
       color: #8190a4;
       font-family: "Space Mono", monospace;
-      font-size: .67rem;
+      font-size: 9px;
     }
 
     .balance-grid {
@@ -285,12 +308,13 @@
       display: flex;
       align-items: center;
       min-width: 0;
-      border: 1.5px solid var(--line);
-      border-radius: 12px;
-      padding: 11px 9px;
-      background: #fbfcfe;
+      border: 0;
+      border-bottom: 4px solid var(--ink);
+      border-radius: 0;
+      padding: 0 2px 6px;
+      background: transparent;
     }
-    .balance-box:focus-within { border-color: var(--teal); }
+    .balance-box:focus-within { outline: 3px solid var(--brand); outline-offset: 3px; }
     .balance-box span { color: var(--muted); font-size: .76rem; font-weight: 700; }
     .balance-box input {
       width: 100%; min-width: 0; border: 0; outline: 0; background: transparent;
@@ -302,8 +326,12 @@
       padding: 23px;
       border-radius: var(--radius-lg);
     }
-    .result-panel.age65 { background: var(--ink); color: white; }
-    .result-kicker { margin: 0 0 5px; color: var(--teal); font-size: .8rem; font-weight: 700; }
+    .result-panel.age65 {
+      background: linear-gradient(165deg, var(--brand), var(--brand-deep));
+      color: white;
+      box-shadow: 0 24px 56px rgba(108, 76, 241, .28);
+    }
+    .result-kicker { margin: 0 0 5px; color: var(--brand-ink); font-size: .8rem; font-weight: 700; }
     .age65 .result-kicker { color: rgba(255,255,255,.8); }
     .result-total {
       margin: 0 0 18px;
@@ -334,7 +362,7 @@
     }
     .goal-title { display: flex; justify-content: space-between; gap: 10px; font-size: .82rem; font-weight: 700; }
     .goal-track { position: relative; height: 12px; margin: 13px 0 10px; border-radius: 99px; background: #ddd7f4; overflow: visible; }
-    .goal-fill { height: 100%; max-width: 100%; border-radius: 99px; background: var(--teal); transition: width .25s ease; }
+    .goal-fill { height: 100%; max-width: 100%; border-radius: 99px; background: linear-gradient(to right, var(--teal), #12c096); transition: width .25s ease; }
     .goal-markers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; color: var(--muted); font-size: .68rem; font-weight: 700; }
     .goal-markers span:nth-child(2) { text-align: center; }
     .goal-markers span:nth-child(3) { text-align: right; }
@@ -352,7 +380,7 @@
       font-weight: 700;
     }
     summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; float: right; color: var(--teal); font-size: 1.3rem; line-height: 1; }
+    summary::after { content: "+"; float: right; color: var(--brand-ink); font-size: 1.3rem; line-height: 1; }
     details[open] summary::after { content: "−"; }
     .assumptions { padding: 0 0 20px; color: var(--muted); font-size: .8rem; line-height: 1.55; }
     .assumptions ul { margin: 0; padding-left: 19px; }
@@ -434,6 +462,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <a href="/forex/">Currency</a>
     </nav>
     <h1 class="page-h1">CPF Calculator</h1>
+    <p class="intro">See what your CPF could be at 55 and 65 — contributions, interest and CPF LIFE payouts.</p>
     
     <section class="hero" aria-live="polite">
       <p class="hero-label">Estimated CPF LIFE payout from 65</p>
@@ -441,6 +470,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <p class="hero-copy" id="heroCopy">Set your details below to see what your CPF could look like.</p>
     </section>
 
+    <p class="eyebrow">Inputs</p>
     <h2 class="section-title">Start with where you are</h2>
 
     <section class="input-card">
@@ -504,6 +534,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       </div>
     </section>
 
+    <p class="eyebrow">Projection</p>
     <h2 class="section-title">Your CPF projection</h2>
     <div class="results-grid two" id="resultsGrid">
       <section class="result-panel" id="age55Panel">
