@@ -166,6 +166,10 @@
     .ticks{position:relative;height:30px;margin:6px 0 0}
     .tick{position:absolute;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;font-family:"IBM Plex Mono",monospace;font-size:8.5px;line-height:1;color:var(--muted);white-space:nowrap}
     .tick i{display:block;width:2px;height:10px;background:var(--ink)}
+    .segmented{display:flex;background:#e9ece9;border-radius:16px;padding:4px;gap:4px;margin-top:12px}
+    .seg{flex:1;border:0;background:transparent;border-radius:12px;padding:14px 8px;min-height:52px;font:700 14px/1.25 "DM Sans",sans-serif;color:var(--muted);cursor:pointer}
+    .seg.active{background:var(--ink);color:#fff}
+    body.keep-capital #field-age,body.keep-capital #field-until{display:none}
     input[type="range"]{
       display:block;
       width:calc(100% - 24px);
@@ -290,17 +294,26 @@
       </div>
 
       <div class="field">
+        <span class="field-title" id="mode-title">4 · What happens to your capital?</span>
+        <div class="segmented" role="radiogroup" aria-labelledby="mode-title">
+          <button type="button" class="seg active" data-mode="spend" role="radio" aria-checked="true">Spend it down</button>
+          <button type="button" class="seg" data-mode="keep" role="radio" aria-checked="false">Keep it intact</button>
+        </div>
+        <p class="field-helper" id="mode-helper">Spend it down to S$0 by the age you set — you need less.</p>
+      </div>
+
+      <div class="field" id="field-age">
         <div class="field-head">
-          <label class="field-title" for="age">4 · Your age</label>
+          <label class="field-title" for="age">5 · Your age</label>
           <div class="field-value age"><input id="age" type="number" inputmode="numeric" min="18" max="100" step="1" value="55" aria-label="Your current age"><span>yrs</span></div>
         </div>
         <p class="field-helper">So we know how many years your money must last.</p>
       </div>
 
-      <div class="field">
+      <div class="field" id="field-until">
         <details class="adjust" id="until-details">
           <summary>
-            <span class="field-title">5 · Fund until age <span id="until-label">84</span></span>
+            <span class="field-title">6 · Fund until age <span id="until-label">84</span></span>
             <span class="adjust-hint">adjust</span>
           </summary>
           <div class="adjust-body">
@@ -315,7 +328,7 @@
       <div class="field">
         <details class="adjust" id="yield-details">
           <summary>
-            <span class="field-title">6 · Annual return <span id="yield-label">5.7%</span></span>
+            <span class="field-title">7 · Annual return <span id="yield-label">5.7%</span></span>
             <span class="adjust-hint">adjust</span>
           </summary>
           <div class="adjust-body">
@@ -400,11 +413,20 @@
         const untilVal = clamp(Math.round(numeric(untilInput.value)) || 84, 70, 100);
         const years = clamp(untilVal - ageVal, 1, 60);
         const monthlyNeed = target + commitmentValue;
-        const monthlyRate = annualYield / 12;
-        const months = years * 12;
-        const factor = monthlyRate > 0 ? (1 - Math.pow(1 + monthlyRate, -months)) / monthlyRate : months;
-        const totalCapital = monthlyNeed * factor;
-        const sustainableMonthly = factor > 0 ? assetValue / factor : 0;
+        const safeYield = Math.max(annualYield, 0.005);
+        let totalCapital, sustainableMonthly, note;
+        if (capitalMode === 'keep') {
+          totalCapital = monthlyNeed * 12 / safeYield;
+          sustainableMonthly = assetValue * safeYield / 12;
+          note = 'Capital stays intact — you live off the returns.';
+        } else {
+          const monthlyRate = annualYield / 12;
+          const months = years * 12;
+          const factor = monthlyRate > 0 ? (1 - Math.pow(1 + monthlyRate, -months)) / monthlyRate : months;
+          totalCapital = monthlyNeed * factor;
+          sustainableMonthly = factor > 0 ? assetValue / factor : 0;
+          note = 'Drawn down to S$0 over ' + years + (years === 1 ? ' year' : ' years');
+        }
         const monthlyGap = Math.max(0, monthlyNeed - sustainableMonthly);
         const additionalCapital = Math.max(0, totalCapital - assetValue);
 
@@ -413,7 +435,7 @@
         $('monthly-gap').textContent = money(monthlyGap);
         $('target-assets').textContent = money(totalCapital);
         $('capital-gap').textContent = money(additionalCapital);
-        $('drawdown-note').textContent = 'Drawn down to S$0 over ' + years + (years === 1 ? ' year' : ' years');
+        $('drawdown-note').textContent = note;
       }
 
       function setPressedScenario(key){
@@ -514,6 +536,24 @@
       document.querySelectorAll('input[type="number"]').forEach(el => {
         el.addEventListener('focus', () => {
           setTimeout(() => { try { el.select(); } catch (err) {} }, 0);
+        });
+      });
+
+      let capitalMode = 'spend';
+      const modeHelper = $('mode-helper');
+      document.querySelectorAll('.seg').forEach((button) => {
+        button.addEventListener('click', () => {
+          capitalMode = button.dataset.mode;
+          document.querySelectorAll('.seg').forEach((other) => {
+            const on = other === button;
+            other.classList.toggle('active', on);
+            other.setAttribute('aria-checked', String(on));
+          });
+          document.body.classList.toggle('keep-capital', capitalMode === 'keep');
+          modeHelper.textContent = capitalMode === 'keep'
+            ? 'Keep every dollar — you live off the returns alone, and the full amount stays behind.'
+            : 'Spend it down to S$0 by the age you set — you need less.';
+          calculate();
         });
       });
 
