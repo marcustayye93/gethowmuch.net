@@ -267,7 +267,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           <label>
             <span class="field-label">COE premium</span>
             <span class="money-input"><span>S$</span><input id="coePremium" type="number" inputmode="numeric" min="0" step="1" value="133009"></span>
-            <span class="field-note"><span class="badge">Sep 2026 · 1st bidding</span></span>
+            <span class="field-note"><span class="badge" id="coeBadge">Sep 2026 · 1st bidding</span></span>
           </label>
           <label>
             <span id="engineLabel" class="field-label">Engine size</span>
@@ -376,7 +376,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 </style>
     <section class="faq" aria-label="How the 10-year figure is built">
       <h2>How the 10-year figure is built</h2>
-      <p style="margin:10px 0 2px;color:var(--muted);font-size:15px;line-height:1.55">Upfront: the vehicle price plus the COE premium. The COE field starts from a data.gov.sg snapshot (September 2026 bidding) — override it with your own quote.</p>
+      <p style="margin:10px 0 2px;color:var(--muted);font-size:15px;line-height:1.55">Upfront: the vehicle price plus the COE premium. The COE field pulls the latest COE bidding results from data.gov.sg when you're online, falling back to the built-in September 2026 snapshot if the feed is unavailable — override it with your own quote.</p>
       <p style="margin:10px 0 2px;color:var(--muted);font-size:15px;line-height:1.55">Financing: your downpayment, loan tenure and flat interest rate set the monthly instalment, counted across the full loan tenure.</p>
       <p style="margin:10px 0 2px;color:var(--muted);font-size:15px;line-height:1.55">Running costs across one 10-year COE cycle: insurance, road tax (which differs for petrol and electric), fuel or energy from your monthly distance and consumption, maintenance, plus parking and ERP.</p>
       <p style="margin:10px 0 2px;color:var(--muted);font-size:15px;line-height:1.55">Excluded: resale value, depreciation and the PARF rebate &mdash; this is what the car costs you, not what you get back.</p>
@@ -385,7 +385,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <h2>Common questions</h2>
       <details>
         <summary>What does COE cost right now?</summary>
-        <p>The calculator uses a data.gov.sg COE snapshot, current to the September 2026 bidding round. You can override the premium with your own quote.</p>
+        <p>The calculator pulls the latest COE bidding results from data.gov.sg when you're online, falling back to a built-in September 2026 snapshot if the feed is unavailable. You can override the premium with your own quote.</p>
       </details>
       <details>
         <summary>Are electric cars cheaper to run in Singapore?</summary>
@@ -481,6 +481,43 @@ $$('[data-range]').forEach(b=>b.addEventListener('click',()=>{chartRange=b.datas
 // Typing into a pre-filled field replaces it instead of appending.
 $$('input[type=number]').forEach(el=>el.addEventListener('focus',()=>setTimeout(()=>{try{el.select()}catch(e){}},0)));
 calculate();suggestCategory();
+/* Live COE premiums from data.gov.sg. The embedded snapshot above is the
+   permanent fallback: any fetch failure leaves it untouched, silently. */
+let coeTouched=false;
+$('#coePremium').addEventListener('input',()=>{coeTouched=true});
+const COE_SNAPSHOT={month:'2026-09',bidding:'1'};
+const COE_API='https://data.gov.sg/api/action/datastore_search?resource_id=d_69b3380ad7e51aff3a7dcc84eba52b8a&limit=10&sort=_id%20desc';
+const COE_MONTHS={'01':'Jan','02':'Feb','03':'Mar','04':'Apr','05':'May','06':'Jun','07':'Jul','08':'Aug','09':'Sep','10':'Oct','11':'Nov','12':'Dec'};
+function coeLabel(month,bidding){const p=String(month).split('-');return (COE_MONTHS[p[1]]||p[1])+' '+p[0]+' bidding '+bidding}
+async function refreshCoeFromApi(){
+  try{
+    const ctrl=new AbortController();const t=setTimeout(()=>ctrl.abort(),6000);
+    const r=await fetch(COE_API,{signal:ctrl.signal});clearTimeout(t);
+    if(!r.ok)return;
+    const j=await r.json();const recs=(j.result&&j.result.records)||[];
+    let lkey=null,lmonth='',lbid='';
+    for(const rec of recs){
+      const k=rec.month+'|'+String(rec.bidding_no).padStart(2,'0');
+      if(!lkey||k>lkey){lkey=k;lmonth=rec.month;lbid=String(rec.bidding_no)}
+    }
+    if(!lkey)return;
+    const fresh={};
+    for(const rec of recs){
+      if(rec.month+'|'+String(rec.bidding_no).padStart(2,'0')!==lkey)continue;
+      const cat=String(rec.vehicle_class||'').replace('Category ','');
+      const p=parseInt(rec.premium,10);
+      if(!/^[A-E]$/.test(cat)||!Number.isFinite(p)||p<=0)return;
+      fresh[cat]=p;
+    }
+    if(Object.keys(fresh).length<5)return;
+    const badge=$('#coeBadge');
+    if(lmonth===COE_SNAPSHOT.month&&lbid===COE_SNAPSHOT.bidding){if(badge)badge.textContent='Live · up to date';return}
+    Object.assign(premiums,fresh);
+    if(!coeTouched){$('#coePremium').value=premiums[category]||0;calculate()}
+    if(badge)badge.textContent='Live · '+coeLabel(lmonth,lbid);
+  }catch(e){/* silent: the snapshot stands */}
+}
+refreshCoeFromApi();
 </script>
 <script type="application/ld+json">
 {
@@ -492,7 +529,7 @@ calculate();suggestCategory();
       "name": "What does COE cost right now?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The calculator uses a data.gov.sg COE snapshot, current to the September 2026 bidding round. You can override the premium with your own quote."
+        "text": "The calculator pulls the latest COE bidding results from data.gov.sg when you're online, falling back to a built-in September 2026 snapshot if the feed is unavailable. You can override the premium with your own quote."
       }
     },
     {
