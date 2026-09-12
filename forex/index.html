@@ -51,7 +51,7 @@
 
     .tool-nav {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 8px;
       margin: 0 0 32px;
     }
@@ -155,6 +155,12 @@
       box-shadow: 0 14px 36px rgba(20,88,232,.22);
     }
 
+    /* Swap button straddles the seam between the cards: anchor it to the
+       "You have" card's bottom edge and keep its overlap on empty padding
+       so it can never cover the amount digits. */
+    .money-card.from { position: relative; padding-bottom: 40px; }
+    .money-card.to { padding-top: 40px; }
+
     .card-top {
       display: flex;
       align-items: center;
@@ -255,7 +261,8 @@
     .swap {
       position: absolute;
       z-index: 2;
-      top: calc(50% - 25px);
+      top: auto;
+      bottom: -31px;
       left: 50%;
       display: grid;
       width: 50px;
@@ -267,13 +274,13 @@
       background: var(--lime);
       box-shadow: 0 8px 22px rgba(20,23,17,.18);
       cursor: pointer;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, 0);
       transition: background .16s ease, transform .16s ease;
       -webkit-tap-highlight-color: transparent;
     }
 
     .swap:hover { background: #c8f527; }
-    .swap:active { transform: translate(-50%, -48%); }
+    .swap:active { transform: translate(-50%, 2px); }
     .swap svg { width: 22px; height: 22px; }
 
     .rate-panel {
@@ -450,24 +457,13 @@
 
     @media (max-width: 639px) {
       .tool-nav {
-        display: flex;
-        gap: 8px;
-        margin-right: calc(-1 * max(20px, env(safe-area-inset-right)));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         margin-bottom: 28px;
-        padding-right: max(20px, env(safe-area-inset-right));
-        overflow-x: auto;
-        overscroll-behavior-inline: contain;
-        scroll-snap-type: inline proximity;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
       }
-      .tool-nav::-webkit-scrollbar { display: none; }
       .tool-nav a,
       .tool-nav button {
-        flex: 0 0 124px;
-        min-height: 62px;
+        min-height: 58px;
         font-size: 12px;
-        scroll-snap-align: start;
       }
     }
 
@@ -516,11 +512,11 @@
           <span class="amount-prefix" id="fromPrefix">S$</span>
           <input class="amount-input" id="fromAmount" inputmode="decimal" autocomplete="off" aria-label="Amount in Singapore Dollars" value="1,000" />
         </div>
-      </article>
 
-      <button class="swap" id="swapButton" type="button" aria-label="Swap currencies">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11m0 0-3-3m3 3-3 3M17 17H6m0 0 3 3m-3-3 3-3" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
+        <button class="swap" id="swapButton" type="button" aria-label="Swap currencies">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11m0 0-3-3m3 3-3 3M17 17H6m0 0 3 3m-3-3 3-3" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </article>
 
       <article class="money-card to">
         <div class="card-top">
