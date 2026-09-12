@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-SG">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>GetHowMuch: Straight answers to Singapore's money questions</title>
+<meta name="description" content="How much of your pay do you keep? How much do you need to retire? Clean, fast money calculators for Singapore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  :root{
+    --ink:#101828;
+    --paper:#ffffff;
+    --lime:#c8f04a;
+    --violet:#6c4cf1;
+    --coral:#ff5d5d;
+    --teal:#0fb5a8;
+    --amber:#ffb020;
+    --blue:#2f7bff;
+    --pink:#ff6fb1;
+    --muted:#667085;
+    --line:#eef1f5;
+  }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink); background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:720px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- header ---------- */
+  header{ padding:22px 0 6px; display:flex; align-items:center; justify-content:space-between; }
+  .logo{ font-weight:900; font-size:22px; letter-spacing:-0.5px; text-decoration:none; color:var(--ink); }
+  .logo b{ color:var(--violet); }
+  .badge-sg{ font-size:12px; font-weight:700; color:var(--muted); border:2px solid var(--line);
+    padding:5px 12px; border-radius:999px; }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:40px 0 34px; }
+  .hero h1{
+    font-size:clamp(46px,11vw,76px); font-weight:900; letter-spacing:-2.5px; line-height:1.02;
+  }
+  .hero h1 .q{ color:var(--violet); }
+  .hero p{ margin-top:14px; font-size:18px; color:var(--muted); max-width:34ch; line-height:1.5; }
+  .hero-cta{
+    display:inline-block; margin-top:22px; background:var(--ink); color:#fff;
+    font-weight:800; font-size:17px; padding:16px 30px; border-radius:16px; text-decoration:none;
+  }
+  .hero-cta:active{ transform:scale(0.97); }
+
+  /* ---------- grid ---------- */
+  .section-label{ font-size:13px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--muted); margin:26px 0 14px; }
+  .grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; padding-bottom:8px; }
+  @media (max-width:480px){ .grid{ grid-template-columns:1fr; } }
+  .card{
+    display:block; border-radius:22px; padding:24px 20px; text-decoration:none; color:var(--ink);
+    min-height:172px; position:relative; overflow:hidden;
+    transition:transform .12s ease;
+  }
+  .card:active{ transform:scale(0.97); }
+  .card h2{ font-size:21px; font-weight:900; letter-spacing:-0.5px; line-height:1.2; }
+  .card p{ margin-top:8px; font-size:14.5px; line-height:1.45; opacity:.85; }
+  .card .go{
+    position:absolute; bottom:18px; left:20px; font-weight:800; font-size:14px;
+    background:rgba(255,255,255,.9); padding:8px 16px; border-radius:999px;
+  }
+  .card .soon{
+    position:absolute; top:16px; right:16px; font-size:11px; font-weight:800; letter-spacing:1px;
+    text-transform:uppercase; background:rgba(16,24,40,.08); padding:6px 12px; border-radius:999px;
+    color:var(--muted);
+  }
+  .card.live .soon{ display:none; }
+  .card.dim{ opacity:.75; }
+  .c-tax{ background:var(--lime); }
+  .c-div{ background:#ffe14d; }
+  .c-cpf{ background:#ffd9e8; }
+  .c-car{ background:#ffe3c2; }
+  .c-maid{ background:#d9f7ef; }
+
+  /* ---------- why ---------- */
+  .why{ margin:34px 0 8px; background:var(--ink); color:#fff; border-radius:26px; padding:30px 26px; }
+  .why h2{ font-size:24px; font-weight:900; letter-spacing:-0.5px; }
+  .why ul{ list-style:none; margin-top:16px; display:grid; gap:12px; }
+  .why li{ font-size:15.5px; line-height:1.5; padding-left:30px; position:relative; }
+  .why li::before{ content:"✓"; position:absolute; left:2px; color:var(--lime); font-weight:900; }
+
+  /* ---------- footer ---------- */
+  footer{ padding:30px 0 46px; color:var(--muted); font-size:13px; line-height:1.7; }
+  footer .fine{ margin-top:10px; font-size:12px; }
+  footer a{ color:var(--violet); font-weight:700; text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="logo" href="/">Get<b>HowMuch</b></a>
+    <span class="badge-sg">Made for Singapore</span>
+  </header>
+
+  <section class="hero">
+    <h1>How much<span class="q">?</span></h1>
+    <p>Straight answers to Singapore's money questions. No jargon, no clutter. Just the number.</p>
+    <a class="hero-cta" href="/income-tax/">How much tax will I pay? →</a>
+  </section>
+
+  <div class="section-label">Pick a question</div>
+  <section class="grid">
+    <a class="card live c-tax" href="/income-tax/">
+      <h2>Income Tax Optimizer</h2>
+      <p>How much income tax will you pay? Your take-home after CPF and tax.</p>
+      <span class="go">Calculate →</span>
+    </a>
+    <a class="card live c-div" href="/">
+      <h2>Retirement Scenario Calculator</h2>
+      <p>How much do you need to retire on dividends?</p>
+      <span class="go">Calculate →</span>
+    </a>
+    <a class="card live c-cpf" href="/cpf/">
+      <h2>CPF</h2>
+      <p>What will you actually have at 55 and 65?</p>
+      <span class="go">Calculate →</span>
+    </a>
+    <a class="card live c-car" href="/car-coe/">
+      <h2>Car Affordability Calculator</h2>
+      <p>What does that car truly cost per month? Petrol or EV.</p>
+      <span class="go">Calculate →</span>
+    </a>
+    <a class="card live c-maid" href="/forex/">
+      <h2>Currency Converter</h2>
+      <p>How much is that in Singapore dollars? Live rates.</p>
+      <span class="go">Convert →</span>
+    </a>
+  </section>
+
+  <section class="why">
+    <h2>Why GetHowMuch?</h2>
+    <ul>
+      <li>Built on verified official figures: IRAS, CPF Board, data.gov.sg.</li>
+      <li>Live data where it exists: COE and resale prices, not last year's guesses.</li>
+      <li>Every answer personalised to your numbers, not generic tables.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div><a class="logo" href="/" style="font-size:16px;">Get<b>HowMuch</b></a></div>
+    <p class="fine">All calculators are estimates for planning only. Not financial or tax advice.
+    Figures verified against official sources; rates change yearly.<br>© 2026 GetHowMuch.</p>
+  </footer>
+
+</div>
+</body>
+</html>

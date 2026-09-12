@@ -1,157 +1,428 @@
-<!DOCTYPE html>
-<html lang="en-SG">
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>GetHowMuch: Straight answers to Singapore's money questions</title>
-<meta name="description" content="How much of your pay do you keep? How much do you need to retire? Clean, fast money calculators for Singapore.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-  :root{
-    --ink:#101828;
-    --paper:#ffffff;
-    --lime:#c8f04a;
-    --violet:#6c4cf1;
-    --coral:#ff5d5d;
-    --teal:#0fb5a8;
-    --amber:#ffb020;
-    --blue:#2f7bff;
-    --pink:#ff6fb1;
-    --muted:#667085;
-    --line:#eef1f5;
-  }
-  html{ scroll-behavior:smooth; }
-  body{
-    font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    color:var(--ink); background:var(--paper);
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap{ max-width:720px; margin:0 auto; padding:0 24px; }
-
-  /* ---------- header ---------- */
-  header{ padding:22px 0 6px; display:flex; align-items:center; justify-content:space-between; }
-  .logo{ font-weight:900; font-size:22px; letter-spacing:-0.5px; text-decoration:none; color:var(--ink); }
-  .logo b{ color:var(--violet); }
-  .badge-sg{ font-size:12px; font-weight:700; color:var(--muted); border:2px solid var(--line);
-    padding:5px 12px; border-radius:999px; }
-
-  /* ---------- hero ---------- */
-  .hero{ padding:40px 0 34px; }
-  .hero h1{
-    font-size:clamp(46px,11vw,76px); font-weight:900; letter-spacing:-2.5px; line-height:1.02;
-  }
-  .hero h1 .q{ color:var(--violet); }
-  .hero p{ margin-top:14px; font-size:18px; color:var(--muted); max-width:34ch; line-height:1.5; }
-  .hero-cta{
-    display:inline-block; margin-top:22px; background:var(--ink); color:#fff;
-    font-weight:800; font-size:17px; padding:16px 30px; border-radius:16px; text-decoration:none;
-  }
-  .hero-cta:active{ transform:scale(0.97); }
-
-  /* ---------- grid ---------- */
-  .section-label{ font-size:13px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase;
-    color:var(--muted); margin:26px 0 14px; }
-  .grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; padding-bottom:8px; }
-  @media (max-width:480px){ .grid{ grid-template-columns:1fr; } }
-  .card{
-    display:block; border-radius:22px; padding:24px 20px; text-decoration:none; color:var(--ink);
-    min-height:172px; position:relative; overflow:hidden;
-    transition:transform .12s ease;
-  }
-  .card:active{ transform:scale(0.97); }
-  .card h2{ font-size:21px; font-weight:900; letter-spacing:-0.5px; line-height:1.2; }
-  .card p{ margin-top:8px; font-size:14.5px; line-height:1.45; opacity:.85; }
-  .card .go{
-    position:absolute; bottom:18px; left:20px; font-weight:800; font-size:14px;
-    background:rgba(255,255,255,.9); padding:8px 16px; border-radius:999px;
-  }
-  .card .soon{
-    position:absolute; top:16px; right:16px; font-size:11px; font-weight:800; letter-spacing:1px;
-    text-transform:uppercase; background:rgba(16,24,40,.08); padding:6px 12px; border-radius:999px;
-    color:var(--muted);
-  }
-  .card.live .soon{ display:none; }
-  .card.dim{ opacity:.75; }
-  .c-tax{ background:var(--lime); }
-  .c-div{ background:#ffe14d; }
-  .c-cpf{ background:#ffd9e8; }
-  .c-car{ background:#ffe3c2; }
-  .c-maid{ background:#d9f7ef; }
-
-  /* ---------- why ---------- */
-  .why{ margin:34px 0 8px; background:var(--ink); color:#fff; border-radius:26px; padding:30px 26px; }
-  .why h2{ font-size:24px; font-weight:900; letter-spacing:-0.5px; }
-  .why ul{ list-style:none; margin-top:16px; display:grid; gap:12px; }
-  .why li{ font-size:15.5px; line-height:1.5; padding-left:30px; position:relative; }
-  .why li::before{ content:"✓"; position:absolute; left:2px; color:var(--lime); font-weight:900; }
-
-  /* ---------- footer ---------- */
-  footer{ padding:30px 0 46px; color:var(--muted); font-size:13px; line-height:1.7; }
-  footer .fine{ margin-top:10px; font-size:12px; }
-  footer a{ color:var(--violet); font-weight:700; text-decoration:none; }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <link rel="icon" href="data:," />
+  <title>Retirement Scenario Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#101828;
+      --paper:#f6f7f4;
+      --white:#fff;
+      --lime:#d8ff4f;
+      --aqua:#45dbdd;
+      --orange:#ff7448;
+      --yellow:#ffd84c;
+      --muted:#667085;
+      --line:#e6eae6;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-width:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:"DM Sans",sans-serif;
+      font-weight:600;
+    }
+    button,input{font:inherit;color:inherit}
+    button{touch-action:manipulation}
+    .page{width:min(100%,480px);margin:0 auto;padding:28px 16px 292px}
+    .site-nav{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:8px;
+      margin:0 0 28px;
+    }
+    .site-nav a,.site-nav button{
+      min-width:0;
+      min-height:54px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:5px;
+      padding:10px 7px;
+      border:2px solid var(--ink);
+      background:var(--aqua);
+      color:var(--ink);
+      font-size:12px;
+      font-weight:800;
+      line-height:1.05;
+      text-align:center;
+      text-decoration:none;
+      box-shadow:3px 3px 0 var(--ink);
+    }
+    .site-nav a:first-child{background:var(--lime)}
+    .site-nav a.active{background:var(--ink);color:#fff}
+    .site-nav a.soon,.site-nav button.soon{background:#e4e2d9;color:#77756e;box-shadow:none}
+    .site-nav .soon-tag{
+      flex:0 0 auto;
+      padding:2px 4px;
+      background:var(--white);
+      color:#77756e;
+      font-family:"IBM Plex Mono",monospace;
+      font-size:7px;
+      font-weight:500;
+      line-height:1;
+      text-transform:uppercase;
+    }
+    .site-nav a:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+    .brand{display:inline-block;margin:4px 0 16px;font-weight:800;font-size:17px;letter-spacing:-.5px;color:var(--ink);text-decoration:none}
+    .site-foot{margin:48px 0 10px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);text-align:center}
+    .site-foot a{color:var(--ink);font-weight:800;text-decoration:none}
+    h1{font-size:clamp(36px,9vw,60px);line-height:1;letter-spacing:-.045em;margin:0 0 10px;font-weight:800}
+    .intro{font-size:16px;line-height:1.45;color:var(--muted);margin:0 0 28px;max-width:410px}
+    .primary-question{
+      border:3px solid var(--ink);
+      background:var(--yellow);
+      padding:19px 16px 18px;
+      box-shadow:6px 6px 0 var(--ink);
+    }
+    .section-label{font-size:16px;font-weight:800;line-height:1.25;margin:0 0 12px}
+    .target-input{
+      display:flex;
+      align-items:flex-end;
+      gap:7px;
+      width:100%;
+      padding:6px 0 8px;
+      border-bottom:4px solid var(--ink);
+      font-family:"IBM Plex Mono",monospace;
+    }
+    .target-input .currency{font-size:18px;line-height:1.2;padding-bottom:5px}
+    .target-input input{
+      width:100%;
+      min-width:0;
+      border:0;
+      outline:0;
+      padding:0;
+      background:transparent;
+      font-family:"IBM Plex Mono",monospace;
+      font-size:clamp(40px,13vw,60px);
+      font-weight:500;
+      line-height:1;
+      letter-spacing:-.055em;
+      text-align:right;
+    }
+    .target-input .per-month{font-size:12px;line-height:1.2;white-space:nowrap;padding-bottom:7px}
+    .target-input:focus-within{outline:3px solid var(--aqua);outline-offset:5px}
+    .quick-label{font-size:11px;line-height:1.4;color:#48463f;margin:16px 0 8px}
+    .presets{display:flex;flex-wrap:wrap;gap:7px}
+    .preset{
+      min-height:40px;
+      padding:7px 9px;
+      border:2px solid var(--ink);
+      background:var(--white);
+      text-align:left;
+      font-size:11px;
+      font-weight:800;
+      line-height:1.12;
+      cursor:pointer;
+    }
+    .preset span{display:block;font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--muted);margin-top:3px}
+    .preset[aria-pressed="true"]{background:var(--aqua);box-shadow:2px 2px 0 var(--ink)}
+    .preset:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+    .included{margin-top:13px;border-top:1px solid rgba(16,16,15,.35)}
+    .included summary{
+      padding:11px 0 1px;
+      cursor:pointer;
+      list-style:none;
+      font-size:12px;
+      font-weight:800;
+    }
+    .included summary::-webkit-details-marker{display:none}
+    .included summary::after{content:" +";font-family:"IBM Plex Mono",monospace}
+    .included[open] summary::after{content:" −"}
+    .included-body{padding:10px 0 2px}
+    .included-body h2{font-size:18px;line-height:1.1;margin:0 0 8px}
+    .included-body ul{list-style:none;padding:0;margin:0;display:grid;gap:5px}
+    .included-body li{display:flex;gap:8px;align-items:flex-start;font-size:12px;line-height:1.35}
+    .included-body li::before{content:"";width:6px;height:6px;flex:0 0 6px;margin-top:5px;background:var(--orange)}
+    .included-note{font-size:10px;line-height:1.45;color:#48463f;margin:9px 0 0}
+    .controls{margin-top:28px}
+    .field{padding:22px 0;border-bottom:1px solid var(--line)}
+    .field:first-child{border-top:3px solid var(--ink)}
+    .field-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:8px}
+    .field-title{font-size:15px;font-weight:800;line-height:1.25;max-width:220px}
+    .field-helper{font-size:12px;line-height:1.4;color:var(--muted);margin:0}
+    .field-value{display:flex;align-items:center;justify-content:flex-end;border-bottom:3px solid var(--ink);min-width:142px}
+    .field-value span{font-family:"IBM Plex Mono",monospace;font-size:13px}
+    .field-value input{width:112px;border:0;outline:0;background:transparent;text-align:right;font-family:"IBM Plex Mono",monospace;font-size:18px;font-weight:500;padding:0 3px 4px}
+    .field-value:focus-within{outline:3px solid var(--aqua);outline-offset:3px}
+    .field-value.yield input{width:58px}
+    input[type="range"]{
+      display:block;
+      width:calc(100% - 24px);
+      height:48px;
+      margin:8px 12px 0;
+      appearance:none;
+      -webkit-appearance:none;
+      background:transparent;
+      cursor:pointer;
+      touch-action:pan-y;
+    }
+    input[type="range"]::-webkit-slider-runnable-track{height:8px;background:var(--line);border:1px solid var(--ink)}
+    input[type="range"]::-webkit-slider-thumb{
+      width:30px;
+      height:30px;
+      margin-top:-12px;
+      border:2px solid var(--ink);
+      border-radius:50%;
+      background:var(--white);
+      box-shadow:2px 2px 0 var(--ink);
+      -webkit-appearance:none;
+    }
+    input[type="range"]::-moz-range-track{height:8px;background:var(--line);border:1px solid var(--ink)}
+    input[type="range"]::-moz-range-thumb{width:30px;height:30px;border:2px solid var(--ink);border-radius:50%;background:var(--white);box-shadow:2px 2px 0 var(--ink)}
+    input[type="range"]:focus-visible{outline:3px solid var(--aqua);outline-offset:2px}
+    .range-ends{display:flex;justify-content:space-between;color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:9px;margin-top:-6px;padding:0 12px}
+    .tax-note{font-family:"IBM Plex Mono",monospace;font-size:11px;line-height:1.4;margin:18px 0 0;color:var(--muted)}
+    .result-summary{background:var(--ink);color:white;border-top:2px solid var(--ink);padding:15px 16px}
+    .result-inner{width:min(100%,480px);margin:0 auto}
+    .result-label{font-size:11px;font-weight:700;color:#c7c6be;margin-bottom:3px}
+    .target{font-size:clamp(29px,9vw,41px);line-height:1;letter-spacing:-.045em;font-weight:800;color:var(--lime)}
+    .breakdown{margin:11px 0 0;display:grid;gap:4px}
+    .breakdown-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:10px;line-height:1.35;color:#c7c6be}
+    .breakdown-row dd{margin:0;color:white;text-align:right}
+    .breakdown-row.total{padding-top:5px;border-top:1px solid #55544f;color:var(--lime);font-weight:500}
+    .breakdown-row.total dd{color:var(--lime)}
+    @media(max-width:600px){
+      .result-summary{position:fixed;z-index:10;left:0;right:0;bottom:0;padding:14px 16px calc(14px + env(safe-area-inset-bottom));box-shadow:0 -5px 0 var(--aqua);pointer-events:none}
+    }
+    @media(min-width:601px){
+      .page{padding-top:46px;padding-bottom:52px}
+      .result-summary{margin-top:28px;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--aqua)}
+      .result-inner{width:auto}
+    }
+    @media(max-width:430px){
+      .field-head{align-items:flex-start;flex-direction:column}
+      .field-title{max-width:none}
+      .field-value{width:100%}
+      .field-value input{width:calc(100% - 28px)}
+      .field-value.yield input{width:calc(100% - 18px)}
+      .target-input .currency{font-size:15px}
+      .target-input .per-month{font-size:10px}
+    }
+    @media(max-width:360px){
+      .page{padding-left:12px;padding-right:12px}
+      .site-nav{gap:6px}
+      .site-nav a{padding-left:5px;padding-right:5px;font-size:11px}
+      .preset{padding:7px 8px}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
 </head>
 <body>
-<div class="wrap">
+  <main class="page">
+    <a class="brand" href="/" aria-label="GetHowMuch home">GetHowMuch</a>
+    <nav class="site-nav" aria-label="More GetHowMuch calculators">
+      <a class="active" href="/" aria-current="page">Retirement</a>
+      <a href="/income-tax/">Income Tax</a>
+      <a href="/cpf/">CPF</a>
+      <a href="/car-coe/">Car &amp; COE</a>
+      <a href="/forex/">Currency</a>
+    </nav>
 
-  <header>
-    <a class="logo" href="/">Get<b>HowMuch</b></a>
-    <span class="badge-sg">Made for Singapore</span>
-  </header>
+    <h1>Retirement Scenario Calculator</h1>
+    <p class="intro">Tell us the monthly dividend income you want. We'll tell you how much you need invested.</p>
 
-  <section class="hero">
-    <h1>How much<span class="q">?</span></h1>
-    <p>Straight answers to Singapore's money questions. No jargon, no clutter. Just the number.</p>
-    <a class="hero-cta" href="/income-tax/">How much do I keep? →</a>
-  </section>
+    <section class="primary-question" aria-labelledby="income-label">
+      <label class="section-label" id="income-label" for="target-income">1 · How much do you want every month?</label>
+      <div class="target-input">
+        <span class="currency">S$</span>
+        <input id="target-income" type="text" inputmode="numeric" value="5,500" aria-describedby="income-hint">
+        <span class="per-month">/ month</span>
+      </div>
+      <p class="quick-label" id="income-hint">Not sure? These are just starting points.</p>
+      <div class="presets" role="group" aria-label="Monthly income starting points">
+        <button class="preset" type="button" data-scenario="frugal" aria-pressed="false">Frugal<span>S$3,000</span></button>
+        <button class="preset" type="button" data-scenario="comfortable" aria-pressed="true">Comfortable<span>S$5,500</span></button>
+        <button class="preset" type="button" data-scenario="good" aria-pressed="false">Good life<span>S$15,000</span></button>
+        <button class="preset" type="button" data-scenario="lavish" aria-pressed="false">Lavish<span>S$28,000</span></button>
+      </div>
+      <details class="included" id="included-details">
+        <summary id="included-summary">What's included in Comfortable?</summary>
+        <div class="included-body">
+          <h2 id="scenario-title">Comfortable</h2>
+          <ul id="scenario-description">
+            <li>Hawker favourites through the week</li>
+            <li>Restaurants twice a month</li>
+            <li>The freedom to mix MRT and Grab</li>
+            <li>One long holiday plus one short getaway a year</li>
+          </ul>
+          <p class="included-note" id="scenario-note">For one person in Singapore, in 2026 dollars. Housing, car costs and other commitments not named here can be added below.</p>
+        </div>
+      </details>
+    </section>
 
-  <div class="section-label">Pick a question</div>
-  <section class="grid">
-    <a class="card live c-tax" href="/income-tax/">
-      <h2>Income Tax Optimizer</h2>
-      <p>How much of your pay do you keep, after CPF and tax?</p>
-      <span class="go">Calculate →</span>
-    </a>
-    <a class="card live c-div" href="/dividends/">
-      <h2>Retirement Scenario Calculator</h2>
-      <p>How much do you need to retire on dividends?</p>
-      <span class="go">Calculate →</span>
-    </a>
-    <div class="card dim c-cpf">
-      <span class="soon">Coming soon</span>
-      <h2>CPF</h2>
-      <p>What will you actually have at 55 and 65?</p>
-    </div>
-    <a class="card live c-car" href="/car-coe/">
-      <h2>Car Affordability Calculator</h2>
-      <p>What does that car truly cost per month? Petrol or EV.</p>
-      <span class="go">Calculate →</span>
-    </a>
-    <a class="card live c-maid" href="/forex/">
-      <h2>Currency Converter</h2>
-      <p>How much is that in Singapore dollars? Live rates.</p>
-      <span class="go">Convert →</span>
-    </a>
-  </section>
+    <section class="controls" aria-label="Your retirement calculation">
+      <div class="field">
+        <div class="field-head">
+          <label class="field-title" for="commitments">2 · Monthly commitments</label>
+          <div class="field-value"><span>S$</span><input id="commitments" type="text" inputmode="numeric" value="0" aria-label="Monthly commitments"></div>
+        </div>
+        <p class="field-helper">Optional. Add insurance, loans and anything else you must keep paying on top of the amount above.</p>
+      </div>
 
-  <section class="why">
-    <h2>Why GetHowMuch?</h2>
-    <ul>
-      <li>Built on verified official figures: IRAS, CPF Board, data.gov.sg.</li>
-      <li>Live data where it exists: COE and resale prices, not last year's guesses.</li>
-      <li>Every answer personalised to your numbers, not generic tables.</li>
-    </ul>
-  </section>
+      <div class="field">
+        <div class="field-head">
+          <label class="field-title" for="assets">3 · What you already have</label>
+          <div class="field-value"><span>S$</span><input id="assets" type="text" inputmode="numeric" value="500,000" aria-label="Savings and investments you already have"></div>
+        </div>
+        <p class="field-helper">Include savings and investments that can pay you income. Exclude the home you live in. If you plan to sell or downsize, include only the net cash you expect to invest afterwards.</p>
+      </div>
 
-  <footer>
-    <div><a class="logo" href="/" style="font-size:16px;">Get<b>HowMuch</b></a></div>
-    <p class="fine">All calculators are estimates for planning only. Not financial or tax advice.
-    Figures verified against official sources; rates change yearly.<br>© 2026 GetHowMuch.</p>
-  </footer>
+      <div class="field">
+        <div class="field-head">
+          <label class="field-title" for="yield">4 · Payout rate</label>
+          <div class="field-value yield"><input id="yield" type="number" inputmode="decimal" min="0.5" max="15" step="0.1" value="5.7" aria-label="Assumed annual payout rate percentage"><span>%</span></div>
+        </div>
+        <p class="field-helper">Your assumed annual payout rate. The starting point is the average S-REIT payout in 2026.</p>
+        <input id="yield-range" type="range" min="0.5" max="15" step="0.1" value="5.7" aria-label="Assumed annual payout rate percentage slider">
+        <div class="range-ends"><span>0.5%</span><span>15%</span></div>
+      </div>
+      <p class="tax-note">Most Singapore company dividends and personal S-REIT distributions are tax-exempt; exceptions may apply.</p>
+    </section>
 
-</div>
+    <section class="result-summary" aria-live="polite" aria-label="Investment needed">
+      <div class="result-inner">
+        <div class="result-label">TOTAL INVESTMENT NEEDED</div>
+        <div class="target" id="target-assets">S$1,157,895</div>
+        <dl class="breakdown">
+          <div class="breakdown-row"><dt>Monthly income you want</dt><dd id="monthly-need">S$5,500</dd></div>
+          <div class="breakdown-row"><dt>Your money already pays</dt><dd id="monthly-income">S$2,375</dd></div>
+          <div class="breakdown-row"><dt>Monthly gap</dt><dd id="monthly-gap">S$3,125</dd></div>
+          <div class="breakdown-row total"><dt>More capital needed</dt><dd id="capital-gap">S$657,895</dd></div>
+        </dl>
+      </div>
+    </section>
+    <footer class="site-foot"><a href="/">GetHowMuch</a> · Estimates for planning only. Not financial advice. © 2026</footer>
+  </main>
+
+  <script>
+    (() => {
+      const scenarios = {
+        frugal: {
+          title: 'Frugal', spending: 3000,
+          lines: ['Easy home-cooked meals and hawker favourites', 'MRT and bus get you where you need to go', 'One refreshing regional escape a year', 'A cosy HDB home, without the cost of a car'],
+          note: 'For one person in Singapore, in 2026 dollars. Rent or a mortgage is not included, so add it under monthly commitments if you still expect to pay one.'
+        },
+        comfortable: {
+          title: 'Comfortable', spending: 5500,
+          lines: ['Hawker favourites through the week', 'Restaurants twice a month', 'The freedom to mix MRT and Grab', 'One long holiday plus one short getaway a year'],
+          note: 'For one person in Singapore, in 2026 dollars. Housing, car costs and other commitments not named here can be added below.'
+        },
+        good: {
+          title: 'Good life', spending: 15000,
+          lines: ['Restaurants every week', 'Your own Japanese car, with all costs included', 'Two proper holidays a year, including one long-haul', 'A comfortable condo, with mortgage or rent included'],
+          note: 'For one person in Singapore, in 2026 dollars. Includes about S$4,000 for a modest condo and about S$2,000 all-in for a Japanese car such as a Toyota Corolla Altis.'
+        },
+        lavish: {
+          title: 'Lavish', spending: 28000,
+          lines: ['Business class for two', 'One long luxury holiday plus one short escape a year', 'Fine dining four times a month', 'A prime condo, car and helper, all included'],
+          note: 'For one person in Singapore, in 2026 dollars. Includes about S$8,000 for a prime condo, S$3,000 for a car and S$1,000 for a helper.'
+        }
+      };
+
+      const $ = (id) => document.getElementById(id);
+      const targetInput = $('target-income');
+      const commitments = $('commitments');
+      const assets = $('assets');
+      const yieldInput = $('yield');
+      const yieldRange = $('yield-range');
+      let activeScenario = 'comfortable';
+
+      const numeric = (value) => Math.max(0, Number(String(value).replace(/[^0-9.]/g, '')) || 0);
+      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+      const whole = (value) => Math.round(value).toLocaleString('en-SG');
+      const money = (value) => 'S$' + whole(value);
+
+      function calculate(){
+        const target = numeric(targetInput.value);
+        const commitmentValue = numeric(commitments.value);
+        const assetValue = numeric(assets.value);
+        const annualYield = clamp(numeric(yieldInput.value), 0, 30) / 100;
+        const monthlyNeed = target + commitmentValue;
+        const currentMonthlyIncome = assetValue * annualYield / 12;
+        const monthlyGap = Math.max(0, monthlyNeed - currentMonthlyIncome);
+        const totalCapital = annualYield > 0 ? monthlyNeed * 12 / annualYield : 0;
+        const additionalCapital = annualYield > 0 ? monthlyGap * 12 / annualYield : 0;
+
+        $('monthly-need').textContent = money(monthlyNeed);
+        $('monthly-income').textContent = money(currentMonthlyIncome);
+        $('monthly-gap').textContent = money(monthlyGap);
+        $('target-assets').textContent = annualYield > 0 ? money(totalCapital) : 'Add a rate';
+        $('capital-gap').textContent = annualYield > 0 ? money(additionalCapital) : 'Add a rate';
+      }
+
+      function setPressedScenario(key){
+        activeScenario = key;
+        document.querySelectorAll('.preset').forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.scenario === key));
+        });
+      }
+
+      function showScenario(key){
+        const scenario = scenarios[key];
+        $('included-summary').textContent = "What's included in " + scenario.title + '?';
+        $('scenario-title').textContent = scenario.title;
+        $('scenario-description').innerHTML = scenario.lines.map((line) => '<li>' + line + '</li>').join('');
+        $('scenario-note').textContent = scenario.note;
+      }
+
+      function selectScenario(key){
+        const scenario = scenarios[key];
+        targetInput.value = whole(scenario.spending);
+        setPressedScenario(key);
+        showScenario(key);
+        calculate();
+      }
+
+      document.querySelectorAll('.preset').forEach((button) => {
+        button.addEventListener('click', () => selectScenario(button.dataset.scenario));
+      });
+
+      targetInput.addEventListener('input', () => {
+        const match = Object.keys(scenarios).find((key) => scenarios[key].spending === numeric(targetInput.value));
+        setPressedScenario(match || null);
+        if (match) showScenario(match);
+        calculate();
+      });
+      targetInput.addEventListener('blur', () => {
+        targetInput.value = whole(numeric(targetInput.value));
+        calculate();
+      });
+
+      [commitments, assets].forEach((input) => {
+        input.addEventListener('input', calculate);
+        input.addEventListener('blur', () => {
+          input.value = whole(numeric(input.value));
+          calculate();
+        });
+      });
+
+      yieldRange.addEventListener('input', () => {
+        yieldInput.value = yieldRange.value;
+        calculate();
+      });
+      yieldInput.addEventListener('input', () => {
+        yieldRange.value = clamp(numeric(yieldInput.value), Number(yieldRange.min), Number(yieldRange.max));
+        calculate();
+      });
+      yieldInput.addEventListener('blur', () => {
+        yieldInput.value = clamp(numeric(yieldInput.value), Number(yieldInput.min), Number(yieldInput.max)).toFixed(1);
+        yieldRange.value = yieldInput.value;
+        calculate();
+      });
+
+      showScenario(activeScenario);
+      calculate();
+    })();
+  </script>
 </body>
 </html>

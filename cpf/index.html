@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <link rel="icon" href="data:," />
+  <title>CPF Calculator — GetHowMuch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+
+    :root {
+      --ink: #101828;
+      --muted: #667085;
+      --line: #e6eae6;
+      --paper: #f6f7f4;
+      --white: #ffffff;
+      --blue: #165cff;
+      --blue-dark: #0a3dbf;
+      --mint: #22d3a6;
+      --mint-soft: #dff9f0;
+      --sky: #dfeaff;
+      --amber: #f4b740;
+      --shadow: 0 18px 45px rgba(28, 54, 90, .10);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--paper); }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-width: 320px;
+    }
+    button, input, summary { font: inherit; }
+    button, input[type="range"] { touch-action: manipulation; }
+    button:focus-visible, input:focus-visible, summary:focus-visible {
+      outline: 3px solid rgba(22,92,255,.28);
+      outline-offset: 3px;
+    }
+
+    .page {
+      width: min(100%, 760px);
+      margin: 0 auto;
+      padding: 22px 18px calc(48px + env(safe-area-inset-bottom));
+    }
+
+    .brand {
+      display: inline-block;
+      margin: 4px 0 16px;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -.5px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .tool-nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 26px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .tool-nav::-webkit-scrollbar { display: none; }
+    .tool-nav a {
+      flex: 0 0 auto;
+      padding: 10px 16px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .tool-nav a.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .site-foot {
+      margin: 48px 0 10px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 12.5px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .site-foot a { color: var(--ink); font-weight: 800; text-decoration: none; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 26px 24px 28px;
+      border-radius: 30px 30px 12px 30px;
+      color: #fff;
+      background: #123d8c;
+      box-shadow: 0 24px 56px rgba(9, 51, 135, .22);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -70px;
+      top: -72px;
+      border-radius: 50%;
+      background: var(--mint);
+      opacity: .95;
+    }
+    .hero-label {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 8px;
+      font-size: .9rem;
+      font-weight: 700;
+      color: #c8d9ff;
+    }
+    .hero-amount {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: clamp(2.7rem, 11vw, 5rem);
+      line-height: .98;
+      letter-spacing: -.07em;
+      font-weight: 600;
+    }
+    .hero-amount span { font-size: .42em; letter-spacing: -.02em; }
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      margin: 14px 0 0;
+      max-width: 410px;
+      color: #e5edff;
+      font-size: .94rem;
+      line-height: 1.5;
+    }
+
+    .section-title {
+      margin: 32px 2px 14px;
+      font-size: 1.34rem;
+      line-height: 1.2;
+      letter-spacing: -.025em;
+    }
+    .input-card, .result-panel, details {
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .input-card {
+      padding: 22px;
+      border-radius: 12px var(--radius-lg) var(--radius-lg) var(--radius-lg);
+      margin-bottom: 12px;
+    }
+    .input-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .input-label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .input-note {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.45;
+    }
+    .number-shell {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      padding: 5px 8px;
+      border: 1.5px solid var(--line);
+      border-radius: 10px;
+      background: #fbfcfe;
+    }
+    .number-shell:focus-within { border-color: var(--blue); }
+    .number-shell .prefix, .number-shell .suffix {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: .85rem;
+    }
+    .number-shell input {
+      width: 64px;
+      border: 0;
+      padding: 1px 4px;
+      color: var(--ink);
+      background: transparent;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: right;
+      outline: 0;
+    }
+    .number-shell.money input { width: 82px; }
+
+    .range-wrap { padding: 18px 14px 0; }
+    input[type="range"] {
+      width: 100%;
+      height: 28px;
+      margin: 0;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 8px;
+      border-radius: 99px;
+      background: linear-gradient(to right, var(--blue) 0 var(--fill, 50%), #dce4ef var(--fill, 50%) 100%);
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      width: 30px;
+      height: 30px;
+      margin-top: -11px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 3px 10px rgba(9, 51, 135, .3);
+    }
+    input[type="range"]::-moz-range-track { height: 8px; border-radius: 99px; background: #dce4ef; }
+    input[type="range"]::-moz-range-progress { height: 8px; border-radius: 99px; background: var(--blue); }
+    input[type="range"]::-moz-range-thumb {
+      width: 22px; height: 22px; border: 4px solid #fff; border-radius: 50%;
+      background: var(--blue); box-shadow: 0 3px 10px rgba(9,51,135,.3);
+    }
+    .range-scale {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3px;
+      color: #8190a4;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .67rem;
+    }
+
+    .balance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 18px;
+    }
+    .balance-field label {
+      display: block;
+      margin: 0 0 7px 2px;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 700;
+    }
+    .balance-box {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 9px;
+      background: #fbfcfe;
+    }
+    .balance-box:focus-within { border-color: var(--blue); }
+    .balance-box span { color: var(--muted); font-size: .76rem; font-weight: 700; }
+    .balance-box input {
+      width: 100%; min-width: 0; border: 0; outline: 0; background: transparent;
+      color: var(--ink); font-family: "IBM Plex Mono", monospace; font-size: .86rem;
+    }
+
+    .results-grid { display: grid; gap: 14px; }
+    .result-panel {
+      padding: 23px;
+      border-radius: var(--radius-lg) 12px var(--radius-lg) var(--radius-lg);
+    }
+    .result-panel.age65 { background: var(--ink); color: white; }
+    .result-kicker { margin: 0 0 5px; color: var(--blue); font-size: .8rem; font-weight: 700; }
+    .age65 .result-kicker { color: #8ff0d1; }
+    .result-total {
+      margin: 0 0 18px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: clamp(1.85rem, 7vw, 2.8rem);
+      line-height: 1.05;
+      letter-spacing: -.05em;
+    }
+    .result-rows { display: grid; gap: 1px; }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .age65 .result-row { border-color: rgba(255,255,255,.13); color: #b9c5d6; }
+    .result-row strong { color: var(--ink); font-family: "IBM Plex Mono", monospace; }
+    .age65 .result-row strong { color: white; }
+
+    .goal-box {
+      margin-top: 19px;
+      padding: 16px;
+      border-radius: 16px;
+      background: var(--mint-soft);
+    }
+    .goal-title { display: flex; justify-content: space-between; gap: 10px; font-size: .82rem; font-weight: 700; }
+    .goal-track { position: relative; height: 12px; margin: 13px 0 10px; border-radius: 99px; background: #bcebdd; overflow: visible; }
+    .goal-fill { height: 100%; max-width: 100%; border-radius: 99px; background: #0ba87b; transition: width .25s ease; }
+    .goal-markers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; color: #397364; font-size: .68rem; font-weight: 700; }
+    .goal-markers span:nth-child(2) { text-align: center; }
+    .goal-markers span:nth-child(3) { text-align: right; }
+    .goal-status { margin: 11px 0 0; color: #225e50; font-size: .78rem; line-height: 1.4; }
+
+    details {
+      margin-top: 18px;
+      padding: 0 20px;
+      border-radius: 18px;
+    }
+    summary {
+      list-style: none;
+      padding: 18px 0;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; float: right; color: var(--blue); font-size: 1.3rem; line-height: 1; }
+    details[open] summary::after { content: "−"; }
+    .assumptions { padding: 0 0 20px; color: var(--muted); font-size: .8rem; line-height: 1.55; }
+    .assumptions ul { margin: 0; padding-left: 19px; }
+    .assumptions li + li { margin-top: 8px; }
+    .source-note { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line); color: #41536b; }
+
+    .fine-print { margin: 20px 2px 0; color: #77869a; font-size: .72rem; line-height: 1.5; }
+
+    .hidden { display: none !important; }
+
+    @media (min-width: 680px) {
+      .page { padding: 34px 24px 64px; }
+      .hero { padding: 34px 36px 36px; }
+      .results-grid.two { grid-template-columns: 1fr 1fr; }
+      .input-card { padding: 25px 28px; }
+      .balance-grid { gap: 12px; }
+    }
+    @media (max-width: 390px) {
+      .page { padding-left: 14px; padding-right: 14px; }
+      .hero { padding-left: 20px; }
+      .input-card { padding: 19px 17px; }
+      .balance-grid { grid-template-columns: 1fr; }
+      .balance-field label { margin-bottom: 4px; }
+      .balance-box { padding: 9px 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="brand" href="/" aria-label="GetHowMuch home">GetHowMuch</a>
+    <nav class="tool-nav" aria-label="GetHowMuch calculators">
+      <a href="/">Retirement</a>
+      <a href="/income-tax/">Income Tax</a>
+      <a class="active" href="/cpf/" aria-current="page">CPF</a>
+      <a href="/car-coe/">Car &amp; COE</a>
+      <a href="/forex/">Currency</a>
+    </nav>
+    <section class="hero" aria-live="polite">
+      <p class="hero-label">Estimated CPF LIFE payout from 65</p>
+      <p class="hero-amount" id="heroPayout">S$0<span>/mo</span></p>
+      <p class="hero-copy" id="heroCopy">Set your details below to see what your CPF could look like.</p>
+    </section>
+
+    <h2 class="section-title">Start with where you are</h2>
+
+    <section class="input-card">
+      <div class="input-head">
+        <div>
+          <label class="input-label" for="ageRange">Your age now</label>
+          <p class="input-note" id="ageNote">We project to age 65. If you are already 65 or older, we show today instead.</p>
+        </div>
+        <div class="number-shell"><input id="ageInput" type="number" min="21" max="70" step="1" value="30" aria-label="Current age"><span class="suffix">yrs</span></div>
+      </div>
+      <div class="range-wrap">
+        <input id="ageRange" type="range" min="21" max="70" step="1" value="30" aria-label="Current age slider">
+        <div class="range-scale"><span>21</span><span>70</span></div>
+      </div>
+    </section>
+
+    <section class="input-card">
+      <div class="input-head">
+        <div>
+          <label class="input-label" for="salaryRange">Monthly salary</label>
+          <p class="input-note">Before employee CPF. Bonuses are not included.</p>
+        </div>
+        <div class="number-shell money"><span class="prefix">S$</span><input id="salaryInput" type="number" min="0" max="20000" step="100" value="5000" aria-label="Monthly salary"></div>
+      </div>
+      <div class="range-wrap">
+        <input id="salaryRange" type="range" min="0" max="20000" step="100" value="5000" aria-label="Monthly salary slider">
+        <div class="range-scale"><span>S$0</span><span>S$20k</span></div>
+      </div>
+    </section>
+
+    <section class="input-card">
+      <div class="input-head">
+        <div>
+          <span class="input-label">What is in CPF today?</span>
+          <p class="input-note">Use your latest balances. Enter 0 if you are starting fresh.</p>
+        </div>
+      </div>
+      <div class="balance-grid">
+        <div class="balance-field">
+          <label for="oaInput">OA</label>
+          <div class="balance-box"><span>S$</span><input id="oaInput" type="number" min="0" step="100" value="0" inputmode="decimal" aria-label="OA balance"></div>
+        </div>
+        <div class="balance-field">
+          <label id="saLabel" for="saInput">SA</label>
+          <div class="balance-box"><span>S$</span><input id="saInput" type="number" min="0" step="100" value="0" inputmode="decimal" aria-label="SA or RA balance"></div>
+        </div>
+        <div class="balance-field">
+          <label for="maInput">MediSave</label>
+          <div class="balance-box"><span>S$</span><input id="maInput" type="number" min="0" step="100" value="0" inputmode="decimal" aria-label="MediSave balance"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="input-card">
+      <div class="input-head">
+        <div>
+          <label class="input-label" for="growthInput">Yearly salary growth</label>
+          <p class="input-note">A small planning assumption you can change.</p>
+        </div>
+        <div class="number-shell"><input id="growthInput" type="number" min="0" max="15" step="0.5" value="3" aria-label="Annual salary growth"><span class="suffix">%</span></div>
+      </div>
+    </section>
+
+    <h2 class="section-title">Your CPF projection</h2>
+    <div class="results-grid two" id="resultsGrid">
+      <section class="result-panel" id="age55Panel">
+        <p class="result-kicker" id="age55Kicker">When you turn 55</p>
+        <p class="result-total" id="total55">S$0</p>
+        <div class="result-rows">
+          <div class="result-row"><span>OA</span><strong id="oa55">S$0</strong></div>
+          <div class="result-row"><span>Retirement Account</span><strong id="ra55">S$0</strong></div>
+          <div class="result-row"><span>MediSave</span><strong id="ma55">S$0</strong></div>
+        </div>
+        <div class="goal-box">
+          <div class="goal-title"><span id="cohortLabel">Retirement sums</span><span id="frsValue">FRS S$0</span></div>
+          <div class="goal-track"><div class="goal-fill" id="goalFill"></div></div>
+          <div class="goal-markers"><span id="brsMarker">BRS</span><span id="frsMarker">FRS</span><span id="ersMarker">ERS</span></div>
+          <p class="goal-status" id="goalStatus"></p>
+        </div>
+      </section>
+
+      <section class="result-panel age65">
+        <p class="result-kicker" id="age65Kicker">When you turn 65</p>
+        <p class="result-total" id="total65">S$0</p>
+        <div class="result-rows">
+          <div class="result-row"><span>OA</span><strong id="oa65">S$0</strong></div>
+          <div class="result-row"><span>Retirement Account</span><strong id="ra65">S$0</strong></div>
+          <div class="result-row"><span>MediSave</span><strong id="ma65">S$0</strong></div>
+        </div>
+      </section>
+    </div>
+
+    <details>
+      <summary>How this estimate works</summary>
+      <div class="assumptions">
+        <ul>
+          <li>Uses CPF contribution and allocation rates effective from 1 January 2026. The same rates are held constant for this projection.</li>
+          <li>Salary grows by your chosen rate. The S$8,000 monthly Ordinary Wage ceiling and S$37,740 annual contribution limit are held constant, which is a conservative assumption for future years.</li>
+          <li>OA earns 2.5% yearly. SA, MediSave and RA earn 4% yearly, with CPF extra interest applied to the first S$60,000 of combined balances.</li>
+          <li>The 2026 Basic Healthcare Sum of S$79,000 is held constant. MediSave contributions above it flow to SA before 55 or RA from 55.</li>
+          <li>At 55, SA closes. OA and SA are moved to RA up to the Full Retirement Sum. Later Full Retirement Sums are estimated to rise 3.5% each year.</li>
+          <li>The payout is estimated by interpolating the CPF Board's official 2026 cohort Standard Plan examples. Actual payouts depend on the rules and plan in force when you join CPF LIFE.</li>
+        </ul>
+        <p class="source-note"><strong>Sources:</strong> CPF Board contribution rates, allocation rates, interest rates, CPF LIFE payout examples, retirement sums and Basic Healthcare Sum. Figures verified September 2026.</p>
+      </div>
+    </details>
+
+    <p class="fine-print">Estimates are for planning only and are not financial advice. CPF rules and payout terms can change.</p>
+    <footer class="site-foot"><a href="/">GetHowMuch</a> · Estimates for planning only. Not financial advice. © 2026</footer>
+  </main>
+
+  <script>
+    // CPF POLICY CONFIG: update this block when official rates change.
+    const CPF_POLICY = {
+      asOf: 2026,
+      wageCeilingMonthly: 8000,
+      salaryCeilingAnnual: 102000,
+      contributionLimitAnnual: 37740,
+      basicHealthcareSum: 79000,
+      baseInterest: { OA: 0.025, SA: 0.04, MA: 0.04, RA: 0.04 },
+      contributionBands: [
+        { maxAge: 55, total: 0.37, employer: 0.17, employee: 0.20 },
+        { maxAge: 60, total: 0.34, employer: 0.16, employee: 0.18 },
+        { maxAge: 65, total: 0.25, employer: 0.125, employee: 0.125 },
+        { maxAge: 70, total: 0.165, employer: 0.09, employee: 0.075 },
+        { maxAge: Infinity, total: 0.125, employer: 0.075, employee: 0.05 }
+      ],
+      allocationBands: [
+        { maxAge: 35, OA: 0.23, retirement: 0.06, MA: 0.08 },
+        { maxAge: 45, OA: 0.21, retirement: 0.07, MA: 0.09 },
+        { maxAge: 50, OA: 0.19, retirement: 0.08, MA: 0.10 },
+        { maxAge: 55, OA: 0.15, retirement: 0.115, MA: 0.105 },
+        { maxAge: 60, OA: 0.12, retirement: 0.115, MA: 0.105 },
+        { maxAge: 65, OA: 0.035, retirement: 0.11, MA: 0.105 },
+        { maxAge: 70, OA: 0.01, retirement: 0.05, MA: 0.105 },
+        { maxAge: Infinity, OA: 0.01, retirement: 0.01, MA: 0.105 }
+      ],
+      retirementSums: { 2025: 213000, 2026: 220400, 2027: 228200, laterGrowth: 0.035 },
+      payoutTable: [
+        { ra: 50000, payout: 490 },
+        { ra: 110200, payout: 950 },
+        { ra: 150000, payout: 1250 },
+        { ra: 220400, payout: 1780 },
+        { ra: 300000, payout: 2380 },
+        { ra: 440800, payout: 3440 }
+      ]
+    };
+
+    const $ = id => document.getElementById(id);
+    const controls = {
+      ageRange: $('ageRange'), ageInput: $('ageInput'),
+      salaryRange: $('salaryRange'), salaryInput: $('salaryInput'),
+      oa: $('oaInput'), sa: $('saInput'), ma: $('maInput'), growth: $('growthInput')
+    };
+
+    const money = n => 'S$' + Math.round(Math.max(0, n || 0)).toLocaleString('en-SG');
+    const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
+    const readNumber = (el, fallback = 0) => Number.isFinite(parseFloat(el.value)) ? parseFloat(el.value) : fallback;
+
+    function bandFor(age, bands) { return bands.find(b => age <= b.maxAge); }
+
+    function frsForYear(year) {
+      const sums = CPF_POLICY.retirementSums;
+      if (sums[year]) return sums[year];
+      if (year < 2025) return sums[2025];
+      return sums[2027] * Math.pow(1 + sums.laterGrowth, year - 2027);
+    }
+
+    function addInterest(accounts, age) {
+      accounts.OA *= 1 + CPF_POLICY.baseInterest.OA;
+      accounts.SA *= 1 + CPF_POLICY.baseInterest.SA;
+      accounts.MA *= 1 + CPF_POLICY.baseInterest.MA;
+      accounts.RA *= 1 + CPF_POLICY.baseInterest.RA;
+
+      const eligibleOA = Math.min(accounts.OA, 20000);
+      const combinedEligible = eligibleOA + accounts.SA + accounts.MA + accounts.RA;
+      let extra = 0;
+      if (age < 55) {
+        extra = Math.min(combinedEligible, 60000) * 0.01;
+        accounts.SA += extra;
+      } else {
+        extra = Math.min(combinedEligible, 30000) * 0.02 + Math.min(Math.max(combinedEligible - 30000, 0), 30000) * 0.01;
+        accounts.RA += extra;
+      }
+    }
+
+    function applyYear(accounts, age, monthlySalary) {
+      const wage = Math.min(monthlySalary, CPF_POLICY.wageCeilingMonthly) * 12;
+      const totalBand = bandFor(age, CPF_POLICY.contributionBands);
+      const allocation = bandFor(age, CPF_POLICY.allocationBands);
+      const rawTotal = Math.min(wage * totalBand.total, CPF_POLICY.contributionLimitAnnual);
+      const allocationTotal = allocation.OA + allocation.retirement + allocation.MA;
+      const scale = allocationTotal > 0 ? rawTotal / (wage * allocationTotal || 1) : 0;
+
+      accounts.OA += wage * allocation.OA * scale;
+      if (age < 55) accounts.SA += wage * allocation.retirement * scale;
+      else accounts.RA += wage * allocation.retirement * scale;
+      accounts.MA += wage * allocation.MA * scale;
+
+      if (accounts.MA > CPF_POLICY.basicHealthcareSum) {
+        const overflow = accounts.MA - CPF_POLICY.basicHealthcareSum;
+        accounts.MA = CPF_POLICY.basicHealthcareSum;
+        if (age < 55) accounts.SA += overflow;
+        else accounts.RA += overflow;
+      }
+      addInterest(accounts, age);
+    }
+
+    function createRA(accounts, frs) {
+      const available = accounts.OA + accounts.SA;
+      accounts.RA += Math.min(available, Math.max(0, frs - accounts.RA));
+      const remaining = Math.max(0, available - Math.max(0, frs - (accounts.RA - Math.min(available, Math.max(0, frs - accounts.RA)))));
+      accounts.OA = remaining;
+      accounts.SA = 0;
+    }
+
+    function sweepAt55(accounts, frs) {
+      const need = Math.max(0, frs - accounts.RA);
+      const fromSA = Math.min(accounts.SA, need);
+      accounts.SA -= fromSA;
+      accounts.RA += fromSA;
+      const fromOA = Math.min(accounts.OA, Math.max(0, frs - accounts.RA));
+      accounts.OA -= fromOA;
+      accounts.RA += fromOA;
+      accounts.OA += accounts.SA;
+      accounts.SA = 0;
+    }
+
+    function estimatePayout(ra) {
+      const t = CPF_POLICY.payoutTable;
+      if (ra <= 0) return 0;
+      if (ra <= t[0].ra) return ra / t[0].ra * t[0].payout;
+      for (let i = 1; i < t.length; i++) {
+        if (ra <= t[i].ra) {
+          const a = t[i - 1], b = t[i];
+          return a.payout + (ra - a.ra) / (b.ra - a.ra) * (b.payout - a.payout);
+        }
+      }
+      const a = t[t.length - 2], b = t[t.length - 1];
+      return b.payout + (ra - b.ra) / (b.ra - a.ra) * (b.payout - a.payout);
+    }
+
+    function project() {
+      const age = clamp(Math.round(readNumber(controls.ageInput, 30)), 21, 70);
+      const monthlySalary = clamp(readNumber(controls.salaryInput, 5000), 0, 20000);
+      const growth = clamp(readNumber(controls.growth, 3), 0, 15) / 100;
+      const accounts = {
+        OA: Math.max(0, readNumber(controls.oa)),
+        SA: age >= 55 ? 0 : Math.max(0, readNumber(controls.sa)),
+        MA: Math.max(0, readNumber(controls.ma)),
+        RA: age >= 55 ? Math.max(0, readNumber(controls.sa)) : 0
+      };
+
+      const nowYear = 2026;
+      const cohortYear = age < 55 ? nowYear + (55 - age) : nowYear;
+      const frs = frsForYear(cohortYear);
+      let salary = monthlySalary;
+      let currentAge = age;
+      let at55 = null;
+      let raAt55 = age >= 55 ? accounts.RA + accounts.OA : null;
+
+      if (age < 55) {
+        while (currentAge < 55) {
+          applyYear(accounts, currentAge, salary);
+          salary = Math.min(salary * (1 + growth), CPF_POLICY.wageCeilingMonthly);
+          currentAge += 1;
+        }
+        sweepAt55(accounts, frs);
+        at55 = { ...accounts };
+        raAt55 = accounts.RA;
+      }
+
+      if (age < 65) {
+        while (currentAge < 65) {
+          applyYear(accounts, currentAge, salary);
+          salary = Math.min(salary * (1 + growth), CPF_POLICY.wageCeilingMonthly);
+          currentAge += 1;
+        }
+      }
+
+      const at65 = { ...accounts };
+      const payoutBasis = age >= 55 ? (age < 65 ? (readNumber(controls.oa) + readNumber(controls.sa)) : readNumber(controls.sa)) : raAt55;
+      return { age, cohortYear, frs, at55, at65, payout: estimatePayout(payoutBasis), payoutBasis };
+    }
+
+    function render() {
+      const result = project();
+      const { age, cohortYear, frs, at55, at65, payout } = result;
+      const brs = frs / 2;
+      const ers = brs * 4;
+      const total65 = at65.OA + at65.SA + at65.RA + at65.MA;
+
+      $('heroPayout').innerHTML = money(payout) + '<span>/mo</span>';
+      $('heroCopy').textContent = age >= 55
+        ? 'A planning estimate based on the retirement savings you entered today.'
+        : `Based on your projected Retirement Account when you turn 55 in ${cohortYear}.`;
+
+      $('saLabel').textContent = age >= 55 ? 'RA' : 'SA';
+      $('ageNote').textContent = age < 65 ? 'We project each year until age 65.' : 'You are already 65 or older, so we show the balances you enter today.';
+
+      if (age >= 55) {
+        $('age55Panel').classList.add('hidden');
+        $('resultsGrid').classList.remove('two');
+        $('age65Kicker').textContent = age >= 65 ? 'Your CPF now' : 'Projected at 65';
+      } else {
+        $('age55Panel').classList.remove('hidden');
+        $('resultsGrid').classList.add('two');
+        $('age65Kicker').textContent = 'When you turn 65';
+        const total55 = at55.OA + at55.RA + at55.MA;
+        $('total55').textContent = money(total55);
+        $('oa55').textContent = money(at55.OA);
+        $('ra55').textContent = money(at55.RA);
+        $('ma55').textContent = money(at55.MA);
+        $('cohortLabel').textContent = `${cohortYear} retirement sums${cohortYear > 2027 ? ' · estimated' : ''}`;
+        $('frsValue').textContent = 'FRS ' + money(frs);
+        $('brsMarker').textContent = 'BRS ' + money(brs);
+        $('frsMarker').textContent = 'FRS';
+        $('ersMarker').textContent = 'ERS ' + money(ers);
+        $('goalFill').style.width = Math.min(100, at55.RA / ers * 100) + '%';
+        const status = at55.RA >= ers ? 'Your projected RA meets the Enhanced Retirement Sum.'
+          : at55.RA >= frs ? 'Your projected RA meets the Full Retirement Sum.'
+          : at55.RA >= brs ? 'Your projected RA meets the Basic Retirement Sum.'
+          : `You are projected to be ${money(brs - at55.RA)} below the Basic Retirement Sum.`;
+        $('goalStatus').textContent = status;
+      }
+
+      $('total65').textContent = money(total65);
+      $('oa65').textContent = money(at65.OA);
+      $('ra65').textContent = money(at65.RA);
+      $('ma65').textContent = money(at65.MA);
+      updateRangeFill(controls.ageRange);
+      updateRangeFill(controls.salaryRange);
+    }
+
+    function updateRangeFill(el) {
+      const min = Number(el.min), max = Number(el.max), val = Number(el.value);
+      el.style.setProperty('--fill', ((val - min) / (max - min) * 100) + '%');
+    }
+
+    function syncPair(range, input) {
+      range.addEventListener('input', () => { input.value = range.value; render(); });
+      input.addEventListener('input', () => {
+        const value = clamp(readNumber(input, Number(range.min)), Number(range.min), Number(range.max));
+        range.value = value;
+        render();
+      });
+      input.addEventListener('change', () => {
+        input.value = clamp(readNumber(input, Number(range.min)), Number(range.min), Number(range.max));
+        range.value = input.value;
+        render();
+      });
+    }
+
+    syncPair(controls.ageRange, controls.ageInput);
+    syncPair(controls.salaryRange, controls.salaryInput);
+    [controls.oa, controls.sa, controls.ma, controls.growth].forEach(el => el.addEventListener('input', render));
+    render();
+  </script>
+</body>
+</html>
