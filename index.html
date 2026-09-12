@@ -154,7 +154,15 @@
     .field-value span{font-family:"IBM Plex Mono",monospace;font-size:13px}
     .field-value input{width:112px;border:0;outline:0;background:transparent;text-align:right;font-family:"IBM Plex Mono",monospace;font-size:18px;font-weight:500;padding:0 3px 4px}
     .field-value:focus-within{outline:3px solid var(--aqua);outline-offset:3px}
-    .field-value.yield input{width:58px}
+    .field-value.yield input,.field-value.age input,.field-value.until input{width:58px}
+    .adjust{margin:0}
+    .adjust summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 0}
+    .adjust summary::-webkit-details-marker{display:none}
+    .adjust summary::after{content:"+";font-family:"IBM Plex Mono",monospace;font-size:18px;font-weight:500}
+    .adjust[open] summary::after{content:"−"}
+    .adjust-hint{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+    .adjust-body{padding-top:14px}
+    .adjust-body .field-value{margin:0 12px}
     input[type="range"]{
       display:block;
       width:calc(100% - 24px);
@@ -186,6 +194,7 @@
     .result-inner{width:min(100%,480px);margin:0 auto}
     .result-label{font-size:11px;font-weight:700;color:#c7c6be;margin-bottom:3px}
     .target{font-size:clamp(29px,9vw,41px);line-height:1;letter-spacing:-.045em;font-weight:800;color:var(--lime)}
+    .result-sub{font-family:"IBM Plex Mono",monospace;font-size:11px;line-height:1.4;color:var(--lime);margin-top:7px}
     .breakdown{margin:11px 0 0;display:grid;gap:4px}
     .breakdown-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;font-family:"IBM Plex Mono",monospace;font-size:10px;line-height:1.35;color:#c7c6be}
     .breakdown-row dd{margin:0;color:white;text-align:right}
@@ -204,7 +213,7 @@
       .field-title{max-width:none}
       .field-value{width:100%}
       .field-value input{width:calc(100% - 28px)}
-      .field-value.yield input{width:calc(100% - 18px)}
+      .field-value.yield input,.field-value.age input,.field-value.until input{width:calc(100% - 18px)}
       .target-input .currency{font-size:15px}
       .target-input .per-month{font-size:10px}
     }
@@ -229,7 +238,7 @@
     </nav>
 
     <h1>Retirement Scenario Calculator</h1>
-    <p class="intro">Tell us the monthly dividend income you want. We'll tell you how much you need invested.</p>
+    <p class="intro">Tell us the monthly income you want. We'll tell you how much you need invested to fund it — spent down to zero, not kept forever.</p>
 
     <section class="primary-question" aria-labelledby="income-label">
       <label class="section-label" id="income-label" for="target-income">1 · How much do you want every month?</label>
@@ -279,11 +288,34 @@
 
       <div class="field">
         <div class="field-head">
-          <label class="field-title" for="yield">4 · Payout rate</label>
-          <div class="field-value yield"><input id="yield" type="number" inputmode="decimal" min="0.5" max="15" step="0.1" value="5.7" aria-label="Assumed annual payout rate percentage"><span>%</span></div>
+          <label class="field-title" for="age">4 · Your age</label>
+          <div class="field-value age"><input id="age" type="number" inputmode="numeric" min="18" max="100" step="1" value="55" aria-label="Your current age"><span>yrs</span></div>
         </div>
-        <p class="field-helper">Your assumed annual payout rate. The starting point is the average S-REIT payout in 2026.</p>
-        <input id="yield-range" type="range" min="0.5" max="15" step="0.1" value="5.7" aria-label="Assumed annual payout rate percentage slider">
+        <p class="field-helper">So we know how many years your money must last.</p>
+      </div>
+
+      <div class="field">
+        <details class="adjust" id="until-details">
+          <summary>
+            <span class="field-title">5 · Fund until age <span id="until-label">84</span></span>
+            <span class="adjust-hint">adjust</span>
+          </summary>
+          <div class="adjust-body">
+            <div class="field-value until"><input id="until-age" type="number" inputmode="numeric" min="70" max="100" step="1" value="84" aria-label="Age to fund until"><span>yrs old</span></div>
+            <input id="until-range" type="range" min="70" max="100" step="1" value="84" aria-label="Age to fund until slider">
+            <div class="range-ends"><span>70</span><span>100</span></div>
+            <p class="field-helper">Singapore life expectancy is about 84. Your capital gets spent down to nothing by this age — and that's the point.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <label class="field-title" for="yield">6 · Annual return</label>
+          <div class="field-value yield"><input id="yield" type="number" inputmode="decimal" min="0.5" max="15" step="0.1" value="5.7" aria-label="Assumed annual return percentage"><span>%</span></div>
+        </div>
+        <p class="field-helper">What your investments earn each year. The starting point is the average S-REIT payout in 2026.</p>
+        <input id="yield-range" type="range" min="0.5" max="15" step="0.1" value="5.7" aria-label="Assumed annual return percentage slider">
         <div class="range-ends"><span>0.5%</span><span>15%</span></div>
       </div>
       <p class="tax-note">Most Singapore company dividends and personal S-REIT distributions are tax-exempt; exceptions may apply.</p>
@@ -292,12 +324,13 @@
     <section class="result-summary" aria-live="polite" aria-label="Investment needed">
       <div class="result-inner">
         <div class="result-label">TOTAL INVESTMENT NEEDED</div>
-        <div class="target" id="target-assets">S$1,157,895</div>
+        <div class="target" id="target-assets">S$935,318</div>
+        <div class="result-sub" id="drawdown-note">Drawn down to S$0 over 29 years</div>
         <dl class="breakdown">
           <div class="breakdown-row"><dt>Monthly income you want</dt><dd id="monthly-need">S$5,500</dd></div>
-          <div class="breakdown-row"><dt>Your money already pays</dt><dd id="monthly-income">S$2,375</dd></div>
-          <div class="breakdown-row"><dt>Monthly gap</dt><dd id="monthly-gap">S$3,125</dd></div>
-          <div class="breakdown-row total"><dt>More capital needed</dt><dd id="capital-gap">S$657,895</dd></div>
+          <div class="breakdown-row"><dt>Your money already pays</dt><dd id="monthly-income">S$2,940</dd></div>
+          <div class="breakdown-row"><dt>Monthly gap</dt><dd id="monthly-gap">S$2,560</dd></div>
+          <div class="breakdown-row total"><dt>More capital needed</dt><dd id="capital-gap">S$435,318</dd></div>
         </dl>
       </div>
     </section>
@@ -335,6 +368,9 @@
       const assets = $('assets');
       const yieldInput = $('yield');
       const yieldRange = $('yield-range');
+      const ageInput = $('age');
+      const untilInput = $('until-age');
+      const untilRange = $('until-range');
       let activeScenario = 'comfortable';
 
       const numeric = (value) => Math.max(0, Number(String(value).replace(/[^0-9.]/g, '')) || 0);
@@ -347,17 +383,24 @@
         const commitmentValue = numeric(commitments.value);
         const assetValue = numeric(assets.value);
         const annualYield = clamp(numeric(yieldInput.value), 0, 30) / 100;
+        const ageVal = clamp(Math.round(numeric(ageInput.value)) || 55, 18, 100);
+        const untilVal = clamp(Math.round(numeric(untilInput.value)) || 84, 70, 100);
+        const years = clamp(untilVal - ageVal, 1, 60);
         const monthlyNeed = target + commitmentValue;
-        const currentMonthlyIncome = assetValue * annualYield / 12;
-        const monthlyGap = Math.max(0, monthlyNeed - currentMonthlyIncome);
-        const totalCapital = annualYield > 0 ? monthlyNeed * 12 / annualYield : 0;
-        const additionalCapital = annualYield > 0 ? monthlyGap * 12 / annualYield : 0;
+        const monthlyRate = annualYield / 12;
+        const months = years * 12;
+        const factor = monthlyRate > 0 ? (1 - Math.pow(1 + monthlyRate, -months)) / monthlyRate : months;
+        const totalCapital = monthlyNeed * factor;
+        const sustainableMonthly = factor > 0 ? assetValue / factor : 0;
+        const monthlyGap = Math.max(0, monthlyNeed - sustainableMonthly);
+        const additionalCapital = Math.max(0, totalCapital - assetValue);
 
         $('monthly-need').textContent = money(monthlyNeed);
-        $('monthly-income').textContent = money(currentMonthlyIncome);
+        $('monthly-income').textContent = money(sustainableMonthly);
         $('monthly-gap').textContent = money(monthlyGap);
-        $('target-assets').textContent = annualYield > 0 ? money(totalCapital) : 'Add a rate';
-        $('capital-gap').textContent = annualYield > 0 ? money(additionalCapital) : 'Add a rate';
+        $('target-assets').textContent = money(totalCapital);
+        $('capital-gap').textContent = money(additionalCapital);
+        $('drawdown-note').textContent = 'Drawn down to S$0 over ' + years + (years === 1 ? ' year' : ' years');
       }
 
       function setPressedScenario(key){
@@ -417,6 +460,34 @@
       yieldInput.addEventListener('blur', () => {
         yieldInput.value = clamp(numeric(yieldInput.value), Number(yieldInput.min), Number(yieldInput.max)).toFixed(1);
         yieldRange.value = yieldInput.value;
+        calculate();
+      });
+
+      ageInput.addEventListener('input', calculate);
+      ageInput.addEventListener('blur', () => {
+        ageInput.value = clamp(Math.round(numeric(ageInput.value)) || 55, Number(ageInput.min), Number(ageInput.max));
+        calculate();
+      });
+
+      function syncUntilLabel(value){
+        $('until-label').textContent = value;
+      }
+      untilRange.addEventListener('input', () => {
+        untilInput.value = untilRange.value;
+        syncUntilLabel(untilRange.value);
+        calculate();
+      });
+      untilInput.addEventListener('input', () => {
+        const shown = Math.round(numeric(untilInput.value)) || 84;
+        untilRange.value = clamp(shown, Number(untilRange.min), Number(untilRange.max));
+        syncUntilLabel(shown);
+        calculate();
+      });
+      untilInput.addEventListener('blur', () => {
+        const clamped = clamp(Math.round(numeric(untilInput.value)) || 84, Number(untilInput.min), Number(untilInput.max));
+        untilInput.value = clamped;
+        untilRange.value = clamped;
+        syncUntilLabel(clamped);
         calculate();
       });
 
