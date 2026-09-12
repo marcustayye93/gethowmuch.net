@@ -34,6 +34,7 @@
       --brand-wash: #f5f2fe;
       --teal: #0e9f7e;
       --teal-dark: #0a5f4c;
+      --teal-wash: #ddf5ee;
       --shadow: 0 18px 45px rgba(28, 54, 90, .10);
       --radius-lg: 26px;
       --radius-md: 18px;
@@ -91,7 +92,7 @@
       font-weight: 700;
       letter-spacing: .08em;
       text-transform: uppercase;
-      color: var(--brand-ink);
+      color: var(--teal);
     }
     .intro {
       margin: 0 0 clamp(28px, 4vw, 40px);
@@ -155,8 +156,8 @@
       padding: 28px 26px 30px;
       border-radius: 26px;
       color: #fff;
-      background: linear-gradient(165deg, var(--brand), var(--brand-deep));
-      box-shadow: 0 24px 56px rgba(108, 76, 241, .28);
+      background: var(--teal);
+      box-shadow: 0 24px 56px rgba(14, 159, 126, .28);
     }
     .hero-label {
       margin: 0 0 10px;
@@ -197,7 +198,6 @@
       border: 1px solid var(--line);
       border-radius: 20px;
       margin-bottom: 12px;
-      box-shadow: 0 12px 32px rgba(16, 24, 40, .06);
     }
     .input-head {
       display: flex;
@@ -226,7 +226,7 @@
       border-bottom: 4px solid var(--ink);
       background: transparent;
     }
-    .number-shell:focus-within { outline: 3px solid var(--brand); outline-offset: 3px; }
+    .number-shell:focus-within { outline: 3px solid var(--teal); outline-offset: 3px; }
     .number-shell .prefix, .number-shell .suffix {
       color: var(--muted);
       font-weight: 700;
@@ -274,7 +274,7 @@
       background: #fff;
       box-shadow: 0 2px 7px rgba(9, 51, 135, .22);
     }
-    input[type="range"]:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+    input[type="range"]:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
     input[type="range"]::-moz-range-track { height: 8px; border-radius: 99px; background: #dce4ef; }
     input[type="range"]::-moz-range-progress { height: 8px; border-radius: 99px; background: var(--teal); }
     input[type="range"]::-moz-range-thumb {
@@ -314,7 +314,7 @@
       padding: 0 2px 6px;
       background: transparent;
     }
-    .balance-box:focus-within { outline: 3px solid var(--brand); outline-offset: 3px; }
+    .balance-box:focus-within { outline: 3px solid var(--teal); outline-offset: 3px; }
     .balance-box span { color: var(--muted); font-size: .76rem; font-weight: 700; }
     .balance-box input {
       width: 100%; min-width: 0; border: 0; outline: 0; background: transparent;
@@ -327,11 +327,11 @@
       border-radius: var(--radius-lg);
     }
     .result-panel.age65 {
-      background: linear-gradient(165deg, var(--brand), var(--brand-deep));
+      background: var(--teal);
       color: white;
-      box-shadow: 0 24px 56px rgba(108, 76, 241, .28);
+      box-shadow: 0 24px 56px rgba(14, 159, 126, .28);
     }
-    .result-kicker { margin: 0 0 5px; color: var(--brand-ink); font-size: .8rem; font-weight: 700; }
+    .result-kicker { margin: 0 0 5px; color: var(--teal); font-size: .8rem; font-weight: 700; }
     .age65 .result-kicker { color: rgba(255,255,255,.8); }
     .result-total {
       margin: 0 0 18px;
@@ -358,7 +358,7 @@
       margin-top: 19px;
       padding: 16px;
       border-radius: 16px;
-      background: var(--brand-wash);
+      background: var(--teal-wash);
     }
     .goal-title { display: flex; justify-content: space-between; gap: 10px; font-size: .82rem; font-weight: 700; }
     .goal-track { position: relative; height: 12px; margin: 13px 0 10px; border-radius: 99px; background: #ddd7f4; overflow: visible; }
@@ -380,7 +380,7 @@
       font-weight: 700;
     }
     summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; float: right; color: var(--brand-ink); font-size: 1.3rem; line-height: 1; }
+    summary::after { content: "+"; float: right; color: var(--teal); font-size: 1.3rem; line-height: 1; }
     details[open] summary::after { content: "−"; }
     .assumptions { padding: 0 0 20px; color: var(--muted); font-size: .8rem; line-height: 1.55; }
     .assumptions ul { margin: 0; padding-left: 19px; }

@@ -140,7 +140,7 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 20px;
-      box-shadow: 0 12px 32px rgba(16, 24, 40, .06);
+      box-shadow: 0 4px 18px rgba(26, 48, 39, .035);
       min-width: 0;
     }
     .step-head {
@@ -157,7 +157,7 @@
       letter-spacing: -.02em;
     }
     .step-num {
-      color: var(--brand-ink);
+      color: var(--green);
       font-family: "Space Mono", monospace;
       font-size: 12px;
       font-weight: 700;
@@ -198,7 +198,7 @@
     }
     #salaryInput::-webkit-outer-spin-button,
     #salaryInput::-webkit-inner-spin-button { appearance: none; margin: 0; }
-    #salaryInput:focus { border-color: var(--brand); }
+    #salaryInput:focus { border-color: var(--green); }
     .per-month { align-self: end; padding-bottom: 7px; color: var(--muted); font: 500 13px "Space Grotesk", sans-serif; }
 
     .range-wrap { padding: 0; }
@@ -234,7 +234,7 @@
     input[type="range"]::-moz-range-thumb {
       width: 24px; height: 24px; border: 3px solid var(--green); border-radius: 50%; background: #fff; box-shadow: 0 2px 7px rgba(16,34,28,.22);
     }
-    input[type="range"]:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+    input[type="range"]:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
     .range-labels {
       display: flex;
       justify-content: space-between;
@@ -262,8 +262,8 @@
     }
     .chip:last-child { grid-column: span 2; }
     .chip[aria-pressed="true"] {
-      border-color: var(--brand);
-      background: var(--brand);
+      border-color: var(--green);
+      background: var(--green);
       color: white;
     }
     .chip:focus-visible, .info-button:focus-visible, .close-button:focus-visible {
@@ -274,9 +274,9 @@
     .results {
       overflow: hidden;
       border-radius: 26px;
-      background: linear-gradient(165deg, var(--brand), var(--brand-deep));
+      background: var(--green);
       color: white;
-      box-shadow: 0 24px 56px rgba(108, 76, 241, .28);
+      box-shadow: 0 24px 56px rgba(10, 108, 78, .28);
     }
     .hero-result {
       padding: clamp(26px, 4vw, 40px);
@@ -361,7 +361,7 @@
     .insight {
       margin: 0;
       padding: 17px clamp(20px, 3vw, 30px);
-      background: var(--brand-soft);
+      background: var(--soft-green);
       color: var(--ink);
       font-size: 14px;
       font-weight: 700;
@@ -408,7 +408,7 @@
       margin-bottom: 16px;
       padding: 17px 20px;
       border-radius: 16px;
-      background: var(--brand-soft);
+      background: var(--soft-green);
       color: var(--ink);
     }
     .personal-impact span { font-size: 13px; font-weight: 700; }
