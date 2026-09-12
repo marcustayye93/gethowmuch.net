@@ -510,6 +510,13 @@
         calculate();
       });
 
+      // Typing into a pre-filled field replaces it instead of appending.
+      document.querySelectorAll('input[type="number"]').forEach(el => {
+        el.addEventListener('focus', () => {
+          setTimeout(() => { try { el.select(); } catch (err) {} }, 0);
+        });
+      });
+
       showScenario(activeScenario);
       calculate();
     })();
