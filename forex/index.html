@@ -576,6 +576,11 @@
 .faq summary::marker { content: none; }
 .faq details p { margin: 10px 0 2px; color: var(--muted); font-size: 15px; line-height: 1.55; }
 </style>
+    <section class="faq" aria-label="How it works">
+      <h2>How it works</h2>
+      <p style="margin:10px 0 2px;color:var(--muted);font-size:15px;line-height:1.55">Type an amount in either box and the other converts instantly. Pick any two of 160+ currencies &mdash; SGD is the default on the &ldquo;You have&rdquo; side, and the swap button flips the pair.</p>
+      <p style="margin:10px 0 2px;color:var(--muted);font-size:15px;line-height:1.55">Rates are a mid-market snapshot from ExchangeRate-API, dated 12 September 2026 &mdash; not a live feed. Exchange rates move constantly, and your bank or card will use a different rate and add fees, so treat the result as an estimate.</p>
+    </section>
     <section class="faq" aria-label="Common questions">
       <h2>Common questions</h2>
       <details>
@@ -589,6 +594,18 @@
       <details>
         <summary>Which currencies can I convert?</summary>
         <p>SGD and 160+ world currencies, including USD, MYR, EUR, GBP, JPY, AUD, CNY, HKD, THB and IDR.</p>
+      </details>
+      <details>
+        <summary>What is a mid-market rate?</summary>
+        <p>The midpoint between a currency's buy and sell price &mdash; the rate banks use when trading with each other. No consumer gets exactly this rate; banks and money changers add their margin on top.</p>
+      </details>
+      <details>
+        <summary>Are the rates live?</summary>
+        <p>No. They are a fixed snapshot dated 12 September 2026, so refreshing the page will not change them. For time-sensitive transfers, check a live quote with your bank or transfer provider.</p>
+      </details>
+      <details>
+        <summary>Can I convert between two non-SGD currencies?</summary>
+        <p>Yes &mdash; both boxes accept any of the 160+ supported currencies. SGD is simply the default on the &ldquo;You have&rdquo; side.</p>
       </details>
     </section>
     <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · Estimates for planning only. Not financial advice. © 2026</footer>
