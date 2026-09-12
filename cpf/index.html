@@ -32,6 +32,8 @@
       --brand-ink: #4b2fd0;
       --brand-soft: #e9e4fd;
       --brand-wash: #f5f2fe;
+      --aqua: #45dbdd;
+      --orange: #ff7448;
       --teal: #0e9f7e;
       --teal-dark: #0a5f4c;
       --teal-wash: #ddf5ee;
@@ -100,46 +102,36 @@
       font-size: 16px;
       line-height: 1.45;
     }
-    .tool-nav {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 8px;
-      margin-bottom: clamp(28px, 4vw, 42px);
+    .tool-nav{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:8px;
+      margin:0 0 28px;
     }
-    .tool-nav a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 0;
-      min-height: 52px;
-      padding: 10px 8px;
-      border-radius: 0;
-      background: #fff;
-      border: 2px solid var(--ink);
-      box-shadow: 3px 3px 0 var(--ink);
-      color: var(--ink);
-      font-weight: 700;
-      font-size: 12.5px;
-      line-height: 1.1;
-      text-decoration: none;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .tool-nav a{
+      min-width:0;
+      min-height:54px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 7px;
+      border:2px solid var(--ink);
+      border-radius:0;
+      background:var(--aqua);
+      color:var(--ink);
+      font-size:12px;
+      font-weight:800;
+      line-height:1.05;
+      text-align:center;
+      text-decoration:none;
+      box-shadow:3px 3px 0 var(--ink);
     }
-    .tool-nav a.active {
-      background: var(--brand);
-      border-color: var(--brand);
-      color: #fff;
-    }
-    .tool-nav a:focus-visible {
-      outline: 3px solid rgba(108, 76, 241, .4);
-      outline-offset: 3px;
-    }
-    @media (max-width: 639px) {
-      .tool-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .tool-nav a { font-size: 13px; }
-      .tool-nav a:active { transform: scale(.97); }
+    .tool-nav a.active{background:var(--ink);color:#fff}
+    .tool-nav a:active{transform:scale(.97)}
+    .tool-nav a:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+    @media(max-width:360px){
+      .tool-nav{gap:6px}
+      .tool-nav a{padding-left:5px;padding-right:5px;font-size:11px}
     }
 
     .site-foot {

@@ -27,6 +27,8 @@
     --brand-ink:#4b2fd0;
     --brand-soft:#e9e4fd;
     --brand-wash:#f5f2fe;
+    --aqua:#45dbdd;
+    --orange:#ff7448;
   }
   html{ scroll-behavior:smooth; }
   body{
@@ -58,6 +60,39 @@
     font-weight:700; font-size:17px; padding:16px 32px; border:2px solid var(--ink); border-radius:0; text-decoration:none; box-shadow:4px 4px 0 rgba(0,0,0,.35);
   }
   .hero-cta:active{ transform:scale(0.97); }
+
+  /* ---------- shared nav (matches retirement) ---------- */
+  .site-nav{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:8px;
+    margin:0 0 28px;
+  }
+  .site-nav a{
+    min-width:0;
+    min-height:54px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 7px;
+    border:2px solid var(--ink);
+    border-radius:0;
+    background:var(--aqua);
+    color:var(--ink);
+    font-size:12px;
+    font-weight:800;
+    line-height:1.05;
+    text-align:center;
+    text-decoration:none;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .site-nav a.active{background:var(--ink);color:#fff}
+  .site-nav a:active{transform:scale(.97)}
+  .site-nav a:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+  @media(max-width:360px){
+    .site-nav{gap:6px}
+    .site-nav a{padding-left:5px;padding-right:5px;font-size:11px}
+  }
 
   .wrap{ max-width:720px; margin:0 auto; padding:0 24px; }
 
@@ -146,6 +181,14 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 </section>
 
 <div class="wrap">
+
+  <nav class="site-nav" aria-label="GetHowMuch calculators">
+    <a href="/">Retirement</a>
+    <a href="/income-tax/">Income Tax</a>
+    <a href="/cpf/">CPF</a>
+    <a href="/car-coe/">Car &amp; COE</a>
+    <a href="/forex/">Currency</a>
+  </nav>
 
   <div class="section-label" id="calculators">Pick a question</div>
   <section class="grid" aria-label="Calculators">
