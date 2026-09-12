@@ -8,15 +8,15 @@
   <link rel="icon" href="data:," />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <title>Income Tax Optimizer · YA2026</title>
   <style>
     :root {
-      --ink: #10221c;
-      --muted: #58645f;
-      --paper: #f4f7f0;
+      --ink: #101828;
+      --muted: #667085;
+      --paper: #f6f7f4;
       --card: #ffffff;
-      --line: #d9e0d9;
+      --line: #e6eae6;
       --green: #0a6c4e;
       --green-dark: #073f31;
       --lime: #d7f451;
@@ -52,7 +52,7 @@
     }
     .site-nav {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 10px;
       width: min(1050px, 100%);
       margin-bottom: clamp(28px, 4vw, 42px);
@@ -68,6 +68,7 @@
       border-radius: 18px;
       background: var(--green-dark);
       color: white;
+      font-family: inherit;
       font-size: 14px;
       font-weight: 700;
       line-height: 1.1;
@@ -78,6 +79,9 @@
       border-color: var(--coral);
       background: var(--coral);
       color: var(--green-dark);
+    }
+    .nav-button.active {
+      box-shadow: inset 0 0 0 3px rgba(255,255,255,.7);
     }
     .nav-button.soon {
       flex-direction: column;
@@ -96,13 +100,31 @@
       outline: 3px solid rgba(255, 104, 71, .45);
       outline-offset: 3px;
     }
+    .brand {
+      display: inline-block;
+      margin: 4px 0 16px;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -.5px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .site-foot {
+      margin: 48px 0 10px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 12.5px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .site-foot a { color: var(--ink); font-weight: 800; text-decoration: none; }
     h1 {
       margin: 18px 0 12px;
       max-width: 680px;
-      font-size: clamp(40px, 7vw, 76px);
-      line-height: .96;
-      letter-spacing: -.055em;
-      font-weight: 700;
+      font-size: clamp(36px, 9vw, 64px);
+      line-height: 1;
+      letter-spacing: -.045em;
+      font-weight: 800;
     }
     .subline {
       margin: 0;
@@ -592,11 +614,12 @@
 </head>
 <body>
   <main class="page">
+    <a class="brand" href="/" aria-label="GetHowMuch home">GetHowMuch</a>
     <nav class="site-nav" aria-label="More GetHowMuch calculators">
       <a class="nav-button" href="/">Home</a>
-      <a class="nav-button live-alt" href="/dividends/">Dividend Income</a>
-      <a class="nav-button soon" href="/"><span>CPF</span><small>soon</small></a>
-      <a class="nav-button soon" href="/"><span>Home Loan</span><small>soon</small></a>
+      <a class="nav-button active" href="/income-tax/" aria-current="page">Income Tax</a>
+      <a class="nav-button live-alt" href="/dividends/">Retirement</a>
+      <button class="nav-button soon" type="button" disabled><span>CPF</span><small>soon</small></button>
       <a class="nav-button" href="/car-coe/">Car &amp; COE</a>
       <a class="nav-button" href="/forex/">Currency</a>
     </nav>
@@ -776,6 +799,7 @@
       </nav>
       <p class="retired-tip">Two old tips no longer apply: <a href="http://www.iras.gov.sg/who-we-are/what-we-do/annual-reports-and-publications/taxbytes-iras/individuals/top-three-tax-reliefs-just-for-working-mums" target="_blank" rel="noopener noreferrer">Foreign Domestic Worker Levy Relief</a> lapsed from YA2025, and <a href="https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/course-fees-relief" target="_blank" rel="noopener noreferrer">Course Fees Relief</a> was discontinued from YA2026.</p>
     </section>
+    <footer class="site-foot"><a href="/">GetHowMuch</a> · Estimates for planning only. Not financial advice. © 2026</footer>
   </main>
 
   <dialog id="infoDialog" aria-labelledby="infoTitle">
