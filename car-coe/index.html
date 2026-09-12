@@ -8,7 +8,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <title>Car Affordability Calculator</title>
+  <title>Car Affordability Calculator — GetHowMuch</title>
+  <meta name="description" content="How much car can you afford in Singapore? Factor in COE, loan, insurance, road tax, fuel and maintenance — petrol or electric." />
+  <link rel="canonical" href="https://gethowmuch.net/car-coe/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GetHowMuch" />
+  <meta property="og:title" content="Car Affordability Calculator — GetHowMuch" />
+  <meta property="og:url" content="https://gethowmuch.net/car-coe/" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:description" content="How much car can you afford in Singapore? Factor in COE, loan, insurance, road tax, fuel and maintenance — petrol or electric." />
+  <meta name="twitter:description" content="How much car can you afford in Singapore? Factor in COE, loan, insurance, road tax, fuel and maintenance — petrol or electric." />
+  <meta name="twitter:title" content="Car Affordability Calculator — GetHowMuch" />
   <style>
     :root {
       --ink:#101828; --muted:#667085; --paper:#f6f7f4; --card:#fff;
@@ -281,7 +291,31 @@
     <p><strong>Sources:</strong> <a href="https://data.gov.sg/api/action/datastore_search?resource_id=d_69b3380ad7e51aff3a7dcc84eba52b8a&amp;limit=1975">data.gov.sg COE bidding results</a>, <a href="https://onemotoring.lta.gov.sg/content/dam/onemotoring/pdf/Circulars%20to%20ESAs/2022/VRL_04_2022.pdf">LTA COE category rules</a>, <a href="https://www.nas.gov.sg:443/archivesonline/data/pdfdoc/20160526003/MAS%20Press%20Statement_MV%2026%20May%202016.pdf">MAS loan rules</a>, <a href="https://www.lta.gov.sg/content/dam/ltagov/news/press/2021/160221_road_tax_rebates.pdf">LTA road-tax tables</a>, <a href="https://www.lta.gov.sg/content/ltagov/en/newsroom/2025/9/news-releases/extension_of_ves_and_eeai_to_support_vehicle_electrification.html">LTA/NEA EV incentives</a>. COE fallback snapshot: Sep 2026 first bidding. Energy prices are dated, editable assumptions. <a href="https://getgo.sg/blog/evs-vs-petrol-cars-in-singapore-guide">GetGo EV vs petrol ownership costs</a>, <a href="https://www.budgetdirect.com.sg/car-insurance/articles/get-cheaper-car-service">Budget Direct 2026 insurance guide</a>.</p>
     <p>Estimates only, not financial advice. Dealer calculations and statutory amounts prevail.</p>
   </footer>
-  <footer class="site-foot"><a href="/">GetHowMuch</a> · Estimates for planning only. Not financial advice. © 2026</footer>
+  <style>
+.faq { margin: 36px 0 6px; }
+.faq h2 { font-size: 22px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 12px; }
+.faq details { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; }
+.faq summary { font-weight: 700; cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::marker { content: none; }
+.faq details p { margin: 10px 0 2px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+</style>
+    <section class="faq" aria-label="Common questions">
+      <h2>Common questions</h2>
+      <details>
+        <summary>What does COE cost right now?</summary>
+        <p>The calculator uses live COE bidding results from data.gov.sg, falling back to the September 2026 first-bidding snapshot if the feed is unavailable.</p>
+      </details>
+      <details>
+        <summary>Are electric cars cheaper to run in Singapore?</summary>
+        <p>They cost more to insure (about S$1,650 a year vs S$1,400 for petrol) but less to maintain (about S$80 a month vs S$120). Toggle the fuel type above to compare.</p>
+      </details>
+      <details>
+        <summary>What does the 10-year figure include?</summary>
+        <p>The upfront payment plus instalments over your loan tenure and running costs across one COE cycle. It excludes resale value, depreciation and PARF.</p>
+      </details>
+    </section>
+    <footer class="site-foot"><a href="/">GetHowMuch</a> · Estimates for planning only. Not financial advice. © 2026</footer>
 </main>
 
 <script>
@@ -357,6 +391,38 @@ $$('[data-range]').forEach(b=>b.addEventListener('click',()=>{chartRange=b.datas
 // Typing into a pre-filled field replaces it instead of appending.
 $$('input[type=number]').forEach(el=>el.addEventListener('focus',()=>setTimeout(()=>{try{el.select()}catch(e){}},0)));
 calculate();suggestCategory();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does COE cost right now?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator uses live COE bidding results from data.gov.sg, falling back to the September 2026 first-bidding snapshot if the feed is unavailable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are electric cars cheaper to run in Singapore?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They cost more to insure (about S$1,650 a year vs S$1,400 for petrol) but less to maintain (about S$80 a month vs S$120). Toggle the fuel type above to compare."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the 10-year figure include?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The upfront payment plus instalments over your loan tenure and running costs across one COE cycle. It excludes resale value, depreciation and PARF."
+      }
+    }
+  ]
+}
 </script>
 </body>
 </html>

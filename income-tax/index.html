@@ -9,7 +9,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <title>Income Tax Optimizer · YA2026</title>
+  <title>Income Tax Optimizer · YA2026 — GetHowMuch</title>
+  <meta name="description" content="Estimate your YA2026 Singapore income tax and monthly set-aside. See how CPF relief, SRS contributions and donations lower your tax bill." />
+  <link rel="canonical" href="https://gethowmuch.net/income-tax/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GetHowMuch" />
+  <meta property="og:title" content="Income Tax Optimizer · YA2026 — GetHowMuch" />
+  <meta property="og:url" content="https://gethowmuch.net/income-tax/" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:description" content="Estimate your YA2026 Singapore income tax and monthly set-aside. See how CPF relief, SRS contributions and donations lower your tax bill." />
+  <meta name="twitter:description" content="Estimate your YA2026 Singapore income tax and monthly set-aside. See how CPF relief, SRS contributions and donations lower your tax bill." />
+  <meta name="twitter:title" content="Income Tax Optimizer · YA2026 — GetHowMuch" />
   <style>
     :root {
       --ink: #101828;
@@ -798,6 +808,30 @@
       </nav>
       <p class="retired-tip">Two old tips no longer apply: <a href="http://www.iras.gov.sg/who-we-are/what-we-do/annual-reports-and-publications/taxbytes-iras/individuals/top-three-tax-reliefs-just-for-working-mums" target="_blank" rel="noopener noreferrer">Foreign Domestic Worker Levy Relief</a> lapsed from YA2025, and <a href="https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-reliefs-rebates-and-deductions/tax-reliefs/course-fees-relief" target="_blank" rel="noopener noreferrer">Course Fees Relief</a> was discontinued from YA2026.</p>
     </section>
+    <style>
+.faq { margin: 36px 0 6px; }
+.faq h2 { font-size: 22px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 12px; }
+.faq details { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; }
+.faq summary { font-weight: 700; cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::marker { content: none; }
+.faq details p { margin: 10px 0 2px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+</style>
+    <section class="faq" aria-label="Common questions">
+      <h2>Common questions</h2>
+      <details>
+        <summary>What is a Year of Assessment (YA)?</summary>
+        <p>Your YA2026 tax is computed on income you earned in 2025. E-filing for YA2026 typically closes in mid-April 2026.</p>
+      </details>
+      <details>
+        <summary>How can I legally pay less income tax in Singapore?</summary>
+        <p>Common moves the optimizer models: CPF cash top-ups, SRS contributions and charitable donations — each reduces your chargeable income. Try them above to see the saving.</p>
+      </details>
+      <details>
+        <summary>What does the “monthly set-aside” mean?</summary>
+        <p>Your annual tax bill divided by 12 — the amount to put aside each month so the bill does not sting when it arrives.</p>
+      </details>
+    </section>
     <footer class="site-foot"><a href="/">GetHowMuch</a> · Estimates for planning only. Not financial advice. © 2026</footer>
   </main>
 
@@ -952,5 +986,37 @@
 
     update();
   </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a Year of Assessment (YA)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your YA2026 tax is computed on income you earned in 2025. E-filing for YA2026 typically closes in mid-April 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I legally pay less income tax in Singapore?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Common moves the optimizer models: CPF cash top-ups, SRS contributions and charitable donations — each reduces your chargeable income. Try them above to see the saving."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the “monthly set-aside” mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your annual tax bill divided by 12 — the amount to put aside each month so the bill does not sting when it arrives."
+      }
+    }
+  ]
+}
+</script>
 </body>
 </html>

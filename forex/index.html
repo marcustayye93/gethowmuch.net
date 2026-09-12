@@ -9,7 +9,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <title>Currency Converter</title>
+  <title>SGD Currency Converter — GetHowMuch</title>
+  <meta name="description" content="Convert SGD to 160+ currencies using recent mid-market rates. A quick, clean currency converter for Singapore." />
+  <link rel="canonical" href="https://gethowmuch.net/forex/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GetHowMuch" />
+  <meta property="og:title" content="SGD Currency Converter — GetHowMuch" />
+  <meta property="og:url" content="https://gethowmuch.net/forex/" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:description" content="Convert SGD to 160+ currencies using recent mid-market rates. A quick, clean currency converter for Singapore." />
+  <meta name="twitter:description" content="Convert SGD to 160+ currencies using recent mid-market rates. A quick, clean currency converter for Singapore." />
+  <meta name="twitter:title" content="SGD Currency Converter — GetHowMuch" />
   <style>
     :root {
       --paper: #f6f7f4;
@@ -540,6 +550,30 @@
     </div>
 
     <p class="hint">Exchange rates move. Your bank or card may use a different rate and add fees.</p>
+    <style>
+.faq { margin: 36px 0 6px; }
+.faq h2 { font-size: 22px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 12px; }
+.faq details { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; }
+.faq summary { font-weight: 700; cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::marker { content: none; }
+.faq details p { margin: 10px 0 2px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+</style>
+    <section class="faq" aria-label="Common questions">
+      <h2>Common questions</h2>
+      <details>
+        <summary>Where do the exchange rates come from?</summary>
+        <p>A mid-market rate snapshot from ExchangeRate-API, dated 12 September 2026.</p>
+      </details>
+      <details>
+        <summary>Is this the rate my bank or money changer will give me?</summary>
+        <p>No — these are mid-market rates. Banks and money changers add a margin, so expect a slightly worse rate in practice.</p>
+      </details>
+      <details>
+        <summary>Which currencies can I convert?</summary>
+        <p>SGD and 160+ world currencies, including USD, MYR, EUR, GBP, JPY, AUD, CNY, HKD, THB and IDR.</p>
+      </details>
+    </section>
     <footer class="site-foot"><a href="/">GetHowMuch</a> · Estimates for planning only. Not financial advice. © 2026</footer>
   </main>
 
@@ -719,5 +753,37 @@
 
     updateLabels();
   </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where do the exchange rates come from?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A mid-market rate snapshot from ExchangeRate-API, dated 12 September 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this the rate my bank or money changer will give me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — these are mid-market rates. Banks and money changers add a margin, so expect a slightly worse rate in practice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which currencies can I convert?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SGD and 160+ world currencies, including USD, MYR, EUR, GBP, JPY, AUD, CNY, HKD, THB and IDR."
+      }
+    }
+  ]
+}
+</script>
 </body>
 </html>

@@ -5,7 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light" />
   <link rel="icon" href="data:," />
-  <title>Retirement Scenario Calculator</title>
+  <title>Retirement Scenario Calculator — GetHowMuch</title>
+  <meta name="description" content="How much do you need to retire in Singapore? Set your monthly income target and see the lump sum required — spend it down or keep it intact." />
+  <link rel="canonical" href="https://gethowmuch.net/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GetHowMuch" />
+  <meta property="og:title" content="Retirement Scenario Calculator — GetHowMuch" />
+  <meta property="og:url" content="https://gethowmuch.net/" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:description" content="How much do you need to retire in Singapore? Set your monthly income target and see the lump sum required — spend it down or keep it intact." />
+  <meta name="twitter:description" content="How much do you need to retire in Singapore? Set your monthly income target and see the lump sum required — spend it down or keep it intact." />
+  <meta name="twitter:title" content="Retirement Scenario Calculator — GetHowMuch" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -360,6 +370,30 @@
         </dl>
       </div>
     </section>
+    <style>
+.faq { margin: 36px 0 6px; }
+.faq h2 { font-size: 22px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 12px; }
+.faq details { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; }
+.faq summary { font-weight: 700; cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::marker { content: none; }
+.faq details p { margin: 10px 0 2px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+</style>
+    <section class="faq" aria-label="Common questions">
+      <h2>Common questions</h2>
+      <details>
+        <summary>How much do I need to retire in Singapore?</summary>
+        <p>There is no single number — it depends on the monthly income you want and how long it must last. Enter your target above and the calculator works out the lump sum for your situation.</p>
+      </details>
+      <details>
+        <summary>What is the difference between “Spend it down” and “Keep it intact”?</summary>
+        <p>Spend it down assumes your savings are drawn to S$0 by the age you set, so you need less. Keep it intact means you live off the investment returns alone and the full amount stays behind — which needs a much larger sum.</p>
+      </details>
+      <details>
+        <summary>What annual return should I assume?</summary>
+        <p>The default is 5.7%, the average S-REIT yield in 2026. Use around 1.5% if your money sits in fixed deposits; only go higher if you invest for the long term.</p>
+      </details>
+    </section>
     <footer class="site-foot"><a href="/">GetHowMuch</a> · Estimates for planning only. Not financial advice. © 2026</footer>
   </main>
 
@@ -561,5 +595,37 @@
       calculate();
     })();
   </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much do I need to retire in Singapore?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no single number — it depends on the monthly income you want and how long it must last. Enter your target above and the calculator works out the lump sum for your situation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between “Spend it down” and “Keep it intact”?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Spend it down assumes your savings are drawn to S$0 by the age you set, so you need less. Keep it intact means you live off the investment returns alone and the full amount stays behind — which needs a much larger sum."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What annual return should I assume?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The default is 5.7%, the average S-REIT yield in 2026. Use around 1.5% if your money sits in fixed deposits; only go higher if you invest for the long term."
+      }
+    }
+  ]
+}
+</script>
 </body>
 </html>

@@ -6,6 +6,16 @@
   <meta name="color-scheme" content="light" />
   <link rel="icon" href="data:," />
   <title>CPF Calculator — GetHowMuch</title>
+  <meta name="description" content="Project your CPF savings to age 65. Model contributions, OA deductions and interest across your Ordinary, Special and MediSave accounts." />
+  <link rel="canonical" href="https://gethowmuch.net/cpf/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GetHowMuch" />
+  <meta property="og:title" content="CPF Calculator — GetHowMuch" />
+  <meta property="og:description" content="Project your CPF savings to age 65. Model contributions, OA deductions and interest across your Ordinary, Special and MediSave accounts." />
+  <meta property="og:url" content="https://gethowmuch.net/cpf/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CPF Calculator — GetHowMuch" />
+  <meta name="twitter:description" content="Project your CPF savings to age 65. Model contributions, OA deductions and interest across your Ordinary, Special and MediSave accounts." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -61,6 +71,13 @@
       text-decoration: none;
     }
 
+    .page-h1 {
+      margin: 0 0 20px;
+      font-size: clamp(36px, 9vw, 64px);
+      font-weight: 800;
+      letter-spacing: -.045em;
+      line-height: 1;
+    }
     .tool-nav {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -381,6 +398,7 @@
       <a href="/car-coe/">Car &amp; COE</a>
       <a href="/forex/">Currency</a>
     </nav>
+    <h1 class="page-h1">CPF Calculator</h1>
     <section class="hero" aria-live="polite">
       <p class="hero-label">Estimated CPF LIFE payout from 65</p>
       <p class="hero-amount" id="heroPayout">S$0<span>/mo</span></p>
@@ -495,6 +513,30 @@
     </details>
 
     <p class="fine-print">Estimates are for planning only and are not financial advice. CPF rules and payout terms can change.</p>
+    <style>
+.faq { margin: 36px 0 6px; }
+.faq h2 { font-size: 22px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 12px; }
+.faq details { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; }
+.faq summary { font-weight: 700; cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::marker { content: none; }
+.faq details p { margin: 10px 0 2px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+</style>
+    <section class="faq" aria-label="Common questions">
+      <h2>Common questions</h2>
+      <details>
+        <summary>What interest does CPF pay?</summary>
+        <p>Ordinary Account savings earn 2.5% a year; Special, MediSave and Retirement Account savings earn 4%, with extra interest on the first S$60,000 of combined balances.</p>
+      </details>
+      <details>
+        <summary>What happens to my CPF at 55?</summary>
+        <p>Your Special Account closes and savings move into a Retirement Account up to the Full Retirement Sum, which funds your CPF LIFE payouts from 65.</p>
+      </details>
+      <details>
+        <summary>How accurate is this projection?</summary>
+        <p>It is an estimate: contribution rates, the wage ceiling and retirement sums are held at 2026 levels, and the CPF LIFE payout is interpolated from the CPF Board’s official 2026 examples. Actual rules may change.</p>
+      </details>
+    </section>
     <footer class="site-foot"><a href="/">GetHowMuch</a> · Estimates for planning only. Not financial advice. © 2026</footer>
   </main>
 
@@ -745,5 +787,37 @@
     [controls.oa, controls.sa, controls.ma, controls.growth].forEach(el => el.addEventListener('input', render));
     render();
   </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What interest does CPF pay?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ordinary Account savings earn 2.5% a year; Special, MediSave and Retirement Account savings earn 4%, with extra interest on the first S$60,000 of combined balances."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my CPF at 55?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your Special Account closes and savings move into a Retirement Account up to the Full Retirement Sum, which funds your CPF LIFE payouts from 65."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is this projection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is an estimate: contribution rates, the wage ceiling and retirement sums are held at 2026 levels, and the CPF LIFE payout is interpolated from the CPF Board’s official 2026 examples. Actual rules may change."
+      }
+    }
+  ]
+}
+</script>
 </body>
 </html>
