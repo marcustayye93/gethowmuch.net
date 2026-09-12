@@ -163,6 +163,9 @@
     .adjust-hint{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
     .adjust-body{padding-top:14px}
     .adjust-body .field-value{margin:0 12px}
+    .ticks{position:relative;height:30px;margin:6px 0 0}
+    .tick{position:absolute;top:0;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:3px;font-family:"IBM Plex Mono",monospace;font-size:8.5px;line-height:1;color:var(--muted);white-space:nowrap}
+    .tick i{display:block;width:2px;height:10px;background:var(--ink)}
     input[type="range"]{
       display:block;
       width:calc(100% - 24px);
@@ -310,13 +313,23 @@
       </div>
 
       <div class="field">
-        <div class="field-head">
-          <label class="field-title" for="yield">6 · Annual return</label>
-          <div class="field-value yield"><input id="yield" type="number" inputmode="decimal" min="0.5" max="15" step="0.1" value="5.7" aria-label="Assumed annual return percentage"><span>%</span></div>
-        </div>
-        <p class="field-helper">What your investments earn each year. The starting point is the average S-REIT payout in 2026.</p>
-        <input id="yield-range" type="range" min="0.5" max="15" step="0.1" value="5.7" aria-label="Assumed annual return percentage slider">
-        <div class="range-ends"><span>0.5%</span><span>15%</span></div>
+        <details class="adjust" id="yield-details">
+          <summary>
+            <span class="field-title">6 · Annual return <span id="yield-label">5.7%</span></span>
+            <span class="adjust-hint">adjust</span>
+          </summary>
+          <div class="adjust-body">
+            <div class="field-value yield"><input id="yield" type="number" inputmode="decimal" min="0.5" max="15" step="0.1" value="5.7" aria-label="Assumed annual return percentage"><span>%</span></div>
+            <input id="yield-range" type="range" min="0.5" max="15" step="0.1" value="5.7" aria-label="Assumed annual return percentage slider">
+            <div class="ticks" aria-hidden="true">
+              <span class="tick" style="left:calc(27px + (100% - 54px)*0.069)"><i></i>Bank ~1.5%</span>
+              <span class="tick" style="left:calc(27px + (100% - 54px)*0.359)"><i></i>S-REIT 5.7%</span>
+              <span class="tick" style="left:calc(27px + (100% - 54px)*0.655)"><i></i>S&amp;P 500 ~10%</span>
+            </div>
+            <div class="range-ends"><span>0.5%</span><span>15%</span></div>
+            <p class="field-helper">What your investments earn each year. Set it near where your money actually sits — the starting point is the average S-REIT payout in 2026.</p>
+          </div>
+        </details>
       </div>
       <p class="tax-note">Most Singapore company dividends and personal S-REIT distributions are tax-exempt; exceptions may apply.</p>
     </section>
@@ -449,17 +462,23 @@
         });
       });
 
+      function syncYieldLabel(value){
+        $('yield-label').textContent = value + '%';
+      }
       yieldRange.addEventListener('input', () => {
         yieldInput.value = yieldRange.value;
+        syncYieldLabel(yieldRange.value);
         calculate();
       });
       yieldInput.addEventListener('input', () => {
         yieldRange.value = clamp(numeric(yieldInput.value), Number(yieldRange.min), Number(yieldRange.max));
+        syncYieldLabel(numeric(yieldInput.value) || 0);
         calculate();
       });
       yieldInput.addEventListener('blur', () => {
         yieldInput.value = clamp(numeric(yieldInput.value), Number(yieldInput.min), Number(yieldInput.max)).toFixed(1);
         yieldRange.value = yieldInput.value;
+        syncYieldLabel(yieldInput.value);
         calculate();
       });
 
