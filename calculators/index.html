@@ -55,7 +55,7 @@
   }
   .hero-cta{
     display:inline-block; background:#fff; color:var(--brand-ink);
-    font-weight:700; font-size:17px; padding:16px 32px; border-radius:999px; text-decoration:none;
+    font-weight:700; font-size:17px; padding:16px 32px; border:2px solid var(--ink); border-radius:0; text-decoration:none; box-shadow:4px 4px 0 rgba(0,0,0,.35);
   }
   .hero-cta:active{ transform:scale(0.97); }
 
@@ -67,15 +67,15 @@
   .grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; padding-bottom:8px; }
   @media (max-width:480px){ .grid{ grid-template-columns:1fr; } }
   .card{
-    display:block; background:#fff; border:1px solid var(--line); border-radius:22px;
+    display:block; background:#fff; border:2px solid var(--ink); border-radius:0;
     padding:24px 20px; text-decoration:none; color:var(--ink);
-    box-shadow:0 12px 32px rgba(16,24,40,.06);
+    box-shadow:5px 5px 0 var(--ink);
     transition:transform .14s ease, box-shadow .14s ease;
   }
-  .card:hover{ transform:translateY(-3px); box-shadow:0 18px 44px rgba(16,24,40,.10); }
+  .card:hover{ transform:translate(-2px,-2px); box-shadow:7px 7px 0 var(--ink); }
   .card:active{ transform:scale(0.97); }
   .tile{
-    width:56px; height:56px; border-radius:18px; background:var(--brand-soft);
+    width:56px; height:56px; border-radius:0; border:2px solid var(--ink); background:var(--brand-soft);
     display:grid; place-items:center; margin-bottom:16px;
   }
   .tile svg{ width:30px; height:30px; stroke:var(--brand-ink); fill:none;
@@ -97,7 +97,7 @@
   .card-fx .go{ color:#c07f10; }
 
   /* ---------- why ---------- */
-  .why{ margin:34px 0 8px; background:var(--ink); color:#fff; border-radius:26px; padding:30px 26px; }
+  .why{ margin:34px 0 8px; background:var(--ink); color:#fff; border:2px solid var(--ink); border-radius:0; padding:30px 26px; box-shadow:6px 6px 0 rgba(108,76,241,.5); }
   .why h2{ font-size:24px; font-weight:700; letter-spacing:-.02em; }
   .why ul{ list-style:none; margin-top:16px; display:grid; gap:12px; }
   .why li{ font-size:15.5px; line-height:1.5; padding-left:30px; position:relative; }

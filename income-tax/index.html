@@ -76,9 +76,10 @@
       min-width: 0;
       min-height: 52px;
       padding: 10px 8px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
       background: #fff;
+      box-shadow: 3px 3px 0 var(--ink);
       color: var(--ink);
       font-family: inherit;
       font-size: 12.5px;
@@ -138,9 +139,9 @@
     .step {
       padding: clamp(22px, 3vw, 30px);
       background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      box-shadow: 0 4px 18px rgba(26, 48, 39, .035);
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      box-shadow: 4px 4px 0 var(--ink);
       min-width: 0;
     }
     .step-head {
@@ -215,7 +216,8 @@
     }
     input[type="range"]::-webkit-slider-runnable-track {
       height: 8px;
-      border-radius: 99px;
+      border: 1px solid var(--ink);
+      border-radius: 0;
       background: linear-gradient(to right, var(--green) var(--fill, 20%), var(--line) var(--fill, 20%));
     }
     input[type="range"]::-webkit-slider-thumb {
@@ -227,12 +229,12 @@
       border: 3px solid var(--green);
       border-radius: 50%;
       background: #fff;
-      box-shadow: 0 2px 7px rgba(16, 34, 28, .22);
+      box-shadow: 2px 2px 0 var(--ink);
     }
-    input[type="range"]::-moz-range-track { height: 8px; border-radius: 99px; background: var(--line); }
-    input[type="range"]::-moz-range-progress { height: 8px; border-radius: 99px; background: var(--green); }
+    input[type="range"]::-moz-range-track { height: 8px; border: 1px solid var(--ink); border-radius: 0; background: var(--line); }
+    input[type="range"]::-moz-range-progress { height: 8px; border-radius: 0; background: var(--green); }
     input[type="range"]::-moz-range-thumb {
-      width: 24px; height: 24px; border: 3px solid var(--green); border-radius: 50%; background: #fff; box-shadow: 0 2px 7px rgba(16,34,28,.22);
+      width: 24px; height: 24px; border: 3px solid var(--green); border-radius: 50%; background: #fff; box-shadow: 2px 2px 0 var(--ink);
     }
     input[type="range"]:focus-visible { outline: 3px solid var(--green); outline-offset: 2px; }
     .range-labels {
@@ -252,8 +254,8 @@
     .chip {
       min-height: 48px;
       padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
       background: #f8faf7;
       font-size: 14px;
       font-weight: 700;
@@ -262,9 +264,10 @@
     }
     .chip:last-child { grid-column: span 2; }
     .chip[aria-pressed="true"] {
-      border-color: var(--green);
+      border-color: var(--ink);
       background: var(--green);
       color: white;
+      box-shadow: 2px 2px 0 var(--ink);
     }
     .chip:focus-visible, .info-button:focus-visible, .close-button:focus-visible {
       outline: 3px solid rgba(10, 108, 78, .35);
@@ -273,10 +276,11 @@
 
     .results {
       overflow: hidden;
-      border-radius: 26px;
+      border: 3px solid var(--ink);
+      border-radius: 0;
       background: var(--green);
       color: white;
-      box-shadow: 0 24px 56px rgba(10, 108, 78, .28);
+      box-shadow: 6px 6px 0 var(--ink);
     }
     .hero-result {
       padding: clamp(26px, 4vw, 40px);
@@ -407,8 +411,10 @@
       gap: 20px;
       margin-bottom: 16px;
       padding: 17px 20px;
-      border-radius: 16px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
       background: var(--soft-green);
+      box-shadow: 3px 3px 0 var(--ink);
       color: var(--ink);
     }
     .personal-impact span { font-size: 13px; font-weight: 700; }
@@ -424,9 +430,10 @@
     .saver-card {
       min-width: 0;
       overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 18px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
       background: var(--card);
+      box-shadow: 3px 3px 0 var(--ink);
     }
     .saver-card summary {
       position: relative;
@@ -494,7 +501,8 @@
     .retired-tip {
       margin-top: 12px;
       padding: 14px 16px;
-      border-radius: 14px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
       background: #e9eeea;
       color: var(--muted);
       font-size: 12px;
@@ -507,11 +515,11 @@
       margin: auto;
       padding: 0;
       overflow: hidden;
-      border: 0;
-      border-radius: 26px;
+      border: 3px solid var(--ink);
+      border-radius: 0;
       background: white;
       color: var(--ink);
-      box-shadow: 0 30px 100px rgba(0, 0, 0, .28);
+      box-shadow: 8px 8px 0 var(--ink);
     }
     dialog::backdrop { background: rgba(4, 20, 15, .65); }
     .modal-head {
@@ -552,7 +560,8 @@
     .method-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
     .method-list li {
       padding: 14px 16px;
-      border-radius: 14px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
       background: #f3f6f2;
       font-size: 13px;
       line-height: 1.5;
@@ -561,7 +570,8 @@
     .callout {
       margin-top: 16px;
       padding: 15px 17px;
-      border-radius: 14px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
       background: #fff0ec;
       color: #663326;
       font-size: 13px;
@@ -571,7 +581,7 @@
 
     @media (max-width: 780px) {
       .site-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .step { border-radius: 20px; }
+      .step { border-radius: 0; }
       .hero-result { padding: 28px 24px; }
       .flow {
         grid-template-columns: 1fr 1fr;
