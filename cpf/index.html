@@ -16,9 +16,8 @@
   <meta property="og:description" content="Project your CPF savings to age 65. Model monthly contributions and OA deductions with interest across your Ordinary, Special and MediSave accounts." />
   <meta name="twitter:description" content="Project your CPF savings to age 65. Model monthly contributions and OA deductions with interest across your Ordinary, Special and MediSave accounts." />
   <meta name="twitter:title" content="CPF Calculator Singapore — GetHowMuch" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
   <style>
 
     :root {
@@ -454,6 +453,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 </head>
 <body>
   <main class="page">
+<noscript><div style="margin:16px 0;padding:16px 18px;background:#ffd84c;border:2px solid #101828;box-shadow:4px 4px 0 #101828;color:#101828;font-weight:700;line-height:1.5">This calculator needs JavaScript to run. Please enable JavaScript in your browser settings, then reload the page.</div></noscript>
     <a class="brand" href="/" aria-label="GetHowMuch home">GetHowMuch</a>
     <nav class="tool-nav" aria-label="GetHowMuch calculators">
       <a href="/">Retirement</a>
@@ -480,7 +480,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           <label class="input-label" for="ageRange">Your age now</label>
           <p class="input-note" id="ageNote">We project to age 65. If you are already 65 or older, we show today instead.</p>
         </div>
-        <div class="number-shell"><input id="ageInput" type="number" min="21" max="70" step="1" value="30" aria-label="Current age"><span class="suffix">yrs</span></div>
+        <div class="number-shell"><input id="ageInput" type="number" inputmode="numeric" min="21" max="70" step="1" value="30" aria-label="Current age"><span class="suffix">yrs</span></div>
       </div>
       <div class="range-wrap">
         <input id="ageRange" type="range" min="21" max="70" step="1" value="30" aria-label="Current age slider">
@@ -494,7 +494,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           <label class="input-label" for="salaryRange">Monthly salary</label>
           <p class="input-note">Before employee CPF. Bonuses are not included.</p>
         </div>
-        <div class="number-shell money"><span class="prefix">S$</span><input id="salaryInput" type="number" min="0" max="20000" step="100" value="5000" aria-label="Monthly salary"></div>
+        <div class="number-shell money"><span class="prefix">S$</span><input id="salaryInput" type="number" inputmode="decimal" min="0" max="20000" step="100" value="5000" aria-label="Monthly salary"></div>
       </div>
       <div class="range-wrap">
         <input id="salaryRange" type="range" min="0" max="20000" step="100" value="5000" aria-label="Monthly salary slider">
@@ -531,7 +531,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           <label class="input-label" for="growthInput">Yearly salary growth</label>
           <p class="input-note">A small planning assumption you can change.</p>
         </div>
-        <div class="number-shell"><input id="growthInput" type="number" min="0" max="15" step="0.5" value="3" aria-label="Annual salary growth"><span class="suffix">%</span></div>
+        <div class="number-shell"><input id="growthInput" type="number" inputmode="decimal" min="0" max="15" step="0.5" value="3" aria-label="Annual salary growth"><span class="suffix">%</span></div>
       </div>
     </section>
 

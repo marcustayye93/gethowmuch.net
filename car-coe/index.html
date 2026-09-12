@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffd84c'/%3E%3Ctext x='32' y='45' font-family='sans-serif' font-size='42' font-weight='bold' text-anchor='middle' fill='%23101828'%3E?%3C/text%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
   <title>Car Loan & COE Calculator Singapore — GetHowMuch</title>
   <meta name="description" content="How much car can you afford in Singapore? Factor in COE, car loan, insurance, road tax, fuel and maintenance — petrol or electric." />
   <link rel="canonical" href="https://gethowmuch.net/car-coe/" />
@@ -223,6 +222,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 </head>
 <body>
 <main class="page">
+<noscript><div style="margin:16px 0;padding:16px 18px;background:#ffd84c;border:2px solid #101828;box-shadow:4px 4px 0 #101828;color:#101828;font-weight:700;line-height:1.5">This calculator needs JavaScript to run. Please enable JavaScript in your browser settings, then reload the page.</div></noscript>
   <a class="brand" href="/" aria-label="GetHowMuch home">GetHowMuch</a>
   <nav class="tool-nav" aria-label="GetHowMuch calculators">
     <a href="/">Retirement</a>
@@ -249,7 +249,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <p class="hint">Dealer price before COE. Use the quoted price after any rebates.</p>
         <div class="value-row">
           <input id="carPriceRange" type="range" min="30000" max="400000" step="1000" value="120000" aria-label="Car price excluding COE">
-          <label class="money-input"><span>S$</span><input id="carPrice" type="number" min="30000" max="400000" step="1000" value="120000" aria-label="Car price amount"></label>
+          <label class="money-input"><span>S$</span><input id="carPrice" type="number" inputmode="decimal" min="30000" max="400000" step="1000" value="120000" aria-label="Car price amount"></label>
         </div>
         <div class="range-labels"><span>S$30k</span><span>S$400k</span></div>
       </section>
@@ -266,12 +266,12 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <div class="coe-grid">
           <label>
             <span class="field-label">COE premium</span>
-            <span class="money-input"><span>S$</span><input id="coePremium" type="number" min="0" step="1" value="133009"></span>
+            <span class="money-input"><span>S$</span><input id="coePremium" type="number" inputmode="numeric" min="0" step="1" value="133009"></span>
             <span class="field-note"><span class="badge">Sep 2026 · 1st bidding</span></span>
           </label>
           <label>
             <span id="engineLabel" class="field-label">Engine size</span>
-            <span class="plain-input"><input id="engine" type="number" min="400" max="6000" step="1" value="1598"><strong id="engineUnit">cc</strong></span>
+            <span class="plain-input"><input id="engine" type="number" inputmode="numeric" min="400" max="6000" step="1" value="1598"><strong id="engineUnit">cc</strong></span>
             <span id="categoryRule" class="field-note">Cat A: ≤1,600cc and ≤97kW</span>
           </label>
         </div>
@@ -285,8 +285,8 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <div class="range-labels"><span>30%</span><span>70%</span></div>
         <p class="field-note">MAS maximum loan is 60% when OMV exceeds S$20,000, or 70% when OMV is S$20,000 or less. Maximum tenure: 7 years.</p>
         <div class="dual">
-          <label class="mini-field"><span class="field-label">Loan tenure</span><span class="plain-input"><input id="tenure" type="number" min="1" max="7" step="1" value="7"><strong>years</strong></span></label>
-          <label class="mini-field"><span class="field-label">Flat interest</span><span class="plain-input"><input id="interest" type="number" min="0" max="10" step="0.01" value="2.98"><strong>% p.a.</strong></span></label>
+          <label class="mini-field"><span class="field-label">Loan tenure</span><span class="plain-input"><input id="tenure" type="number" inputmode="numeric" min="1" max="7" step="1" value="7"><strong>years</strong></span></label>
+          <label class="mini-field"><span class="field-label">Flat interest</span><span class="plain-input"><input id="interest" type="number" inputmode="decimal" min="0" max="10" step="0.01" value="2.98"><strong>% p.a.</strong></span></label>
         </div>
       </section>
 
@@ -297,8 +297,8 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <input id="distance" type="range" min="200" max="5000" step="100" value="1500">
         <div class="range-labels"><span>200 km</span><span>5,000 km</span></div>
         <div class="dual">
-          <label class="mini-field"><span id="efficiencyLabel" class="field-label">Fuel use</span><span class="plain-input"><input id="efficiency" type="number" min="1" max="30" step="0.1" value="7"><strong id="efficiencyUnit">L/100km</strong></span></label>
-          <label class="mini-field"><span id="energyPriceLabel" class="field-label">Petrol price</span><span class="money-input"><span>S$</span><input id="energyPrice" type="number" min="0" max="10" step="0.01" value="3.37"></span></label>
+          <label class="mini-field"><span id="efficiencyLabel" class="field-label">Fuel use</span><span class="plain-input"><input id="efficiency" type="number" inputmode="decimal" min="1" max="30" step="0.1" value="7"><strong id="efficiencyUnit">L/100km</strong></span></label>
+          <label class="mini-field"><span id="energyPriceLabel" class="field-label">Petrol price</span><span class="money-input"><span>S$</span><input id="energyPrice" type="number" inputmode="decimal" min="0" max="10" step="0.01" value="3.37"></span></label>
         </div>
         <p id="energyNote" class="field-note">S$3.37/L was the listed 95-octane pump price snapshot on 10 Sep 2026. Card discounts can reduce it.</p>
       </section>
@@ -307,9 +307,9 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <summary>Everyday ownership costs</summary>
         <div class="details-body">
           <div class="detail-grid">
-            <label class="mini-field"><span class="field-label">Parking + ERP / month</span><span class="money-input"><span>S$</span><input id="parking" type="number" min="0" step="10" value="250"></span></label>
-            <label class="mini-field"><span class="field-label">Insurance / year</span><span class="money-input"><span>S$</span><input id="insurance" type="number" min="0" step="100" value="1400"></span></label>
-            <label class="mini-field"><span class="field-label">Maintenance / month</span><span class="money-input"><span>S$</span><input id="maintenance" type="number" min="0" step="10" value="120"></span></label>
+            <label class="mini-field"><span class="field-label">Parking + ERP / month</span><span class="money-input"><span>S$</span><input id="parking" type="number" inputmode="numeric" min="0" step="10" value="250"></span></label>
+            <label class="mini-field"><span class="field-label">Insurance / year</span><span class="money-input"><span>S$</span><input id="insurance" type="number" inputmode="numeric" min="0" step="100" value="1400"></span></label>
+            <label class="mini-field"><span class="field-label">Maintenance / month</span><span class="money-input"><span>S$</span><input id="maintenance" type="number" inputmode="numeric" min="0" step="10" value="120"></span></label>
           </div>
           <div id="evNote" class="ev-note" hidden>
             <strong>About 2026 EV rebates</strong>
@@ -376,7 +376,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 </style>
     <section class="faq" aria-label="How the 10-year figure is built">
       <h2>How the 10-year figure is built</h2>
-      <p style="margin:10px 0 2px;color:var(--muted);font-size:15px;line-height:1.55">Upfront: the vehicle price plus the COE premium. The COE field pulls live bidding results from data.gov.sg, falling back to the September 2026 first-bidding snapshot if the feed is unavailable.</p>
+      <p style="margin:10px 0 2px;color:var(--muted);font-size:15px;line-height:1.55">Upfront: the vehicle price plus the COE premium. The COE field starts from a data.gov.sg snapshot (September 2026 bidding) — override it with your own quote.</p>
       <p style="margin:10px 0 2px;color:var(--muted);font-size:15px;line-height:1.55">Financing: your downpayment, loan tenure and flat interest rate set the monthly instalment, counted across the full loan tenure.</p>
       <p style="margin:10px 0 2px;color:var(--muted);font-size:15px;line-height:1.55">Running costs across one 10-year COE cycle: insurance, road tax (which differs for petrol and electric), fuel or energy from your monthly distance and consumption, maintenance, plus parking and ERP.</p>
       <p style="margin:10px 0 2px;color:var(--muted);font-size:15px;line-height:1.55">Excluded: resale value, depreciation and the PARF rebate &mdash; this is what the car costs you, not what you get back.</p>
@@ -385,7 +385,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <h2>Common questions</h2>
       <details>
         <summary>What does COE cost right now?</summary>
-        <p>The calculator uses live COE bidding results from data.gov.sg, falling back to the September 2026 first-bidding snapshot if the feed is unavailable.</p>
+        <p>The calculator uses a data.gov.sg COE snapshot, current to the September 2026 bidding round. You can override the premium with your own quote.</p>
       </details>
       <details>
         <summary>Are electric cars cheaper to run in Singapore?</summary>
@@ -492,7 +492,7 @@ calculate();suggestCategory();
       "name": "What does COE cost right now?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The calculator uses live COE bidding results from data.gov.sg, falling back to the September 2026 first-bidding snapshot if the feed is unavailable."
+        "text": "The calculator uses a data.gov.sg COE snapshot, current to the September 2026 bidding round. You can override the premium with your own quote."
       }
     },
     {
