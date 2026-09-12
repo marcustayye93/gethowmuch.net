@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffd84c'/%3E%3Ctext x='32' y='45' font-family='sans-serif' font-size='42' font-weight='bold' text-anchor='middle' fill='%23101828'%3E?%3C/text%3E%3C/svg%3E" />
 <title>Money Calculators Singapore — GetHowMuch</title>
 <meta name="description" content="How much tax will you pay? How much do you need to retire? Clean, fast money calculators for Singapore — tax, CPF, retirement, car & COE, currency.">
   <link rel="canonical" href="https://gethowmuch.net/calculators/" />
@@ -22,11 +23,11 @@
     --ink:#101828;
     --muted:#667085;
     --line:#e6eae6;
-    --brand:#6c4cf1;
-    --brand-deep:#5a3ae0;
-    --brand-ink:#4b2fd0;
-    --brand-soft:#e9e4fd;
-    --brand-wash:#f5f2fe;
+    --brand:#ffd84c;
+    --brand-deep:#eab308;
+    --brand-ink:#101828;
+    --brand-soft:#ffefb0;
+    --brand-wash:#fff9e0;
     --aqua:#45dbdd;
     --orange:#ff7448;
   }
@@ -38,22 +39,22 @@
     overflow-x:hidden;
   }
 
-  /* ---------- full-bleed violet hero (mockup A) ---------- */
+  /* ---------- full-bleed yellow hero ---------- */
   .hero{
     background:var(--brand);
-    color:#fff; margin:0 calc(50% - 50vw);
+    color:var(--ink); margin:0 calc(50% - 50vw);
   }
   .hero-inner{ max-width:720px; margin:0 auto; padding:40px 24px 52px; }
   .wordmark{
     display:inline-block; margin-bottom:34px;
-    font-weight:700; font-size:20px; letter-spacing:-.02em; color:#fff; text-decoration:none;
+    font-weight:700; font-size:20px; letter-spacing:-.02em; color:var(--ink); text-decoration:none;
   }
   .hero h1{
     font-size:clamp(44px,11vw,78px); font-weight:700; letter-spacing:-.045em; line-height:1;
     margin:0 0 16px;
   }
   .hero p{
-    margin:0 0 28px; font-size:18px; line-height:1.5; color:rgba(255,255,255,.85); max-width:34ch;
+    margin:0 0 28px; font-size:18px; line-height:1.5; color:rgba(16,24,40,.78); max-width:34ch;
   }
   .hero-cta{
     display:inline-block; background:#fff; color:var(--brand-ink);
@@ -118,21 +119,9 @@
   .card h2{ font-size:20px; font-weight:700; letter-spacing:-.02em; line-height:1.2; }
   .card p{ margin-top:8px; font-size:14.5px; line-height:1.5; color:var(--muted); }
   .card .go{ display:inline-block; margin-top:14px; font-weight:700; font-size:14px; color:var(--brand-ink); }
-  .card-tax .tile{ background:#e3f2e9; }
-  .card-tax .tile svg{ stroke:#0a6c4e; }
-  .card-tax .go{ color:#0a6c4e; }
-  .card-cpf .tile{ background:#ddf5ee; }
-  .card-cpf .tile svg{ stroke:#0e9f7e; }
-  .card-cpf .go{ color:#0e9f7e; }
-  .card-car .tile{ background:#e3eafa; }
-  .card-car .tile svg{ stroke:#2d63f6; }
-  .card-car .go{ color:#2d63f6; }
-  .card-fx .tile{ background:#faf0d7; }
-  .card-fx .tile svg{ stroke:#c07f10; }
-  .card-fx .go{ color:#c07f10; }
 
   /* ---------- why ---------- */
-  .why{ margin:34px 0 8px; background:var(--ink); color:#fff; border:2px solid var(--ink); border-radius:0; padding:30px 26px; box-shadow:6px 6px 0 rgba(108,76,241,.5); }
+  .why{ margin:34px 0 8px; background:var(--ink); color:#fff; border:2px solid var(--ink); border-radius:0; padding:30px 26px; box-shadow:6px 6px 0 var(--brand); }
   .why h2{ font-size:24px; font-weight:700; letter-spacing:-.02em; }
   .why ul{ list-style:none; margin-top:16px; display:grid; gap:12px; }
   .why li{ font-size:15.5px; line-height:1.5; padding-left:30px; position:relative; }

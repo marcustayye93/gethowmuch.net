@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#f4f7f0" />
-  <link rel="icon" href="data:," />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffd84c'/%3E%3Ctext x='32' y='45' font-family='sans-serif' font-size='42' font-weight='bold' text-anchor='middle' fill='%23101828'%3E?%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -27,11 +27,11 @@
       --paper: #f6f7f4;
       --card: #ffffff;
       --line: #e6eae6;
-      --brand: #6c4cf1;
-      --brand-deep: #5a3ae0;
-      --brand-ink: #4b2fd0;
-      --brand-soft: #e9e4fd;
-      --brand-wash: #f5f2fe;
+      --brand: #ffd84c;
+      --brand-deep: #eab308;
+      --brand-ink: #101828;
+      --brand-soft: #ffefb0;
+      --brand-wash: #fff9e0;
       --aqua: #45dbdd;
       --orange: #ff7448;
       --shadow: 0 16px 48px rgba(26, 48, 39, .08);
@@ -44,7 +44,7 @@
       min-width: 0;
       color: var(--ink);
       background:
-        radial-gradient(circle at 100% 0%, rgba(108, 76, 241, .08), transparent 30rem),
+        radial-gradient(circle at 100% 0%, rgba(255,216,76,.14), transparent 30rem),
         var(--paper);
       font-family: "Space Grotesk", system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -154,7 +154,7 @@
       letter-spacing: -.02em;
     }
     .step-num {
-      color: var(--brand);
+      color: var(--brand-link);
       font-family: "Space Mono", monospace;
       font-size: 12px;
       font-weight: 700;
@@ -232,7 +232,7 @@
     input[type="range"]::-moz-range-thumb {
       width: 24px; height: 24px; border: 3px solid var(--brand); border-radius: 50%; background: #fff; box-shadow: 2px 2px 0 var(--ink);
     }
-    input[type="range"]:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+    input[type="range"]:focus-visible { outline:3px solid var(--brand-deep); outline-offset:2px; }
     .range-labels {
       display: flex;
       justify-content: space-between;
@@ -262,11 +262,11 @@
     .chip[aria-pressed="true"] {
       border-color: var(--ink);
       background: var(--brand);
-      color: white;
+      color: var(--ink);
       box-shadow: 2px 2px 0 var(--ink);
     }
     .chip:focus-visible, .info-button:focus-visible, .close-button:focus-visible {
-      outline: 3px solid rgba(108, 76, 241, .35);
+      outline:3px solid var(--brand-deep);
       outline-offset: 3px;
     }
 
@@ -344,7 +344,7 @@
       font: 600 clamp(13px, 1.6vw, 16px) "Space Mono", monospace;
       white-space: nowrap;
     }
-    .flow-item.final strong { color: var(--brand); }
+    .flow-item.final strong { color: var(--brand-link); }
     .flow-op { color: #90a098; font-size: 18px; }
 
     .details {
@@ -455,7 +455,7 @@
     }
     .saver-card[open] summary::after { content: "−"; }
     .saver-card summary:focus-visible {
-      outline: 3px solid rgba(108, 76, 241, .35);
+      outline:3px solid var(--brand-deep);
       outline-offset: -3px;
     }
     .tip-title { display: block; font-size: 17px; font-weight: 700; letter-spacing: -.02em; }
@@ -476,8 +476,8 @@
     }
     .saver-detail p { margin: 0 0 10px; }
     .saver-detail p:last-child { margin-bottom: 0; }
-    .saver-detail a, .saver-foot a, .saver-sources a, .retired-tip a { color: var(--brand); font-weight: 700; text-underline-offset: 2px; }
-    .source-label { color: var(--brand); font-weight: 700; }
+    .saver-detail a, .saver-foot a, .saver-sources a, .retired-tip a { color: var(--brand-link); font-weight: 700; text-underline-offset: 2px; }
+    .source-label { color: var(--brand-link); font-weight: 700; }
     .saver-foot {
       margin: 16px 0 0;
       color: var(--muted);
