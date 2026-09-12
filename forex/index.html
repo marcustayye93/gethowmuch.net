@@ -8,7 +8,7 @@
   <link rel="icon" href="icon.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <title>Currency Converter SGD — GetHowMuch</title>
   <meta name="description" content="Convert SGD to 160+ currencies at recent mid-market rates. A quick, clean SGD currency converter for Singapore — MYR, USD, JPY and more." />
   <link rel="canonical" href="https://gethowmuch.net/forex/" />
@@ -26,9 +26,13 @@
       --ink: #101828;
       --muted: #667085;
       --line: #e6eae6;
-      --blue: #1458e8;
-      --blue-dark: #0c3ca5;
-      --lime: #d7ff49;
+      --gold: #c07f10;
+      --gold-deep: #8f5f0c;
+      --brand: #6c4cf1;
+      --brand-deep: #5a3ae0;
+      --brand-ink: #4b2fd0;
+      --brand-soft: #e9e4fd;
+      --brand-wash: #f5f2fe;
       --white: #fff;
       --radius-lg: 26px;
       --radius-md: 18px;
@@ -44,9 +48,9 @@
       min-height: 100vh;
       color: var(--ink);
       background:
-        radial-gradient(circle at 12% 0%, rgba(215,255,73,.22), transparent 22rem),
+        radial-gradient(circle at 12% 0%, rgba(108,76,241,.10), transparent 22rem),
         var(--paper);
-      font-family: "DM Sans", system-ui, sans-serif;
+      font-family: "Space Grotesk", system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -76,7 +80,7 @@
       gap: 3px;
       padding: 10px 8px;
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: 999px;
       background: var(--white);
       color: var(--ink);
       box-shadow: 0 2px 0 rgba(20,23,17,.08);
@@ -91,9 +95,9 @@
     }
 
     .tool-nav a:hover { border-color: #cdd1c7; background: #eef0e9; }
-    .tool-nav .active { border-color: var(--blue); background: var(--blue); color: var(--white); box-shadow: 0 3px 0 var(--blue-dark); }
+    .tool-nav .active { border-color: var(--brand); background: var(--brand); color: var(--white); box-shadow: 0 3px 0 var(--brand-deep); }
     .tool-nav .soon { flex-direction: column; border-color: #dde0d8; background: #e9ebe5; color: #858a80; box-shadow: none; cursor: default; }
-    .tool-nav small { font: 500 8px "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .07em; text-transform: uppercase; }
+    .tool-nav small { font: 500 8px "Space Mono", ui-monospace, monospace; letter-spacing: .07em; text-transform: uppercase; }
 
     .brand {
       display: inline-block;
@@ -126,10 +130,10 @@
     .intro h1 {
       margin: 0;
       max-width: 360px;
-      font-size: clamp(36px, 9vw, 60px);
+      font-size: clamp(36px, 9vw, 64px);
       line-height: 1;
       letter-spacing: -.045em;
-      font-weight: 800;
+      font-weight: 700;
     }
 
     .intro p {
@@ -161,8 +165,8 @@
 
     .money-card.to {
       color: var(--white);
-      background: var(--blue);
-      box-shadow: 0 14px 36px rgba(20,88,232,.22);
+      background: var(--brand);
+      box-shadow: 0 14px 36px rgba(108,76,241,.25);
     }
 
     /* Swap button straddles the seam between the cards: anchor it to the
@@ -209,7 +213,7 @@
     .to .currency-button:hover { background: rgba(255,255,255,.2); }
 
     .currency-code {
-      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-family: "Space Mono", ui-monospace, monospace;
       font-size: 15px;
       letter-spacing: -.03em;
     }
@@ -242,7 +246,7 @@
     .amount-prefix {
       flex: 0 0 auto;
       color: var(--muted);
-      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-family: "Space Mono", ui-monospace, monospace;
       font-size: clamp(18px, 5vw, 24px);
       font-weight: 500;
     }
@@ -257,7 +261,7 @@
       outline: 0;
       color: inherit;
       background: transparent;
-      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-family: "Space Mono", ui-monospace, monospace;
       font-size: clamp(38px, 12vw, 64px);
       line-height: 1.05;
       letter-spacing: -.075em;
@@ -267,6 +271,9 @@
 
     .amount-input::placeholder { color: #a7aba1; }
     .to .amount-input::placeholder { color: rgba(255,255,255,.45); }
+
+    /* Result figure on the violet panel: large white mono, brand mega size. */
+    .to .amount-input { font-weight: 700; font-size: clamp(44px, 11vw, 76px); }
 
     .swap {
       position: absolute;
@@ -281,7 +288,8 @@
       padding: 0;
       border: 5px solid var(--paper);
       border-radius: 50%;
-      background: var(--lime);
+      background: var(--brand);
+      color: #fff;
       box-shadow: 0 8px 22px rgba(20,23,17,.18);
       cursor: pointer;
       transform: translate(-50%, 0);
@@ -289,7 +297,7 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    .swap:hover { background: #c8f527; }
+    .swap:hover { background: var(--brand-deep); }
     .swap:active { transform: translate(-50%, 2px); }
     .swap svg { width: 22px; height: 22px; }
 
@@ -390,8 +398,8 @@
     }
 
     #currencySearch:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(20,88,232,.13);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(192,127,16,.15);
     }
 
     .close-sheet {
@@ -431,12 +439,13 @@
 
     .currency-option:hover { background: #f6f7f3; }
     .currency-option .code {
-      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-family: "Space Mono", ui-monospace, monospace;
       font-weight: 500;
     }
     .currency-option .name { color: #4d5349; font-size: 14px; }
-    .currency-option .check { color: var(--blue); opacity: 0; }
+    .currency-option .check { color: var(--gold); opacity: 0; }
     .currency-option[aria-selected="true"] .check { opacity: 1; }
+    .currency-option:hover .check { color: var(--gold-deep); }
 
     .empty {
       padding: 42px 18px;
@@ -445,7 +454,7 @@
     }
 
     button:focus-visible, input:focus-visible {
-      outline: 3px solid rgba(20,88,232,.34);
+      outline: 3px solid rgba(192,127,16,.35);
       outline-offset: 3px;
     }
 
@@ -478,7 +487,7 @@
     }
 
     @media (max-width: 420px) {
-      .page { padding-inline: max(16px, env(safe-area-inset-left)); }
+      .page { padding-inline: max(20px, env(safe-area-inset-left)); }
       .intro { align-items: flex-start; flex-direction: column; gap: 8px; }
       .intro p { margin-left: 1px; }
       .money-card { padding: 19px; }
@@ -531,7 +540,6 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-
 <script>fbq('track','ViewContent',{content_ids:['calc_forex'],content_type:'product',content_name:'Currency Calculator',content_category:'calculator',value:0,currency:'SGD'});</script>
 </head>
 <body>
@@ -546,8 +554,8 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     </nav>
 
     <header class="intro">
-      <h1>Convert money.</h1>
-      <p>Type in either box</p>
+      <h1>Currency Converter</h1>
+      <p>Mid-market rates. Type in either box.</p>
     </header>
 
     <section class="converter" id="converter" aria-label="Currency conversion calculator">
@@ -620,6 +628,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <summary>Which currencies can I convert?</summary>
         <p>SGD and 160+ world currencies, including USD, MYR, EUR, GBP, JPY, AUD, CNY, HKD, THB and IDR.</p>
       </details>
+    
       <details>
         <summary>What is a mid-market rate?</summary>
         <p>The midpoint between a currency's buy and sell price &mdash; the rate banks use when trading with each other. No consumer gets exactly this rate; banks and money changers add their margin on top.</p>
@@ -633,7 +642,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <p>Yes &mdash; both boxes accept any of the 160+ supported currencies. SGD is simply the default on the &ldquo;You have&rdquo; side.</p>
       </details>
     </section>
-    <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · Estimates for planning only. Not financial advice. © 2026</footer>
+    <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a> · Estimates for planning only. Not financial advice. © 2026</footer>
   </main>
 
   <dialog id="currencyDialog" aria-label="Choose a currency">
@@ -702,7 +711,9 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 
     function formatAmount(value, code) {
       if (!Number.isFinite(value)) return "";
-      const digits = fractionDigits(code);
+      const big = Math.abs(value) >= 1e6;
+      if (big) value = Math.round(value / 1e3) * 1e3;
+      const digits = big ? 0 : fractionDigits(code);
       return new Intl.NumberFormat("en-SG", {
         minimumFractionDigits: digits,
         maximumFractionDigits: digits

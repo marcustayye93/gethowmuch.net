@@ -7,7 +7,7 @@
   <link rel="icon" href="data:," />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <title>Car Loan & COE Calculator Singapore — GetHowMuch</title>
   <meta name="description" content="How much car can you afford in Singapore? Factor in COE, car loan, insurance, road tax, fuel and maintenance — petrol or electric." />
   <link rel="canonical" href="https://gethowmuch.net/car-coe/" />
@@ -23,53 +23,57 @@
     :root {
       --ink:#101828; --muted:#667085; --paper:#f6f7f4; --card:#fff;
       --line:#e6eae6; --petrol:#f0a01a; --petrol-soft:#fff3d7; --ev:#12a978;
-      --ev-soft:#dff8ef; --accent:var(--petrol); --accent-soft:var(--petrol-soft);
-      --blue:#2d63f6; --danger:#b9472a; --radius:18px;
+      --ev-soft:#dff8ef; --accent:var(--blue); --accent-soft:var(--blue-soft);
+      --blue:#2d63f6; --blue-soft:#e3eafa; --danger:#b9472a; --radius:18px;
+      --brand:#6c4cf1; --brand-deep:#5a3ae0; --brand-ink:#4b2fd0;
+      --brand-soft:#e9e4fd; --brand-wash:#f5f2fe;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.45}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Space Grotesk",sans-serif;line-height:1.45}
     button,input,summary{font:inherit}
     button,a,input{touch-action:manipulation}
     a{color:inherit}
-    .page{width:min(1120px,100%);margin:auto;padding:clamp(14px,3vw,34px) max(20px,env(safe-area-inset-left)) 60px}
-    .tool-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;margin:0 0 42px}
-    .tool-nav a,.tool-nav button{min-height:62px;border:0;border-radius:14px;padding:10px 8px;background:#fff;text-decoration:none;font-weight:700;font-size:13px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;box-shadow:0 1px 0 rgba(16,21,18,.07);color:#29332d}
+    .page{width:min(720px,100%);margin:auto;padding:clamp(14px,3vw,34px) max(20px,env(safe-area-inset-left)) 60px}
+    .tool-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin:0 0 42px}
+    .tool-nav a,.tool-nav button{min-height:62px;border:0;border-radius:999px;padding:10px 8px;background:#fff;text-decoration:none;font-weight:700;font-size:13px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;box-shadow:0 1px 0 rgba(16,21,18,.07);color:#29332d}
     .tool-nav a:hover{background:#e8eeea}
-    .tool-nav .active{background:var(--ink);color:#fff}
+    .tool-nav .active{background:var(--brand);color:#fff}
     .tool-nav .soon{color:#89938c;background:#e9eeeb;cursor:default}
     .tool-nav small{font-size:9px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
     .brand{display:inline-block;margin:4px 0 16px;font-weight:800;font-size:17px;letter-spacing:-.5px;color:var(--ink);text-decoration:none}
     .site-foot{margin:32px 0 10px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);text-align:center}
     .site-foot a{color:var(--ink);font-weight:800;text-decoration:none}
     header{max-width:760px;margin-bottom:28px}
-    h1{font-size:clamp(36px,9vw,64px);line-height:1;letter-spacing:-.045em;margin:0 0 18px;max-width:820px;font-weight:800}
+    h1{font-size:clamp(36px,9vw,64px);line-height:1;letter-spacing:-.045em;margin:0 0 18px;max-width:820px;font-weight:700}
     .lede{font-size:clamp(17px,2.3vw,21px);color:var(--muted);max-width:620px;margin:0}
     .fuel-toggle{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#dde5df;border-radius:16px;padding:5px;margin:32px 0 20px;max-width:520px}
     .fuel-toggle button{border:0;border-radius:12px;padding:15px;font-weight:800;background:transparent;color:#58645d;cursor:pointer}
     .fuel-toggle button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 4px 14px rgba(12,20,15,.1)}
     .fuel-toggle .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:8px;background:currentColor}
+    #petrolBtn .dot{background:var(--petrol)}
+    #evBtn .dot{background:var(--ev)}
     .calc-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.75fr);grid-template-areas:"controls summary";gap:28px;align-items:start}
     .controls{grid-area:controls;display:grid;gap:14px}
-    .summary{grid-area:summary;position:sticky;top:18px;background:var(--ink);color:#fff;border-radius:24px;padding:26px;overflow:hidden}
-    .summary:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:var(--accent);right:-105px;top:-105px;opacity:.95;transition:.25s}
-    .result-label{color:#bac5be;font-size:14px;font-weight:700;margin-bottom:6px}
-    .monthly{font-family:"IBM Plex Mono",monospace;font-size:clamp(42px,6vw,66px);font-weight:600;letter-spacing:-.06em;line-height:1;margin:0 0 5px;position:relative;z-index:1}
-    .per{color:#bac5be;margin-bottom:24px}
+    .summary{grid-area:summary;position:sticky;top:18px;background:var(--brand);color:#fff;border-radius:24px;padding:26px;overflow:hidden}
+    .summary:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:#fff;right:-105px;top:-105px;opacity:.12}
+    .result-label{color:rgba(255,255,255,.8);font-size:14px;font-weight:700;margin-bottom:6px}
+    .monthly{font-family:"Space Mono",monospace;font-size:clamp(44px,11vw,76px);font-weight:700;letter-spacing:-.05em;line-height:1;margin:0 0 5px;position:relative;z-index:1}
+    .per{color:rgba(255,255,255,.8);margin-bottom:24px}
     .big-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0 24px}
-    .big-meta div{background:#202823;padding:13px;border-radius:12px}
-    .big-meta span{display:block;color:#9eaaa2;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-    .big-meta strong{font-family:"IBM Plex Mono",monospace;font-size:15px}
-    .stack{height:14px;display:flex;border-radius:99px;overflow:hidden;background:#2c3730;margin:8px 0 18px}
+    .big-meta div{background:rgba(255,255,255,.14);padding:13px;border-radius:12px}
+    .big-meta span{display:block;color:rgba(255,255,255,.72);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+    .big-meta strong{font-family:"Space Mono",monospace;font-size:15px}
+    .stack{height:14px;display:flex;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.25);margin:8px 0 18px}
     .stack span{display:block;min-width:2px}
     .legend{display:grid;grid-template-columns:1fr auto;gap:8px 12px;font-size:13px}
-    .legend .name{display:flex;align-items:center;color:#d9e0dc}
+    .legend .name{display:flex;align-items:center;color:rgba(255,255,255,.9)}
     .swatch{width:8px;height:8px;border-radius:2px;margin-right:8px}
-    .legend strong{font-family:"IBM Plex Mono",monospace;font-size:12px;text-align:right}
-    .insight{border-top:1px solid #354139;margin:22px 0 0;padding-top:18px;color:#c8d1cb;font-size:14px}
+    .legend strong{font-family:"Space Mono",monospace;font-size:12px;text-align:right}
+    .insight{border-top:1px solid rgba(255,255,255,.25);margin:22px 0 0;padding-top:18px;color:rgba(255,255,255,.85);font-size:14px}
     .panel{background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:0 1px 0 rgba(16,21,18,.06)}
     .panel-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 0 4px;font-size:18px;letter-spacing:-.02em}
-    .panel-title .step{font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:12px;margin-top:5px}
+    .panel-title .step{font-family:"Space Mono",monospace;color:var(--accent);font-size:12px;margin-top:5px}
     .hint{color:var(--muted);font-size:13px;margin:0 0 17px}
     .value-row{display:grid;grid-template-columns:1fr 142px;gap:14px;align-items:center;margin-top:12px}
     .money-input,.plain-input{display:flex;align-items:center;background:#edf1ee;border:1px solid transparent;border-radius:12px;padding:0 12px;min-height:48px}
@@ -82,7 +86,7 @@
     input[type=range]::-moz-range-track{height:7px;background:#d9e1dc;border-radius:99px}
     input[type=range]::-moz-range-progress{height:7px;background:var(--accent);border-radius:99px}
     input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#fff;border:7px solid var(--accent);box-shadow:0 2px 6px rgba(0,0,0,.18)}
-    .range-labels{display:flex;justify-content:space-between;color:#7a867e;font-size:11px;font-family:"IBM Plex Mono",monospace}
+    .range-labels{display:flex;justify-content:space-between;color:#7a867e;font-size:11px;font-family:"Space Mono",monospace}
     .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
     .chip{border:1px solid var(--line);background:#fff;border-radius:999px;min-width:52px;padding:9px 13px;font-weight:800;cursor:pointer}
     .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
@@ -108,14 +112,14 @@
     .chart-head h2{font-size:clamp(27px,4vw,42px);letter-spacing:-.04em;margin:0 0 7px}
     .chart-head p{margin:0;color:#aeb9b1;font-size:14px}
     .chart-value{text-align:right;white-space:nowrap}
-    .chart-value strong{display:block;font-family:"IBM Plex Mono",monospace;font-size:clamp(23px,4vw,36px);line-height:1}
+    .chart-value strong{display:block;font-family:"Space Mono",monospace;font-size:clamp(23px,4vw,36px);line-height:1}
     .chart-value span{font-size:12px;color:#9ca8a0}
     .chart-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
     .chart-tabs button,.range-tabs button{border:0;background:#242d27;color:#b7c1bb;padding:8px 12px;border-radius:999px;font-weight:700;cursor:pointer}
-    .chart-tabs button[aria-pressed="true"],.range-tabs button[aria-pressed="true"]{background:var(--accent);color:#07110d}
+    .chart-tabs button[aria-pressed="true"],.range-tabs button[aria-pressed="true"]{background:var(--accent);color:#fff}
     .chart-wrap{position:relative;min-height:300px;user-select:none;touch-action:none}
     #chart{display:block;width:100%;height:auto;overflow:visible}
-    .chart-tooltip{position:absolute;top:12px;left:50%;transform:translateX(-50%);background:#fff;color:#101512;padding:8px 11px;border-radius:9px;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;pointer-events:none;white-space:nowrap;box-shadow:0 5px 18px rgba(0,0,0,.3);display:none}
+    .chart-tooltip{position:absolute;top:12px;left:50%;transform:translateX(-50%);background:#fff;color:#101512;padding:8px 11px;border-radius:9px;font-family:"Space Mono",monospace;font-size:12px;font-weight:600;pointer-events:none;white-space:nowrap;box-shadow:0 5px 18px rgba(0,0,0,.3);display:none}
     .chart-foot{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:8px;color:#9da9a1;font-size:11px}
     .range-tabs{display:flex;gap:6px}
     .range-tabs button{font-size:11px;padding:6px 10px}
@@ -186,7 +190,6 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-
 <script>fbq('track','ViewContent',{content_ids:['calc_carcoe'],content_type:'product',content_name:'Car & COE Calculator',content_category:'calculator',value:0,currency:'SGD'});</script>
 </head>
 <body>
@@ -201,7 +204,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
   </nav>
 
   <header>
-    <h1>Car Affordability Calculator</h1>
+    <h1>Car &amp; COE Calculator</h1>
     <p class="lede">Not just the instalment. Add COE, road tax, fuel or charging, insurance and the everyday costs of driving in Singapore.</p>
   </header>
 
@@ -363,6 +366,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <summary>What does the 10-year figure include?</summary>
         <p>The upfront payment plus instalments over your loan tenure and running costs across one COE cycle. It excludes resale value, depreciation and PARF.</p>
       </details>
+    
       <details>
         <summary>Does the 10-year figure include renewing my COE?</summary>
         <p>No &mdash; it covers a single 10-year COE cycle. Renewing the COE after ten years, or buying a replacement car, is not modelled.</p>
@@ -372,12 +376,12 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <p>No. Enter the price you actually pay after discounts; the figure does not subtract anything further and adds no trade-in value &mdash; what you see is the cost of owning, not of selling.</p>
       </details>
     </section>
-    <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · Estimates for planning only. Not financial advice. © 2026</footer>
+    <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a> · Estimates for planning only. Not financial advice. © 2026</footer>
 </main>
 
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const money=n=>'S$'+Math.round(Number(n)||0).toLocaleString('en-SG');
+const money=n=>{n=Number(n)||0;if(Math.abs(n)>=1e6)n=Math.round(n/1e3)*1e3;return 'S$'+Math.round(n).toLocaleString('en-SG');};
 const premiums={A:133009,B:135001,C:93101,D:12556,E:137890};
 let fuel='petrol', category='A', manualCategory=false;
 const ids=['carPrice','coePremium','engine','tenure','interest','efficiency','energyPrice','parking','insurance','maintenance'];
@@ -422,7 +426,7 @@ function suggestCategory(){
   else{$('#categoryHint').textContent=`At ${(x||0).toLocaleString('en-SG')}cc, Category ${suggested} is suggested. If power exceeds 97kW, choose B.`;$('#categoryRule').textContent='Cat A petrol: ≤1,600cc and ≤97kW'}
 }
 function setFuel(next){
-  fuel=next;manualCategory=false;document.documentElement.style.setProperty('--accent',fuel==='ev'?'var(--ev)':'var(--petrol)');document.documentElement.style.setProperty('--accent-soft',fuel==='ev'?'var(--ev-soft)':'var(--petrol-soft)');
+  fuel=next;manualCategory=false;
   $('#petrolBtn').setAttribute('aria-pressed',fuel==='petrol');$('#evBtn').setAttribute('aria-pressed',fuel==='ev');
   if(fuel==='ev'){$('#engineLabel').textContent='Motor power';$('#engineUnit').textContent='kW';$('#engine').min=5;$('#engine').max=600;$('#engine').value=110;$('#efficiencyLabel').textContent='Energy use';$('#efficiencyUnit').textContent='kWh/100km';$('#efficiency').value=15;$('#energyPriceLabel').textContent='Charging price';$('#energyPrice').value=.55;$('#insurance').value=1650;$('#maintenance').value=80;$('#energyHint').textContent='Adjust the distance and charging assumptions to match your routine.';$('#energyNote').textContent='S$0.55/kWh is an editable blended estimate. Home charging was about S$0.35; public AC about S$0.67–0.70 and DC about S$0.77–0.81 in the 2026 snapshot.';$('#evNote').hidden=false}
   else{$('#engineLabel').textContent='Engine size';$('#engineUnit').textContent='cc';$('#engine').min=400;$('#engine').max=6000;$('#engine').value=1598;$('#efficiencyLabel').textContent='Fuel use';$('#efficiencyUnit').textContent='L/100km';$('#efficiency').value=7;$('#energyPriceLabel').textContent='Petrol price';$('#energyPrice').value=3.37;$('#insurance').value=1400;$('#maintenance').value=120;$('#energyHint').textContent='Adjust the distance and petrol assumptions to match your routine.';$('#energyNote').textContent='S$3.37/L was the listed 95-octane pump price snapshot on 10 Sep 2026. Card discounts can reduce it.';$('#evNote').hidden=true}
@@ -437,8 +441,8 @@ function drawChart(){
   const W=760,H=320,L=56,R=18,T=18,B=42,pw=W-L-R,ph=H-T-B;const vals=pts.map(p=>p[1]),max=Math.ceil(Math.max(...vals)/10000)*10000,min=Math.max(0,Math.floor(Math.min(...vals)/10000)*10000);const span=max-min||1;
   visiblePoints=pts.map((p,i)=>({label:p[0],value:p[1],x:L+(i/(pts.length-1||1))*pw,y:T+(1-(p[1]-min)/span)*ph}));
   const path=visiblePoints.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+','+p.y.toFixed(1)).join(' ');$('#linePath').setAttribute('d',path);$('#areaPath').setAttribute('d',path+` L ${visiblePoints.at(-1).x},${T+ph} L ${visiblePoints[0].x},${T+ph} Z`);
-  let grid='';for(let i=0;i<4;i++){const y=T+i*ph/3,v=max-i*span/3;grid+=`<line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="#fff" stroke-opacity=".09"/><text x="${L-8}" y="${y+4}" text-anchor="end" fill="#8d9991" font-size="10" font-family="IBM Plex Mono">$${Math.round(v/1000)}k</text>`}
-  const years=[visiblePoints[0],visiblePoints[Math.floor((visiblePoints.length-1)/2)],visiblePoints.at(-1)];years.forEach((p,i)=>grid+=`<text x="${p.x}" y="${H-12}" text-anchor="${i===0?'start':i===2?'end':'middle'}" fill="#8d9991" font-size="11" font-family="IBM Plex Mono">${p.label.slice(-4)}</text>`);$('#grid').innerHTML=grid;
+  let grid='';for(let i=0;i<4;i++){const y=T+i*ph/3,v=max-i*span/3;grid+=`<line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="#fff" stroke-opacity=".09"/><text x="${L-8}" y="${y+4}" text-anchor="end" fill="#8d9991" font-size="10" font-family="Space Mono">$${Math.round(v/1000)}k</text>`}
+  const years=[visiblePoints[0],visiblePoints[Math.floor((visiblePoints.length-1)/2)],visiblePoints.at(-1)];years.forEach((p,i)=>grid+=`<text x="${p.x}" y="${H-12}" text-anchor="${i===0?'start':i===2?'end':'middle'}" fill="#8d9991" font-size="11" font-family="Space Mono">${p.label.slice(-4)}</text>`);$('#grid').innerHTML=grid;
   const last=visiblePoints.at(-1);$('#chartValue').textContent=money(last.value);$('#chartPeriod').textContent=`${last.label} · ${chartCat}`;$('#crosshair').style.display='none';$('#chartTooltip').style.display='none';
 }
 function showPoint(clientX){if(!visiblePoints.length)return;const rect=$('#chart').getBoundingClientRect(),vx=(clientX-rect.left)/rect.width*760;let p=visiblePoints.reduce((a,b)=>Math.abs(b.x-vx)<Math.abs(a.x-vx)?b:a);$('#crosshair').style.display='block';$('#crossLine').setAttribute('x1',p.x);$('#crossLine').setAttribute('x2',p.x);$('#crossLine').setAttribute('y1',18);$('#crossLine').setAttribute('y2',278);$('#crossDot').setAttribute('cx',p.x);$('#crossDot').setAttribute('cy',p.y);const tip=$('#chartTooltip');tip.textContent=`${p.label} · ${money(p.value)}`;tip.style.display='block';tip.style.left=Math.max(74,Math.min(rect.width-74,p.x/760*rect.width))+'px';$('#chartValue').textContent=money(p.value);$('#chartPeriod').textContent=`${p.label} · ${chartCat}`}

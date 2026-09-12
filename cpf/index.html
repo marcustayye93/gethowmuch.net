@@ -11,14 +11,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="GetHowMuch" />
   <meta property="og:title" content="CPF Calculator Singapore — GetHowMuch" />
-  <meta property="og:description" content="Project your CPF savings to age 65. Model monthly contributions and OA deductions with interest across your Ordinary, Special and MediSave accounts." />
   <meta property="og:url" content="https://gethowmuch.net/cpf/" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="CPF Calculator Singapore — GetHowMuch" />
+  <meta property="og:description" content="Project your CPF savings to age 65. Model monthly contributions and OA deductions with interest across your Ordinary, Special and MediSave accounts." />
   <meta name="twitter:description" content="Project your CPF savings to age 65. Model monthly contributions and OA deductions with interest across your Ordinary, Special and MediSave accounts." />
+  <meta name="twitter:title" content="CPF Calculator Singapore — GetHowMuch" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
 
     :root {
@@ -27,12 +27,13 @@
       --line: #e6eae6;
       --paper: #f6f7f4;
       --white: #ffffff;
-      --blue: #165cff;
-      --blue-dark: #0a3dbf;
-      --mint: #22d3a6;
-      --mint-soft: #dff9f0;
-      --sky: #dfeaff;
-      --amber: #f4b740;
+      --brand: #6c4cf1;
+      --brand-deep: #5a3ae0;
+      --brand-ink: #4b2fd0;
+      --brand-soft: #e9e4fd;
+      --brand-wash: #f5f2fe;
+      --teal: #0e9f7e;
+      --teal-dark: #0a5f4c;
       --shadow: 0 18px 45px rgba(28, 54, 90, .10);
       --radius-lg: 26px;
       --radius-md: 18px;
@@ -44,21 +45,21 @@
       margin: 0;
       color: var(--ink);
       background: var(--paper);
-      font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+      font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
       min-width: 320px;
     }
     button, input, summary { font: inherit; }
     button, input[type="range"] { touch-action: manipulation; }
     button:focus-visible, input:focus-visible, summary:focus-visible {
-      outline: 3px solid rgba(22,92,255,.28);
+      outline: 3px solid rgba(14,159,126,.4);
       outline-offset: 3px;
     }
 
     .page {
-      width: min(100%, 760px);
+      width: min(100%, 720px);
       margin: 0 auto;
-      padding: 22px 18px calc(48px + env(safe-area-inset-bottom));
+      padding: 24px 22px calc(48px + env(safe-area-inset-bottom));
     }
 
     .brand {
@@ -72,31 +73,38 @@
     }
 
     .page-h1 {
-      margin: 0 0 20px;
+      margin: 0 0 12px;
       font-size: clamp(36px, 9vw, 64px);
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: -.045em;
       line-height: 1;
+    }
+    .subhead {
+      margin: 0 0 clamp(28px, 4vw, 40px);
+      color: var(--muted);
+      font-size: clamp(17px, 2.2vw, 21px);
+      line-height: 1.45;
     }
     .tool-nav {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 8px;
-      margin-bottom: 26px;
+      margin-bottom: clamp(28px, 4vw, 42px);
     }
     .tool-nav a {
       display: flex;
       align-items: center;
       justify-content: center;
       min-width: 0;
-      min-height: 48px;
-      padding: 10px 8px;
-      border-radius: 14px;
+      min-height: 56px;
+      padding: 12px 8px;
+      border-radius: 16px;
       background: #fff;
       border: 1px solid var(--line);
       color: var(--ink);
       font-weight: 700;
       font-size: 14px;
+      line-height: 1.1;
       text-decoration: none;
       text-align: center;
       white-space: nowrap;
@@ -104,9 +112,13 @@
       text-overflow: ellipsis;
     }
     .tool-nav a.active {
-      background: var(--blue);
-      border-color: var(--blue);
+      background: var(--brand);
+      border-color: var(--brand);
       color: #fff;
+    }
+    .tool-nav a:focus-visible {
+      outline: 3px solid rgba(108, 76, 241, .4);
+      outline-offset: 3px;
     }
     @media (max-width: 639px) {
       .tool-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -124,59 +136,42 @@
     .site-foot a { color: var(--ink); font-weight: 800; text-decoration: none; }
 
     .hero {
-      position: relative;
       overflow: hidden;
-      padding: 26px 24px 28px;
-      border-radius: 30px 30px 12px 30px;
+      padding: 28px 26px 30px;
+      border-radius: 26px;
       color: #fff;
-      background: #123d8c;
-      box-shadow: 0 24px 56px rgba(9, 51, 135, .22);
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      right: -70px;
-      top: -72px;
-      border-radius: 50%;
-      background: var(--mint);
-      opacity: .95;
+      background: var(--brand);
+      box-shadow: 0 24px 56px rgba(108, 76, 241, .25);
     }
     .hero-label {
-      position: relative;
-      z-index: 1;
-      margin: 0 0 8px;
-      font-size: .9rem;
+      margin: 0 0 10px;
+      font-size: 14px;
       font-weight: 700;
-      color: #c8d9ff;
+      color: rgba(255,255,255,.8);
     }
     .hero-amount {
-      position: relative;
-      z-index: 1;
       margin: 0;
-      font-family: "IBM Plex Mono", ui-monospace, monospace;
-      font-size: clamp(2.7rem, 11vw, 5rem);
-      line-height: .98;
-      letter-spacing: -.07em;
-      font-weight: 600;
+      font-family: "Space Mono", ui-monospace, monospace;
+      font-size: clamp(44px, 11vw, 76px);
+      line-height: 1;
+      letter-spacing: -.05em;
+      font-weight: 700;
     }
     .hero-amount span { font-size: .42em; letter-spacing: -.02em; }
     .hero-copy {
-      position: relative;
-      z-index: 1;
       margin: 14px 0 0;
       max-width: 410px;
-      color: #e5edff;
+      color: rgba(255,255,255,.8);
       font-size: .94rem;
       line-height: 1.5;
     }
 
     .section-title {
-      margin: 32px 2px 14px;
-      font-size: 1.34rem;
+      margin: clamp(28px, 5vw, 44px) 2px 14px;
+      font-size: 24px;
+      font-weight: 700;
       line-height: 1.2;
-      letter-spacing: -.025em;
+      letter-spacing: -.02em;
     }
     .input-card, .result-panel, details {
       background: var(--white);
@@ -184,7 +179,7 @@
     }
     .input-card {
       padding: 22px;
-      border-radius: 12px var(--radius-lg) var(--radius-lg) var(--radius-lg);
+      border-radius: var(--radius-lg);
       margin-bottom: 12px;
     }
     .input-head {
@@ -214,7 +209,7 @@
       border-radius: 10px;
       background: #fbfcfe;
     }
-    .number-shell:focus-within { border-color: var(--blue); }
+    .number-shell:focus-within { border-color: var(--teal); }
     .number-shell .prefix, .number-shell .suffix {
       color: var(--muted);
       font-weight: 700;
@@ -226,7 +221,7 @@
       padding: 1px 4px;
       color: var(--ink);
       background: transparent;
-      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-family: "Space Mono", ui-monospace, monospace;
       font-size: 1rem;
       font-weight: 600;
       text-align: right;
@@ -246,7 +241,7 @@
     input[type="range"]::-webkit-slider-runnable-track {
       height: 8px;
       border-radius: 99px;
-      background: linear-gradient(to right, var(--blue) 0 var(--fill, 50%), #dce4ef var(--fill, 50%) 100%);
+      background: linear-gradient(to right, var(--teal) 0 var(--fill, 50%), #dce4ef var(--fill, 50%) 100%);
     }
     input[type="range"]::-webkit-slider-thumb {
       appearance: none;
@@ -255,21 +250,21 @@
       margin-top: -11px;
       border: 4px solid #fff;
       border-radius: 50%;
-      background: var(--blue);
+      background: var(--teal);
       box-shadow: 0 3px 10px rgba(9, 51, 135, .3);
     }
     input[type="range"]::-moz-range-track { height: 8px; border-radius: 99px; background: #dce4ef; }
-    input[type="range"]::-moz-range-progress { height: 8px; border-radius: 99px; background: var(--blue); }
+    input[type="range"]::-moz-range-progress { height: 8px; border-radius: 99px; background: var(--teal); }
     input[type="range"]::-moz-range-thumb {
       width: 22px; height: 22px; border: 4px solid #fff; border-radius: 50%;
-      background: var(--blue); box-shadow: 0 3px 10px rgba(9,51,135,.3);
+      background: var(--teal); box-shadow: 0 3px 10px rgba(14,95,76,.3);
     }
     .range-scale {
       display: flex;
       justify-content: space-between;
       margin-top: 3px;
       color: #8190a4;
-      font-family: "IBM Plex Mono", monospace;
+      font-family: "Space Mono", monospace;
       font-size: .67rem;
     }
 
@@ -295,24 +290,24 @@
       padding: 11px 9px;
       background: #fbfcfe;
     }
-    .balance-box:focus-within { border-color: var(--blue); }
+    .balance-box:focus-within { border-color: var(--teal); }
     .balance-box span { color: var(--muted); font-size: .76rem; font-weight: 700; }
     .balance-box input {
       width: 100%; min-width: 0; border: 0; outline: 0; background: transparent;
-      color: var(--ink); font-family: "IBM Plex Mono", monospace; font-size: .86rem;
+      color: var(--ink); font-family: "Space Mono", monospace; font-size: .86rem;
     }
 
     .results-grid { display: grid; gap: 14px; }
     .result-panel {
       padding: 23px;
-      border-radius: var(--radius-lg) 12px var(--radius-lg) var(--radius-lg);
+      border-radius: var(--radius-lg);
     }
     .result-panel.age65 { background: var(--ink); color: white; }
-    .result-kicker { margin: 0 0 5px; color: var(--blue); font-size: .8rem; font-weight: 700; }
-    .age65 .result-kicker { color: #8ff0d1; }
+    .result-kicker { margin: 0 0 5px; color: var(--teal); font-size: .8rem; font-weight: 700; }
+    .age65 .result-kicker { color: rgba(255,255,255,.8); }
     .result-total {
       margin: 0 0 18px;
-      font-family: "IBM Plex Mono", monospace;
+      font-family: "Space Mono", monospace;
       font-size: clamp(1.85rem, 7vw, 2.8rem);
       line-height: 1.05;
       letter-spacing: -.05em;
@@ -328,22 +323,22 @@
       font-size: .9rem;
     }
     .age65 .result-row { border-color: rgba(255,255,255,.13); color: #b9c5d6; }
-    .result-row strong { color: var(--ink); font-family: "IBM Plex Mono", monospace; }
+    .result-row strong { color: var(--ink); font-family: "Space Mono", monospace; }
     .age65 .result-row strong { color: white; }
 
     .goal-box {
       margin-top: 19px;
       padding: 16px;
       border-radius: 16px;
-      background: var(--mint-soft);
+      background: var(--brand-wash);
     }
     .goal-title { display: flex; justify-content: space-between; gap: 10px; font-size: .82rem; font-weight: 700; }
-    .goal-track { position: relative; height: 12px; margin: 13px 0 10px; border-radius: 99px; background: #bcebdd; overflow: visible; }
-    .goal-fill { height: 100%; max-width: 100%; border-radius: 99px; background: #0ba87b; transition: width .25s ease; }
-    .goal-markers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; color: #397364; font-size: .68rem; font-weight: 700; }
+    .goal-track { position: relative; height: 12px; margin: 13px 0 10px; border-radius: 99px; background: #ddd7f4; overflow: visible; }
+    .goal-fill { height: 100%; max-width: 100%; border-radius: 99px; background: var(--teal); transition: width .25s ease; }
+    .goal-markers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; color: var(--muted); font-size: .68rem; font-weight: 700; }
     .goal-markers span:nth-child(2) { text-align: center; }
     .goal-markers span:nth-child(3) { text-align: right; }
-    .goal-status { margin: 11px 0 0; color: #225e50; font-size: .78rem; line-height: 1.4; }
+    .goal-status { margin: 11px 0 0; color: var(--ink); font-size: .78rem; line-height: 1.4; }
 
     details {
       margin-top: 18px;
@@ -357,7 +352,7 @@
       font-weight: 700;
     }
     summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; float: right; color: var(--blue); font-size: 1.3rem; line-height: 1; }
+    summary::after { content: "+"; float: right; color: var(--teal); font-size: 1.3rem; line-height: 1; }
     details[open] summary::after { content: "−"; }
     .assumptions { padding: 0 0 20px; color: var(--muted); font-size: .8rem; line-height: 1.55; }
     .assumptions ul { margin: 0; padding-left: 19px; }
@@ -376,7 +371,6 @@
       .balance-grid { gap: 12px; }
     }
     @media (max-width: 390px) {
-      .page { padding-left: 14px; padding-right: 14px; }
       .hero { padding-left: 20px; }
       .input-card { padding: 19px 17px; }
       .balance-grid { grid-template-columns: 1fr; }
@@ -427,7 +421,6 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-
 <script>fbq('track','ViewContent',{content_ids:['calc_cpf'],content_type:'product',content_name:'CPF Calculator',content_category:'calculator',value:0,currency:'SGD'});</script>
 </head>
 <body>
@@ -441,6 +434,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <a href="/forex/">Currency</a>
     </nav>
     <h1 class="page-h1">CPF Calculator</h1>
+    
     <section class="hero" aria-live="polite">
       <p class="hero-label">Estimated CPF LIFE payout from 65</p>
       <p class="hero-amount" id="heroPayout">S$0<span>/mo</span></p>
@@ -557,7 +551,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     <p class="fine-print">Estimates are for planning only and are not financial advice. CPF rules and payout terms can change.</p>
     <style>
 .faq { margin: 36px 0 6px; }
-.faq h2 { font-size: 22px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 12px; }
+.faq h2 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 12px; }
 .faq details { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; }
 .faq summary { font-weight: 700; cursor: pointer; list-style: none; }
 .faq summary::-webkit-details-marker { display: none; }
@@ -584,6 +578,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <summary>How accurate is this projection?</summary>
         <p>It is an estimate: contribution rates, the wage ceiling and retirement sums are held at 2026 levels, and the CPF LIFE payout is interpolated from the CPF Board’s official 2026 examples. Actual rules may change.</p>
       </details>
+    
       <details>
         <summary>Why are 2026 rates held constant for the whole projection?</summary>
         <p>Contribution rates, the wage ceiling and retirement sums all change over time, but future changes cannot be known. Holding 2026 levels constant is a deliberate simplification &mdash; and a conservative one, since ceilings and sums tend to rise.</p>
@@ -593,7 +588,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <p>Yes. The projection applies the full 2026 contribution rates to your salary, which cover both the employer and employee shares, allocated across OA, SA and MediSave by age.</p>
       </details>
     </section>
-    <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · Estimates for planning only. Not financial advice. © 2026</footer>
+    <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a> · Estimates for planning only. Not financial advice. © 2026</footer>
   </main>
 
   <script>
@@ -640,7 +635,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       oa: $('oaInput'), sa: $('saInput'), ma: $('maInput'), growth: $('growthInput')
     };
 
-    const money = n => 'S$' + Math.round(Math.max(0, n || 0)).toLocaleString('en-SG');
+    const money = n => { n = Math.max(0, n || 0); if (n >= 1e6) n = Math.round(n / 1e3) * 1e3; return 'S$' + Math.round(n).toLocaleString('en-SG'); };
     const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
     const readNumber = (el, fallback = 0) => Number.isFinite(parseFloat(el.value)) ? parseFloat(el.value) : fallback;
 
@@ -683,6 +678,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       if (age < 55) accounts.SA += wage * allocation.retirement * scale;
       else accounts.RA += wage * allocation.retirement * scale;
       accounts.MA += wage * allocation.MA * scale;
+
 
       if (accounts.MA > CPF_POLICY.basicHealthcareSum) {
         const overflow = accounts.MA - CPF_POLICY.basicHealthcareSum;
@@ -841,6 +837,13 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     syncPair(controls.ageRange, controls.ageInput);
     syncPair(controls.salaryRange, controls.salaryInput);
     [controls.oa, controls.sa, controls.ma, controls.growth].forEach(el => el.addEventListener('input', render));
+
+    // Typing into a pre-filled field replaces it instead of appending.
+    document.querySelectorAll('input[type="number"]').forEach(el => {
+      el.addEventListener('focus', () => {
+        setTimeout(() => { try { el.select(); } catch (err) {} }, 0);
+      });
+    });
     render();
   </script>
 <script type="application/ld+json">
