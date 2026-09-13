@@ -506,7 +506,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         let totalCapital, sustainableMonthly, note;
         if (capitalMode === 'keep') {
           // Payouts must grow with inflation forever, so only the real yield can be spent.
-          const realYield = Math.max(safeYield - INFLATION, 0.005);
+          const realYield = Math.max((1 + safeYield) / (1 + INFLATION) - 1, 0.005);
           totalCapital = monthlyNeed * 12 / realYield;
           sustainableMonthly = assetValue * realYield / 12;
           note = 'Capital stays intact — you live off the returns.';
