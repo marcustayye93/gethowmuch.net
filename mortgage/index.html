@@ -29,6 +29,7 @@
       --brand: #ffd84c;
       --brand-deep: #eab308;
       --brand-soft: #ffefb0;
+      --aqua: #45dbdd;
       --brick: #a63d2f;
       --brick-deep: #7f2d21;
       --brick-wash: #f9e9e5;
@@ -42,7 +43,7 @@
       min-width: 0;
       color: var(--ink);
       background:
-        radial-gradient(circle at 100% 0%, rgba(166,61,47,.10), transparent 30rem),
+        radial-gradient(circle at 100% 0%, rgba(255,216,76,.14), transparent 30rem),
         var(--paper);
       font-family: "Space Grotesk", system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -58,14 +59,13 @@
 
     .brand {
       display: inline-block;
-      margin: 0 0 14px;
+      margin: 4px 0 16px;
       color: var(--ink);
-      font-weight: 800;
+      font-weight: 700;
       font-size: 17px;
       letter-spacing: -.5px;
       text-decoration: none;
     }
-    .brand:hover { text-decoration: underline; text-underline-offset: 3px; }
 
     .site-nav {
       display: grid;
@@ -79,43 +79,27 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
       padding: 10px 7px;
       border: 2px solid var(--ink);
-      border-radius: 16px;
-      background: #fff;
-      color: var(--ink);
-      font-weight: 700;
-      font-size: 13.5px;
-      line-height: 1.15;
-      text-align: center;
-      text-decoration: none;
-      box-shadow: 3px 3px 0 var(--ink);
-      transition: transform .08s ease, box-shadow .08s ease;
-    }
-    .site-nav a:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
-    .site-nav a:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
-    .site-nav a.active {
-      background: var(--brand);
-      color: var(--ink);
-    }
-    .site-nav a:focus-visible { outline: 3px solid var(--brick); outline-offset: 3px; }
-
-    .intro { margin: 0 0 26px; }
-    .kicker {
-      display: inline-block;
-      margin: 0 0 12px;
-      padding: 7px 13px;
-      border: 2px solid var(--ink);
-      border-radius: 999px;
-      background: var(--brand);
+      border-radius: 0;
+      background: var(--aqua);
       color: var(--ink);
       font-size: 12px;
       font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      line-height: 1.05;
+      text-align: center;
+      text-decoration: none;
       box-shadow: 3px 3px 0 var(--ink);
     }
+    .site-nav a.active { background: var(--ink); color: #fff; }
+    .site-nav a:active { transform: scale(.97); }
+    .site-nav a:focus-visible { outline: 3px solid var(--brand-deep); outline-offset: 3px; }
+    @media (max-width: 360px) {
+      .site-nav { gap: 6px; }
+      .site-nav a { padding-left: 5px; padding-right: 5px; font-size: 11px; }
+    }
+
+    .intro { margin-bottom: clamp(24px, 4vw, 44px); }
     h1 {
       margin: 0 0 12px;
       font-size: clamp(36px, 9vw, 64px);
@@ -135,24 +119,25 @@
       min-height: 64px;
       padding: 10px 8px;
       border: 2px solid var(--ink);
-      border-radius: 14px;
-      background: #fff;
+      border-radius: 0;
+      background: #f8faf7;
+      color: var(--ink);
       font-weight: 800;
-      font-size: 13.5px;
+      font-size: 13px;
       line-height: 1.25;
       cursor: pointer;
-      box-shadow: 3px 3px 0 var(--ink);
     }
-    .mode-btn small { display: block; margin-top: 3px; font-weight: 500; font-size: 11px; color: var(--muted); }
-    .mode-btn.active { background: var(--ink); color: #fff; box-shadow: 3px 3px 0 var(--brick); }
-    .mode-btn.active small { color: rgba(255,255,255,.7); }
-    .mode-btn:focus-visible { outline: 3px solid var(--brick); outline-offset: 3px; }
+    .mode-btn small { display: block; margin-top: 2px; font-weight: 500; font-size: 11px; color: var(--muted); }
+    .mode-btn.active { background: var(--brick); border-color: var(--ink); color: #fff; box-shadow: 3px 3px 0 var(--ink); }
+    .mode-btn.active small { color: rgba(255,255,255,.75); }
+    .mode-btn:focus-visible { outline: 3px solid var(--brand-deep); outline-offset: 3px; }
 
     .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: clamp(20px, 4vw, 28px);
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      box-shadow: 4px 4px 0 var(--ink);
+      padding: clamp(22px, 3vw, 30px);
       margin-bottom: 22px;
     }
     .card h2 {
@@ -161,7 +146,7 @@
       font-weight: 700;
       letter-spacing: -.02em;
     }
-    .card-sub { margin: 0 0 18px; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+    .card-sub { margin: 0 0 18px; color: var(--muted); font-size: 14px; line-height: 1.45; }
 
     .field { margin: 0 0 20px; }
     .field:last-child { margin-bottom: 0; }
@@ -186,40 +171,22 @@
       min-height: 52px;
       padding: 10px 12px;
       border: 2px solid var(--ink);
-      border-radius: 12px;
-      background: #fbfbf9;
+      border-radius: 0;
+      background: #f8faf7;
+      color: var(--ink);
       font-weight: 700;
       font-size: 14px;
       cursor: pointer;
       text-align: center;
     }
     .seg-btn small { display: block; margin-top: 2px; font-weight: 500; font-size: 11px; color: var(--muted); }
-    .seg-btn.active { background: var(--brick); border-color: var(--ink); color: #fff; box-shadow: 3px 3px 0 var(--ink); }
+    .seg-btn.active { background: var(--brick); border-color: var(--ink); color: #fff; box-shadow: 2px 2px 0 var(--ink); }
     .seg-btn.active small { color: rgba(255,255,255,.75); }
-    .seg-btn:focus-visible { outline: 3px solid var(--brick); outline-offset: 2px; }
+    .seg-btn:focus-visible { outline: 3px solid var(--brand-deep); outline-offset: 2px; }
 
-    .money-input {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border: 2px solid var(--ink);
-      border-radius: 12px;
-      background: #fff;
-      padding: 0 14px;
-      box-shadow: 3px 3px 0 var(--ink);
-    }
+    .money-input { display: flex; align-items: center; gap: 8px; background: transparent; border: 0; border-bottom: 4px solid var(--ink); border-radius: 0; padding: 0 2px 6px; }
     .money-input > span { font-family: "Space Mono", monospace; font-weight: 700; color: var(--muted); }
-    .money-input input {
-      width: 100%;
-      border: 0;
-      background: transparent;
-      padding: 13px 0;
-      font-family: "Space Mono", monospace;
-      font-weight: 700;
-      font-size: 17px;
-      color: var(--ink);
-      outline: none;
-    }
+    .money-input input { width: 100%; border: 0; background: transparent; padding: 2px 0; font-family: "Space Mono", monospace; font-weight: 700; font-size: 18px; color: var(--ink); outline: none; }
 
     .range-wrap { padding: 0; }
     input[type="range"] {
@@ -309,54 +276,59 @@
       line-height: 1.55;
     }
     .binding {
-      margin: 16px 0 0;
-      padding: 12px 14px;
-      border: 1px solid rgba(255,255,255,.4);
-      background: rgba(255,255,255,.12);
-      border-radius: 10px;
-      font-size: 13.5px;
+      margin: 18px calc(clamp(26px, 4vw, 40px) * -1) calc(clamp(26px, 4vw, 40px) * -1);
+      padding: 16px clamp(26px, 4vw, 40px);
+      background: var(--brick-wash);
+      color: var(--ink);
+      font-size: 14px;
       line-height: 1.55;
     }
-    .binding strong { color: #fff; }
+    .binding strong { color: var(--brick-deep); }
 
-    .detail-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 22px; }
+    .detail-grid { display: grid; border-top: 1px solid rgba(255,255,255,.25); }
     .detail-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       gap: 12px;
-      padding: 13px 16px;
-      background: #fff;
+      padding: 13px clamp(20px, 3vw, 30px);
+      border-bottom: 1px solid rgba(255,255,255,.15);
       font-size: 14.5px;
     }
-    .detail-row .k { color: var(--muted); font-weight: 500; }
-    .detail-row .k small { display: block; margin-top: 2px; font-size: 12px; }
-    .detail-row strong { font-family: "Space Mono", monospace; font-weight: 700; white-space: nowrap; }
-    .detail-row.hot { background: var(--brick-wash); }
-    .detail-row.hot .k { color: var(--brick-deep); font-weight: 700; }
-    .detail-row.hot strong { color: var(--brick-deep); }
+    .detail-row:last-child { border-bottom: 0; }
+    .detail-row .k { color: rgba(255,255,255,.78); font-weight: 500; }
+    .detail-row .k small { display: block; margin-top: 2px; font-size: 12px; color: rgba(255,255,255,.6); }
+    .detail-row strong { font-family: "Space Mono", monospace; font-weight: 700; white-space: nowrap; color: #fff; }
+    .detail-row.hot { background: rgba(255,255,255,.10); }
+    .detail-row.hot .k { color: #fff; font-weight: 700; }
+    .detail-row.hot strong { color: var(--brand); }
 
-    .method {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: clamp(20px, 4vw, 28px);
-      margin-bottom: 26px;
-    }
+    .method { margin: 30px 0 6px; padding: 22px 2px 0; border-top: 1px solid var(--line); }
     .method h2 { margin: 0 0 10px; font-size: 18px; letter-spacing: -.02em; }
-    .method p, .method li { color: var(--muted); font-size: 13.5px; line-height: 1.65; }
+    .method p, .method li { color: var(--muted); font-size: 13px; line-height: 1.65; }
     .method ul { margin: 8px 0 0; padding-left: 20px; }
     .method a { color: var(--brick-deep); font-weight: 700; }
 
     .site-foot {
+      margin: 48px 0 10px;
+      padding-top: 20px;
       border-top: 1px solid var(--line);
-      padding-top: 18px;
-      color: var(--muted);
       font-size: 12.5px;
-      line-height: 1.7;
+      color: var(--muted);
+      text-align: center;
     }
-    .site-foot a { color: var(--ink); font-weight: 700; text-decoration: none; }
-    .site-foot a:hover { text-decoration: underline; }
+    .site-foot a { color: var(--ink); font-weight: 800; text-decoration: none; }
+
+    .faq { margin: 36px 0 6px; }
+    .faq h2 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 14px; }
+    .faq details { background: #fff; border: 2px solid var(--ink); border-radius: 0; box-shadow: 3px 3px 0 var(--ink); margin-bottom: 10px; }
+    .faq summary { list-style: none; padding: 16px 18px; font-weight: 800; font-size: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::marker { content: none; }
+    .faq summary:after { content: "+"; font-size: 22px; line-height: 1; color: var(--brick); font-weight: 700; flex: 0 0 auto; }
+    .faq details[open] summary:after { content: "\2212"; }
+    .faq .details-body { padding: 0 18px 18px; }
+    .faq .details-body p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.6; }
 
     @media (max-width: 430px) {
       .hero-number { flex-wrap: wrap; }
@@ -464,7 +436,6 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     </nav>
 
     <header class="intro">
-      <span class="kicker">Home loan</span>
       <h1>How much mortgage can you afford?</h1>
       <p class="lede">Start from your salary, your dream loan, or the price tag. The calculator applies Singapore's TDSR, MSR and stress-test rules and tells you which rule is actually stopping you.</p>
     </header>
@@ -575,9 +546,8 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           <p class="hero-caption" id="heroCaption"></p>
           <p class="binding" id="bindingLine"></p>
         </div>
+        <div class="detail-grid" id="detailGrid" aria-live="polite"></div>
       </div>
-
-      <div class="detail-grid" id="detailGrid" aria-live="polite"></div>
     </section>
 
     <section class="method" aria-label="How this estimate works">
@@ -590,8 +560,32 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <li><strong>LTV 75%:</strong> the loan can cover at most 75% of the price, so the downpayment is 25%. Bank loans need at least 5% of the price in cash.</li>
         <li><strong>Tenure:</strong> up to 25 years on HDB loans, 30 years on bank loans, subject to age limits.</li>
       </ul>
-      <p>Buyer's stamp duty is added on the price: 1% on the first S$180k, 2% on the next S$180k, 3% on the next S$640k, 4% on the next S$500k, 5% on the next S$500k and 6% above S$3M. Assumes a Singapore citizen buying a first property, with no Additional Buyer's Stamp Duty.</p>
+      <p>Buyer's stamp duty is added on the price: 1% on the first S$180k, 2% on the next S$180k, 3% on the next S$640k, 4% on the next S$500k, 5% on the next S$1.5M and 6% above S$3M. Assumes a Singapore citizen buying a first property, with no Additional Buyer's Stamp Duty.</p>
       <p>Rules reference: <a href="https://www.mas.gov.sg/regulation/explainers/total-debt-servicing-ratio">MAS on TDSR</a>, <a href="https://www.hdb.gov.sg/residential/buying-a-flat/financing-a-flat-purchase/housing-loan-from-hdb">HDB on housing loans</a>, <a href="https://www.iras.gov.sg/taxes/stamp-duty/for-individuals/buying-or-acquiring-property/buyer's-stamp-duty-(bsd)-payable-for-purchase-or-acquisition-of-properties">IRAS on buyer's stamp duty</a>. Estimates for planning only, not financial advice.</p>
+    </section>
+
+    <section class="faq" aria-label="Common questions">
+      <h2>Common questions</h2>
+      <details>
+        <summary>Why does the bank test my loan at 4% when actual rates are lower?</summary>
+        <div class="details-body"><p>Banks must check you can still afford the instalments if rates rise, so they assess bank loans at the higher of your actual rate or 4% a year. HDB concessionary loans skip this test and are assessed at the flat 2.6% rate, which is why the same salary qualifies for a bigger HDB loan than bank loan.</p></div>
+      </details>
+      <details>
+        <summary>What is the difference between TDSR and MSR?</summary>
+        <div class="details-body"><p>TDSR caps all your monthly debt payments, home loan included, at 55% of gross monthly income, and applies to bank loans. MSR caps just the home loan instalment at 30% of income, and applies when you buy an HDB flat. This calculator works out both caps and uses whichever is tighter.</p></div>
+      </details>
+      <details>
+        <summary>How much cash do I need upfront?</summary>
+        <div class="details-body"><p>The downpayment is 25% of the price. On a bank loan at least 5% of the price must be paid in cash; the rest of the downpayment and the buyer's stamp duty can come from CPF savings. HDB concessionary loans have no minimum cash requirement.</p></div>
+      </details>
+      <details>
+        <summary>Do my other debts really shrink my home loan?</summary>
+        <div class="details-body"><p>Yes. Under TDSR every dollar of car, student, renovation or credit card payments eats one dollar of your 55% allowance. A S$2,000 a month car loan on a S$9,000 salary cuts about S$419,000 off the home price you qualify for.</p></div>
+      </details>
+      <details>
+        <summary>Does applying with my spouse change the numbers?</summary>
+        <div class="details-body"><p>Yes. A joint application combines both incomes for the TDSR and MSR caps, which raises how much you can borrow. Both applicants' existing monthly debts count against the caps too.</p></div>
+      </details>
     </section>
 
     <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a> · Estimates for planning only. Not financial advice. © 2026</footer>
