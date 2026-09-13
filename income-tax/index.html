@@ -8,17 +8,17 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffd84c'/%3E%3Ctext x='32' y='45' font-family='sans-serif' font-size='42' font-weight='bold' text-anchor='middle' fill='%23101828'%3E?%3C/text%3E%3C/svg%3E" />
   <link rel="preload" href="/assets/fonts/fonts.css" as="style">
   <link rel="stylesheet" href="/assets/fonts/fonts.css">
-  <title>Income Tax Calculator Singapore (YA2026) — GetHowMuch</title>
-  <meta name="description" content="Estimate your YA2026 Singapore income tax and monthly set-aside. See how CPF relief, SRS contributions and donations lower what you pay." />
+  <title>Income Tax Calculator Singapore (YA2027) — GetHowMuch</title>
+  <meta name="description" content="Estimate your YA2027 Singapore income tax and monthly set-aside. See how CPF relief, SRS contributions and donations lower what you pay." />
   <link rel="canonical" href="https://gethowmuch.net/income-tax/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="GetHowMuch" />
-  <meta property="og:title" content="Income Tax Calculator Singapore (YA2026) — GetHowMuch" />
+  <meta property="og:title" content="Income Tax Calculator Singapore (YA2027) — GetHowMuch" />
   <meta property="og:url" content="https://gethowmuch.net/income-tax/" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:description" content="Estimate your YA2026 Singapore income tax and monthly set-aside. See how CPF relief, SRS contributions and donations lower what you pay." />
-  <meta name="twitter:description" content="Estimate your YA2026 Singapore income tax and monthly set-aside. See how CPF relief, SRS contributions and donations lower what you pay." />
-  <meta name="twitter:title" content="Income Tax Calculator Singapore (YA2026) — GetHowMuch" />
+  <meta property="og:description" content="Estimate your YA2027 Singapore income tax and monthly set-aside. See how CPF relief, SRS contributions and donations lower what you pay." />
+  <meta name="twitter:description" content="Estimate your YA2027 Singapore income tax and monthly set-aside. See how CPF relief, SRS contributions and donations lower what you pay." />
+  <meta name="twitter:title" content="Income Tax Calculator Singapore (YA2027) — GetHowMuch" />
   <style>
     :root {
       --ink: #101828;
@@ -770,7 +770,7 @@
   "operatingSystem": "Web",
   "inLanguage": "en-SG",
   "url": "https://gethowmuch.net/income-tax/",
-  "description": "Estimate your YA2026 Singapore income tax and monthly set-aside. See how CPF relief, SRS contributions and donations lower what you pay.",
+  "description": "Estimate your YA2027 Singapore income tax and monthly set-aside. See how CPF relief, SRS contributions and donations lower what you pay.",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -821,7 +821,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 
     <header class="intro">
       <h1>Income Tax Calculator</h1>
-      <p class="subline">Your YA2026 tax bill, and how to shrink it before 31 December.</p>
+      <p class="subline">Your YA2027 tax bill, and how to shrink it before 31 December.</p>
     </header>
 
     <div class="layout">
@@ -846,17 +846,19 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 
         <article class="step">
           <div class="step-head">
-            <h2 class="step-label">Your age group</h2>
+            <h2 class="step-label">Your age</h2>
             <span class="step-num">02</span>
           </div>
-          <p class="helper">Sets your CPF contribution rate.</p>
-          <div class="chips" role="group" aria-label="Age group">
-            <button class="chip" type="button" data-age="under55" aria-pressed="true">55 &amp; below</button>
-            <button class="chip" type="button" data-age="55to60" aria-pressed="false">Above 55–60</button>
-            <button class="chip" type="button" data-age="60to65" aria-pressed="false">Above 60–65</button>
-            <button class="chip" type="button" data-age="65to70" aria-pressed="false">Above 65–70</button>
-            <button class="chip" type="button" data-age="above70" aria-pressed="false">Above 70</button>
+          <p class="helper">Sets your CPF contribution rate and earned income relief.</p>
+          <label class="salary-value" for="ageInput">
+            <input id="ageInput" type="number" inputmode="numeric" min="16" max="99" step="1" value="40" aria-describedby="ageHelp" />
+            <span class="per-month">years old</span>
+          </label>
+          <div class="range-wrap">
+            <input id="ageRange" type="range" min="16" max="99" step="1" value="40" aria-label="Your age" />
+            <div class="range-labels" aria-hidden="true"><span>16</span><span>99</span></div>
           </div>
+          <span id="ageHelp" hidden>Enter your age in years.</span>
         </article>
       </section>
 
@@ -900,7 +902,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           </div>
           <p class="insight" id="marginalInsight">Your next dollar is taxed at 7%.</p>
         </div>
-        <p class="source-note">Tax uses YA2026 resident rates; CPF uses contribution rates effective 1 Jan 2026. Source parameters: IRAS and CPF Board. Verified 12 Sep 2026.</p>
+        <p class="source-note">Tax uses YA2027 resident rates (2026 income); CPF uses contribution rates effective 1 Jan 2026. Source parameters: IRAS and CPF Board. Verified 13 Sep 2026.</p>
       </section>
     </div>
 
@@ -947,7 +949,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     <section class="tax-savers" aria-labelledby="saversTitle">
       <div class="savers-head">
         <h2 id="saversTitle">Ways you could pay less tax</h2>
-        <p>Not loopholes. These are legitimate YA2026 deductions and reliefs worth checking before you file.</p>
+        <p>Not loopholes. These are legitimate YA2027 deductions and reliefs worth checking before you file.</p>
       </div>
 
       <div class="relief-primer">
@@ -1093,7 +1095,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <h2>Common questions</h2>
       <details>
         <summary>What is a Year of Assessment (YA)?</summary>
-        <p>Your YA2026 tax is computed on income you earned in 2025. E-filing for YA2026 typically closes in mid-April 2026.</p>
+        <p>Your YA2027 tax is computed on income you earned in 2026. E-filing for YA2027 typically closes in mid-April 2027.</p>
       </details>
       <details>
         <summary>How can I legally pay less income tax in Singapore?</summary>
@@ -1113,10 +1115,10 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <button class="close-button" id="closeInfo" type="button" aria-label="Close information">×</button>
     </div>
     <div class="modal-body">
-      <p class="modal-lead">This combines two planning views: employee CPF using rates effective 1 Jan 2026, and a YA2026 income-tax estimate for income earned in 2025. The tax view annualises your monthly gross pay, subtracts employee CPF, earned income relief and any reliefs you enter below, then applies YA2026 progressive rates.</p>
+      <p class="modal-lead">This combines two planning views: employee CPF using rates effective 1 Jan 2026, and a YA2027 income-tax estimate for income earned in 2026. The tax view annualises your monthly gross pay, subtracts employee CPF, earned income relief and any reliefs you enter below, then applies YA2027 progressive rates.</p>
       <ul class="method-list">
-        <li><strong>YA2026 resident rates</strong>Thirteen progressive bands, from 0% to 24%, in force from YA2024 onwards.</li>
-        <li><strong>No YA2026 rebate</strong>The 60% SG60 rebate, capped at S$200, applied to YA2025 only. It is not carried into this estimate.</li>
+        <li><strong>YA2027 resident rates</strong>Thirteen progressive bands, from 0% to 24%, in force from YA2024 onwards.</li>
+        <li><strong>No YA2027 rebate assumed</strong>Budget 2027 has not been announced yet, so this estimate excludes any rebate.</li>
         <li><strong>CPF employee contribution</strong>Uses the age-based employee rate and the S$8,000 monthly Ordinary Wage ceiling from 1 Jan 2026. The annual salary ceiling is S$102,000.</li>
         <li><strong>Reliefs included</strong>Employee CPF contributions and earned income relief (S$1,000 below 55, S$6,000 from 55–59, S$8,000 from 60), plus the SRS, CPF top-up, NSman, parent, child and donation amounts you enter.</li>
         <li><strong>Relief ceiling</strong>Total personal reliefs are capped at S$80,000 per Year of Assessment.</li>
@@ -1129,16 +1131,21 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
   <script>
     const salaryRange = document.getElementById('salaryRange');
     const salaryInput = document.getElementById('salaryInput');
-    const chips = [...document.querySelectorAll('.chip')];
+    const ageRange = document.getElementById('ageRange');
+    const ageInput = document.getElementById('ageInput');
     const infoDialog = document.getElementById('infoDialog');
 
-    const ageSettings = {
-      under55: { cpf: 0.20, relief: 1000 },
-      '55to60': { cpf: 0.18, relief: 6000 },
-      '60to65': { cpf: 0.125, relief: 8000 },
-      '65to70': { cpf: 0.075, relief: 8000 },
-      above70: { cpf: 0.05, relief: 8000 }
-    };
+    // Exact-age mapping. CPF Board bands (1 Jan 2026) and IRAS earned income
+    // relief use different boundaries at 55 and 60, so chips cannot serve both.
+    function cpfRateFor(age) {
+      return age <= 55 ? 0.20 : age <= 60 ? 0.18 : age <= 65 ? 0.125 : age <= 70 ? 0.075 : 0.05;
+    }
+    function eirFor(age) {
+      return age < 55 ? 1000 : age < 60 ? 6000 : 8000;
+    }
+    function ageVal() {
+      return Math.max(16, Math.min(99, Math.round(Number(ageInput.value) || 40)));
+    }
 
     const taxBands = [
       [20000, 0], [10000, 0.02], [10000, 0.035], [40000, 0.07],
@@ -1147,7 +1154,6 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       [Infinity, 0.24]
     ];
 
-    let selectedAge = 'under55';
     const money = new Intl.NumberFormat('en-SG', { maximumFractionDigits: 0 });
     const money2 = new Intl.NumberFormat('en-SG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const disp = n => Math.abs(n) >= 1e6 ? Math.round(n / 1e3) * 1e3 : n;
@@ -1182,14 +1188,16 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     }
 
     function setRangeFill() {
-      const min = Number(salaryRange.min);
-      const max = Number(salaryRange.max);
-      const value = Number(salaryRange.value);
-      const fill = ((value - min) / (max - min)) * 100;
-      salaryRange.style.setProperty('--fill', fill + '%');
+      for (const el of [salaryRange, ageRange]) {
+        const min = Number(el.min);
+        const max = Number(el.max);
+        const value = Number(el.value);
+        const fill = ((value - min) / (max - min)) * 100;
+        el.style.setProperty('--fill', fill + '%');
+      }
     }
 
-    // Relief caps, YA2026. Refresh these each Year of Assessment.
+    // Relief caps, YA2027. Refresh these each Year of Assessment.
     const SRS_CAP = 15300;
     const CPF_OWN_CAP = 8000;
     const CPF_FAM_CAP = 8000;
@@ -1229,7 +1237,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     function update() {
       const monthly = Math.max(0, Math.min(30000, Number(salaryInput.value) || 0));
       const annual = monthly * 12;
-      const settings = ageSettings[selectedAge];
+      const settings = { cpf: cpfRateFor(ageVal()), relief: eirFor(ageVal()) };
       const cpfAnnual = Math.min(monthly, 8000) * settings.cpf * 12;
       const earnedRelief = Math.min(settings.relief, Math.max(0, annual - cpfAnnual));
       const vol = reliefInputs();
@@ -1438,11 +1446,21 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       document.getElementById('saversTitle').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    chips.forEach(chip => chip.addEventListener('click', () => {
-      selectedAge = chip.dataset.age;
-      chips.forEach(item => item.setAttribute('aria-pressed', String(item === chip)));
+    ageRange.addEventListener('input', () => {
+      ageInput.value = ageRange.value;
       update();
-    }));
+    });
+
+    ageInput.addEventListener('input', () => {
+      ageRange.value = ageVal();
+      update();
+    });
+
+    ageInput.addEventListener('blur', () => {
+      ageInput.value = ageVal();
+      ageRange.value = ageVal();
+      update();
+    });
 
     document.getElementById('openInfo').addEventListener('click', () => infoDialog.showModal());
     document.getElementById('closeInfo').addEventListener('click', () => infoDialog.close());
@@ -1471,7 +1489,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       "name": "What is a Year of Assessment (YA)?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Your YA2026 tax is computed on income you earned in 2025. E-filing for YA2026 typically closes in mid-April 2026."
+        "text": "Your YA2027 tax is computed on income you earned in 2026. E-filing for YA2027 typically closes in mid-April 2027."
       }
     },
     {
