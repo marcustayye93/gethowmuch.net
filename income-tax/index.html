@@ -333,7 +333,7 @@
 
     .flow {
       display: grid;
-      grid-template-columns: 1fr auto 1fr auto 1fr;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
       align-items: center;
       gap: 7px;
       padding: 20px clamp(20px, 3vw, 30px);
@@ -813,6 +813,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <a href="/cpf/">CPF</a>
       <a href="/car-coe/">Car &amp; COE</a>
       <a href="/forex/">Currency</a>
+      <a href="/mortgage/">Mortgage</a>
     </nav>
 
     <header class="intro">
@@ -872,13 +873,15 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           </div>
 
           <div class="flow" aria-label="Monthly pay breakdown">
-            <div class="flow-item"><span>Gross</span><strong id="grossMonthly">S$6,000</strong></div>
+            <div class="flow-item"><span>Gross</span><strong id="grossMonthly">S$10,000</strong></div>
             <span class="flow-op" aria-hidden="true">−</span>
-            <div class="flow-item"><span>CPF</span><strong id="cpfMonthly">S$1,200</strong></div>
+            <div class="flow-item"><span>CPF</span><strong id="cpfMonthly">S$1,600</strong></div>
+            <span class="flow-op" aria-hidden="true">−</span>
+            <div class="flow-item"><span>Income tax</span><strong id="taxMonthly">S$469</strong></div>
             <span class="flow-op" aria-hidden="true">=</span>
-            <div class="flow-item final"><span>In your bank</span><strong id="bankMonthly">S$4,800</strong></div>
+            <div class="flow-item final"><span>You keep</span><strong id="keepMonthly">S$7,931</strong></div>
           </div>
-          <p class="flow-note">Income tax is not deducted from your salary. IRAS bills you separately after you file each year.</p>
+          <p class="flow-note">Income tax isn't deducted from your salary. This is what you'd pay IRAS each month on 12 interest-free GIRO instalments.</p>
 
           <div class="details">
             <div class="detail">
@@ -1167,7 +1170,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         const upper = lower + width;
         if (rate === marginal && chargeable <= upper) {
           const next = taxBands[i + 1];
-          return { headroom: Math.max(0, upper - chargeable), nextRate: next ? next[1] : null };
+          return { headroom: Math.max(0, upper - chargeable), nextRate: next ? next[1] : null, nextAt: upper };
         }
         lower = upper;
       }
@@ -1238,7 +1241,9 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         : 'No tax due at this income.';
       document.getElementById('grossMonthly').textContent = 'S$' + money.format(disp(monthly));
       document.getElementById('cpfMonthly').textContent = 'S$' + money.format(disp(cpfMonthly));
-      document.getElementById('bankMonthly').textContent = 'S$' + money.format(disp(bankMonthly));
+      const taxMonthly = cur.tax / 12;
+      document.getElementById('taxMonthly').textContent = 'S$' + money.format(disp(taxMonthly));
+      document.getElementById('keepMonthly').textContent = 'S$' + money.format(disp(bankMonthly - taxMonthly));
       document.getElementById('cpfDetail').textContent = 'S$' + money.format(disp(cpfMonthly)) + ' / mo';
       document.getElementById('cpfRate').textContent = money2.format(settings.cpf * 100).replace('.00', '') + '% employee rate';
       document.getElementById('reliefsClaimed').textContent = 'S$' + money.format(disp(cur.reliefsClaimed));
@@ -1250,9 +1255,24 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         insight += ' That is the top rate.';
       } else {
         const nextText = money2.format(bi.nextRate * 100).replace('.00', '') + '%';
-        insight += bi.headroom <= 0
-          ? ' Your next dollar is taxed at ' + nextText + '.'
-          : ' If you earn S$' + money.format(disp(bi.headroom)) + ' more, your next dollar is taxed at ' + nextText + '.';
+        if (bi.headroom <= 0) {
+          insight += ' Your next dollar is taxed at ' + nextText + '.';
+        } else {
+          // Monthly pay rise that pushes chargeable income into the next bracket,
+          // accounting for CPF on the extra salary.
+          const chargeableAt = m => {
+            const a = Math.max(0, m) * 12;
+            const c = Math.min(Math.max(0, m), 8000) * settings.cpf * 12;
+            const e = Math.min(settings.relief, Math.max(0, a - c));
+            return computeAll(a, c, e, vol).chargeable;
+          };
+          let lo = 0, hi = Math.max(bi.headroom, 1);
+          for (let i = 0; i < 50; i++) {
+            const mid = (lo + hi) / 2;
+            if (chargeableAt(monthly + mid) >= bi.nextAt) hi = mid; else lo = mid;
+          }
+          insight += ' If you earn S$' + money.format(disp(hi)) + ' more a month, your next dollar is taxed at ' + nextText + '.';
+        }
       }
       document.getElementById('marginalInsight').textContent = insight;
 
