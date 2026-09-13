@@ -177,7 +177,8 @@
       font-size: 17px;
       font-weight: 600;
     }
-    #salaryInput {
+    #salaryInput,
+    #cashInput {
       width: min(220px, calc(100% - 76px));
       border: 0;
       border-bottom: 4px solid var(--ink);
@@ -193,8 +194,11 @@
       appearance: textfield;
     }
     #salaryInput::-webkit-outer-spin-button,
-    #salaryInput::-webkit-inner-spin-button { appearance: none; margin: 0; }
-    #salaryInput:focus { border-color: var(--brand); }
+    #salaryInput::-webkit-inner-spin-button,
+    #cashInput::-webkit-outer-spin-button,
+    #cashInput::-webkit-inner-spin-button { appearance: none; margin: 0; }
+    #salaryInput:focus,
+    #cashInput:focus { border-color: var(--brand); }
     .per-month { align-self: end; padding-bottom: 7px; color: var(--muted); font: 500 13px "Space Grotesk", sans-serif; }
 
     .range-wrap { padding: 0; }
@@ -312,7 +316,7 @@
       font-weight: 700;
     }
     .hero-number .currency { color: #fff; font-size: clamp(18px, 2.2vw, 26px); }
-    #takeHome {
+    #taxBillHero {
       min-width: 0;
       font-size: clamp(44px, 11vw, 76px);
       line-height: 1;
@@ -621,6 +625,109 @@
     }
     .modal-sources { margin: 18px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
 
+    .flow-note {
+      margin: 0;
+      padding: 0 clamp(20px, 3vw, 30px) 20px;
+      background: white;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    .optimizer {
+      margin-top: clamp(28px, 5vw, 48px);
+      padding-top: clamp(28px, 4vw, 44px);
+      border-top: 1px solid var(--line);
+    }
+    .opt-cash { margin-bottom: 16px; }
+    .opt-results { display: grid; gap: 14px; }
+    .opt-block {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+    .opt-block h3 {
+      margin: 0 0 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+    .opt-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 9px 0;
+      border-top: 1px dashed var(--line);
+      font-size: 15px;
+    }
+    .opt-row:first-of-type { border-top: 0; }
+    .opt-row strong { font-family: "Space Mono", monospace; white-space: nowrap; }
+    .opt-row small { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; font-weight: 400; }
+    .opt-empty { margin: 8px 0 2px; color: var(--muted); font-size: 14px; }
+    .opt-outcome {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 3px solid var(--ink);
+      box-shadow: 6px 6px 0 var(--ink);
+    }
+    .opt-stat { padding: 16px clamp(14px, 2.5vw, 22px); background: var(--ink); color: #fff; }
+    .opt-stat + .opt-stat { border-left: 1px solid rgba(255,255,255,.15); }
+    .opt-stat span { display: block; color: rgba(255,255,255,.75); font-size: 11px; }
+    .opt-stat strong { display: block; margin-top: 6px; font: 700 clamp(16px, 2.4vw, 22px) "Space Mono", monospace; }
+    .opt-apply {
+      justify-self: start;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--brand);
+      box-shadow: 4px 4px 0 var(--ink);
+      padding: 14px 22px;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .opt-apply:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+
+    .relief-field {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    .relief-field > span:first-child { color: var(--muted); }
+    .money-wrap { display: flex; align-items: center; gap: 6px; font: 700 16px "Space Mono", monospace; }
+    .money-input {
+      width: 104px;
+      border: 0;
+      border-bottom: 3px solid var(--ink);
+      border-radius: 0;
+      background: transparent;
+      padding: 2px 0;
+      color: var(--ink);
+      font: 700 18px "Space Mono", monospace;
+      text-align: right;
+      outline: none;
+      appearance: textfield;
+    }
+    .money-input::-webkit-outer-spin-button,
+    .money-input::-webkit-inner-spin-button { appearance: none; margin: 0; }
+    .money-input:focus { border-color: var(--brand-deep); }
+    .relief-field select {
+      max-width: 240px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: #fff;
+      padding: 8px 10px;
+      color: var(--ink);
+      font: 600 13.5px "Space Grotesk", sans-serif;
+    }
+
     @media (max-width: 780px) {
       .site-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .step { border-radius: 0; }
@@ -646,6 +753,8 @@
       .hero-number .unit { width: 100%; }
       .saver-card summary { grid-template-columns: 1fr; min-height: 0; padding-right: 46px; }
       .tip-saving { text-align: left; }
+      .opt-outcome { grid-template-columns: 1fr; }
+      .opt-stat + .opt-stat { border-left: 0; border-top: 1px solid rgba(255,255,255,.15); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -708,7 +817,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 
     <header class="intro">
       <h1>Income Tax Calculator</h1>
-      <p class="subline">Your 2026 CPF deduction, with YA2026 income tax shown as a monthly set-aside.</p>
+      <p class="subline">Your YA2026 tax bill, and how to shrink it before 31 December.</p>
     </header>
 
     <div class="layout">
@@ -751,36 +860,36 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <div class="results" aria-live="polite">
           <div class="hero-result">
             <div class="result-kicker">
-              <span>You keep</span>
+              <span>Your income tax bill</span>
               <button class="info-button" id="openInfo" type="button" aria-label="How this estimate works">i</button>
             </div>
             <div class="hero-number">
               <span class="currency">S$</span>
-              <strong id="takeHome">4,905</strong>
-              <span class="unit">/ month</span>
+              <strong id="taxBillHero">1,140</strong>
+              <span class="unit">/ yr</span>
             </div>
-            <p class="hero-caption">CPF uses rates effective 1 Jan 2026. Income tax uses YA2026 rates for income earned in 2025, shown monthly for comparison.</p>
+            <p class="hero-caption" id="giroLine">About S$95 a month over 12 interest-free GIRO instalments.</p>
           </div>
 
           <div class="flow" aria-label="Monthly pay breakdown">
             <div class="flow-item"><span>Gross</span><strong id="grossMonthly">S$6,000</strong></div>
             <span class="flow-op" aria-hidden="true">−</span>
             <div class="flow-item"><span>CPF</span><strong id="cpfMonthly">S$1,200</strong></div>
-            <span class="flow-op" aria-hidden="true">−</span>
-            <div class="flow-item"><span>Tax</span><strong id="taxMonthly">S$95</strong></div>
-            <div class="flow-item final"><span>You keep</span><strong id="keepMonthlySmall">S$4,705</strong></div>
+            <span class="flow-op" aria-hidden="true">=</span>
+            <div class="flow-item final"><span>In your bank</span><strong id="bankMonthly">S$4,800</strong></div>
           </div>
+          <p class="flow-note">Income tax is not deducted from your salary. IRAS bills you separately after you file each year.</p>
 
           <div class="details">
-            <div class="detail">
-              <span>Income tax</span>
-              <strong id="taxAnnual">S$1,140 / yr</strong>
-              <small id="effectiveRate">1.6% of your pay</small>
-            </div>
             <div class="detail">
               <span>To your CPF</span>
               <strong id="cpfDetail">S$1,200 / mo</strong>
               <small id="cpfRate">20% employee rate</small>
+            </div>
+            <div class="detail">
+              <span>Reliefs claimed</span>
+              <strong id="reliefsClaimed">S$2,200</strong>
+              <small>of the S$80,000 cap</small>
             </div>
           </div>
           <p class="insight" id="marginalInsight">Your next dollar is taxed at 7%.</p>
@@ -788,6 +897,46 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <p class="source-note">Tax uses YA2026 resident rates; CPF uses contribution rates effective 1 Jan 2026. Source parameters: IRAS and CPF Board. Verified 12 Sep 2026.</p>
       </section>
     </div>
+
+    <section class="optimizer" aria-labelledby="optTitle">
+      <div class="savers-head">
+        <h2 id="optTitle">Tax Relief Optimizer</h2>
+        <p>How should you split cash between SRS and CPF top-ups before 31 December to save the most tax?</p>
+      </div>
+      <article class="step opt-cash">
+        <div class="step-head">
+          <h2 class="step-label">Cash you can deploy</h2>
+        </div>
+        <p class="helper">Money you could put into SRS or CPF top-ups by 31 December.</p>
+        <label class="salary-value" for="cashInput">
+          <span class="prefix">S$</span>
+          <input id="cashInput" type="number" inputmode="numeric" min="0" max="50000" step="500" value="10000" />
+        </label>
+        <div class="range-wrap">
+          <input id="cashRange" type="range" min="0" max="50000" step="500" value="10000" aria-label="Cash available to deploy" />
+          <div class="range-labels" aria-hidden="true"><span>S$0</span><span>S$50k</span></div>
+        </div>
+      </article>
+      <div class="opt-results" aria-live="polite">
+        <div class="opt-block">
+          <h3>Contribution room left</h3>
+          <div class="opt-row"><span>SRS</span><strong id="roomSrs">S$15,300</strong></div>
+          <div class="opt-row"><span>CPF top-ups, your accounts</span><strong id="roomCpfOwn">S$8,000</strong></div>
+          <div class="opt-row"><span>CPF top-ups, family</span><strong id="roomCpfFam">S$8,000</strong></div>
+        </div>
+        <div class="opt-block">
+          <h3>Best split for your <span id="optCashEcho">S$10,000</span></h3>
+          <div id="optSplit"></div>
+          <p class="opt-empty" id="optLeftover" hidden></p>
+        </div>
+        <div class="opt-outcome">
+          <div class="opt-stat"><span>Tax saved</span><strong id="optSaved">S$0 / yr</strong></div>
+          <div class="opt-stat"><span>New tax bill</span><strong id="optNewBill">S$0 / yr</strong></div>
+          <div class="opt-stat"><span>Relief cap left</span><strong id="optCapLeft">S$0</strong></div>
+        </div>
+        <button class="opt-apply" id="applySplit" type="button">Apply this split to the reliefs below</button>
+      </div>
+    </section>
 
     <section class="tax-savers" aria-labelledby="saversTitle">
       <div class="savers-head">
@@ -808,10 +957,19 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <details class="saver-card">
           <summary>
             <span><span class="tip-title">Did you serve NS?</span><span class="tip-cap">S$1,500 to S$5,000</span><span class="effort-badge">Usually automatic</span></span>
-            <span class="tip-saving"><strong id="nsSaving">S$0–S$0</strong><span>possible tax reduction</span></span>
+            <span class="tip-saving"><strong id="nsSaving">S$0</strong><span>less tax a year</span></span>
           </summary>
           <div class="saver-detail">
             <p>S$1,500 without NS activity in the year, S$3,000 with it. Command holders get S$3,500 or S$5,000.</p>
+            <label class="relief-field"><span>Your NS status</span>
+              <select id="nsSelect">
+                <option value="0">Did not serve NS</option>
+                <option value="1500">Served, no activities this year</option>
+                <option value="3000">Served, with activities this year</option>
+                <option value="3500">Key appointment, no activities</option>
+                <option value="5000">Key appointment, with activities</option>
+              </select>
+            </label>
             <p class="watchout">Usually automatic from MINDEF, SPF or SCDF records. Nothing to file.</p>
           </div>
         </details>
@@ -819,10 +977,16 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <details class="saver-card">
           <summary>
             <span><span class="tip-title">Topping up CPF in cash?</span><span class="tip-cap">Up to S$8,000 relief for yourself</span><span class="effort-badge">One action</span></span>
-            <span class="tip-saving"><strong id="cpfTopupSaving">S$0</strong><span>possible tax reduction</span></span>
+            <span class="tip-saving"><strong id="cpfTopupSaving">S$0</strong><span>less tax a year</span></span>
           </summary>
           <div class="saver-detail">
             <p>Up to S$8,000 for your own top-ups, plus S$8,000 for eligible family members. Deadline: 31 Dec.</p>
+            <label class="relief-field"><span>Top-up, your accounts</span>
+              <span class="money-wrap">S$<input id="cpfOwnInput" class="money-input" type="number" inputmode="numeric" min="0" max="8000" step="100" value="0" aria-label="CPF cash top-up, your accounts" /></span>
+            </label>
+            <label class="relief-field"><span>Top-up, family</span>
+              <span class="money-wrap">S$<input id="cpfFamInput" class="money-input" type="number" inputmode="numeric" min="0" max="8000" step="100" value="0" aria-label="CPF cash top-up, family" /></span>
+            </label>
             <p class="watchout">Counts toward the S$80,000 cap.</p>
           </div>
         </details>
@@ -830,10 +994,13 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <details class="saver-card">
           <summary>
             <span><span class="tip-title">Putting money in SRS?</span><span class="tip-cap">Up to S$15,300 relief</span><span class="effort-badge">One action</span></span>
-            <span class="tip-saving"><strong id="srsSaving">S$0</strong><span>possible tax reduction</span></span>
+            <span class="tip-saving"><strong id="srsSaving">S$0</strong><span>less tax a year</span></span>
           </summary>
           <div class="saver-detail">
             <p>Contribute by 31 Dec. From retirement age, only 50% of withdrawals are taxed.</p>
+            <label class="relief-field"><span>Contribution this year</span>
+              <span class="money-wrap">S$<input id="srsInput" class="money-input" type="number" inputmode="numeric" min="0" max="15300" step="100" value="0" aria-label="SRS contribution" /></span>
+            </label>
             <p class="watchout">Counts toward the S$80,000 cap.</p>
           </div>
         </details>
@@ -841,20 +1008,30 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <details class="saver-card">
           <summary>
             <span><span class="tip-title">Supporting a parent aged 55 or older?</span><span class="tip-cap">S$9,000 living with you, S$5,500 if not</span><span class="effort-badge">Check if you qualify</span></span>
-            <span class="tip-saving"><strong id="parentSaving">S$0</strong><span>possible tax reduction</span></span>
+            <span class="tip-saving"><strong id="parentSaving">S$0</strong><span>less tax a year</span></span>
           </summary>
           <div class="saver-detail">
             <p>Up to two dependants. They must live in Singapore and earn below S$8,000 a year.</p>
+            <label class="relief-field"><span>Parent support</span>
+              <select id="parentSelect">
+                <option value="0">Not claiming</option>
+                <option value="5500">Parent 55+, not living with me</option>
+                <option value="9000">Parent 55+, living with me</option>
+              </select>
+            </label>
           </div>
         </details>
 
         <details class="saver-card">
           <summary>
             <span><span class="tip-title">Have an eligible child?</span><span class="tip-cap">S$4,000 per child</span><span class="effort-badge">Check if you qualify</span></span>
-            <span class="tip-saving"><strong id="childSaving">S$0</strong><span>possible tax reduction</span></span>
+            <span class="tip-saving"><strong id="childSaving">S$0</strong><span>less tax a year</span></span>
           </summary>
           <div class="saver-detail">
             <p>Unmarried, Singapore citizen, earning no more than S$8,000.</p>
+            <label class="relief-field"><span>Eligible children, S$4,000 each</span>
+              <span class="money-wrap"><input id="childInput" class="money-input" type="number" inputmode="numeric" min="0" max="5" step="1" value="0" aria-label="Number of eligible children" /></span>
+            </label>
             <p class="watchout">Working mums: S$8,000 for the first child, S$10,000 for the second, S$12,000 after that (born from 2024).</p>
           </div>
         </details>
@@ -862,10 +1039,13 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <details class="saver-card">
           <summary>
             <span><span class="tip-title">Given to charity?</span><span class="tip-cap">A S$1,000 gift gives a S$2,500 deduction</span><span class="effort-badge">One action</span></span>
-            <span class="tip-saving"><strong id="donationSaving">S$0</strong><span>tax reduction on S$1k gift</span></span>
+            <span class="tip-saving"><strong id="donationSaving">S$0</strong><span>less tax a year</span></span>
           </summary>
           <div class="saver-detail">
             <p>250% deduction on IPC donations through 31 Dec 2026. Give the IPC your NRIC so it is recorded.</p>
+            <label class="relief-field"><span>Donation amount</span>
+              <span class="money-wrap">S$<input id="donInput" class="money-input" type="number" inputmode="numeric" min="0" step="50" value="0" aria-label="Donation amount" /></span>
+            </label>
             <p class="watchout">Outside the S$80,000 cap. The gift still costs more than the tax saved.</p>
           </div>
         </details>
@@ -914,8 +1094,8 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <p>Common moves the optimizer models: CPF cash top-ups, SRS contributions and charitable donations — each reduces your chargeable income. Try them above to see the saving.</p>
       </details>
       <details>
-        <summary>What does the “monthly set-aside” mean?</summary>
-        <p>Your annual tax bill divided by 12 — the amount to put aside each month so the bill does not sting when it arrives.</p>
+        <summary>Is income tax deducted from my monthly salary?</summary>
+        <p>No. Your employer deducts CPF, not income tax. IRAS bills you after you file each year, and you can pay in one lump sum or up to 12 interest-free GIRO instalments.</p>
       </details>
     </section>
     <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a> · Estimates for planning only. Not financial advice. © 2026</footer>
@@ -927,15 +1107,15 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <button class="close-button" id="closeInfo" type="button" aria-label="Close information">×</button>
     </div>
     <div class="modal-body">
-      <p class="modal-lead">This combines two planning views: employee CPF using rates effective 1 Jan 2026, and a YA2026 income-tax estimate for income earned in 2025. The tax view annualises your monthly gross pay, subtracts estimated employee CPF and automatic earned income relief, then applies YA2026 progressive rates.</p>
+      <p class="modal-lead">This combines two planning views: employee CPF using rates effective 1 Jan 2026, and a YA2026 income-tax estimate for income earned in 2025. The tax view annualises your monthly gross pay, subtracts employee CPF, earned income relief and any reliefs you enter below, then applies YA2026 progressive rates.</p>
       <ul class="method-list">
         <li><strong>YA2026 resident rates</strong>Thirteen progressive bands, from 0% to 24%, in force from YA2024 onwards.</li>
         <li><strong>No YA2026 rebate</strong>The 60% SG60 rebate, capped at S$200, applied to YA2025 only. It is not carried into this estimate.</li>
         <li><strong>CPF employee contribution</strong>Uses the age-based employee rate and the S$8,000 monthly Ordinary Wage ceiling from 1 Jan 2026. The annual salary ceiling is S$102,000.</li>
-        <li><strong>Reliefs included</strong>Employee CPF contributions and earned income relief: S$1,000 below 55, S$6,000 from 55–59, and S$8,000 from 60.</li>
+        <li><strong>Reliefs included</strong>Employee CPF contributions and earned income relief (S$1,000 below 55, S$6,000 from 55–59, S$8,000 from 60), plus the SRS, CPF top-up, NSman, parent, child and donation amounts you enter.</li>
         <li><strong>Relief ceiling</strong>Total personal reliefs are capped at S$80,000 per Year of Assessment.</li>
       </ul>
-      <div class="callout"><strong>What is not modelled:</strong> bonuses, the additional-wage CPF ceiling, non-employment income, other reliefs, and individual circumstances. CPF and earned-income-relief age tests are not identical; for this simple estimate, the “55 &amp; below” chip uses S$1,000 relief and “Above 55–60” uses S$6,000. At the exact age boundaries, your assessed relief may differ.</div>
+      <div class="callout"><strong>What is not modelled:</strong> bonuses, the additional-wage CPF ceiling, non-employment income, life insurance relief, and individual circumstances. CPF and earned-income-relief age tests are not identical; for this simple estimate, the “55 &amp; below” chip uses S$1,000 relief and “Above 55–60” uses S$6,000. At the exact age boundaries, your assessed relief may differ.</div>
       <p class="modal-sources">Sources: Inland Revenue Authority of Singapore (resident rates, rebates and reliefs) and Central Provident Fund Board (2026 employee rates and ceilings). Estimate only, not tax advice.</p>
     </div>
   </dialog>
@@ -1002,30 +1182,69 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       salaryRange.style.setProperty('--fill', fill + '%');
     }
 
+    // Relief caps, YA2026. Refresh these each Year of Assessment.
+    const SRS_CAP = 15300;
+    const CPF_OWN_CAP = 8000;
+    const CPF_FAM_CAP = 8000;
+    const RELIEF_CAP = 80000;
+    const DON_MULT = 2.5;
+
+    const num = id => Math.max(0, Number(document.getElementById(id).value) || 0);
+
+    function reliefInputs() {
+      return {
+        srs: Math.min(num('srsInput'), SRS_CAP),
+        cpfOwn: Math.min(num('cpfOwnInput'), CPF_OWN_CAP),
+        cpfFam: Math.min(num('cpfFamInput'), CPF_FAM_CAP),
+        don: num('donInput') * DON_MULT,
+        ns: Number(document.getElementById('nsSelect').value) || 0,
+        parent: Number(document.getElementById('parentSelect').value) || 0,
+        child: Math.min(num('childInput'), 5) * 4000
+      };
+    }
+
+    // Donations sit outside the S$80,000 personal-relief cap; everything else counts toward it.
+    function computeAll(annual, cpfAnnual, earnedRelief, vol) {
+      const fixed = cpfAnnual + earnedRelief;
+      const cappedVol = vol.srs + vol.cpfOwn + vol.cpfFam + vol.ns + vol.parent + vol.child;
+      const volAllowed = Math.min(cappedVol, Math.max(0, RELIEF_CAP - fixed));
+      const chargeable = Math.max(0, annual - fixed - volAllowed - vol.don);
+      const { tax, marginal } = calculateTax(chargeable);
+      return {
+        chargeable, tax, marginal, volAllowed,
+        reliefsClaimed: fixed + volAllowed,
+        capHeadroom: Math.max(0, RELIEF_CAP - fixed - volAllowed)
+      };
+    }
+
+    let lastAlloc = null;
+
     function update() {
       const monthly = Math.max(0, Math.min(30000, Number(salaryInput.value) || 0));
       const annual = monthly * 12;
       const settings = ageSettings[selectedAge];
       const cpfAnnual = Math.min(monthly, 8000) * settings.cpf * 12;
       const earnedRelief = Math.min(settings.relief, Math.max(0, annual - cpfAnnual));
-      const chargeable = Math.max(0, annual - cpfAnnual - earnedRelief);
-      const { tax, marginal } = calculateTax(chargeable);
-      const takeHomeMonthly = (annual - cpfAnnual - tax) / 12;
-      const taxMonthly = tax / 12;
+      const vol = reliefInputs();
+      const cur = computeAll(annual, cpfAnnual, earnedRelief, vol);
       const cpfMonthly = cpfAnnual / 12;
-      const effective = annual > 0 ? (tax / annual) * 100 : 0;
+      const bankMonthly = (annual - cpfAnnual) / 12;
+      const effective = annual > 0 ? (cur.tax / annual) * 100 : 0;
 
-      document.getElementById('takeHome').textContent = money.format(disp(takeHomeMonthly));
+      // Hero: the one annual tax bill.
+      document.getElementById('taxBillHero').textContent = money.format(disp(cur.tax));
+      document.getElementById('giroLine').textContent = cur.tax > 0
+        ? 'About S$' + money.format(disp(cur.tax / 12)) + ' a month over 12 interest-free GIRO instalments · ' + effective.toFixed(1) + '% of your pay.'
+        : 'No tax due at this income.';
       document.getElementById('grossMonthly').textContent = 'S$' + money.format(disp(monthly));
       document.getElementById('cpfMonthly').textContent = 'S$' + money.format(disp(cpfMonthly));
-      document.getElementById('taxMonthly').textContent = 'S$' + money.format(disp(taxMonthly));
-      document.getElementById('keepMonthlySmall').textContent = 'S$' + money.format(disp(takeHomeMonthly));
-      document.getElementById('taxAnnual').textContent = 'S$' + money.format(disp(tax)) + ' / yr';
-      document.getElementById('effectiveRate').textContent = effective.toFixed(1) + '% of your pay';
+      document.getElementById('bankMonthly').textContent = 'S$' + money.format(disp(bankMonthly));
       document.getElementById('cpfDetail').textContent = 'S$' + money.format(disp(cpfMonthly)) + ' / mo';
       document.getElementById('cpfRate').textContent = money2.format(settings.cpf * 100).replace('.00', '') + '% employee rate';
-      const rateText = money2.format(marginal * 100).replace('.00', '') + '%';
-      const bi = bracketInfo(chargeable, marginal);
+      document.getElementById('reliefsClaimed').textContent = 'S$' + money.format(disp(cur.reliefsClaimed));
+
+      const rateText = money2.format(cur.marginal * 100).replace('.00', '') + '%';
+      const bi = bracketInfo(cur.chargeable, cur.marginal);
       let insight = 'Your current dollar is taxed at ' + rateText + '.';
       if (bi.nextRate === null) {
         insight += ' That is the top rate.';
@@ -1037,26 +1256,105 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       }
       document.getElementById('marginalInsight').textContent = insight;
 
-      const reliefHeadroom = Math.max(0, 80000 - cpfAnnual - earnedRelief);
-      const savedBy = (deduction, countsTowardCap = true) => {
-        const allowed = countsTowardCap ? Math.min(deduction, reliefHeadroom) : deduction;
-        return Math.max(0, tax - calculateTax(Math.max(0, chargeable - allowed)).tax);
+      // Per-card savings: the tax each relief is currently saving you.
+      const savingFor = keys => {
+        const v2 = { ...vol };
+        keys.forEach(k => { v2[k] = 0; });
+        return Math.max(0, computeAll(annual, cpfAnnual, earnedRelief, v2).tax - cur.tax);
       };
       const savingText = amount => 'S$' + money.format(disp(amount));
-      document.getElementById('primerRate').textContent = money2.format(marginal * 100).replace('.00', '') + '%';
-      document.getElementById('primerSaving').textContent = savingText(savedBy(1000));
+      document.getElementById('primerRate').textContent = rateText;
+      const primerBase = computeAll(annual, cpfAnnual, earnedRelief, { srs: 0, cpfOwn: 0, cpfFam: 0, don: 0, ns: 0, parent: 0, child: 0 });
+      const primerWith = computeAll(annual, cpfAnnual, earnedRelief, { srs: 1000, cpfOwn: 0, cpfFam: 0, don: 0, ns: 0, parent: 0, child: 0 });
+      document.getElementById('primerSaving').textContent = savingText(Math.max(0, primerBase.tax - primerWith.tax));
       document.getElementById('earnedReliefAmt').textContent = 'S$' + money.format(disp(earnedRelief));
-      document.getElementById('srsSaving').textContent = savingText(savedBy(15300));
-      document.getElementById('cpfTopupSaving').textContent = savingText(savedBy(8000));
-      document.getElementById('donationSaving').textContent = savingText(savedBy(2500, false));
-      document.getElementById('parentSaving').textContent = savingText(savedBy(9000));
-      document.getElementById('childSaving').textContent = savingText(savedBy(4000));
-      const nsLow = savedBy(1500);
-      const nsHigh = savedBy(5000);
-      document.getElementById('nsSaving').textContent = nsLow === nsHigh
-        ? savingText(nsLow)
-        : savingText(nsLow) + '–' + savingText(nsHigh).replace('S$', '');
+      document.getElementById('nsSaving').textContent = savingText(savingFor(['ns']));
+      document.getElementById('cpfTopupSaving').textContent = savingText(savingFor(['cpfOwn', 'cpfFam']));
+      document.getElementById('srsSaving').textContent = savingText(savingFor(['srs']));
+      document.getElementById('parentSaving').textContent = savingText(savingFor(['parent']));
+      document.getElementById('childSaving').textContent = savingText(savingFor(['child']));
+      document.getElementById('donationSaving').textContent = savingText(savingFor(['don']));
+
+      updateOptimizer(annual, cpfAnnual, earnedRelief, vol, cur);
       setRangeFill();
+      setCashFill();
+    }
+
+    function updateOptimizer(annual, cpfAnnual, earnedRelief, vol, cur) {
+      const cashField = document.getElementById('cashInput');
+      const cash = Math.max(0, Math.min(50000, Number(cashField.value) || 0));
+      document.getElementById('optCashEcho').textContent = 'S$' + money.format(disp(cash));
+
+      const rooms = [
+        { key: 'cpfOwn', label: 'CPF top-ups, your accounts', cap: CPF_OWN_CAP, used: vol.cpfOwn, why: 'Guaranteed CPF interest' },
+        { key: 'srs', label: 'SRS contributions', cap: SRS_CAP, used: vol.srs, why: 'Invest it your way' },
+        { key: 'cpfFam', label: 'CPF top-ups, family', cap: CPF_FAM_CAP, used: vol.cpfFam, why: 'Same relief, helps loved ones' }
+      ];
+      rooms.forEach(r => { r.room = Math.max(0, r.cap - r.used); });
+      document.getElementById('roomSrs').textContent = 'S$' + money.format(disp(rooms[1].room));
+      document.getElementById('roomCpfOwn').textContent = 'S$' + money.format(disp(rooms[0].room));
+      document.getElementById('roomCpfFam').textContent = 'S$' + money.format(disp(rooms[2].room));
+
+      // Relief only helps while there is chargeable income left and cap headroom.
+      const usable = Math.min(cur.chargeable, cur.capHeadroom);
+      let remaining = Math.min(cash, usable);
+      const alloc = { cpfOwn: 0, srs: 0, cpfFam: 0 };
+      for (const r of rooms) {
+        const put = Math.min(r.room, remaining);
+        alloc[r.key] = put;
+        remaining -= put;
+      }
+      lastAlloc = alloc;
+      const deployed = alloc.cpfOwn + alloc.srs + alloc.cpfFam;
+
+      const splitEl = document.getElementById('optSplit');
+      splitEl.innerHTML = '';
+      const shown = rooms.filter(r => alloc[r.key] > 0);
+      if (shown.length === 0) {
+        const p = document.createElement('p');
+        p.className = 'opt-empty';
+        p.textContent = cash <= 0
+          ? 'Enter an amount above to see your best split.'
+          : 'No room left: your SRS and CPF caps are full, or there is no chargeable income left to shelter.';
+        splitEl.appendChild(p);
+      } else {
+        for (const r of shown) {
+          const row = document.createElement('div');
+          row.className = 'opt-row';
+          const left = document.createElement('div');
+          const name = document.createElement('span');
+          name.textContent = r.label;
+          const why = document.createElement('small');
+          why.textContent = r.why;
+          left.appendChild(name);
+          left.appendChild(why);
+          const amt = document.createElement('strong');
+          amt.textContent = 'S$' + money.format(disp(alloc[r.key]));
+          row.appendChild(left);
+          row.appendChild(amt);
+          splitEl.appendChild(row);
+        }
+      }
+
+      const leftoverEl = document.getElementById('optLeftover');
+      const leftover = cash - deployed;
+      if (leftover > 0) {
+        leftoverEl.hidden = false;
+        leftoverEl.textContent = 'S$' + money.format(disp(leftover)) + ' of your cash cannot buy relief: the SRS and CPF caps are full.';
+      } else {
+        leftoverEl.hidden = true;
+      }
+
+      const after = computeAll(annual, cpfAnnual, earnedRelief, {
+        ...vol,
+        cpfOwn: vol.cpfOwn + alloc.cpfOwn,
+        srs: vol.srs + alloc.srs,
+        cpfFam: vol.cpfFam + alloc.cpfFam
+      });
+      document.getElementById('optSaved').textContent = 'S$' + money.format(disp(Math.max(0, cur.tax - after.tax))) + ' / yr';
+      document.getElementById('optNewBill').textContent = 'S$' + money.format(disp(after.tax)) + ' / yr';
+      document.getElementById('optCapLeft').textContent = 'S$' + money.format(disp(after.capHeadroom));
+      document.getElementById('applySplit').style.display = deployed > 0 ? '' : 'none';
     }
 
     salaryRange.addEventListener('input', () => {
@@ -1075,6 +1373,45 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       salaryInput.value = Math.round(value);
       salaryRange.value = Math.round(value / 100) * 100;
       update();
+    });
+
+    const cashInput = document.getElementById('cashInput');
+    const cashRange = document.getElementById('cashRange');
+    function setCashFill() {
+      const min = Number(cashRange.min);
+      const max = Number(cashRange.max);
+      cashRange.style.setProperty('--fill', ((Number(cashRange.value) - min) / (max - min)) * 100 + '%');
+    }
+    cashRange.addEventListener('input', () => {
+      cashInput.value = cashRange.value;
+      update();
+    });
+    cashInput.addEventListener('input', () => {
+      const value = Math.max(0, Math.min(50000, Number(cashInput.value) || 0));
+      cashRange.value = value;
+      update();
+    });
+    cashInput.addEventListener('blur', () => {
+      const value = Math.max(0, Math.min(50000, Number(cashInput.value) || 0));
+      cashInput.value = Math.round(value);
+      cashRange.value = Math.round(value / 500) * 500;
+      update();
+    });
+
+    ['srsInput', 'cpfOwnInput', 'cpfFamInput', 'donInput', 'childInput'].forEach(id => {
+      document.getElementById(id).addEventListener('input', update);
+    });
+    ['nsSelect', 'parentSelect'].forEach(id => {
+      document.getElementById(id).addEventListener('change', update);
+    });
+
+    document.getElementById('applySplit').addEventListener('click', () => {
+      if (!lastAlloc) return;
+      document.getElementById('srsInput').value = Math.round(Math.min(num('srsInput'), SRS_CAP) + lastAlloc.srs);
+      document.getElementById('cpfOwnInput').value = Math.round(Math.min(num('cpfOwnInput'), CPF_OWN_CAP) + lastAlloc.cpfOwn);
+      document.getElementById('cpfFamInput').value = Math.round(Math.min(num('cpfFamInput'), CPF_FAM_CAP) + lastAlloc.cpfFam);
+      update();
+      document.getElementById('saversTitle').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     chips.forEach(chip => chip.addEventListener('click', () => {
@@ -1123,10 +1460,10 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     },
     {
       "@type": "Question",
-      "name": "What does the “monthly set-aside” mean?",
+      "name": "Is income tax deducted from my monthly salary?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Your annual tax bill divided by 12 — the amount to put aside each month so the bill does not sting when it arrives."
+        "text": "No. Your employer deducts CPF, not income tax. IRAS bills you after you file each year, and you can pay in one lump sum or up to 12 interest-free GIRO instalments."
       }
     }
   ]
