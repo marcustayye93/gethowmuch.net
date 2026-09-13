@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#f4f7f0" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffd84c'/%3E%3Ctext x='32' y='45' font-family='sans-serif' font-size='42' font-weight='bold' text-anchor='middle' fill='%23101828'%3E?%3C/text%3E%3C/svg%3E" />
+  <link rel="preload" href="/assets/fonts/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
+  <title>Home Loan Affordability Calculator Singapore — GetHowMuch</title>
+  <meta name="description" content="How much mortgage can you afford in Singapore? Work out your max home price from your salary, or the income you need for a loan, with TDSR, MSR and stress-test rules." />
+  <link rel="canonical" href="https://gethowmuch.net/mortgage/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GetHowMuch" />
+  <meta property="og:title" content="Home Loan Affordability Calculator Singapore — GetHowMuch" />
+  <meta property="og:url" content="https://gethowmuch.net/mortgage/" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:description" content="How much mortgage can you afford in Singapore? Work out your max home price from your salary, or the income you need for a loan, with TDSR, MSR and stress-test rules." />
+  <meta name="twitter:description" content="How much mortgage can you afford in Singapore? Work out your max home price from your salary, or the income you need for a loan, with TDSR, MSR and stress-test rules." />
+  <meta name="twitter:title" content="Home Loan Affordability Calculator Singapore — GetHowMuch" />
+  <style>
+    :root {
+      --ink: #101828;
+      --muted: #667085;
+      --paper: #f6f7f4;
+      --card: #ffffff;
+      --line: #e6eae6;
+      --brand: #ffd84c;
+      --brand-deep: #eab308;
+      --brand-soft: #ffefb0;
+      --brick: #a63d2f;
+      --brick-deep: #7f2d21;
+      --brick-wash: #f9e9e5;
+      --shadow: 0 16px 48px rgba(60, 28, 20, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--paper); }
+    body {
+      margin: 0;
+      min-width: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(166,61,47,.10), transparent 30rem),
+        var(--paper);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+
+    .page {
+      width: min(720px, 100%);
+      margin: 0 auto;
+      padding: clamp(24px, 4vw, 48px) clamp(20px, 4vw, 24px) max(38px, env(safe-area-inset-bottom));
+    }
+
+    .brand {
+      display: inline-block;
+      margin: 0 0 14px;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -.5px;
+      text-decoration: none;
+    }
+    .brand:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .site-nav {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0 0 28px;
+    }
+    .site-nav a {
+      min-width: 0;
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 10px 7px;
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 13.5px;
+      line-height: 1.15;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 3px 3px 0 var(--ink);
+      transition: transform .08s ease, box-shadow .08s ease;
+    }
+    .site-nav a:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+    .site-nav a:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+    .site-nav a.active {
+      background: var(--brand);
+      color: var(--ink);
+    }
+    .site-nav a:focus-visible { outline: 3px solid var(--brick); outline-offset: 3px; }
+
+    .intro { margin: 0 0 26px; }
+    .kicker {
+      display: inline-block;
+      margin: 0 0 12px;
+      padding: 7px 13px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: var(--brand);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(36px, 9vw, 64px);
+      font-weight: 700;
+      letter-spacing: -.045em;
+      line-height: 1;
+    }
+    .lede { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.55; max-width: 56ch; }
+
+    .mode-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0 0 22px;
+    }
+    .mode-btn {
+      min-height: 64px;
+      padding: 10px 8px;
+      border: 2px solid var(--ink);
+      border-radius: 14px;
+      background: #fff;
+      font-weight: 800;
+      font-size: 13.5px;
+      line-height: 1.25;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    .mode-btn small { display: block; margin-top: 3px; font-weight: 500; font-size: 11px; color: var(--muted); }
+    .mode-btn.active { background: var(--ink); color: #fff; box-shadow: 3px 3px 0 var(--brick); }
+    .mode-btn.active small { color: rgba(255,255,255,.7); }
+    .mode-btn:focus-visible { outline: 3px solid var(--brick); outline-offset: 3px; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: clamp(20px, 4vw, 28px);
+      margin-bottom: 22px;
+    }
+    .card h2 {
+      margin: 0 0 4px;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+    .card-sub { margin: 0 0 18px; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+
+    .field { margin: 0 0 20px; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 2px;
+      font-size: 14.5px;
+      font-weight: 700;
+    }
+    .field-value { font-family: "Space Mono", monospace; font-weight: 700; color: var(--brick); white-space: nowrap; }
+    .field-note { margin: 8px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+
+    .seg {
+      display: grid;
+      gap: 8px;
+    }
+    .seg.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .seg-btn {
+      min-height: 52px;
+      padding: 10px 12px;
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      background: #fbfbf9;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .seg-btn small { display: block; margin-top: 2px; font-weight: 500; font-size: 11px; color: var(--muted); }
+    .seg-btn.active { background: var(--brick); border-color: var(--ink); color: #fff; box-shadow: 3px 3px 0 var(--ink); }
+    .seg-btn.active small { color: rgba(255,255,255,.75); }
+    .seg-btn:focus-visible { outline: 3px solid var(--brick); outline-offset: 2px; }
+
+    .money-input {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      background: #fff;
+      padding: 0 14px;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    .money-input > span { font-family: "Space Mono", monospace; font-weight: 700; color: var(--muted); }
+    .money-input input {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 13px 0;
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .range-wrap { padding: 0; }
+    input[type="range"] {
+      display: block;
+      width: calc(100% - 40px);
+      height: 48px;
+      margin: 8px 20px 0;
+      appearance: none;
+      -webkit-appearance: none;
+      background: transparent;
+      cursor: pointer;
+      touch-action: pan-y;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 8px;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: linear-gradient(to right, var(--brick) var(--fill, 20%), var(--line) var(--fill, 20%));
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      width: 30px;
+      height: 30px;
+      margin-top: -11px;
+      -webkit-appearance: none;
+      appearance: none;
+      border: 3px solid var(--brick);
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+    input[type="range"]::-moz-range-track { height: 8px; border: 1px solid var(--ink); border-radius: 0; background: var(--line); }
+    input[type="range"]::-moz-range-progress { height: 8px; border-radius: 0; background: var(--brick); }
+    input[type="range"]::-moz-range-thumb {
+      width: 24px; height: 24px; border: 3px solid var(--brick); border-radius: 50%; background: #fff; box-shadow: 2px 2px 0 var(--ink);
+    }
+    input[type="range"]:focus-visible { outline: 3px solid var(--brick-deep); outline-offset: 2px; }
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: -6px;
+      padding: 0 20px;
+      color: var(--muted);
+      font: 500 9px "Space Mono", monospace;
+    }
+
+    .results {
+      overflow: hidden;
+      border: 3px solid var(--ink);
+      border-radius: 0;
+      background: var(--brick);
+      color: #fff;
+      box-shadow: 6px 6px 0 var(--ink);
+      margin-bottom: 22px;
+    }
+    .hero-result { padding: clamp(26px, 4vw, 40px); }
+    .result-kicker {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: rgba(255,255,255,.85);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .hero-number {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+      min-width: 0;
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+    }
+    .hero-number .currency { color: #fff; font-size: clamp(18px, 2.2vw, 26px); }
+    #heroFigure {
+      min-width: 0;
+      font-size: clamp(40px, 10vw, 68px);
+      line-height: 1;
+      letter-spacing: -.05em;
+      white-space: nowrap;
+    }
+    .hero-number .unit { color: rgba(255,255,255,.85); font: 500 13px "Space Grotesk", sans-serif; }
+    .hero-caption {
+      margin: 15px 0 0;
+      color: rgba(255,255,255,.85);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .binding {
+      margin: 16px 0 0;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,.4);
+      background: rgba(255,255,255,.12);
+      border-radius: 10px;
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+    .binding strong { color: #fff; }
+
+    .detail-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 22px; }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 13px 16px;
+      background: #fff;
+      font-size: 14.5px;
+    }
+    .detail-row .k { color: var(--muted); font-weight: 500; }
+    .detail-row .k small { display: block; margin-top: 2px; font-size: 12px; }
+    .detail-row strong { font-family: "Space Mono", monospace; font-weight: 700; white-space: nowrap; }
+    .detail-row.hot { background: var(--brick-wash); }
+    .detail-row.hot .k { color: var(--brick-deep); font-weight: 700; }
+    .detail-row.hot strong { color: var(--brick-deep); }
+
+    .method {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: clamp(20px, 4vw, 28px);
+      margin-bottom: 26px;
+    }
+    .method h2 { margin: 0 0 10px; font-size: 18px; letter-spacing: -.02em; }
+    .method p, .method li { color: var(--muted); font-size: 13.5px; line-height: 1.65; }
+    .method ul { margin: 8px 0 0; padding-left: 20px; }
+    .method a { color: var(--brick-deep); font-weight: 700; }
+
+    .site-foot {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.7;
+    }
+    .site-foot a { color: var(--ink); font-weight: 700; text-decoration: none; }
+    .site-foot a:hover { text-decoration: underline; }
+
+    @media (max-width: 430px) {
+      .hero-number { flex-wrap: wrap; }
+      .hero-number .unit { width: 100%; }
+      .mode-btn { font-size: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GetHowMuch Home Loan Affordability Calculator",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "en-SG",
+  "url": "https://gethowmuch.net/mortgage/",
+  "description": "How much mortgage can you afford in Singapore? Work out your max home price from your salary, or the income you need for a loan, with TDSR, MSR and stress-test rules.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "SGD"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much home loan can I afford in Singapore?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Banks apply the Total Debt Servicing Ratio: all your monthly debt payments must stay within 55% of gross monthly income, stress-tested at 4% interest. For HDB flats, the Mortgage Servicing Ratio caps the home loan instalment at 30% of income. This calculator applies the binding rule and converts it into a max loan and max home price."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between TDSR and MSR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TDSR (55%) covers all your debts: home loan, car loan, credit cards and personal loans. MSR (30%) covers only the home loan instalment and applies to HDB flats. Whichever cap produces the smaller loan is the one that binds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the mortgage stress test applied?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bank loans are assessed at the higher of your actual interest rate or 4% per annum. So even if your package charges 2.8%, the bank checks you can still afford the instalment at 4%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the current HDB loan interest rate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The HDB concessionary loan rate is 2.6% per annum. It is not stress-tested at 4%, only the MSR 30% rule and the 75% loan-to-value limit apply."
+      }
+    }
+  ]
+}
+</script>
+<!--
+     GetHowMuch Meta Pixel — base code
+     Paste immediately before </head>, ahead of ViewContent.
+     NOTE: content_ids ghm_ad_26-30 are reserved for the 5 mortgage ad tiles,
+     which are not yet created. Create the tiles and catalog items before
+     this page joins the catalog campaign.
+-->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1088119527164384');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<script>fbq('track','ViewContent',{content_ids:['ghm_ad_26','ghm_ad_27','ghm_ad_28','ghm_ad_29','ghm_ad_30'],content_type:'product',content_name:'Mortgage Calculator',content_category:'calculator',value:0,currency:'SGD'});</script>
+</head>
+<body>
+  <main class="page">
+<noscript><div style="margin:16px 0;padding:16px 18px;background:#ffd84c;border:2px solid #101828;box-shadow:4px 4px 0 #101828;color:#101828;font-weight:700;line-height:1.5">This calculator needs JavaScript to run. Please enable JavaScript in your browser settings, then reload the page.</div></noscript>
+    <a class="brand" href="/" aria-label="GetHowMuch home">GetHowMuch</a>
+    <nav class="site-nav" aria-label="More GetHowMuch calculators">
+      <a href="/">Retirement</a>
+      <a href="/income-tax/">Income Tax</a>
+      <a href="/cpf/">CPF</a>
+      <a href="/car-coe/">Car &amp; COE</a>
+      <a href="/forex/">Currency</a>
+      <a class="active" href="/mortgage/" aria-current="page">Mortgage</a>
+    </nav>
+
+    <header class="intro">
+      <span class="kicker">Home loan</span>
+      <h1>How much mortgage can you afford?</h1>
+      <p class="lede">Start from your salary, your dream loan, or the price tag. The calculator applies Singapore's TDSR, MSR and stress-test rules and tells you which rule is actually stopping you.</p>
+    </header>
+
+    <div class="mode-row" role="group" aria-label="Calculation direction">
+      <button class="mode-btn active" type="button" data-mode="income" aria-pressed="true">I earn<small>salary to max price</small></button>
+      <button class="mode-btn" type="button" data-mode="loan" aria-pressed="false">I want to borrow<small>loan to income needed</small></button>
+      <button class="mode-btn" type="button" data-mode="price" aria-pressed="false">It costs<small>price to income needed</small></button>
+    </div>
+
+    <section class="card" aria-label="Your situation">
+      <h2>Your situation</h2>
+      <p class="card-sub">Who is buying, and what kind of home and loan.</p>
+
+      <div class="field">
+        <div class="field-label"><span>Who is buying?</span></div>
+        <div class="seg two" role="group" aria-label="Applicant">
+          <button class="seg-btn active" type="button" data-applicant="single" aria-pressed="true">Single<small>one income, one set of debts</small></button>
+          <button class="seg-btn" type="button" data-applicant="couple" aria-pressed="false">Couple<small>combined income and debts</small></button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span>Property type</span></div>
+        <div class="seg two" role="group" aria-label="Property type">
+          <button class="seg-btn active" type="button" data-prop="hdb" aria-pressed="true">HDB flat<small>MSR 30% applies</small></button>
+          <button class="seg-btn" type="button" data-prop="private" aria-pressed="false">Private<small>condo or landed</small></button>
+        </div>
+      </div>
+
+      <div class="field" id="hdbLoanField">
+        <div class="field-label"><span>Loan type</span></div>
+        <div class="seg two" role="group" aria-label="Loan type">
+          <button class="seg-btn active" type="button" data-hdbloan="hdbl" aria-pressed="true">HDB loan<small>2.6% p.a., no stress test</small></button>
+          <button class="seg-btn" type="button" data-hdbloan="bank" aria-pressed="false">Bank loan<small>stress-tested at 4%</small></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-label="Income and debts">
+      <h2>Income and debts</h2>
+      <p class="card-sub">Use gross monthly income before CPF, the way banks assess it.</p>
+
+      <div class="field">
+        <div class="field-label"><span id="incomeLabel">Your gross monthly income</span><span class="field-value" id="incomeVal">S$9,000</span></div>
+        <div class="range-wrap">
+          <input id="income" type="range" min="2000" max="40000" step="100" value="9000" aria-label="Gross monthly income" />
+          <div class="range-labels" aria-hidden="true"><span>S$2k</span><span>S$40k</span></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span id="debtsLabel">Other monthly debts</span><span class="field-value" id="debtsVal">S$500</span></div>
+        <div class="range-wrap">
+          <input id="debts" type="range" min="0" max="10000" step="50" value="500" aria-label="Other monthly debt payments" />
+          <div class="range-labels" aria-hidden="true"><span>S$0</span><span>S$10k</span></div>
+        </div>
+        <p class="field-note">Car loans, credit card minimums, personal loans, study loans. These count toward the 55% TDSR cap on bank loans.</p>
+      </div>
+    </section>
+
+    <section class="card" id="targetCard" aria-label="Target" hidden>
+      <h2 id="targetTitle">Target loan</h2>
+      <p class="card-sub" id="targetSub">How much do you want to borrow?</p>
+      <div class="field">
+        <div class="field-label"><span id="targetLabel">Loan amount</span><span class="field-value" id="targetVal">S$500,000</span></div>
+        <div class="range-wrap">
+          <input id="target" type="range" min="100000" max="2000000" step="10000" value="500000" aria-label="Target amount" />
+          <div class="range-labels" aria-hidden="true"><span>S$100k</span><span>S$2M</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-label="Loan terms">
+      <h2>Loan terms</h2>
+      <p class="card-sub" id="termsSub">The rate and tenure the bank will assess you on.</p>
+
+      <div class="field" id="rateField">
+        <div class="field-label"><span>Interest rate</span><span class="field-value" id="rateVal">2.80% p.a.</span></div>
+        <div class="range-wrap">
+          <input id="rate" type="range" min="1.5" max="6" step="0.05" value="2.8" aria-label="Interest rate" />
+          <div class="range-labels" aria-hidden="true"><span>1.5%</span><span>6%</span></div>
+        </div>
+        <p class="field-note">Banks assess you at the higher of your actual rate or <strong>4% p.a.</strong>, so sliding below 4% changes your monthly payment but not your assessed affordability.</p>
+      </div>
+
+      <p class="field-note" id="hdbRateNote" hidden style="margin:0 0 20px">The HDB concessionary loan charges a flat <strong>2.6% p.a.</strong> and is not stress-tested, so there is no rate to adjust.</p>
+
+      <div class="field">
+        <div class="field-label"><span>Loan tenure</span><span class="field-value" id="tenureVal">25 years</span></div>
+        <div class="range-wrap">
+          <input id="tenure" type="range" min="5" max="25" step="1" value="25" aria-label="Loan tenure in years" />
+          <div class="range-labels" aria-hidden="true"><span>5 yrs</span><span id="tenureMaxLabel">25 yrs</span></div>
+        </div>
+        <p class="field-note" id="tenureNote">HDB loans cap at 25 years. A longer tenure lowers the monthly instalment but raises total interest.</p>
+      </div>
+    </section>
+
+    <section aria-label="Estimated results">
+      <div class="results" aria-live="polite">
+        <div class="hero-result">
+          <div class="result-kicker"><span id="heroKicker">Max home price you can afford</span></div>
+          <div class="hero-number">
+            <span class="currency">S$</span>
+            <strong id="heroFigure">0</strong>
+            <span class="unit" id="heroUnit"></span>
+          </div>
+          <p class="hero-caption" id="heroCaption"></p>
+          <p class="binding" id="bindingLine"></p>
+        </div>
+      </div>
+
+      <div class="detail-grid" id="detailGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="method" aria-label="How this estimate works">
+      <h2>How this estimate works</h2>
+      <p>This calculator applies the financing rules lenders actually use in Singapore, then converts the binding rule into a loan amount:</p>
+      <ul>
+        <li><strong>TDSR 55%:</strong> on bank loans, every monthly debt payment (home loan included) must fit within 55% of gross monthly income.</li>
+        <li><strong>MSR 30%:</strong> on HDB flats, the home loan instalment alone must fit within 30% of gross monthly income.</li>
+        <li><strong>4% stress test:</strong> bank loans are assessed at the higher of your actual rate or 4% p.a. HDB concessionary loans use the flat 2.6% rate.</li>
+        <li><strong>LTV 75%:</strong> the loan can cover at most 75% of the price, so the downpayment is 25%. Bank loans need at least 5% of the price in cash.</li>
+        <li><strong>Tenure:</strong> up to 25 years on HDB loans, 30 years on bank loans, subject to age limits.</li>
+      </ul>
+      <p>Buyer's stamp duty is added on the price: 1% on the first S$180k, 2% on the next S$180k, 3% on the next S$640k, 4% on the next S$500k, 5% on the next S$500k and 6% above S$3M. Assumes a Singapore citizen buying a first property, with no Additional Buyer's Stamp Duty.</p>
+      <p>Rules reference: <a href="https://www.mas.gov.sg/regulation/explainers/total-debt-servicing-ratio">MAS on TDSR</a>, <a href="https://www.hdb.gov.sg/residential/buying-a-flat/financing-a-flat-purchase/housing-loan-from-hdb">HDB on housing loans</a>, <a href="https://www.iras.gov.sg/taxes/stamp-duty/for-individuals/buying-or-acquiring-property/buyer's-stamp-duty-(bsd)-payable-for-purchase-or-acquisition-of-properties">IRAS on buyer's stamp duty</a>. Estimates for planning only, not financial advice.</p>
+    </section>
+
+    <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a> · Estimates for planning only. Not financial advice. © 2026</footer>
+  </main>
+  <script>
+    "use strict";
+    "use strict";
+    const $ = id => document.getElementById(id);
+
+    const state = {
+      mode: "income", applicant: "single", prop: "hdb", hdbLoan: "hdbl",
+      income: 9000, debts: 500, rate: 2.8, tenure: 25,
+      targetLoan: 500000, targetPrice: 600000
+    };
+
+    /* ---------- math ---------- */
+    function pmt(principal, annualRatePct, years) {
+      const r = annualRatePct / 100 / 12, n = Math.round(years * 12);
+      if (r <= 0) return principal / n;
+      return principal * r / (1 - Math.pow(1 + r, -n));
+    }
+    function pv(payment, annualRatePct, years) {
+      const r = annualRatePct / 100 / 12, n = Math.round(years * 12);
+      if (r <= 0) return payment * n;
+      return payment * (1 - Math.pow(1 + r, -n)) / r;
+    }
+    function bsd(price) {
+      const tiers = [[180000, .01], [180000, .02], [640000, .03], [500000, .04], [500000, .05], [Infinity, .06]];
+      let rem = price, tax = 0;
+      for (const [w, rt] of tiers) {
+        const t = Math.min(rem, w);
+        tax += t * rt; rem -= t;
+        if (rem <= 0) break;
+      }
+      return tax;
+    }
+    function money(n) {
+      n = Math.round(n);
+      if (Math.abs(n) >= 1e6) n = Math.round(n / 1000) * 1000;
+      return "S$" + n.toLocaleString("en-SG");
+    }
+    function moneyPlain(n) {
+      return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function rules() {
+      const isHdbLoan = state.prop === "hdb" && state.hdbLoan === "hdbl";
+      const bank = !isHdbLoan;
+      return {
+        bank,
+        qRate: bank ? Math.max(state.rate, 4) : 2.6,
+        msr: state.prop === "hdb",
+        tdsr: bank,
+        ltv: 0.75,
+        maxTenure: bank ? 30 : 25,
+        loanName: isHdbLoan ? "HDB loan" : "Bank loan"
+      };
+    }
+
+    /* ---------- render ---------- */
+    function setFill(el) {
+      const pct = (el.value - el.min) / (el.max - el.min) * 100;
+      el.style.setProperty("--fill", pct + "%");
+    }
+
+    function detailRow(k, sub, v, hot) {
+      return '<div class="detail-row' + (hot ? ' hot' : '') + '"><div class="k">' + k +
+        (sub ? "<small>" + sub + "</small>" : "") + '</div><strong>' + v + "</strong></div>";
+    }
+
+    function render() {
+      const r = rules();
+      const incomeWord = state.applicant === "couple" ? "household" : "";
+      let rows = "";
+
+      if (state.mode === "income") {
+        const caps = [];
+        if (r.msr) caps.push({ label: "MSR 30%", v: 0.30 * state.income });
+        if (r.tdsr) caps.push({ label: "TDSR 55%", v: 0.55 * state.income - state.debts });
+        const binding = caps.reduce((a, b) => a.v < b.v ? a : b);
+        const maxInstal = Math.max(0, binding.v);
+        const maxLoan = pv(maxInstal, r.qRate, state.tenure);
+        const maxPrice = maxLoan / r.ltv;
+        const down = maxPrice - maxLoan;
+
+        $("heroKicker").textContent = "Max home price you can afford";
+        $("heroFigure").textContent = moneyPlain(maxPrice);
+        $("heroUnit").textContent = "";
+        $("heroCaption").textContent = maxInstal > 0
+          ? "Borrow up to " + money(maxLoan) + " with a " + money(maxInstal) + "/mo instalment, assessed at " + r.qRate.toFixed(2).replace(/\.00$/, "") + "% over " + state.tenure + " years. Downpayment " + money(down) + " (25%)."
+          : "Your other debts already use up the TDSR allowance, so no home loan fits this income. Clear debts or raise income first.";
+        $("bindingLine").innerHTML = maxInstal > 0
+          ? "The rule stopping you is <strong>" + binding.label + "</strong>" + (incomeWord ? " on your combined " + incomeWord + " income" : "") +
+            (r.tdsr && binding.label === "TDSR 55%" ? ", because your other debts of " + money(state.debts) + "/mo eat into the 55% cap." : ".")
+          : "";
+
+        if (r.msr) rows += detailRow("MSR 30% cap", "max home-loan instalment", money(0.30 * state.income) + "/mo", binding.label === "MSR 30%" && maxInstal > 0);
+        if (r.tdsr) rows += detailRow("TDSR 55% cap", "after " + money(state.debts) + "/mo other debts", money(Math.max(0, 0.55 * state.income - state.debts)) + "/mo", binding.label === "TDSR 55%" && maxInstal > 0);
+        rows += detailRow("Max loan", r.loanName + " at " + r.qRate.toFixed(2).replace(/\.00$/, "") + "%", money(maxLoan));
+        rows += detailRow("Downpayment", "25% of price, " + (r.bank ? "at least 5% in cash" : "can be fully CPF"), money(down));
+        rows += detailRow("Buyer's stamp duty", "on the max price", money(bsd(maxPrice)));
+      }
+
+      if (state.mode === "loan") {
+        const loan = state.targetLoan;
+        const instal = pmt(loan, r.qRate, state.tenure);
+        const reqs = [];
+        if (r.msr) reqs.push({ label: "MSR 30%", v: instal / 0.30 });
+        if (r.tdsr) reqs.push({ label: "TDSR 55%", v: (instal + state.debts) / 0.55 });
+        const binding = reqs.reduce((a, b) => a.v > b.v ? a : b);
+        const need = binding.v;
+        const short = need - state.income;
+        const price = loan / r.ltv, down = price - loan;
+
+        $("heroKicker").textContent = (state.applicant === "couple" ? "Combined income" : "Income") + " needed to borrow " + money(loan);
+        $("heroFigure").textContent = moneyPlain(need);
+        $("heroUnit").textContent = "/mo";
+        $("heroCaption").textContent = "That is " + money(need * 12) + " a year. Monthly instalment " + money(instal) + " at " + r.qRate.toFixed(2).replace(/\.00$/, "") + "% over " + state.tenure + " years.";
+        $("bindingLine").innerHTML = "The binding rule is <strong>" + binding.label + "</strong>." +
+          (short > 0
+            ? " On your current " + money(state.income) + "/mo you are <strong>short by " + money(short) + "/mo</strong>."
+            : " Your current " + money(state.income) + "/mo covers it, with " + money(-short) + "/mo to spare.");
+
+        rows += detailRow("Monthly instalment", "at assessed rate " + r.qRate.toFixed(2).replace(/\.00$/, "") + "%", money(instal) + "/mo");
+        rows += detailRow("Income for MSR 30%", r.msr ? "instalment ÷ 30%" : "not applicable to private", r.msr ? money(instal / 0.30) + "/mo" : "—", binding.label === "MSR 30%");
+        rows += detailRow("Income for TDSR 55%", r.tdsr ? "(instalment + debts) ÷ 55%" : "HDB loans skip TDSR", r.tdsr ? money((instal + state.debts) / 0.55) + "/mo" : "—", binding.label === "TDSR 55%");
+        rows += detailRow("Home price this loan buys", "loan ÷ 75% LTV", money(price));
+        rows += detailRow("Downpayment", "25% of that price", money(down));
+      }
+
+      if (state.mode === "price") {
+        const price = state.targetPrice;
+        const loan = r.ltv * price, down = price - loan;
+        const instal = pmt(loan, r.qRate, state.tenure);
+        const reqs = [];
+        if (r.msr) reqs.push({ label: "MSR 30%", v: instal / 0.30 });
+        if (r.tdsr) reqs.push({ label: "TDSR 55%", v: (instal + state.debts) / 0.55 });
+        const binding = reqs.reduce((a, b) => a.v > b.v ? a : b);
+        const need = binding.v;
+        const short = need - state.income;
+        const duty = bsd(price);
+        const cashMin = r.bank ? 0.05 * price : 0;
+
+        $("heroKicker").textContent = (state.applicant === "couple" ? "Combined income" : "Income") + " needed for a " + money(price) + " home";
+        $("heroFigure").textContent = moneyPlain(need);
+        $("heroUnit").textContent = "/mo";
+        $("heroCaption").textContent = "That is " + money(need * 12) + " a year. You borrow " + money(loan) + " and pay " + money(instal) + "/mo at " + r.qRate.toFixed(2).replace(/\.00$/, "") + "% over " + state.tenure + " years.";
+        $("bindingLine").innerHTML = "The binding rule is <strong>" + binding.label + "</strong>." +
+          (short > 0
+            ? " On your current " + money(state.income) + "/mo you are <strong>short by " + money(short) + "/mo</strong>."
+            : " Your current " + money(state.income) + "/mo covers it, with " + money(-short) + "/mo to spare.");
+
+        rows += detailRow("Monthly instalment", "at assessed rate " + r.qRate.toFixed(2).replace(/\.00$/, "") + "%", money(instal) + "/mo");
+        rows += detailRow("Loan", "75% of price", money(loan));
+        rows += detailRow("Downpayment", "25% of price" + (r.bank ? ", min 5% cash (" + money(cashMin) + ")" : ", can be fully CPF"), money(down));
+        rows += detailRow("Buyer's stamp duty", "payable in cash or CPF", money(duty));
+        rows += detailRow("Total cash upfront", "downpayment + stamp duty", money(down + duty), true);
+      }
+
+      $("detailGrid").innerHTML = rows;
+    }
+
+    /* ---------- wiring ---------- */
+    function segWire(attr, key, after) {
+      document.querySelectorAll('[data-' + attr + ']').forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll('[data-' + attr + ']').forEach(b => {
+            b.classList.remove("active"); b.setAttribute("aria-pressed", "false");
+          });
+          btn.classList.add("active"); btn.setAttribute("aria-pressed", "true");
+          state[key] = btn.dataset[attr];
+          if (after) after();
+          render();
+        });
+      });
+    }
+
+    function rangeWire(id, valId, key, fmt, after) {
+      const el = $(id);
+      const update = () => {
+        state[key] = parseFloat(el.value);
+        $(valId).textContent = fmt(state[key]);
+        setFill(el);
+        if (after) after();
+        render();
+      };
+      el.addEventListener("input", update);
+      setFill(el);
+      $(valId).textContent = fmt(state[key]);
+    }
+
+    const moneyMo = n => money(n) + "/mo";
+
+    segWire("mode", "mode", () => {
+      const isLoan = state.mode === "loan", isPrice = state.mode === "price";
+      $("targetCard").hidden = !(isLoan || isPrice);
+      $("targetTitle").textContent = isLoan ? "Target loan" : "Home price";
+      $("targetSub").textContent = isLoan ? "How much do you want to borrow?" : "What does the home cost?";
+      $("targetLabel").textContent = isLoan ? "Loan amount" : "Purchase price";
+      const t = $("target");
+      if (isLoan) { t.min = 100000; t.max = 2000000; t.step = 10000; t.value = state.targetLoan; }
+      if (isPrice) { t.min = 200000; t.max = 3000000; t.step = 10000; t.value = state.targetPrice; }
+      $("targetVal").textContent = money(parseFloat(t.value));
+      setFill(t);
+    });
+
+    segWire("applicant", "applicant", () => {
+      $("incomeLabel").textContent = state.applicant === "couple" ? "Combined gross monthly income" : "Your gross monthly income";
+      $("debtsLabel").textContent = state.applicant === "couple" ? "Combined monthly debts" : "Other monthly debts";
+    });
+
+    segWire("prop", "prop", () => {
+      $("hdbLoanField").style.display = state.prop === "hdb" ? "" : "none";
+      syncTenure();
+    });
+
+    segWire("hdbloan", "hdbLoan", () => {
+      const isHdbLoan = state.hdbLoan === "hdbl";
+      $("rateField").style.display = isHdbLoan ? "none" : "";
+      $("hdbRateNote").hidden = !isHdbLoan;
+      syncTenure();
+    });
+
+    function syncTenure() {
+      const r = rules();
+      const t = $("tenure");
+      t.max = r.maxTenure;
+      $("tenureMaxLabel").textContent = r.maxTenure + " yrs";
+      if (state.tenure > r.maxTenure) { state.tenure = r.maxTenure; t.value = r.maxTenure; }
+      $("tenureVal").textContent = state.tenure + " years";
+      $("tenureNote").textContent = r.bank
+        ? "Bank loans cap at 30 years. A longer tenure lowers the monthly instalment but raises total interest."
+        : "HDB loans cap at 25 years. A longer tenure lowers the monthly instalment but raises total interest.";
+      setFill(t);
+    }
+
+    rangeWire("income", "incomeVal", "income", moneyMo);
+    rangeWire("debts", "debtsVal", "debts", moneyMo);
+    rangeWire("rate", "rateVal", "rate", n => n.toFixed(2) + "% p.a.");
+    rangeWire("tenure", "tenureVal", "tenure", n => n + " years");
+
+    /* target slider writes to the key matching the active mode */
+    (function () {
+      const t = $("target");
+      t.addEventListener("input", () => {
+        const v = parseFloat(t.value);
+        if (state.mode === "loan") state.targetLoan = v; else state.targetPrice = v;
+        $("targetVal").textContent = money(v);
+        setFill(t);
+        render();
+      });
+      setFill(t);
+      $("targetVal").textContent = money(state.targetLoan);
+    })();
+
+    render();
+  </script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1550ed6503d34b4c91d4fc70197e00c0"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
