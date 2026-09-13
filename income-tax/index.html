@@ -1123,7 +1123,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <li><strong>Reliefs included</strong>Employee CPF contributions and earned income relief (S$1,000 below 55, S$6,000 from 55–59, S$8,000 from 60), plus the SRS, CPF top-up, NSman, parent, child and donation amounts you enter.</li>
         <li><strong>Relief ceiling</strong>Total personal reliefs are capped at S$80,000 per Year of Assessment.</li>
       </ul>
-      <div class="callout"><strong>What is not modelled:</strong> bonuses, the additional-wage CPF ceiling, non-employment income, life insurance relief, and individual circumstances. CPF and earned-income-relief age tests are not identical; for this simple estimate, the “55 &amp; below” chip uses S$1,000 relief and “Above 55–60” uses S$6,000. At the exact age boundaries, your assessed relief may differ.</div>
+      <div class="callout"><strong>What is not modelled:</strong> bonuses, the additional-wage CPF ceiling, non-employment income, life insurance relief, and individual circumstances.</div>
       <p class="modal-sources">Sources: Inland Revenue Authority of Singapore (resident rates, rebates and reliefs) and Central Provident Fund Board (2026 employee rates and ceilings). Estimate only, not tax advice.</p>
     </div>
   </dialog>
@@ -1238,7 +1238,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       const monthly = Math.max(0, Math.min(30000, Number(salaryInput.value) || 0));
       const annual = monthly * 12;
       const settings = { cpf: cpfRateFor(ageVal()), relief: eirFor(ageVal()) };
-      const cpfAnnual = Math.min(monthly, 8000) * settings.cpf * 12;
+      const cpfAnnual = monthly <= 50 ? 0 : Math.min(monthly, 8000) * settings.cpf * 12;
       const earnedRelief = Math.min(settings.relief, Math.max(0, annual - cpfAnnual));
       const vol = reliefInputs();
       const cur = computeAll(annual, cpfAnnual, earnedRelief, vol);
