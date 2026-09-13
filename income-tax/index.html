@@ -1148,6 +1148,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     const money = new Intl.NumberFormat('en-SG', { maximumFractionDigits: 0 });
     const money2 = new Intl.NumberFormat('en-SG', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const disp = n => Math.abs(n) >= 1e6 ? Math.round(n / 1e3) * 1e3 : n;
+    const pct = n => money2.format(n).replace('.00', '').replace(/(\.\d)0$/, '$1');
 
     function calculateTax(chargeable) {
       let remaining = chargeable;
@@ -1245,16 +1246,16 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       document.getElementById('taxMonthly').textContent = 'S$' + money.format(disp(taxMonthly));
       document.getElementById('keepMonthly').textContent = 'S$' + money.format(disp(bankMonthly - taxMonthly));
       document.getElementById('cpfDetail').textContent = 'S$' + money.format(disp(cpfMonthly)) + ' / mo';
-      document.getElementById('cpfRate').textContent = money2.format(settings.cpf * 100).replace('.00', '') + '% employee rate';
+      document.getElementById('cpfRate').textContent = pct(settings.cpf * 100) + '% employee rate';
       document.getElementById('reliefsClaimed').textContent = 'S$' + money.format(disp(cur.reliefsClaimed));
 
-      const rateText = money2.format(cur.marginal * 100).replace('.00', '') + '%';
+      const rateText = pct(cur.marginal * 100) + '%';
       const bi = bracketInfo(cur.chargeable, cur.marginal);
       let insight = 'Your current dollar is taxed at ' + rateText + '.';
       if (bi.nextRate === null) {
         insight += ' That is the top rate.';
       } else {
-        const nextText = money2.format(bi.nextRate * 100).replace('.00', '') + '%';
+        const nextText = pct(bi.nextRate * 100) + '%';
         if (bi.headroom <= 0) {
           insight += ' Your next dollar is taxed at ' + nextText + '.';
         } else {

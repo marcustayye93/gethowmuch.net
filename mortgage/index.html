@@ -128,8 +128,8 @@
       cursor: pointer;
     }
     .mode-btn small { display: block; margin-top: 2px; font-weight: 500; font-size: 11px; color: var(--muted); }
-    .mode-btn.active { background: var(--brick); border-color: var(--ink); color: #fff; box-shadow: 3px 3px 0 var(--ink); }
-    .mode-btn.active small { color: rgba(255,255,255,.75); }
+    .mode-btn.active { background: var(--brand); border-color: var(--ink); color: var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+    .mode-btn.active small { color: var(--muted); }
     .mode-btn:focus-visible { outline: 3px solid var(--brand-deep); outline-offset: 3px; }
 
     .card {
@@ -180,8 +180,8 @@
       text-align: center;
     }
     .seg-btn small { display: block; margin-top: 2px; font-weight: 500; font-size: 11px; color: var(--muted); }
-    .seg-btn.active { background: var(--brick); border-color: var(--ink); color: #fff; box-shadow: 2px 2px 0 var(--ink); }
-    .seg-btn.active small { color: rgba(255,255,255,.75); }
+    .seg-btn.active { background: var(--brand); border-color: var(--ink); color: var(--ink); box-shadow: 2px 2px 0 var(--ink); }
+    .seg-btn.active small { color: var(--muted); }
     .seg-btn:focus-visible { outline: 3px solid var(--brand-deep); outline-offset: 2px; }
 
     .money-input { display: flex; align-items: center; gap: 8px; background: transparent; border: 0; border-bottom: 4px solid var(--ink); border-radius: 0; padding: 0 2px 6px; }
@@ -204,7 +204,7 @@
       height: 8px;
       border: 1px solid var(--ink);
       border-radius: 0;
-      background: linear-gradient(to right, var(--brick) var(--fill, 20%), var(--line) var(--fill, 20%));
+      background: linear-gradient(to right, var(--brand) var(--fill, 20%), var(--line) var(--fill, 20%));
     }
     input[type="range"]::-webkit-slider-thumb {
       width: 30px;
@@ -212,17 +212,17 @@
       margin-top: -11px;
       -webkit-appearance: none;
       appearance: none;
-      border: 3px solid var(--brick);
+      border: 3px solid var(--brand);
       border-radius: 50%;
       background: #fff;
       box-shadow: 2px 2px 0 var(--ink);
     }
     input[type="range"]::-moz-range-track { height: 8px; border: 1px solid var(--ink); border-radius: 0; background: var(--line); }
-    input[type="range"]::-moz-range-progress { height: 8px; border-radius: 0; background: var(--brick); }
+    input[type="range"]::-moz-range-progress { height: 8px; border-radius: 0; background: var(--brand); }
     input[type="range"]::-moz-range-thumb {
-      width: 24px; height: 24px; border: 3px solid var(--brick); border-radius: 50%; background: #fff; box-shadow: 2px 2px 0 var(--ink);
+      width: 24px; height: 24px; border: 3px solid var(--brand); border-radius: 50%; background: #fff; box-shadow: 2px 2px 0 var(--ink);
     }
-    input[type="range"]:focus-visible { outline: 3px solid var(--brick-deep); outline-offset: 2px; }
+    input[type="range"]:focus-visible { outline: 3px solid var(--brand-deep); outline-offset: 2px; }
     .range-labels {
       display: flex;
       justify-content: space-between;
@@ -236,7 +236,7 @@
       overflow: hidden;
       border: 3px solid var(--ink);
       border-radius: 0;
-      background: var(--brick);
+      background: var(--ink);
       color: #fff;
       box-shadow: 6px 6px 0 var(--ink);
       margin-bottom: 22px;
@@ -278,12 +278,12 @@
     .binding {
       margin: 18px calc(clamp(26px, 4vw, 40px) * -1) calc(clamp(26px, 4vw, 40px) * -1);
       padding: 16px clamp(26px, 4vw, 40px);
-      background: var(--brick-wash);
+      background: var(--brand-soft);
       color: var(--ink);
       font-size: 14px;
       line-height: 1.55;
     }
-    .binding strong { color: var(--brick-deep); }
+    .binding strong { color: var(--ink); }
 
     .detail-grid { display: grid; border-top: 1px solid rgba(255,255,255,.25); }
     .detail-row {
@@ -613,7 +613,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       return payment * (1 - Math.pow(1 + r, -n)) / r;
     }
     function bsd(price) {
-      const tiers = [[180000, .01], [180000, .02], [640000, .03], [500000, .04], [500000, .05], [Infinity, .06]];
+      const tiers = [[180000, .01], [180000, .02], [640000, .03], [500000, .04], [1500000, .05], [Infinity, .06]];
       let rem = price, tax = 0;
       for (const [w, rt] of tiers) {
         const t = Math.min(rem, w);
