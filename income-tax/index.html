@@ -980,6 +980,20 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       return { tax, marginal };
     }
 
+    function bracketInfo(chargeable, marginal) {
+      let lower = 0;
+      for (let i = 0; i < taxBands.length; i++) {
+        const [width, rate] = taxBands[i];
+        const upper = lower + width;
+        if (rate === marginal && chargeable <= upper) {
+          const next = taxBands[i + 1];
+          return { headroom: Math.max(0, upper - chargeable), nextRate: next ? next[1] : null };
+        }
+        lower = upper;
+      }
+      return { headroom: 0, nextRate: null };
+    }
+
     function setRangeFill() {
       const min = Number(salaryRange.min);
       const max = Number(salaryRange.max);
@@ -1010,7 +1024,18 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       document.getElementById('effectiveRate').textContent = effective.toFixed(1) + '% of your pay';
       document.getElementById('cpfDetail').textContent = 'S$' + money.format(disp(cpfMonthly)) + ' / mo';
       document.getElementById('cpfRate').textContent = money2.format(settings.cpf * 100).replace('.00', '') + '% employee rate';
-      document.getElementById('marginalInsight').textContent = 'Your next dollar is taxed at ' + money2.format(marginal * 100).replace('.00', '') + '%.';
+      const rateText = money2.format(marginal * 100).replace('.00', '') + '%';
+      const bi = bracketInfo(chargeable, marginal);
+      let insight = 'Your current dollar is taxed at ' + rateText + '.';
+      if (bi.nextRate === null) {
+        insight += ' That is the top rate.';
+      } else {
+        const nextText = money2.format(bi.nextRate * 100).replace('.00', '') + '%';
+        insight += bi.headroom <= 0
+          ? ' Your next dollar is taxed at ' + nextText + '.'
+          : ' If you earn S$' + money.format(disp(bi.headroom)) + ' more, your next dollar is taxed at ' + nextText + '.';
+      }
+      document.getElementById('marginalInsight').textContent = insight;
 
       const reliefHeadroom = Math.max(0, 80000 - cpfAnnual - earnedRelief);
       const savedBy = (deduction, countsTowardCap = true) => {
