@@ -579,7 +579,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <li><strong>MSR 30% (Mortgage Servicing Ratio):</strong> on HDB flats, the home loan instalment alone must fit within 30% of gross monthly income.</li>
         <li><strong>4% stress test:</strong> bank loans are assessed at the higher of your actual rate or 4% p.a. HDB concessionary loans use the flat 2.6% rate.</li>
         <li><strong>LTV 75%:</strong> the loan can cover at most 75% of the price, so the downpayment is 25%. Bank loans need at least 5% of the price in cash.</li>
-        <li><strong>Tenure:</strong> up to 25 years on HDB loans, 30 years on bank loans, subject to age limits.</li>
+        <li><strong>Tenure:</strong> up to 25 years on HDB loans, 30 years on bank loans for HDB flats and 35 years for private property, subject to age limits.</li>
         <li><strong>HDB loan eligibility:</strong> at least one applicant must be a Singapore Citizen, and gross monthly household income must not exceed S$16,000 (S$8,000 for single buyers). This calculator caps the income slider at that ceiling while the HDB loan is selected.</li>
       </ul>
       <p>Buyer's stamp duty is added on the price: 1% on the first S$180k, 2% on the next S$180k, 3% on the next S$640k, 4% on the next S$500k, 5% on the next S$1.5M and 6% above S$3M. Assumes a first property purchase, with no Additional Buyer's Stamp Duty. HDB concessionary loans additionally require applicants to be employed, with no more than one prior HDB loan and no private property owned in the last 30 months.</p>
@@ -666,7 +666,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         msr: state.prop === "hdb",
         tdsr: bank,
         ltv: 0.75,
-        maxTenure: bank ? 30 : 25,
+        maxTenure: !bank ? 25 : (state.prop === "hdb" ? 30 : 35),
         loanName: isHdbLoan ? "HDB loan" : "Bank loan"
       };
     }
@@ -938,9 +938,11 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       $("tenureMaxLabel").textContent = r.maxTenure + " yrs";
       if (state.tenure > r.maxTenure) { state.tenure = r.maxTenure; t.value = r.maxTenure; }
       $("tenureVal").textContent = state.tenure + " years";
-      $("tenureNote").textContent = r.bank
-        ? "Bank loans cap at 30 years. A longer tenure lowers the monthly instalment but raises total interest."
-        : "HDB loans cap at 25 years. A longer tenure lowers the monthly instalment but raises total interest.";
+      $("tenureNote").textContent = !r.bank
+        ? "HDB loans cap at 25 years. A longer tenure lowers the monthly instalment but raises total interest."
+        : (state.prop === "hdb"
+          ? "Bank loans on HDB flats cap at 30 years. A longer tenure lowers the monthly instalment but raises total interest."
+          : "Bank loans on private property cap at 35 years. A longer tenure lowers the monthly instalment but raises total interest.");
       setFill(t);
     }
 
