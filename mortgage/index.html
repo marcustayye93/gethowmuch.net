@@ -183,6 +183,7 @@
     .seg-btn.active { background: var(--brand); border-color: var(--ink); color: var(--ink); box-shadow: 2px 2px 0 var(--ink); }
     .seg-btn.active small { color: var(--muted); }
     .seg-btn:focus-visible { outline: 3px solid var(--brand-deep); outline-offset: 2px; }
+    .seg-btn.disabled { opacity: .4; cursor: not-allowed; box-shadow: none; }
 
     .money-input { display: flex; align-items: center; gap: 8px; background: transparent; border: 0; border-bottom: 4px solid var(--ink); border-radius: 0; padding: 0 2px 6px; }
     .money-input > span { font-family: "Space Mono", monospace; font-weight: 700; color: var(--muted); }
@@ -392,6 +393,14 @@
         "@type": "Answer",
         "text": "The HDB concessionary loan rate is 2.6% per annum. It is not stress-tested at 4%, only the MSR 30% rule and the 75% loan-to-value limit apply."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there an income ceiling for the HDB loan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HDB concessionary loans cap gross monthly household income at S$16,000, or S$8,000 for single buyers (raised in August 2026). At least one applicant must also be a Singapore Citizen. If you are over the ceiling or have no citizen applicant, a bank loan is the route."
+      }
     }
   ]
 }
@@ -459,6 +468,12 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       </div>
 
       <div class="field">
+        <div class="field-label"><span>Citizenship</span></div>
+        <div class="seg two" id="citizenSeg" role="group" aria-label="Citizenship"></div>
+        <p class="field-note">HDB concessionary loans need at least one Singapore Citizen applicant.</p>
+      </div>
+
+      <div class="field">
         <div class="field-label"><span>Property type</span></div>
         <div class="seg two" role="group" aria-label="Property type">
           <button class="seg-btn active" type="button" data-prop="hdb" aria-pressed="true">HDB flat<small>MSR 30% applies</small></button>
@@ -472,6 +487,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           <button class="seg-btn active" type="button" data-hdbloan="hdbl" aria-pressed="true">HDB loan<small>2.6% p.a., no stress test</small></button>
           <button class="seg-btn" type="button" data-hdbloan="bank" aria-pressed="false">Bank loan<small>stress-tested at 4%</small></button>
         </div>
+        <p class="field-note" id="hdbLoanNote" hidden></p>
       </div>
     </section>
 
@@ -483,8 +499,9 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <div class="field-label"><span id="incomeLabel">Your gross monthly income</span><span class="field-value" id="incomeVal">S$9,000</span></div>
         <div class="range-wrap">
           <input id="income" type="range" min="2000" max="40000" step="100" value="9000" aria-label="Gross monthly income" />
-          <div class="range-labels" aria-hidden="true"><span>S$2k</span><span>S$40k</span></div>
+          <div class="range-labels" aria-hidden="true"><span>S$2k</span><span id="incomeMaxLabel">S$40k</span></div>
         </div>
+        <p class="field-note" id="incomeCeilNote" hidden></p>
       </div>
 
       <div class="field">
@@ -559,8 +576,9 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <li><strong>4% stress test:</strong> bank loans are assessed at the higher of your actual rate or 4% p.a. HDB concessionary loans use the flat 2.6% rate.</li>
         <li><strong>LTV 75%:</strong> the loan can cover at most 75% of the price, so the downpayment is 25%. Bank loans need at least 5% of the price in cash.</li>
         <li><strong>Tenure:</strong> up to 25 years on HDB loans, 30 years on bank loans, subject to age limits.</li>
+        <li><strong>HDB loan eligibility:</strong> at least one applicant must be a Singapore Citizen, and gross monthly household income must not exceed S$16,000 (S$8,000 for single buyers). This calculator caps the income slider at that ceiling while the HDB loan is selected.</li>
       </ul>
-      <p>Buyer's stamp duty is added on the price: 1% on the first S$180k, 2% on the next S$180k, 3% on the next S$640k, 4% on the next S$500k, 5% on the next S$1.5M and 6% above S$3M. Assumes a Singapore citizen buying a first property, with no Additional Buyer's Stamp Duty.</p>
+      <p>Buyer's stamp duty is added on the price: 1% on the first S$180k, 2% on the next S$180k, 3% on the next S$640k, 4% on the next S$500k, 5% on the next S$1.5M and 6% above S$3M. Assumes a first property purchase, with no Additional Buyer's Stamp Duty. HDB concessionary loans additionally require applicants to be employed, with no more than one prior HDB loan and no private property owned in the last 30 months.</p>
       <p>Rules reference: <a href="https://www.mas.gov.sg/regulation/explainers/total-debt-servicing-ratio">MAS on TDSR</a>, <a href="https://www.hdb.gov.sg/residential/buying-a-flat/financing-a-flat-purchase/housing-loan-from-hdb">HDB on housing loans</a>, <a href="https://www.iras.gov.sg/taxes/stamp-duty/for-individuals/buying-or-acquiring-property/buyer's-stamp-duty-(bsd)-payable-for-purchase-or-acquisition-of-properties">IRAS on buyer's stamp duty</a>. Estimates for planning only, not financial advice.</p>
     </section>
 
@@ -586,6 +604,10 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <summary>Does applying with my spouse change the numbers?</summary>
         <div class="details-body"><p>Yes. A joint application combines both incomes for the TDSR and MSR caps, which raises how much you can borrow. Both applicants' existing monthly debts count against the caps too.</p></div>
       </details>
+      <details>
+        <summary>Is there an income ceiling for the HDB loan?</summary>
+        <div class="details-body"><p>Yes. HDB concessionary loans cap gross monthly household income at S$16,000, or S$8,000 for single buyers (raised in August 2026). At least one applicant must also be a Singapore Citizen. If you are over the ceiling or have no citizen applicant, a bank loan is the route. This calculator caps the income slider at the ceiling while the HDB loan is selected.</p></div>
+      </details>
     </section>
 
     <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a> · Estimates for planning only. Not financial advice. © 2026</footer>
@@ -596,7 +618,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     const $ = id => document.getElementById(id);
 
     const state = {
-      mode: "income", applicant: "single", prop: "hdb", hdbLoan: "hdbl",
+      mode: "income", applicant: "single", citizen: "sc", prop: "hdb", hdbLoan: "hdbl",
       income: 9000, debts: 500, rate: 2.8, tenure: 25,
       targetLoan: 500000, targetPrice: 600000
     };
@@ -644,6 +666,18 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         loanName: isHdbLoan ? "HDB loan" : "Bank loan"
       };
     }
+
+    /* HDB concessionary loan eligibility (HDB rules, Aug 2026):
+       at least one applicant must be a Singapore Citizen, and gross monthly
+       household income must not exceed S$16,000 (S$8,000 for single buyers). */
+    function hdbCeiling() { return state.applicant === "couple" ? 16000 : 8000; }
+    function hasSC() {
+      return state.applicant === "couple"
+        ? state.citizen === "scsc" || state.citizen === "scpr"
+        : state.citizen === "sc";
+    }
+    function hdbLoanActive() { return state.prop === "hdb" && state.hdbLoan === "hdbl"; }
+    function incomeCap() { return hdbLoanActive() ? hdbCeiling() : 40000; }
 
     /* ---------- render ---------- */
     function setFill(el) {
@@ -752,6 +786,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     function segWire(attr, key, after) {
       document.querySelectorAll('[data-' + attr + ']').forEach(btn => {
         btn.addEventListener("click", () => {
+          if (btn.classList.contains("disabled")) return;
           document.querySelectorAll('[data-' + attr + ']').forEach(b => {
             b.classList.remove("active"); b.setAttribute("aria-pressed", "false");
           });
@@ -779,6 +814,78 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 
     const moneyMo = n => money(n) + "/mo";
 
+    function citizenOpts() {
+      return state.applicant === "couple"
+        ? [["scsc", "Both citizens", ""], ["scpr", "SC + PR", "mixed household"], ["prpr", "Both PR", "no citizen applicant"]]
+        : [["sc", "Singapore Citizen", ""], ["pr", "Permanent Resident", ""]];
+    }
+    function renderCitizen() {
+      const opts = citizenOpts();
+      if (!opts.some(o => o[0] === state.citizen)) state.citizen = opts[0][0];
+      const seg = $("citizenSeg");
+      seg.classList.toggle("two", opts.length === 2);
+      seg.innerHTML = opts.map(o => {
+        const on = o[0] === state.citizen;
+        return '<button class="seg-btn' + (on ? " active" : "") + '" type="button" data-citizen="' + o[0] +
+          '" aria-pressed="' + on + '">' + o[1] + (o[2] ? "<small>" + o[2] + "</small>" : "") + "</button>";
+      }).join("");
+    }
+
+    function syncLoanUI() {
+      const hdb = state.hdbLoan === "hdbl";
+      $("rateField").style.display = hdb ? "none" : "";
+      $("hdbRateNote").hidden = !hdb;
+      syncTenure();
+    }
+    function setHdbLoan(v) {
+      state.hdbLoan = v;
+      document.querySelectorAll("[data-hdbloan]").forEach(b => {
+        const on = b.dataset.hdbloan === v;
+        b.classList.toggle("active", on);
+        b.setAttribute("aria-pressed", String(on));
+      });
+      syncLoanUI();
+    }
+
+    function syncEligibility() {
+      const ok = hasSC();
+      const hdbBtn = document.querySelector('[data-hdbloan="hdbl"]');
+      if (hdbBtn) {
+        hdbBtn.classList.toggle("disabled", !ok);
+        hdbBtn.setAttribute("aria-disabled", String(!ok));
+      }
+      const note = $("hdbLoanNote");
+      if (!ok && state.prop === "hdb") {
+        let t = "HDB concessionary loans need <strong>at least one Singapore Citizen</strong> applicant, so the HDB loan option is disabled.";
+        if (state.applicant === "single") t += " Single buyers must be citizens to buy an HDB flat at all, so switch property type to Private for figures that apply to you.";
+        note.innerHTML = t;
+        note.hidden = false;
+        if (state.hdbLoan === "hdbl") setHdbLoan("bank");
+      } else {
+        note.hidden = true;
+      }
+      const cap = incomeCap();
+      const inc = $("income");
+      inc.max = cap;
+      $("incomeMaxLabel").textContent = "S$" + (cap / 1000) + "k";
+      const ceilNote = $("incomeCeilNote");
+      if (hdbLoanActive()) {
+        let t = "HDB concessionary loans cap gross monthly household income at <strong>" + money(hdbCeiling()) + "</strong>" +
+          (state.applicant === "single" ? " for single buyers" : " for families") +
+          " (HDB rules, Aug 2026), so the slider stops there.";
+        if (state.income > cap) {
+          state.income = cap; inc.value = cap;
+          t += " Your income was above the ceiling, so it has been set to " + money(cap) + ".";
+        }
+        ceilNote.innerHTML = t;
+        ceilNote.hidden = false;
+      } else {
+        ceilNote.hidden = true;
+      }
+      $("incomeVal").textContent = moneyMo(state.income);
+      setFill(inc);
+    }
+
     segWire("mode", "mode", () => {
       const isLoan = state.mode === "loan", isPrice = state.mode === "price";
       $("targetCard").hidden = !(isLoan || isPrice);
@@ -793,20 +900,31 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     });
 
     segWire("applicant", "applicant", () => {
+      renderCitizen();
       $("incomeLabel").textContent = state.applicant === "couple" ? "Combined gross monthly income" : "Your gross monthly income";
       $("debtsLabel").textContent = state.applicant === "couple" ? "Combined monthly debts" : "Other monthly debts";
+      syncEligibility();
     });
 
     segWire("prop", "prop", () => {
       $("hdbLoanField").style.display = state.prop === "hdb" ? "" : "none";
+      if (state.prop !== "hdb") setHdbLoan("bank");
+      syncEligibility();
       syncTenure();
     });
 
     segWire("hdbloan", "hdbLoan", () => {
-      const isHdbLoan = state.hdbLoan === "hdbl";
-      $("rateField").style.display = isHdbLoan ? "none" : "";
-      $("hdbRateNote").hidden = !isHdbLoan;
-      syncTenure();
+      syncLoanUI();
+      syncEligibility();
+    });
+
+    $("citizenSeg").addEventListener("click", e => {
+      const btn = e.target && e.target.closest ? e.target.closest("[data-citizen]") : null;
+      if (!btn) return;
+      state.citizen = btn.getAttribute("data-citizen");
+      renderCitizen();
+      syncEligibility();
+      render();
     });
 
     function syncTenure() {
@@ -841,6 +959,8 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       $("targetVal").textContent = money(state.targetLoan);
     })();
 
+    renderCitizen();
+    syncEligibility();
     render();
   </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1550ed6503d34b4c91d4fc70197e00c0"}'></script><!-- End Cloudflare Web Analytics -->
