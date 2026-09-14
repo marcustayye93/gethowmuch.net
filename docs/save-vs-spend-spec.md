@@ -66,6 +66,15 @@ Outputs
   cpf_line   = cpf_employee + cpf_employer  # supporting line only, never in the rate
 ```
 
+When the monthly number is pace-bound (not 80%-capped), the hero caption adds one
+line: "The S$X/mo savings number is the N-month pace for your fund. Earning more
+grows the guilt-free pool instead." This answers the "stuck slider" confusion: the
+number is fixed by the fund math, extra income flows to guilt-free.
+
+Back/forward navigation: a `pageshow` listener re-syncs every slider's state, label
+and fill from the DOM, because browsers can restore slider positions after the
+page script ran (thumbs would otherwise detach from their fill track).
+
 Why the 80% cap: when the timeline is aggressive relative to means, saving 100% of
 discretionary prints S$0 guilt-free and breaks the page's promise for exactly the
 audience the 20% critique serves. Capping at 80% stretches the timeline instead.

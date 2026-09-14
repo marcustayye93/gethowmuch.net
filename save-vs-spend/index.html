@@ -946,7 +946,9 @@ savings rate  = monthly save ÷ take-home</pre>
       $("heroCurrency").textContent = "S$";
       $("heroFigure").textContent = Math.round(p.actual).toLocaleString("en-SG");
       $("heroUnit").textContent = "/mo to save";
-      $("heroCaption").innerHTML = "<strong>" + money(p.guilt) + "/mo</strong> is guilt-free while you build.";
+      $("heroCaption").innerHTML = "<strong>" + money(p.guilt) + "/mo</strong> is guilt-free while you build." +
+        (p.capBinds ? "" : " The " + money(p.actual) + "/mo savings number is the " + state.timeline +
+        "-month pace for your fund. Earning more grows the guilt-free pool instead.");
 
       const capNote = $("capNote");
       if (p.capBinds) {
@@ -1074,6 +1076,29 @@ savings rate  = monthly save ÷ take-home</pre>
     segWire("residency", "residency");
     segWire("taxstatus", "taxStatus");
     segWire("cover", "cover");
+
+    // Back-button restore: the browser can put slider positions back after this
+    // script ran, leaving thumbs detached from their fill track. Re-sync all
+    // state, labels and fills from the DOM whenever the page is shown.
+    window.addEventListener("pageshow", () => {
+      const num = id => parseFloat($(id).value);
+      state.salary = num("salary");
+      state.cash = num("cash");
+      state.age = num("age");
+      state.timeline = num("timeline");
+      essDefs.forEach(([k, id]) => { essParts[k] = num(id); });
+      state.essentials = essSum(essParts);
+      essMain.value = state.essentials;
+      $("salaryVal").textContent = money(state.salary);
+      $("cashVal").textContent = money(state.cash);
+      $("ageVal").textContent = String(Math.round(state.age));
+      $("timelineVal").textContent = Math.round(state.timeline) + " months";
+      $("essentialsVal").textContent = money(state.essentials);
+      ["salary", "cash", "age", "timeline"].forEach(id => setFill($(id)));
+      setFill(essMain);
+      syncEssSubs();
+      render();
+    });
 
     render();
   </script>
