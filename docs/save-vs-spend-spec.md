@@ -148,23 +148,28 @@ tax overstatement is why the toggle is split.
    loan repayments. Not dining out or shopping, that comes out of the guilt-free pool."
    Card subline: "Essentials are what you must spend to live. Salary starts at
    the median of Singapore's workforce, because averages get dragged up by
-   high earners. Move the sliders and we'll show you whether you're above or
-   below the middle." A live hint reads "A typical Singaporean spends S$1,986
+   high earners." A live hint reads "A typical Singaporean spends S$1,986
    a month (HES 2023). You're S$X above/below it." (or "right at the middle.").
    Optional "Break it down by category" toggle (full-width button, ink border +
-   hard shadow) reveals 6 sub-sliders (Housing 185 / Food 475 / Transport 320 /
-   Bills & utilities 90 / Insurance 200 / Everything else 716, summing to the
+   hard shadow) reveals 6 sub-sliders (Housing 219 / Food 486 / Transport 300 /
+   Bills & utilities 90 / Insurance 198 / Everything else 693, summing to the
    S$1,986 default; sub-sliders use step S$1 so the exact figures are valid).
    Sub-sliders sum to the main value; dragging the main slider
    re-scales the parts proportionally (snapped to S$50). Each sub-slider's max is capped live so
    the parts can never exceed S$15,000.
    Inside the breakdown, a dashed "Start from the typical Singaporean" button
-   fills the six sliders from SingStat HES 2023 per-person monthly averages:
-   Housing 185 / Food 475 / Transport 320 / Bills 90 / Insurance 200 /
-   Everything else 716 (sums to S$1,986, the per-member average). Derivation:
-   household figures (cash housing & utilities 549, food 1422, transport 951,
-   info & comm 270, insurance & financial 590, rest 2150) scaled by the
-   per-member factor 1986/5931; "other" is the residual so parts sum exactly.
+   fills the six sliders from SingStat HES 2023 official per-member cells
+   (cash spending only, imputed rent excluded): Housing 219 (utilities +
+   dwelling repairs + actual rent, per member) / Food 486 (groceries + eating
+   out) / Transport 300 / Bills 90 (info & comms household S$270 / 2.99;
+   utilities already sit inside Housing, so the label no longer says "SP") /
+   Insurance 198 (insurance & financial services household S$590 / 2.99; no
+   official per-member cell published, treat as unverified at the last dollar) /
+   Everything else 693 (residual so parts sum to S$1,986, the official
+   per-member total). Implied household size 5931/1986 = 2.99. Derivation
+   corrected 2026-09-14: the previous defaults (185/475/320/200/716) divided
+   household figures by 2.99, which is wrong for housing; SingStat's own
+   per-member column is now used where published.
    Note under the button: "Based on SingStat's 2023 Household Expenditure
    Survey, per person. SingStat publishes averages, not medians, for spending."
    (Medians can't be split by category, so the spending benchmark is the
