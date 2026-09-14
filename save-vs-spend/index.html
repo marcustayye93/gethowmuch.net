@@ -537,9 +537,9 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       </div>
 
       <div class="field">
-        <div class="field-label"><span>Monthly essentials, or break it down by category right below it</span><span class="field-value">S$<input class="num-field" id="essentialsVal" type="number" inputmode="numeric" min="0" max="15000" step="1" value="1986" aria-label="Monthly essentials, type an amount" /></span></div>
+        <div class="field-label"><span>Monthly essentials, or break it down by category right below it</span><span class="field-value">S$<input class="num-field" id="essentialsVal" type="number" inputmode="numeric" min="0" max="15000" step="1" value="2667" aria-label="Monthly essentials, type an amount" /></span></div>
         <div class="range-wrap">
-          <input id="essentials" type="range" min="0" max="15000" step="1" value="1986" aria-label="Monthly essentials" />
+          <input id="essentials" type="range" min="0" max="15000" step="1" value="2667" aria-label="Monthly essentials" />
           <div class="range-labels" aria-hidden="true"><span>S$0</span><span>S$15k</span></div>
         </div>
         <p class="field-note">Rent, food, transport, bills, insurance. Everything left over is discretionary.</p>
@@ -551,8 +551,8 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           <button type="button" class="ess-avg" id="essAvgBtn">Start from the typical Singaporean</button>
           <p class="ess-avg-note">Based on SingStat's 2023 Household Expenditure Survey, per person. SingStat publishes averages, not medians, for spending.</p>
           <div class="sub-field">
-            <div class="sub-head"><span>Housing <small>rent or mortgage</small></span><span class="sub-val">S$<input class="num-field" id="essHousingVal" type="number" inputmode="numeric" min="0" max="15000" step="1" value="219" aria-label="Housing, type an amount" /></span></div>
-            <input id="essHousing" type="range" min="0" max="15000" step="1" value="219" aria-label="Housing, rent or mortgage" />
+            <div class="sub-head"><span>Housing <small>Rent / Mortgage</small></span><span class="sub-val">S$<input class="num-field" id="essHousingVal" type="number" inputmode="numeric" min="0" max="15000" step="1" value="900" aria-label="Housing, type an amount" /></span></div>
+            <input id="essHousing" type="range" min="0" max="15000" step="1" value="900" aria-label="Housing, Rent / Mortgage" />
           </div>
           <div class="sub-field">
             <div class="sub-head"><span>Food <small>groceries + eating out</small></span><span class="sub-val">S$<input class="num-field" id="essFoodVal" type="number" inputmode="numeric" min="0" max="15000" step="1" value="486" aria-label="Food, type an amount" /></span></div>
@@ -672,7 +672,7 @@ savings rate  = monthly save ÷ take-home</pre>
         <li><strong>Your tax, both branches.</strong> Tax residents get the full YA2024-onwards progressive bands with exact-age earned income relief. Non-residents get the actual rule: the higher of 15% flat on gross or the resident bands. One shared engine powers this page and the income tax calculator, so the number matches everywhere.</li>
         <li><strong>The 80% cap is a judgment, stated openly.</strong> A savings plan with zero fun money for months is a plan nobody follows, so monthly saving is capped at 80% of what's left. That is a product decision, not a financial law, and the page tells you whenever it binds.</li>
         <li><strong>Cash and CPF never mix.</strong> The headline rate is cash saving ÷ take-home. CPF is forced saving on a separate line, never folded in to flatter the number.</li>
-        <li><strong>The starting points are the middle of Singapore.</strong> Salary starts at S$4,700: the MOM 2024 median of S$5,500 for full-time employed residents, adjusted to payslip basis by removing employer CPF (÷ 1.17). Spending starts at S$1,986 a month: SingStat's 2023 Household Expenditure Survey per person. SingStat publishes averages, not medians, for spending, and medians can't be split by category, so the spending benchmark is the typical Singaporean rather than a true median. Cash starts at S$0: no credible median for cash savings is published, so we don't invent one. For context, 7 in 10 Singaporeans keep 3-6 months of expenses saved (MoneySense 2023).</li>
+        <li><strong>The starting points are the middle of Singapore.</strong> Salary starts at S$4,700: the MOM 2024 median of S$5,500 for full-time employed residents, adjusted to payslip basis by removing employer CPF (÷ 1.17). Spending starts at S$2,667 a month. The categories follow SingStat's 2023 Household Expenditure Survey, except housing: the survey's S$219 mixes in homeowners who pay almost no rent, so we use S$900, what a rented room actually costs. SingStat publishes averages, not medians, for spending, and medians can't be split by category, so the spending benchmark is the typical Singaporean rather than a true median. Cash starts at S$0: no credible median for cash savings is published, so we don't invent one. For context, 7 in 10 Singaporeans keep 3-6 months of expenses saved (MoneySense 2023).</li>
         <li><strong>Known limits, disclosed.</strong> Not modeled: CPF graduated rates at or below S$750 monthly wages, and PR first-two-year CPF graduation.</li>
       </ul>
     </section>
@@ -822,7 +822,7 @@ savings rate  = monthly save ÷ take-home</pre>
     const $ = id => document.getElementById(id);
 
     const state = {
-      salary: 4700, essentials: 1986, cash: 0, age: 40,
+      salary: 4700, essentials: 2667, cash: 0, age: 40,
       residency: "sg", taxStatus: "resident", cover: 6, timeline: 12
     };
 
@@ -878,7 +878,7 @@ savings rate  = monthly save ÷ take-home</pre>
 
     /* ---------- essentials breakdown ---------- */
     const ESS_MAX = 15000;
-    const essParts = { housing: 219, food: 486, transport: 300, bills: 90, insurance: 198, other: 693 };
+    const essParts = { housing: 900, food: 486, transport: 300, bills: 90, insurance: 198, other: 693 };
     function essSum(parts) {
       return Object.values(parts).reduce((a, b) => a + b, 0);
     }
@@ -909,11 +909,13 @@ savings rate  = monthly save ÷ take-home</pre>
     function render() {
       // Median benchmarks: where the user stands vs the middle of Singapore.
       // Salary median: MOM 2024 S$5,500 incl. employer CPF -> ~S$4,700 payslip basis.
-      // Essentials benchmark: HES 2023 S$1,986 per person (typical, not a median).
+      // Essentials benchmark: HES 2023 categories, but housing is set to a renter's
+      // S$900 (Marcus's call 2026-09-14; the survey's S$219 mixes in homeowners who
+      // pay almost no cash rent). Total S$2,667. Food is groceries + eating out.
       $("salaryMedHint").textContent = vsMedian(state.salary, 4700,
         "Median full-time salary is S$4,700 (MOM 2024).");
-      $("essMedHint").textContent = vsMedian(state.essentials, 1986,
-        "A typical Singaporean spends S$1,986 a month (HES 2023).");
+      $("essMedHint").textContent = vsMedian(state.essentials, 2667,
+        "Housing follows a renter's S$900; the rest is HES 2023 (S$2,667 total).");
       // Retirement handoff: carry age + essentials (as the income starting point)
       // so the user never retypes them.
       const qp = new URLSearchParams();
@@ -1124,14 +1126,17 @@ savings rate  = monthly save ÷ take-home</pre>
       render();
     });
     setFill(essMain);
-    // SingStat HES 2023 official per-member cells (cash spending only, imputed rent excluded).
-    // Per member (S$/mo): housing = utilities + dwelling repairs + actual rent 219;
-    // food (groceries + eating out) 486; transport 300. Bills = info & comms
+    // Benchmark preset. Food, transport, bills and insurance follow SingStat HES 2023
+    // per-member cells (cash spending only, imputed rent excluded). Housing does NOT:
+    // Marcus's call (2026-09-14) sets it at a renter's S$900, because the survey's
+    // S$219 mixes in homeowners who pay almost no cash rent and reads as broken to
+    // anyone renting. S$900 is Marcus's figure, not a published stat.
+    // Food (groceries + eating out) 486; transport 300. Bills = info & comms
     // household S$270 / 2.99 ≈ 90 (utilities already sit inside housing). Insurance =
     // insurance & financial services household S$590 / 2.99 ≈ 198 (no official
     // per-member cell published, treat as unverified at the last dollar). "Other" is
-    // the residual so the parts sum to exactly 1986.
-    const ESS_AVG_PRESET = { housing: 219, food: 486, transport: 300, bills: 90, insurance: 198, other: 693 };
+    // the residual 693, so the parts sum to S$2,667.
+    const ESS_AVG_PRESET = { housing: 900, food: 486, transport: 300, bills: 90, insurance: 198, other: 693 };
     $("essAvgBtn").addEventListener("click", () => {
       Object.assign(essParts, ESS_AVG_PRESET);
       state.essentials = essSum(essParts);
