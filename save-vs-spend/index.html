@@ -450,6 +450,29 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     }
     .phase2 a.cta:active { transform: scale(.97); }
 
+    .growth {
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      box-shadow: 4px 4px 0 var(--ink);
+      padding: clamp(22px, 3vw, 30px);
+      margin-bottom: 22px;
+    }
+    .growth h2 { margin: 0 0 8px; font-size: 19px; font-weight: 700; letter-spacing: -.02em; }
+    .growth-sub { margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .growth-sub strong { color: var(--ink); font-family: "Space Mono", monospace; }
+    .growth .field { padding: 12px 0 4px; }
+    .growth-chart-wrap { margin: 8px 0 2px; }
+    #growth-chart { display: block; width: 100%; height: auto; }
+    .growth-legend { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 9px; }
+    .growth-legend li { display: grid; grid-template-columns: 14px minmax(0,1fr) auto auto; gap: 10px; align-items: center; font-size: 13px; font-weight: 700; }
+    .growth-legend .dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--ink); }
+    .growth-legend .lrate { display: flex; align-items: center; gap: 2px; font-family: "Space Mono", monospace; font-size: 12px; color: var(--muted); }
+    .growth-legend .lrate input { width: 54px; border: 0; border-bottom: 2px solid var(--ink); background: transparent; text-align: right; font-family: "Space Mono", monospace; font-size: 13px; font-weight: 500; color: var(--ink); padding: 1px 2px; }
+    .growth-legend .lrate input:focus { outline: 3px solid var(--brand); outline-offset: 2px; }
+    .growth-legend .lval { font-family: "Space Mono", monospace; font-size: 13px; font-weight: 500; text-align: right; min-width: 88px; }
+    .growth-note { font-size: 11px; line-height: 1.5; color: var(--muted); margin: 14px 0 0; }
+
     .method { margin: 30px 0 6px; padding: 22px 2px 0; border-top: 1px solid var(--line); }
     .method h2 { margin: 0 0 10px; font-size: 18px; letter-spacing: -.02em; }
     .method p, .method li { color: var(--muted); font-size: 13px; line-height: 1.65; }
@@ -579,10 +602,10 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       </div>
 
       <div class="field">
-        <div class="field-label"><span>Emergency cash already saved</span><span class="field-value">S$<input class="num-field" id="cashVal" type="number" inputmode="numeric" min="0" max="100000" step="500" value="0" aria-label="Emergency cash already saved, type an amount" /></span></div>
+        <div class="field-label"><span>Emergency cash already saved</span><span class="field-value">S$<input class="num-field" id="cashVal" type="number" inputmode="numeric" min="0" max="5000000" step="500" value="0" aria-label="Emergency cash already saved, type an amount" /></span></div>
         <div class="range-wrap">
-          <input id="cash" type="range" min="0" max="100000" step="500" value="0" aria-label="Emergency cash already saved" />
-          <div class="range-labels" aria-hidden="true"><span>S$0</span><span>S$100k</span></div>
+          <input id="cash" type="range" min="0" max="5000000" step="500" value="0" aria-label="Emergency cash already saved" />
+          <div class="range-labels" aria-hidden="true"><span>S$0</span><span>S$5M</span></div>
         </div>
         <p class="field-hint">7 in 10 Singaporeans keep 3-6 months of expenses saved (MoneySense 2023).</p>
       </div>
@@ -650,6 +673,23 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         </div>
         <div class="detail-grid" id="detailGrid"></div>
       </div>
+    </section>
+
+    <section class="growth" aria-label="What your savings could become">
+      <h2>Your money at work</h2>
+      <p class="growth-sub" id="growthSub"></p>
+      <div class="field">
+        <div class="field-label"><span>Years invested</span><span class="field-value"><span id="growth-years-label">10 yrs</span></span></div>
+        <div class="range-wrap">
+          <input id="growth-years" type="range" min="1" max="30" step="1" value="10" aria-label="Years invested" />
+          <div class="range-labels" aria-hidden="true"><span>1 yr</span><span>30 yrs</span></div>
+        </div>
+      </div>
+      <div class="growth-chart-wrap">
+        <svg id="growth-chart" viewBox="0 0 400 232" role="img" aria-label="Projected growth of your monthly savings by asset class"></svg>
+      </div>
+      <ul class="growth-legend" id="growth-legend"></ul>
+      <p class="growth-note">Illustrative only. Monthly contributions, compounded monthly at the rate you set. Real returns vary year to year and can be negative. Not financial advice.</p>
     </section>
 
     <section class="phase2" aria-label="When the fund is full">
@@ -934,22 +974,22 @@ savings rate  = monthly save ÷ take-home</pre>
         $("heroCaption").textContent = "Enter your salary to see your plan.";
         $("capNote").hidden = true;
         $("detailGrid").innerHTML = "";
+        renderGrowth(0);
         return;
       }
 
       if (p.target <= 0) {
-        $("heroKicker").textContent = "Safety net";
-        $("heroCurrency").textContent = "";
-        $("heroFigure").textContent = "Covered";
-        $("heroUnit").textContent = "";
-        $("heroCaption").innerHTML = "Your safety net is covered. " +
-          "Keep the habit going — <strong>" + money(p.guilt) + "/mo</strong> is yours to redirect, " +
-          "and the retirement calculator sizes the investing amount.";
+        $("heroKicker").textContent = "Safety net: covered";
+        $("heroCurrency").textContent = "S$";
+        $("heroFigure").textContent = Math.round(p.discretion).toLocaleString("en-SG");
+        $("heroUnit").textContent = "/mo to invest";
+        $("heroCaption").innerHTML = "Your safety net is covered. This is what you can put to work every month. See what it becomes below.";
         $("capNote").hidden = true;
-        rows += detailRow("Cash savings rate", "nothing left to build", "—");
+        rows += detailRow("Monthly saving power", "everything left after essentials", money(p.discretion) + "/mo");
         rows += detailRow("Take-home pay", money(state.salary) + " − " + money(p.cpfEmployee) + " CPF − " + taxStr(p.taxMonth) + " tax", money(p.takeHome) + "/mo");
-        rows += detailRow("Discretionary", "take-home − essentials", money(p.discretion) + "/mo");
+        rows += detailRow("Emergency fund target", state.cover + " months of essentials", "covered");
         $("detailGrid").innerHTML = rows;
+        renderGrowth(Math.max(p.discretion, 0));
         return;
       }
 
@@ -963,6 +1003,7 @@ savings rate  = monthly save ÷ take-home</pre>
         rows += detailRow("Take-home pay", money(state.salary) + " − " + money(p.cpfEmployee) + " CPF − " + taxStr(p.taxMonth) + " tax", money(p.takeHome) + "/mo");
         rows += detailRow("Emergency fund target", state.cover + " months of essentials", money(p.target));
         $("detailGrid").innerHTML = rows;
+        renderGrowth(0);
         return;
       }
 
@@ -992,7 +1033,104 @@ savings rate  = monthly save ÷ take-home</pre>
       rows += detailRow("Take-home pay", money(state.salary) + " − " + money(p.cpfEmployee) + " CPF − " + taxStr(p.taxMonth) + " tax", money(p.takeHome) + "/mo");
       rows += detailRow("20%-of-gross check", "what the flat rule would demand", money(0.2 * state.salary) + "/mo");
       $("detailGrid").innerHTML = rows;
+      renderGrowth(Math.max(p.actual, 0));
     }
+
+    /* ---------- growth projection ---------- */
+    // Projects the monthly saving amount forward with monthly contributions,
+    // one dotted line per asset class, like the retirement page visualizer.
+    const GROWTH_ASSETS = [
+      { key: "bank", name: "Bank savings", rate: 0.5, color: "#667085" },
+      { key: "reit", name: "S-REITs", rate: 6.0, color: "#101828" },
+      { key: "sp500", name: "S&P 500", rate: 7.0, color: "#e8553f" }
+    ];
+    const growthRates = {};
+    GROWTH_ASSETS.forEach((a) => { growthRates[a.key] = a.rate; });
+    let growthAmt = 0;
+    const num = (v) => { const x = parseFloat(v); return isNaN(x) ? 0 : x; };
+    const clampG = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+    function futureValueAnnuity(pmt, annualRate, years) {
+      const r = annualRate / 12, n = years * 12;
+      if (r <= 0 || pmt <= 0) return pmt * n;
+      return pmt * ((Math.pow(1 + r, n) - 1) / r);
+    }
+    function niceCeilG(value) {
+      if (!(value > 0)) return 1;
+      const exp = Math.floor(Math.log10(value));
+      const base = Math.pow(10, exp);
+      const n = value / base;
+      const nice = n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10;
+      return nice * base;
+    }
+    function fmtAxisG(v) {
+      if (v >= 1e6) {
+        const m = v / 1e6;
+        return "S$" + (m >= 10 ? Math.round(m) : Math.round(m * 10) / 10) + "m";
+      }
+      if (v >= 1000) return "S$" + Math.round(v / 1000) + "k";
+      return "S$" + Math.round(v);
+    }
+
+    const growthLegend = $("growth-legend");
+    growthLegend.innerHTML = GROWTH_ASSETS.map((a) =>
+      "<li><span class=\"dot\" style=\"background:" + a.color + "\"></span>" +
+      "<span class=\"lname\">" + a.name + "</span>" +
+      "<span class=\"lrate\"><input id=\"grate-" + a.key + "\" type=\"number\" inputmode=\"decimal\" min=\"0\" max=\"30\" step=\"0.1\" value=\"" + a.rate.toFixed(1) + "\" aria-label=\"" + a.name + " assumed annual return percent\">%</span>" +
+      "<span class=\"lval\" id=\"gval-" + a.key + "\"></span></li>"
+    ).join("");
+    GROWTH_ASSETS.forEach((a) => {
+      $("grate-" + a.key).addEventListener("input", (e) => {
+        growthRates[a.key] = num(e.target.value);
+        renderGrowth(growthAmt);
+      });
+      $("grate-" + a.key).addEventListener("blur", (e) => {
+        e.target.value = clampG(num(e.target.value), 0, 30).toFixed(1);
+        renderGrowth(growthAmt);
+      });
+    });
+
+    function renderGrowth(amt) {
+      growthAmt = amt;
+      const yearsEl = $("growth-years");
+      const T = clampG(Math.round(num(yearsEl.value)) || 10, 1, 30);
+      $("growth-years-label").textContent = T + " yrs";
+      $("growthSub").innerHTML = amt > 0
+        ? "Investing <strong>" + money(amt) + "/mo</strong>:"
+        : "Enter your salary to see what monthly saving becomes.";
+      const series = GROWTH_ASSETS.map((a) => {
+        const r = clampG(growthRates[a.key], 0, 30) / 100;
+        const pts = [];
+        for (let t = 0; t <= T; t++) pts.push(futureValueAnnuity(amt, r, t));
+        return { key: a.key, color: a.color, pts: pts, end: pts[T] };
+      });
+      const yMax = niceCeilG(Math.max.apply(null, series.map((s) => s.end).concat([1])));
+      const W = 400, H = 232, padL = 46, padR = 8, padT = 10, padB = 24;
+      const plotW = W - padL - padR, plotH = H - padT - padB;
+      const X = (t) => padL + (t / T) * plotW;
+      const Y = (v) => padT + plotH * (1 - v / yMax);
+      let svg = "";
+      [0, 0.25, 0.5, 0.75, 1].forEach((f) => {
+        const y = Y(yMax * f);
+        svg += "<line x1=\"" + padL + "\" y1=\"" + y.toFixed(1) + "\" x2=\"" + (W - padR) + "\" y2=\"" + y.toFixed(1) + "\" stroke=\"#e6eae6\" stroke-width=\"1\"/>";
+        svg += "<text x=\"" + (padL - 6) + "\" y=\"" + (y + 3.5).toFixed(1) + "\" text-anchor=\"end\" font-size=\"9\" fill=\"#667085\" font-family=\"Space Mono, monospace\">" + fmtAxisG(yMax * f) + "</text>";
+      });
+      [0, Math.round(T / 2), T].forEach((t) => {
+        svg += "<text x=\"" + X(t).toFixed(1) + "\" y=\"" + (H - 8) + "\" text-anchor=\"middle\" font-size=\"9\" fill=\"#667085\" font-family=\"Space Mono, monospace\">" + (t === 0 ? "now" : t + "y") + "</text>";
+      });
+      series.forEach((s) => {
+        const d = s.pts.map((v, t) => (t === 0 ? "M" : "L") + X(t).toFixed(1) + " " + Y(v).toFixed(1)).join(" ");
+        svg += "<path d=\"" + d + "\" fill=\"none\" stroke=\"" + s.color + "\" stroke-width=\"2.5\" stroke-dasharray=\"2 5\" stroke-linecap=\"round\"/>";
+      });
+      $("growth-chart").innerHTML = svg;
+      series.forEach((s) => { $("gval-" + s.key).textContent = money(s.end); });
+    }
+    $("growth-years").addEventListener("input", (e) => {
+      const el = e.target;
+      const pctv = (el.value - el.min) / (el.max - el.min) * 100;
+      el.style.setProperty("--fill", pctv + "%");
+      renderGrowth(growthAmt);
+    });
 
     /* ---------- wiring ---------- */
     function setFill(el) {
@@ -1177,7 +1315,7 @@ savings rate  = monthly save ÷ take-home</pre>
       $("ageVal").value = String(Math.round(state.age));
       $("timelineVal").value = String(Math.round(state.timeline));
       showEssNum();
-      ["salary", "cash", "age", "timeline"].forEach(id => setFill($(id)));
+      ["salary", "cash", "age", "timeline", "growth-years"].forEach(id => setFill($(id)));
       setFill(essMain);
       syncEssSubs();
       render();
