@@ -205,6 +205,29 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       font-weight: 700;
     }
     .field-value { font-family: "Space Mono", monospace; font-weight: 700; color: var(--brand-deep); white-space: nowrap; }
+    /* Editable figures: every slider value is also a number field. */
+    .num-field {
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+      font-size: inherit;
+      color: inherit;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px dashed var(--muted);
+      border-radius: 0;
+      padding: 0 0 1px;
+      margin: 0;
+      width: 7ch;
+      text-align: right;
+      outline: none;
+      appearance: textfield;
+      -moz-appearance: textfield;
+    }
+    .num-field::-webkit-outer-spin-button,
+    .num-field::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .num-field:hover { border-bottom-color: var(--ink); }
+    .num-field:focus { border-bottom: 2px solid var(--ink); padding-bottom: 0; }
+    .num-sm { width: 3.5ch; }
     .field-note { margin: 8px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
     .field-hint { margin: 6px 0 4px; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
     .med-hint { color: var(--ink); font-weight: 500; }
@@ -504,7 +527,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <p class="card-sub">Essentials are what you must spend to live. Salary starts at the median of Singapore's workforce, because averages get dragged up by high earners.</p>
 
       <div class="field">
-        <div class="field-label"><span>Gross monthly salary</span><span class="field-value" id="salaryVal">S$4,700</span></div>
+        <div class="field-label"><span>Gross monthly salary</span><span class="field-value">S$<input class="num-field" id="salaryVal" type="number" inputmode="numeric" min="0" max="25000" step="100" value="4700" aria-label="Gross monthly salary, type an amount" /></span></div>
         <p class="field-hint">The top number on your payslip, before CPF and tax come out. Not what lands in your bank account.</p>
         <div class="range-wrap">
           <input id="salary" type="range" min="0" max="25000" step="100" value="4700" aria-label="Gross monthly salary" />
@@ -514,7 +537,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       </div>
 
       <div class="field">
-        <div class="field-label"><span>Monthly essentials, or break it down by category right below it</span><span class="field-value" id="essentialsVal">S$1,986</span></div>
+        <div class="field-label"><span>Monthly essentials, or break it down by category right below it</span><span class="field-value">S$<input class="num-field" id="essentialsVal" type="number" inputmode="numeric" min="0" max="15000" step="1" value="1986" aria-label="Monthly essentials, type an amount" /></span></div>
         <div class="range-wrap">
           <input id="essentials" type="range" min="0" max="15000" step="1" value="1986" aria-label="Monthly essentials" />
           <div class="range-labels" aria-hidden="true"><span>S$0</span><span>S$15k</span></div>
@@ -528,27 +551,27 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           <button type="button" class="ess-avg" id="essAvgBtn">Start from the typical Singaporean</button>
           <p class="ess-avg-note">Based on SingStat's 2023 Household Expenditure Survey, per person. SingStat publishes averages, not medians, for spending.</p>
           <div class="sub-field">
-            <div class="sub-head"><span>Housing <small>rent or mortgage</small></span><span class="sub-val" id="essHousingVal">S$219</span></div>
+            <div class="sub-head"><span>Housing <small>rent or mortgage</small></span><span class="sub-val">S$<input class="num-field" id="essHousingVal" type="number" inputmode="numeric" min="0" max="15000" step="1" value="219" aria-label="Housing, type an amount" /></span></div>
             <input id="essHousing" type="range" min="0" max="15000" step="1" value="219" aria-label="Housing, rent or mortgage" />
           </div>
           <div class="sub-field">
-            <div class="sub-head"><span>Food <small>groceries + eating out</small></span><span class="sub-val" id="essFoodVal">S$486</span></div>
+            <div class="sub-head"><span>Food <small>groceries + eating out</small></span><span class="sub-val">S$<input class="num-field" id="essFoodVal" type="number" inputmode="numeric" min="0" max="15000" step="1" value="486" aria-label="Food, type an amount" /></span></div>
             <input id="essFood" type="range" min="0" max="15000" step="1" value="486" aria-label="Food, groceries and eating out" />
           </div>
           <div class="sub-field">
-            <div class="sub-head"><span>Transport <small>MRT, bus, taxi, car</small></span><span class="sub-val" id="essTransportVal">S$300</span></div>
+            <div class="sub-head"><span>Transport <small>MRT, bus, taxi, car</small></span><span class="sub-val">S$<input class="num-field" id="essTransportVal" type="number" inputmode="numeric" min="0" max="15000" step="1" value="300" aria-label="Transport, type an amount" /></span></div>
             <input id="essTransport" type="range" min="0" max="15000" step="1" value="300" aria-label="Transport" />
           </div>
           <div class="sub-field">
-            <div class="sub-head"><span>Bills &amp; utilities <small>phone, internet</small></span><span class="sub-val" id="essBillsVal">S$90</span></div>
+            <div class="sub-head"><span>Bills &amp; utilities <small>phone, internet</small></span><span class="sub-val">S$<input class="num-field" id="essBillsVal" type="number" inputmode="numeric" min="0" max="15000" step="1" value="90" aria-label="Bills and utilities, type an amount" /></span></div>
             <input id="essBills" type="range" min="0" max="15000" step="1" value="90" aria-label="Bills and utilities" />
           </div>
           <div class="sub-field">
-            <div class="sub-head"><span>Insurance <small>premiums</small></span><span class="sub-val" id="essInsuranceVal">S$198</span></div>
+            <div class="sub-head"><span>Insurance <small>premiums</small></span><span class="sub-val">S$<input class="num-field" id="essInsuranceVal" type="number" inputmode="numeric" min="0" max="15000" step="1" value="198" aria-label="Insurance, type an amount" /></span></div>
             <input id="essInsurance" type="range" min="0" max="15000" step="1" value="198" aria-label="Insurance premiums" />
           </div>
           <div class="sub-field">
-            <div class="sub-head"><span>Everything else <small>the rest</small></span><span class="sub-val" id="essOtherVal">S$693</span></div>
+            <div class="sub-head"><span>Everything else <small>the rest</small></span><span class="sub-val">S$<input class="num-field" id="essOtherVal" type="number" inputmode="numeric" min="0" max="15000" step="1" value="693" aria-label="Everything else, type an amount" /></span></div>
             <input id="essOther" type="range" min="0" max="15000" step="1" value="693" aria-label="Everything else" />
           </div>
           <div class="sub-total"><span>Essentials total</span><span class="sub-val" id="essTotalVal">S$1,986</span></div>
@@ -556,7 +579,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       </div>
 
       <div class="field">
-        <div class="field-label"><span>Emergency cash already saved</span><span class="field-value" id="cashVal">S$0</span></div>
+        <div class="field-label"><span>Emergency cash already saved</span><span class="field-value">S$<input class="num-field" id="cashVal" type="number" inputmode="numeric" min="0" max="100000" step="500" value="0" aria-label="Emergency cash already saved, type an amount" /></span></div>
         <div class="range-wrap">
           <input id="cash" type="range" min="0" max="100000" step="500" value="0" aria-label="Emergency cash already saved" />
           <div class="range-labels" aria-hidden="true"><span>S$0</span><span>S$100k</span></div>
@@ -570,7 +593,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <p class="card-sub">Age and legal status drive your CPF and tax. This moves the number more than anything else here.</p>
 
       <div class="field">
-        <div class="field-label"><span>Your age</span><span class="field-value" id="ageVal">40</span></div>
+        <div class="field-label"><span>Your age</span><span class="field-value"><input class="num-field num-sm" id="ageVal" type="number" inputmode="numeric" min="16" max="99" step="1" value="40" aria-label="Your age, type a number" /></span></div>
         <div class="range-wrap">
           <input id="age" type="range" min="16" max="99" step="1" value="40" aria-label="Your age" />
           <div class="range-labels" aria-hidden="true"><span>16</span><span>99</span></div>
@@ -609,7 +632,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       </div>
 
       <div class="field">
-        <div class="field-label"><span>Build it in</span><span class="field-value" id="timelineVal">12 months</span></div>
+        <div class="field-label"><span>Build it in</span><span class="field-value"><input class="num-field num-sm" id="timelineVal" type="number" inputmode="numeric" min="6" max="24" step="1" value="12" aria-label="Build timeline in months, type a number" /> months</span></div>
         <div class="range-wrap">
           <input id="timeline" type="range" min="6" max="24" step="1" value="12" aria-label="Build timeline in months" />
           <div class="range-labels" aria-hidden="true"><span>6 mo</span><span>24 mo</span></div>
@@ -989,24 +1012,37 @@ savings rate  = monthly save ÷ take-home</pre>
       });
     }
 
-    function rangeWire(id, valId, key, fmt) {
-      const el = $(id);
-      const update = () => {
+    function rangeWire(id, valId, key) {
+      const el = $(id), numEl = $(valId);
+      const step = parseFloat(el.step) || 1;
+      const clamp = v => Math.min(parseFloat(el.max), Math.max(parseFloat(el.min), v));
+      const showNum = () => { if (document.activeElement !== numEl) numEl.value = String(Math.round(state[key])); };
+      const fromSlider = () => {
         state[key] = parseFloat(el.value);
-        $(valId).textContent = fmt(state[key]);
-        setFill(el);
-        render();
+        showNum(); setFill(el); render();
       };
-      el.addEventListener("input", update);
-      setFill(el);
-      $(valId).textContent = fmt(state[key]);
+      // Typing in the number field updates live; leaving the field clamps to
+      // the slider range and snaps to its step, then shows the committed value.
+      const fromNum = snap => {
+        let v = parseFloat(String(numEl.value).replace(/[^0-9.]/g, ""));
+        if (isNaN(v)) { if (snap) numEl.value = String(Math.round(state[key])); return; }
+        v = clamp(v);
+        if (snap) v = Math.round(v / step) * step;
+        state[key] = v; el.value = v;
+        if (snap || document.activeElement !== numEl) numEl.value = String(Math.round(v));
+        setFill(el); render();
+      };
+      el.addEventListener("input", fromSlider);
+      numEl.addEventListener("input", () => fromNum(false));
+      numEl.addEventListener("change", () => fromNum(true));
+      numEl.addEventListener("focus", () => numEl.select());
+      setFill(el); showNum();
     }
 
-    const moneyMo = n => money(n);
-    rangeWire("salary", "salaryVal", "salary", moneyMo);
-    rangeWire("cash", "cashVal", "cash", moneyMo);
-    rangeWire("age", "ageVal", "age", n => String(Math.round(n)));
-    rangeWire("timeline", "timelineVal", "timeline", n => Math.round(n) + " months");
+    rangeWire("salary", "salaryVal", "salary");
+    rangeWire("cash", "cashVal", "cash");
+    rangeWire("age", "ageVal", "age");
+    rangeWire("timeline", "timelineVal", "timeline");
 
     /* essentials: main slider + optional 6-part breakdown, one shared number */
     const essMain = $("essentials");
@@ -1018,32 +1054,71 @@ savings rate  = monthly save ÷ take-home</pre>
       ["insurance", "essInsurance", "essInsuranceVal"],
       ["other", "essOther", "essOtherVal"]
     ];
+    const essNum = $("essentialsVal");
+    const showEssNum = () => { if (document.activeElement !== essNum) essNum.value = String(Math.round(state.essentials)); };
     function syncEssSubs() {
       const sum = essSum(essParts);
       essDefs.forEach(([k, id, valId]) => {
-        const el = $(id);
+        const el = $(id), numEl = $(valId);
         el.value = essParts[k];
         el.max = ESS_MAX - (sum - essParts[k]);
         setFill(el);
-        $(valId).textContent = money(essParts[k]);
+        if (document.activeElement !== numEl) numEl.value = String(Math.round(essParts[k]));
       });
       $("essTotalVal").textContent = money(sum);
     }
-    essDefs.forEach(([k, id]) => {
+    essDefs.forEach(([k, id, valId]) => {
+      const numEl = $(valId);
       $(id).addEventListener("input", e => {
         essParts[k] = parseFloat(e.target.value);
         state.essentials = essSum(essParts);
         essMain.value = state.essentials;
         setFill(essMain);
-        $("essentialsVal").textContent = money(state.essentials);
+        showEssNum();
         syncEssSubs();
         render();
       });
+      // Number field -> state: live while typing, clamp + snap on commit.
+      const fromSubNum = snap => {
+        const el = $(id);
+        let v = parseFloat(String(numEl.value).replace(/[^0-9.]/g, ""));
+        if (isNaN(v)) { if (snap) numEl.value = String(Math.round(essParts[k])); return; }
+        v = Math.min(parseFloat(el.max), Math.max(0, v));
+        if (snap) v = Math.round(v);
+        essParts[k] = v;
+        state.essentials = essSum(essParts);
+        essMain.value = state.essentials;
+        setFill(essMain);
+        showEssNum();
+        syncEssSubs();
+        if (snap) numEl.value = String(Math.round(essParts[k]));
+        render();
+      };
+      numEl.addEventListener("input", () => fromSubNum(false));
+      numEl.addEventListener("change", () => fromSubNum(true));
+      numEl.addEventListener("focus", () => numEl.select());
     });
+    // Main essentials number field -> rescale the parts proportionally.
+    const fromEssNum = snap => {
+      let v = parseFloat(String(essNum.value).replace(/[^0-9.]/g, ""));
+      if (isNaN(v)) { if (snap) essNum.value = String(Math.round(state.essentials)); return; }
+      v = Math.min(ESS_MAX, Math.max(0, v));
+      if (snap) v = Math.round(v);
+      rescaleEssParts(essParts, v);
+      state.essentials = v;
+      essMain.value = v;
+      setFill(essMain);
+      syncEssSubs();
+      if (snap) essNum.value = String(Math.round(v));
+      render();
+    };
+    essNum.addEventListener("input", () => fromEssNum(false));
+    essNum.addEventListener("change", () => fromEssNum(true));
+    essNum.addEventListener("focus", () => essNum.select());
     essMain.addEventListener("input", () => {
       rescaleEssParts(essParts, parseFloat(essMain.value));
       state.essentials = parseFloat(essMain.value);
-      $("essentialsVal").textContent = money(state.essentials);
+      showEssNum();
       setFill(essMain);
       syncEssSubs();
       render();
@@ -1062,7 +1137,7 @@ savings rate  = monthly save ÷ take-home</pre>
       state.essentials = essSum(essParts);
       essMain.value = state.essentials;
       setFill(essMain);
-      $("essentialsVal").textContent = money(state.essentials);
+      showEssNum();
       syncEssSubs();
       render();
     });
@@ -1092,11 +1167,11 @@ savings rate  = monthly save ÷ take-home</pre>
       essDefs.forEach(([k, id]) => { essParts[k] = num(id); });
       state.essentials = essSum(essParts);
       essMain.value = state.essentials;
-      $("salaryVal").textContent = money(state.salary);
-      $("cashVal").textContent = money(state.cash);
-      $("ageVal").textContent = String(Math.round(state.age));
-      $("timelineVal").textContent = Math.round(state.timeline) + " months";
-      $("essentialsVal").textContent = money(state.essentials);
+      $("salaryVal").value = String(Math.round(state.salary));
+      $("cashVal").value = String(Math.round(state.cash));
+      $("ageVal").value = String(Math.round(state.age));
+      $("timelineVal").value = String(Math.round(state.timeline));
+      showEssNum();
       ["salary", "cash", "age", "timeline"].forEach(id => setFill($(id)));
       setFill(essMain);
       syncEssSubs();
