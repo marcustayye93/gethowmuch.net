@@ -206,6 +206,20 @@
     input[type="range"]:focus-visible{outline:3px solid var(--aqua);outline-offset:2px}
     .range-ends{display:flex;justify-content:space-between;color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:9px;margin-top:-6px;padding:0 12px}
     .tax-note{font-family:"IBM Plex Mono",monospace;font-size:11px;line-height:1.4;margin:18px 0 0;color:var(--muted)}
+    .compound{margin-top:28px;border:3px solid var(--ink);background:var(--white);padding:20px 16px 18px;box-shadow:6px 6px 0 var(--ink)}
+    .compound h2{font-size:24px;line-height:1.15;letter-spacing:-.03em;margin:0 0 8px;font-weight:800}
+    .compound-sub{font-size:13px;line-height:1.5;color:var(--muted);margin:0 0 4px}
+    .compound .field{padding:16px 0}
+    .compound-chart-wrap{margin:8px 0 2px}
+    #compound-chart{display:block;width:100%;height:auto}
+    .compound-legend{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:9px}
+    .compound-legend li{display:grid;grid-template-columns:14px minmax(0,1fr) auto auto;gap:10px;align-items:center;font-size:13px;font-weight:700}
+    .compound-legend .dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--ink)}
+    .compound-legend .lrate{display:flex;align-items:center;gap:2px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted)}
+    .compound-legend .lrate input{width:54px;border:0;border-bottom:2px solid var(--ink);background:transparent;text-align:right;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:500;color:var(--ink);padding:1px 2px}
+    .compound-legend .lrate input:focus{outline:3px solid var(--aqua);outline-offset:2px}
+    .compound-legend .lval{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:500;text-align:right;min-width:88px}
+    .compound-note{font-size:11px;line-height:1.5;color:var(--muted);margin:14px 0 0}
     .result-summary{background:var(--ink);color:white;border-top:2px solid var(--ink);padding:15px 16px}
     .result-inner{width:min(100%,480px);margin:0 auto}
     .result-label{font-size:11px;font-weight:700;color:#c7c6be;margin-bottom:3px}
@@ -415,6 +429,30 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           <div class="breakdown-row total"><dt>More capital needed</dt><dd id="capital-gap">S$435,318</dd></div>
         </dl>
       </div>
+    </section>
+
+    <section class="compound" aria-label="What compounding does to your money">
+      <h2>Looks far away? Watch compounding work.</h2>
+      <p class="compound-sub">The amount below starts as the savings you entered above. It grows untouched: no top-ups, no leverage, just time.</p>
+      <div class="field">
+        <div class="field-head">
+          <label class="field-title" for="compound-principal">How much you have now</label>
+          <div class="field-value"><span>S$</span><input id="compound-principal" type="text" inputmode="numeric" value="500,000" aria-label="How much you have now"></div>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-head">
+          <label class="field-title" for="compound-years">Years invested</label>
+          <div class="field-value"><span id="compound-years-label">20 yrs</span></div>
+        </div>
+        <input id="compound-years" type="range" min="1" max="30" step="1" value="20" aria-label="Years invested">
+        <div class="range-ends"><span>1 yr</span><span>30 yrs</span></div>
+      </div>
+      <div class="compound-chart-wrap">
+        <svg id="compound-chart" viewBox="0 0 400 232" role="img" aria-label="Projected growth of your money by asset class"></svg>
+      </div>
+      <ul class="compound-legend" id="compound-legend"></ul>
+      <p class="compound-note">Illustrative only. Each line compounds yearly at the rate you set. Real returns vary year to year and can be negative. Not financial advice.</p>
     </section>
     <style>
 .faq { margin: 36px 0 6px; }
@@ -651,6 +689,116 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           calculate();
         });
       });
+
+      // Compounding visualizer: projects the "what you already have" amount
+      // forward with plain annual compounding, one dotted line per asset class.
+      const ASSET_CLASSES = [
+        { key: 'savings', name: 'Bank savings', rate: 0.5, color: '#667085' },
+        { key: 'fd', name: 'Fixed deposit', rate: 2.5, color: '#45dbdd' },
+        { key: 'ssb', name: 'Singapore Savings Bonds', rate: 2.8, color: '#ff7448' },
+        { key: 'reit', name: 'S-REITs', rate: 6.0, color: '#101828' },
+        { key: 'equity', name: 'Global equities', rate: 7.0, color: '#8a6100' },
+        { key: 'custom', name: 'Custom', rate: 5.0, color: '#c07f10' }
+      ];
+      const compoundRates = {};
+      ASSET_CLASSES.forEach((a) => { compoundRates[a.key] = a.rate; });
+
+      function futureValue(principal, annualRate, years) {
+        return principal * Math.pow(1 + annualRate, years);
+      }
+      function niceCeil(value) {
+        if (!(value > 0)) return 1;
+        const exp = Math.floor(Math.log10(value));
+        const base = Math.pow(10, exp);
+        const n = value / base;
+        const nice = n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10;
+        return nice * base;
+      }
+      function fmtAxis(v) {
+        if (v >= 1e6) {
+          const m = v / 1e6;
+          return 'S$' + (m >= 10 ? Math.round(m) : Math.round(m * 10) / 10) + 'm';
+        }
+        if (v >= 1000) return 'S$' + Math.round(v / 1000) + 'k';
+        return 'S$' + Math.round(v);
+      }
+      function moneyCapped(value) {
+        const v = value >= 1e6 ? Math.round(value / 1000) * 1000 : Math.round(value);
+        return 'S$' + v.toLocaleString('en-SG');
+      }
+
+      const compoundPrincipal = $('compound-principal');
+      const compoundYears = $('compound-years');
+      const compoundYearsLabel = $('compound-years-label');
+      const compoundChart = $('compound-chart');
+      const compoundLegend = $('compound-legend');
+      let principalTouched = false;
+
+      compoundLegend.innerHTML = ASSET_CLASSES.map((a) =>
+        '<li><span class="dot" style="background:' + a.color + '"></span>' +
+        '<span class="lname">' + a.name + '</span>' +
+        '<span class="lrate"><input id="crate-' + a.key + '" type="number" inputmode="decimal" min="0" max="30" step="0.1" value="' + a.rate.toFixed(1) + '" aria-label="' + a.name + ' assumed annual return percent">%</span>' +
+        '<span class="lval" id="cval-' + a.key + '"></span></li>'
+      ).join('');
+      ASSET_CLASSES.forEach((a) => {
+        $('crate-' + a.key).addEventListener('input', (e) => {
+          compoundRates[a.key] = numeric(e.target.value);
+          renderCompound();
+        });
+        $('crate-' + a.key).addEventListener('blur', (e) => {
+          e.target.value = clamp(numeric(e.target.value), 0, 30).toFixed(1);
+          renderCompound();
+        });
+      });
+
+      function renderCompound() {
+        const P = numeric(compoundPrincipal.value);
+        const T = clamp(Math.round(numeric(compoundYears.value)) || 20, 1, 30);
+        const series = ASSET_CLASSES.map((a) => {
+          const r = clamp(compoundRates[a.key], 0, 30) / 100;
+          const pts = [];
+          for (let t = 0; t <= T; t++) pts.push(futureValue(P, r, t));
+          return { key: a.key, name: a.name, color: a.color, pts: pts, end: pts[T] };
+        });
+        const yMax = niceCeil(Math.max.apply(null, series.map((s) => s.end).concat([1])));
+        const W = 400, H = 232, padL = 46, padR = 8, padT = 10, padB = 24;
+        const plotW = W - padL - padR, plotH = H - padT - padB;
+        const X = (t) => padL + (t / T) * plotW;
+        const Y = (v) => padT + plotH * (1 - v / yMax);
+        let svg = '';
+        [0, 0.25, 0.5, 0.75, 1].forEach((f) => {
+          const y = Y(yMax * f);
+          svg += '<line x1="' + padL + '" y1="' + y.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + y.toFixed(1) + '" stroke="#e6eae6" stroke-width="1"/>';
+          svg += '<text x="' + (padL - 6) + '" y="' + (y + 3.5).toFixed(1) + '" text-anchor="end" font-size="9" fill="#667085" font-family="IBM Plex Mono, monospace">' + fmtAxis(yMax * f) + '</text>';
+        });
+        [0, Math.round(T / 2), T].forEach((t) => {
+          svg += '<text x="' + X(t).toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="9" fill="#667085" font-family="IBM Plex Mono, monospace">' + (t === 0 ? 'now' : t + 'y') + '</text>';
+        });
+        series.forEach((s) => {
+          const d = s.pts.map((v, t) => (t === 0 ? 'M' : 'L') + X(t).toFixed(1) + ' ' + Y(v).toFixed(1)).join(' ');
+          svg += '<path d="' + d + '" fill="none" stroke="' + s.color + '" stroke-width="2.5" stroke-dasharray="2 5" stroke-linecap="round"/>';
+        });
+        compoundChart.innerHTML = svg;
+        series.forEach((s) => { $('cval-' + s.key).textContent = moneyCapped(s.end); });
+      }
+
+      compoundPrincipal.value = assets.value;
+      compoundPrincipal.addEventListener('input', () => { principalTouched = true; renderCompound(); });
+      compoundPrincipal.addEventListener('blur', () => {
+        compoundPrincipal.value = whole(numeric(compoundPrincipal.value));
+        renderCompound();
+      });
+      assets.addEventListener('input', () => {
+        if (!principalTouched) {
+          compoundPrincipal.value = assets.value;
+          renderCompound();
+        }
+      });
+      compoundYears.addEventListener('input', () => {
+        compoundYearsLabel.textContent = compoundYears.value + ' yrs';
+        renderCompound();
+      });
+      renderCompound();
 
       showScenario(activeScenario);
       calculate();
