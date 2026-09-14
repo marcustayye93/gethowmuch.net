@@ -308,6 +308,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     <a class="brand" href="/" aria-label="GetHowMuch home">GetHowMuch</a>
     <nav class="site-nav" aria-label="More GetHowMuch calculators">
       <a class="active" href="/" aria-current="page">Retirement</a>
+      <a href="/save-vs-spend/">Save vs Spend</a>
       <a href="/income-tax/">Income Tax</a>
       <a href="/cpf/">CPF</a>
       <a href="/car-coe/">Car &amp; COE</a>
@@ -801,7 +802,22 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       });
       renderCompound();
 
-      showScenario(activeScenario);
+      // Handoff from Save vs Spend (?age=, ?income=): prefill those two fields so
+      // the user never retypes. Completely invisible when the params are absent.
+      (function(){
+        const q = new URLSearchParams(location.search);
+        const qAge = Math.round(Number(q.get('age')));
+        const qIncome = Math.round(Number(q.get('income')));
+        if (qAge >= 18 && qAge <= 100) ageInput.value = qAge;
+        if (qIncome > 0) {
+          targetInput.value = whole(qIncome);
+          const match = Object.keys(scenarios).find((key) => scenarios[key].spending === qIncome);
+          setPressedScenario(match || null);
+          if (match) showScenario(match);
+        }
+      })();
+
+      if (activeScenario) showScenario(activeScenario);
       calculate();
     })();
   </script>

@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#f6f7f4" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffd84c'/%3E%3Ctext x='32' y='45' font-family='sans-serif' font-size='42' font-weight='bold' text-anchor='middle' fill='%23101828'%3E?%3C/text%3E%3C/svg%3E" />
+  <link rel="preload" href="/assets/fonts/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
+  <title>Save vs Spend Calculator Singapore — GetHowMuch</title>
+  <meta name="description" content="Forget the 20% rule. Start from your real essentials and find how much to save each month while building your emergency fund, and how much is guilt-free to spend." />
+  <link rel="canonical" href="https://gethowmuch.net/save-vs-spend/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GetHowMuch" />
+  <meta property="og:title" content="Save vs Spend Calculator Singapore — GetHowMuch" />
+  <meta property="og:url" content="https://gethowmuch.net/save-vs-spend/" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:description" content="Forget the 20% rule. Start from your real essentials and find how much to save each month while building your emergency fund, and how much is guilt-free to spend." />
+  <meta name="twitter:description" content="Forget the 20% rule. Start from your real essentials and find how much to save each month while building your emergency fund, and how much is guilt-free to spend." />
+  <meta name="twitter:title" content="Save vs Spend Calculator Singapore — GetHowMuch" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why not just save 20%?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A flat percentage ignores that essentials don't scale with income. A S$3,000 earner with S$1,800 of essentials has about S$587 of discretionary income, but 20% of gross asks for S$600, more than exists. This calculator starts from your real essentials instead." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CPF count as savings?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For Singapore citizens and permanent residents aged 55 and below earning above S$750 a month, 20% comes from you and 17% from your employer. It is illiquid but yours and growing. This page plans cash savings on top and keeps the two numbers separate on purpose." }
+      },
+      {
+        "@type": "Question",
+        "name": "How big should my emergency fund be?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Three to six months of essential spending, in cash you can touch tomorrow. Not investments, and not CPF." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens when my emergency fund is full?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The habit continues, but the amount gets re-sized. Your emergency build rate was never an investing rate, so size the investing amount with the retirement calculator." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this handle my income tax?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. It runs the same YA2024-onwards tax bands and exact-age CPF and earned income relief as the income tax calculator, then works from your take-home pay." }
+      }
+    ]
+  }
+  </script>
+  <!--
+     GetHowMuch Meta Pixel — base code
+     Paste immediately before </head>, ahead of ViewContent.
+     NOTE: content_ids ghm_ad_31-35 are reserved for the 5 save-vs-spend ad tiles,
+     which are not yet created. Create the tiles and catalog items before
+     this page joins the catalog campaign.
+  -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1088119527164384');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<script>fbq('track','ViewContent',{content_ids:['ghm_ad_31','ghm_ad_32','ghm_ad_33','ghm_ad_34','ghm_ad_35'],content_type:'product',content_name:'Save vs Spend Calculator',content_category:'calculator',value:0,currency:'SGD'});</script>
+<!-- Google AdSense site verification -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3717851073331246"
+     crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --ink: #101828;
+      --muted: #667085;
+      --paper: #f6f7f4;
+      --card: #ffffff;
+      --line: #e6eae6;
+      --brand: #e8553f;
+      --brand-deep: #b93a26;
+      --brand-soft: #fce7e0;
+      --brand-wash: #fdf3ef;
+      --aqua: #45dbdd;
+      --shadow: 0 16px 48px rgba(60, 28, 20, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--paper); }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    body {
+      margin: 0;
+      min-width: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(232,85,63,.10), transparent 30rem),
+        var(--paper);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+
+    .page {
+      width: min(720px, 100%);
+      margin: 0 auto;
+      padding: clamp(24px, 4vw, 48px) clamp(20px, 4vw, 24px) max(38px, env(safe-area-inset-bottom));
+    }
+
+    .intro { margin-bottom: clamp(24px, 4vw, 44px); }
+    .site-nav {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0 0 28px;
+    }
+    .site-nav a {
+      min-width: 0;
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 7px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--aqua);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.05;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    .site-nav a.active { background: var(--ink); color: #fff; }
+    .site-nav a:active { transform: scale(.97); }
+    .site-nav a:focus-visible { outline: 3px solid var(--brand-deep); outline-offset: 3px; }
+    @media (max-width: 360px) {
+      .site-nav { gap: 6px; }
+      .site-nav a { padding-left: 5px; padding-right: 5px; font-size: 11px; }
+    }
+
+    .brand {
+      display: inline-block;
+      margin: 4px 0 16px;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: -.5px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .site-foot {
+      margin: 48px 0 10px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 12.5px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .site-foot a { color: var(--ink); font-weight: 800; text-decoration: none; }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(36px, 9vw, 64px);
+      font-weight: 700;
+      letter-spacing: -.045em;
+      line-height: 1;
+    }
+    .lede { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.55; max-width: 56ch; }
+
+    .card {
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      box-shadow: 4px 4px 0 var(--ink);
+      padding: clamp(22px, 3vw, 30px);
+      margin-bottom: 22px;
+    }
+    .card h2 {
+      margin: 0 0 4px;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+    .card-sub { margin: 0 0 18px; color: var(--muted); font-size: 14px; line-height: 1.45; }
+
+    .field { margin: 0 0 20px; }
+    .field:last-child { margin-bottom: 0; }
+    .field-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 2px;
+      font-size: 14.5px;
+      font-weight: 700;
+    }
+    .field-value { font-family: "Space Mono", monospace; font-weight: 700; color: var(--brand-deep); white-space: nowrap; }
+    .field-note { margin: 8px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+    .field-hint { margin: 6px 0 4px; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+    .med-hint { color: var(--ink); font-weight: 500; }
+
+    .ess-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin: 12px 0 0;
+      padding: 12px 14px;
+      background: var(--brand-wash);
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      box-shadow: 3px 3px 0 var(--ink);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ink);
+      text-align: left;
+    }
+    .ess-toggle .chev { font-family: "Space Mono", monospace; font-size: 15px; transition: transform .15s; }
+    .ess-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+    .ess-toggle:active { transform: scale(.98); }
+    .ess-toggle:focus-visible { outline: 3px solid var(--brand-deep); outline-offset: 2px; }
+    .ess-breakdown { padding-top: 6px; }
+    .ess-avg {
+      display: inline-block;
+      margin: 2px 0 6px;
+      padding: 8px 12px;
+      background: #fff;
+      border: 2px dashed var(--ink);
+      border-radius: 0;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .ess-avg:active { transform: scale(.97); }
+    .ess-avg-note { margin: 0 0 12px; font-size: 11.5px; color: var(--muted); line-height: 1.45; }
+    .sub-field { margin: 0 0 10px; }
+    .sub-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+    .sub-head small { font-weight: 500; color: var(--muted); font-size: 12px; }
+    .sub-val { font-family: "Space Mono", monospace; font-weight: 700; color: var(--brand-deep); white-space: nowrap; }
+    .sub-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 2px solid var(--ink);
+      font-size: 14.5px;
+      font-weight: 800;
+    }
+
+    .seg { display: grid; gap: 8px; }
+    .seg.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .seg.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .seg-btn {
+      min-height: 52px;
+      padding: 10px 8px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: #f8faf7;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      text-align: center;
+    }
+    .seg-btn small { display: block; margin-top: 2px; font-weight: 500; font-size: 11px; color: var(--muted); }
+    .seg-btn.active { background: var(--brand); border-color: var(--ink); color: #fff; box-shadow: 2px 2px 0 var(--ink); }
+    .seg-btn.active small { color: rgba(255,255,255,.85); }
+    .seg-btn:focus-visible { outline: 3px solid var(--brand-deep); outline-offset: 2px; }
+
+    .range-wrap { padding: 0; }
+    input[type="range"] {
+      display: block;
+      width: calc(100% - 40px);
+      height: 48px;
+      margin: 8px 20px 0;
+      appearance: none;
+      -webkit-appearance: none;
+      background: transparent;
+      cursor: pointer;
+      touch-action: pan-y;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 8px;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: linear-gradient(to right, var(--brand) var(--fill, 20%), var(--line) var(--fill, 20%));
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      width: 30px;
+      height: 30px;
+      margin-top: -11px;
+      -webkit-appearance: none;
+      appearance: none;
+      border: 3px solid var(--brand-deep);
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+    input[type="range"]::-moz-range-track { height: 8px; border: 1px solid var(--ink); border-radius: 0; background: var(--line); }
+    input[type="range"]::-moz-range-progress { height: 8px; border-radius: 0; background: var(--brand); }
+    input[type="range"]::-moz-range-thumb {
+      width: 24px; height: 24px; border: 3px solid var(--brand-deep); border-radius: 50%; background: #fff; box-shadow: 2px 2px 0 var(--ink);
+    }
+    input[type="range"]:focus-visible { outline: 3px solid var(--brand-deep); outline-offset: 2px; }
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: -6px;
+      padding: 0 20px;
+      color: var(--muted);
+      font: 500 9px "Space Mono", monospace;
+    }
+
+    .results {
+      overflow: hidden;
+      border: 3px solid var(--ink);
+      border-radius: 0;
+      background: var(--ink);
+      color: #fff;
+      box-shadow: 6px 6px 0 var(--ink);
+      margin-bottom: 22px;
+    }
+    .hero-result { padding: clamp(26px, 4vw, 40px); }
+    .result-kicker {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: rgba(255,255,255,.85);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .hero-number {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+      min-width: 0;
+      font-family: "Space Mono", monospace;
+      font-weight: 700;
+    }
+    .hero-number .currency { color: #fff; font-size: clamp(18px, 2.2vw, 26px); }
+    #heroFigure {
+      min-width: 0;
+      font-size: clamp(40px, 10vw, 68px);
+      line-height: 1;
+      letter-spacing: -.05em;
+      white-space: nowrap;
+    }
+    .hero-number .unit { color: rgba(255,255,255,.85); font: 500 13px "Space Grotesk", sans-serif; }
+    .hero-caption {
+      margin: 15px 0 0;
+      color: rgba(255,255,255,.85);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .hero-caption strong { color: #fff; }
+    .binding {
+      margin: 18px calc(clamp(26px, 4vw, 40px) * -1) calc(clamp(26px, 4vw, 40px) * -1);
+      padding: 16px clamp(26px, 4vw, 40px);
+      background: var(--brand-soft);
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .binding strong { color: var(--ink); }
+
+    .detail-grid { display: grid; border-top: 1px solid rgba(255,255,255,.25); }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 13px clamp(20px, 3vw, 30px);
+      border-bottom: 1px solid rgba(255,255,255,.15);
+      font-size: 14.5px;
+    }
+    .detail-row:last-child { border-bottom: 0; }
+    .detail-row .k { color: rgba(255,255,255,.78); font-weight: 500; }
+    .detail-row .k small { display: block; margin-top: 2px; font-size: 12px; color: rgba(255,255,255,.6); }
+    .detail-row strong { font-family: "Space Mono", monospace; font-weight: 700; white-space: nowrap; color: #fff; }
+    .detail-row.hot { background: rgba(255,255,255,.10); }
+    .detail-row.hot .k { color: #fff; font-weight: 700; }
+    .detail-row.hot strong { color: var(--brand); }
+
+    .phase2 {
+      background: var(--brand-wash);
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      box-shadow: 4px 4px 0 var(--ink);
+      padding: clamp(22px, 3vw, 30px);
+      margin-bottom: 22px;
+    }
+    .phase2 h2 { margin: 0 0 8px; font-size: 19px; font-weight: 700; letter-spacing: -.02em; }
+    .phase2 p { margin: 0 0 14px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+    .phase2 a.cta {
+      display: inline-block;
+      padding: 12px 18px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+      text-decoration: none;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    .phase2 a.cta:active { transform: scale(.97); }
+
+    .method { margin: 30px 0 6px; padding: 22px 2px 0; border-top: 1px solid var(--line); }
+    .method h2 { margin: 0 0 10px; font-size: 18px; letter-spacing: -.02em; }
+    .method p, .method li { color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .method li strong { color: var(--ink); }
+    .method ul { margin: 8px 0 0; padding-left: 20px; }
+    .formula {
+      margin: 14px 0;
+      padding: 16px 18px;
+      background: var(--ink);
+      color: #fff;
+      font-family: "Space Mono", monospace;
+      font-size: 12.5px;
+      line-height: 1.75;
+      overflow-x: auto;
+      white-space: pre;
+      border: 2px solid var(--ink);
+      box-shadow: 4px 4px 0 rgba(16,24,40,.18);
+    }
+    .nerd-link { margin: 0 0 16px; text-align: center; }
+    .nerd-link a {
+      display: inline-block;
+      padding: 9px 16px;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: #fff;
+      box-shadow: 3px 3px 0 var(--ink);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .nerd-link a:active { transform: scale(.97); }
+    .nerd-link a:focus-visible { outline: 3px solid var(--brand-deep); outline-offset: 3px; }
+
+    .faq { margin: 36px 0 6px; }
+    .faq h2 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 14px; }
+    .faq details { background: #fff; border: 2px solid var(--ink); border-radius: 0; box-shadow: 3px 3px 0 var(--ink); margin-bottom: 10px; }
+    .faq summary { list-style: none; padding: 16px 18px; font-weight: 800; font-size: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-family: "Space Mono", monospace; font-weight: 700; color: var(--brand-deep); }
+    .faq details[open] summary::after { content: "–"; }
+    .faq .details-body { padding: 0 18px 16px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .faq .details-body p { margin: 0; }
+
+    @media (max-width: 360px) {
+      .seg.three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+      .seg-btn { font-size: 12px; padding-left: 6px; padding-right: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+<noscript><div style="margin:16px 0;padding:16px 18px;background:#ffd84c;border:2px solid #101828;box-shadow:4px 4px 0 #101828;color:#101828;font-weight:700;line-height:1.5">This calculator needs JavaScript to run. Please enable JavaScript in your browser settings, then reload the page.</div></noscript>
+    <a class="brand" href="/" aria-label="GetHowMuch home">GetHowMuch</a>
+
+    <nav class="site-nav" aria-label="More GetHowMuch calculators">
+      <a href="/">Retirement</a>
+      <a class="active" href="/save-vs-spend/" aria-current="page">Save vs Spend</a>
+      <a href="/income-tax/">Income Tax</a>
+      <a href="/cpf/">CPF</a>
+      <a href="/car-coe/">Car &amp; COE</a>
+      <a href="/forex/">Currency</a>
+      <a href="/mortgage/">Mortgage</a>
+    </nav>
+
+    <header class="intro">
+      <h1>How much to save, how much to spend?</h1>
+      <p class="lede">The 20% rule doesn't apply for everyone. Let's start from what you actually save and spend.</p>
+    </header>
+
+    <p class="nerd-link"><a href="#formula">If you're curious about how we calculate this, click here</a></p>
+
+    <section class="card" aria-label="Your money in">
+      <h2>Your money in</h2>
+      <p class="card-sub">Essentials are what you must spend to live. Salary starts at the median of Singapore's workforce, because averages get dragged up by high earners. Move the sliders and we'll show you whether you're above or below the middle.</p>
+
+      <div class="field">
+        <div class="field-label"><span>Gross monthly salary</span><span class="field-value" id="salaryVal">S$4,700</span></div>
+        <p class="field-hint">The top number on your payslip, before CPF and tax come out. Not what lands in your bank account.</p>
+        <div class="range-wrap">
+          <input id="salary" type="range" min="0" max="25000" step="100" value="4700" aria-label="Gross monthly salary" />
+          <div class="range-labels" aria-hidden="true"><span>S$0</span><span>S$25k</span></div>
+        </div>
+        <p class="field-hint med-hint" id="salaryMedHint"></p>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span>Monthly essentials, or break it down by category right below it</span><span class="field-value" id="essentialsVal">S$1,986</span></div>
+        <div class="range-wrap">
+          <input id="essentials" type="range" min="0" max="15000" step="1" value="1986" aria-label="Monthly essentials" />
+          <div class="range-labels" aria-hidden="true"><span>S$0</span><span>S$15k</span></div>
+        </div>
+        <p class="field-note">Rent, food, transport, bills, insurance. Everything left over is discretionary.</p>
+        <p class="field-note med-hint" id="essMedHint"></p>
+        <button class="ess-toggle" id="essToggle" type="button" aria-expanded="false" aria-controls="essBreakdown">
+          <span class="ess-toggle-label">Break it down by category</span><span class="chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="ess-breakdown" id="essBreakdown" hidden>
+          <button type="button" class="ess-avg" id="essAvgBtn">Start from the typical Singaporean</button>
+          <p class="ess-avg-note">Based on SingStat's 2023 Household Expenditure Survey, per person. SingStat publishes averages, not medians, for spending.</p>
+          <div class="sub-field">
+            <div class="sub-head"><span>Housing <small>rent or mortgage</small></span><span class="sub-val" id="essHousingVal">S$185</span></div>
+            <input id="essHousing" type="range" min="0" max="15000" step="1" value="185" aria-label="Housing, rent or mortgage" />
+          </div>
+          <div class="sub-field">
+            <div class="sub-head"><span>Food <small>groceries + eating out</small></span><span class="sub-val" id="essFoodVal">S$475</span></div>
+            <input id="essFood" type="range" min="0" max="15000" step="1" value="475" aria-label="Food, groceries and eating out" />
+          </div>
+          <div class="sub-field">
+            <div class="sub-head"><span>Transport <small>MRT, bus, taxi, car</small></span><span class="sub-val" id="essTransportVal">S$320</span></div>
+            <input id="essTransport" type="range" min="0" max="15000" step="1" value="320" aria-label="Transport" />
+          </div>
+          <div class="sub-field">
+            <div class="sub-head"><span>Bills &amp; utilities <small>phone, internet, SP</small></span><span class="sub-val" id="essBillsVal">S$90</span></div>
+            <input id="essBills" type="range" min="0" max="15000" step="1" value="90" aria-label="Bills and utilities" />
+          </div>
+          <div class="sub-field">
+            <div class="sub-head"><span>Insurance <small>premiums</small></span><span class="sub-val" id="essInsuranceVal">S$200</span></div>
+            <input id="essInsurance" type="range" min="0" max="15000" step="1" value="200" aria-label="Insurance premiums" />
+          </div>
+          <div class="sub-field">
+            <div class="sub-head"><span>Everything else <small>the rest</small></span><span class="sub-val" id="essOtherVal">S$716</span></div>
+            <input id="essOther" type="range" min="0" max="15000" step="1" value="716" aria-label="Everything else" />
+          </div>
+          <div class="sub-total"><span>Essentials total</span><span class="sub-val" id="essTotalVal">S$1,986</span></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span>Emergency cash already saved</span><span class="field-value" id="cashVal">S$0</span></div>
+        <div class="range-wrap">
+          <input id="cash" type="range" min="0" max="100000" step="500" value="0" aria-label="Emergency cash already saved" />
+          <div class="range-labels" aria-hidden="true"><span>S$0</span><span>S$100k</span></div>
+        </div>
+        <p class="field-hint">7 in 10 Singaporeans keep 3-6 months of expenses saved (MoneySense 2023).</p>
+      </div>
+    </section>
+
+    <section class="card" aria-label="About you">
+      <h2>About you</h2>
+      <p class="card-sub">Age and legal status drive your CPF and tax. This moves the number more than anything else here.</p>
+
+      <div class="field">
+        <div class="field-label"><span>Your age</span><span class="field-value" id="ageVal">40</span></div>
+        <div class="range-wrap">
+          <input id="age" type="range" min="16" max="99" step="1" value="40" aria-label="Your age" />
+          <div class="range-labels" aria-hidden="true"><span>16</span><span>99</span></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span>Residency</span></div>
+        <div class="seg three" role="group" aria-label="Residency">
+          <button class="seg-btn active" type="button" data-residency="sg" aria-pressed="true">Singaporean</button>
+          <button class="seg-btn" type="button" data-residency="pr" aria-pressed="false">PR</button>
+          <button class="seg-btn" type="button" data-residency="wp" aria-pressed="false">Employment/work pass<small>no CPF</small></button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span>Tax status</span></div>
+        <div class="seg two" role="group" aria-label="Tax status">
+          <button class="seg-btn active" type="button" data-taxstatus="resident" aria-pressed="true">Tax resident<small>183+ days in SG</small></button>
+          <button class="seg-btn" type="button" data-taxstatus="nonresident" aria-pressed="false">Non-resident<small>short stay</small></button>
+        </div>
+        <p class="field-note">Tax resident if you were in Singapore 183 days last year. Most work-pass holders are.</p>
+      </div>
+    </section>
+
+    <section class="card" aria-label="Your safety net">
+      <h2>Your safety net</h2>
+      <p class="card-sub">How much cover, and how fast to build it.</p>
+
+      <div class="field">
+        <div class="field-label"><span>Emergency cover</span></div>
+        <div class="seg two" role="group" aria-label="Emergency cover">
+          <button class="seg-btn" type="button" data-cover="3" aria-pressed="false">3 months</button>
+          <button class="seg-btn active" type="button" data-cover="6" aria-pressed="true">6 months</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-label"><span>Build it in</span><span class="field-value" id="timelineVal">12 months</span></div>
+        <div class="range-wrap">
+          <input id="timeline" type="range" min="6" max="24" step="1" value="12" aria-label="Build timeline in months" />
+          <div class="range-labels" aria-hidden="true"><span>6 mo</span><span>24 mo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Your plan">
+      <div class="results" aria-live="polite">
+        <div class="hero-result">
+          <div class="result-kicker"><span id="heroKicker">Your monthly plan</span></div>
+          <div class="hero-number"><span class="currency" id="heroCurrency">S$</span><span id="heroFigure">1,100</span><span class="unit" id="heroUnit">/mo to save</span></div>
+          <p class="hero-caption" id="heroCaption"></p>
+          <div class="binding" id="capNote" hidden></div>
+        </div>
+        <div class="detail-grid" id="detailGrid"></div>
+      </div>
+    </section>
+
+    <section class="phase2" aria-label="When the fund is full">
+      <h2>When the fund is full</h2>
+      <p>Keep the habit going. Your retirement calculator sizes the investing amount.</p>
+      <a class="cta" id="retireCta" href="/">Size it with the retirement calculator</a>
+    </section>
+
+    <section class="method" id="formula" aria-label="How this is worked out">
+      <h2>How this is worked out</h2>
+      <p>The whole plan is six lines of arithmetic. The sophistication is in what feeds them: your take-home pay is computed from your exact age, residency, and tax status against the real CPF and IRAS tables. No rough percentages, no guessing.</p>
+      <pre class="formula">take-home     = gross − your CPF − monthly income tax
+discretionary = take-home − essentials
+fund target   = essentials × cover − cash already saved
+monthly save  = min(target ÷ timeline, 80% × discretionary)
+guilt-free    = discretionary − monthly save
+savings rate  = monthly save ÷ take-home</pre>
+      <ul>
+        <li><strong>Your CPF, to the year.</strong> Most calculators bucket you into wide age bands. This one runs your exact age against the CPF Board's 1 January 2026 rate table, including the S$8,000 monthly salary ceiling and the over-55 taper. Work-pass holders correctly get zero.</li>
+        <li><strong>Your tax, both branches.</strong> Tax residents get the full YA2024-onwards progressive bands with exact-age earned income relief. Non-residents get the actual rule: the higher of 15% flat on gross or the resident bands. One shared engine powers this page and the income tax calculator, so the number matches everywhere.</li>
+        <li><strong>The 80% cap is a judgment, stated openly.</strong> A savings plan with zero fun money for months is a plan nobody follows, so monthly saving is capped at 80% of what's left. That is a product decision, not a financial law, and the page tells you whenever it binds.</li>
+        <li><strong>Cash and CPF never mix.</strong> The headline rate is cash saving ÷ take-home. CPF is forced saving on a separate line, never folded in to flatter the number.</li>
+        <li><strong>The starting points are the middle of Singapore.</strong> Salary starts at S$4,700: the MOM 2024 median of S$5,500 for full-time employed residents, adjusted to payslip basis by removing employer CPF (÷ 1.17). Spending starts at S$1,986 a month: SingStat's 2023 Household Expenditure Survey per person. SingStat publishes averages, not medians, for spending, and medians can't be split by category, so the spending benchmark is the typical Singaporean rather than a true median. Cash starts at S$0: no credible median for cash savings is published, so we don't invent one. For context, 7 in 10 Singaporeans keep 3-6 months of expenses saved (MoneySense 2023).</li>
+        <li><strong>Known limits, disclosed.</strong> Not modeled: CPF graduated rates at or below S$750 monthly wages, and PR first-two-year CPF graduation.</li>
+      </ul>
+    </section>
+
+    <section class="faq" aria-label="Common questions">
+      <h2>Common questions</h2>
+      <details>
+        <summary>Why not just save 20%?</summary>
+        <div class="details-body"><p>A flat percentage ignores that essentials don't scale with income. A S$3,000 earner with S$1,800 of essentials has about S$587 of discretionary income, but 20% of gross asks for S$600, more than exists. Start from your real essentials instead.</p></div>
+      </details>
+      <details>
+        <summary>Does CPF count as savings?</summary>
+        <div class="details-body"><p>For Singapore citizens and permanent residents aged 55 and below earning above S$750 a month, 20% comes from you and 17% from your employer. It is illiquid but yours and growing. This page plans cash savings on top, and keeps the two numbers separate on purpose.</p></div>
+      </details>
+      <details>
+        <summary>How big should my emergency fund be?</summary>
+        <div class="details-body"><p>Three to six months of essential spending, in cash you can touch tomorrow. Not investments, and not CPF.</p></div>
+      </details>
+      <details>
+        <summary>What happens when my emergency fund is full?</summary>
+        <div class="details-body"><p>The habit continues, but the amount gets re-sized. Your emergency build rate was never an investing rate, so size the investing amount with the retirement calculator.</p></div>
+      </details>
+      <details>
+        <summary>Does this handle my income tax?</summary>
+        <div class="details-body"><p>Yes. It runs the same YA2024-onwards tax bands and exact-age CPF and earned income relief as the income tax calculator, then works from your take-home pay.</p></div>
+      </details>
+    </section>
+
+    <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a> · Estimates for planning only. Not financial advice. © 2026</footer>
+  </main>
+  <script>
+  /* Inlined from js/takehome.js so the page works opened straight from index.html
+     (file:// or single-file preview), where the absolute /js path does not resolve.
+     This is a verbatim copy. The page audit fails if it drifts from js/takehome.js. */
+/* GetHowMuch shared take-home module.
+ *
+ * Single source of truth for the CPF + income-tax branching used by calculators.
+ * Two switches, never collapsed:
+ *   residency  ("sg" | "pr" | "wp")            drives CPF only
+ *   taxStatus  ("resident" | "nonresident")     drives the tax branch
+ *
+ * Works as a browser global (script tag) and as a node module so the frozen
+ * fixture harness can require it.
+ *
+ * Known limitations (documented, not modeled):
+ * - CPF graduated rates at or below S$750 monthly wages
+ * - PR first-two-year CPF graduation (modeled at full rates)
+ */
+(function (root, factory) {
+  var api = factory();
+  if (typeof module !== "undefined" && module.exports) {
+    module.exports = api;
+  } else {
+    root.GHMTakeHome = api;
+  }
+})(typeof self !== "undefined" ? self : this, function () {
+  "use strict";
+
+  /* CPF contribution rates, private sector, from 1 Jan 2026 (CPF Board).
+     Mirrors the CPF_POLICY contributionBands on /cpf/. */
+  var CPF_BANDS = [
+    { maxAge: 55, employer: 0.17,  employee: 0.20  },
+    { maxAge: 60, employer: 0.16,  employee: 0.18  },
+    { maxAge: 65, employer: 0.125, employee: 0.125 },
+    { maxAge: 70, employer: 0.09,  employee: 0.075 },
+    { maxAge: Infinity, employer: 0.075, employee: 0.05 }
+  ];
+  var CPF_WAGE_CEILING = 8000;
+
+  function cpfBand(age) {
+    for (var i = 0; i < CPF_BANDS.length; i++) {
+      if (age <= CPF_BANDS[i].maxAge) return CPF_BANDS[i];
+    }
+    return CPF_BANDS[CPF_BANDS.length - 1];
+  }
+
+  /* Earned income relief (IRAS): below 55: S$1,000; 55-59: S$6,000; 60+: S$8,000. */
+  function eirFor(age) {
+    return age < 55 ? 1000 : age < 60 ? 6000 : 8000;
+  }
+
+  /* Resident progressive bands, YA2024 onwards: [band width, rate].
+     Mirrors the taxBands on /income-tax/. */
+  var TAX_BANDS = [
+    [20000, 0], [10000, 0.02], [10000, 0.035], [40000, 0.07],
+    [40000, 0.115], [40000, 0.15], [40000, 0.18], [40000, 0.19],
+    [40000, 0.195], [40000, 0.20], [180000, 0.22], [500000, 0.23],
+    [Infinity, 0.24]
+  ];
+
+  function progressiveTax(chargeable) {
+    var rem = chargeable, tax = 0;
+    for (var i = 0; i < TAX_BANDS.length; i++) {
+      if (rem <= 0) break;
+      var t = Math.min(rem, TAX_BANDS[i][0]);
+      tax += t * TAX_BANDS[i][1];
+      rem -= t;
+    }
+    return tax;
+  }
+
+  /* takeHome({gross, age, residency, taxStatus})
+   * gross:     monthly gross salary in S$
+   * age:       integer years
+   * residency: "sg" | "pr" | "wp"  (work pass => no CPF, both shares)
+   * taxStatus: "resident" | "nonresident"
+   * returns { cpfEmployee, cpfEmployer, taxMonth, takeHome } — monthly S$.
+   *
+   * Resident branch: bands on (12*G - CPF relief - EIR).
+   * Non-resident branch (IRAS): flat 15% of gross or resident bands on gross,
+   * whichever is higher; no reliefs. */
+  function takeHome(o) {
+    var G = Math.max(0, +o.gross || 0);
+    var age = Math.max(16, Math.min(99, Math.round(+o.age || 40)));
+    var band = cpfBand(age);
+    var isWp = o.residency === "wp";
+    var cpfWage = Math.min(G, CPF_WAGE_CEILING);
+    var cpfEmployee = isWp ? 0 : cpfWage * band.employee;
+    var cpfEmployer = isWp ? 0 : cpfWage * band.employer;
+    var taxYear;
+    if (o.taxStatus === "nonresident") {
+      taxYear = Math.max(0.15 * 12 * G, progressiveTax(12 * G));
+    } else {
+      var chargeable = Math.max(0, 12 * G - 12 * cpfEmployee - eirFor(age));
+      taxYear = progressiveTax(chargeable);
+    }
+    var taxMonth = taxYear / 12;
+    return {
+      cpfEmployee: cpfEmployee,
+      cpfEmployer: cpfEmployer,
+      taxMonth: taxMonth,
+      takeHome: G - cpfEmployee - taxMonth
+    };
+  }
+
+  return {
+    CPF_BANDS: CPF_BANDS,
+    CPF_WAGE_CEILING: CPF_WAGE_CEILING,
+    eirFor: eirFor,
+    progressiveTax: progressiveTax,
+    takeHome: takeHome
+  };
+});
+  </script>
+  <script>
+    "use strict";
+    const $ = id => document.getElementById(id);
+
+    const state = {
+      salary: 4700, essentials: 1986, cash: 0, age: 40,
+      residency: "sg", taxStatus: "resident", cover: 6, timeline: 12
+    };
+
+    /* ---------- formatting ---------- */
+    function money(n) {
+      n = Math.round(n);
+      if (Math.abs(n) >= 1e6) n = Math.round(n / 1000) * 1000;
+      return "S$" + n.toLocaleString("en-SG");
+    }
+    function money2(n) {
+      return "S$" + n.toLocaleString("en-SG", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+    function taxStr(taxMonth) {
+      return taxMonth < 0.005 ? "-$0" : money2(taxMonth);
+    }
+    function pct(n) {
+      return (n * 100).toFixed(1).replace(/\.0$/, "") + "%";
+    }
+    // Above/below-the-middle line. base = the benchmark sentence, bench = the number.
+    function vsMedian(val, bench, base) {
+      const d = Math.round(val - bench);
+      if (d === 0) return base + " You're right at the middle.";
+      const dir = d > 0 ? "above" : "below";
+      return base + " You're " + money(Math.abs(d)) + " " + dir + " it.";
+    }
+
+    /* ---------- math ---------- */
+    function plan() {
+      const t = GHMTakeHome.takeHome({
+        gross: state.salary, age: state.age,
+        residency: state.residency, taxStatus: state.taxStatus
+      });
+      const takeHome = t.takeHome;
+      const discretion = takeHome - state.essentials;
+      const target = Math.max(state.essentials * state.cover - state.cash, 0);
+      const planned = state.timeline > 0 ? target / state.timeline : 0;
+      const cap = 0.8 * Math.max(discretion, 0);
+      const actual = Math.min(planned, cap);
+      const guilt = Math.max(discretion - actual, 0);
+      const months = actual > 0 ? target / actual : 0;
+      const rate = takeHome > 0 ? actual / takeHome : 0;
+      return {
+        cpfEmployee: t.cpfEmployee, cpfEmployer: t.cpfEmployer, taxMonth: t.taxMonth,
+        takeHome, discretion, target, planned, actual, guilt, months, rate,
+        capBinds: target > 0 && planned > cap
+      };
+    }
+
+    function detailRow(k, sub, v, hot) {
+      return '<div class="detail-row' + (hot ? ' hot' : '') + '"><div class="k">' + k +
+        (sub ? "<small>" + sub + "</small>" : "") + '</div><strong>' + v + "</strong></div>";
+    }
+
+    /* ---------- essentials breakdown ---------- */
+    const ESS_MAX = 15000;
+    const essParts = { housing: 185, food: 475, transport: 320, bills: 90, insurance: 200, other: 716 };
+    function essSum(parts) {
+      return Object.values(parts).reduce((a, b) => a + b, 0);
+    }
+    // Fit the parts to a new essentials total, keeping their ratios (rounded to $50).
+    function rescaleEssParts(parts, v) {
+      const keys = Object.keys(parts);
+      const old = essSum(parts);
+      if (old <= 0) { keys.forEach(k => { parts[k] = 0; }); parts.other = v; return; }
+      let acc = 0;
+      keys.forEach((k, i) => {
+        if (i === keys.length - 1) parts[k] = v - acc;
+        else { parts[k] = Math.round(parts[k] * v / old / 50) * 50; acc += parts[k]; }
+      });
+      if (parts.other < 0) {
+        // Rounding overshoot: take the shortfall from the largest parts first.
+        let need = -parts.other;
+        parts.other = 0;
+        const ks = keys.slice(0, -1).sort((a, b) => parts[b] - parts[a]);
+        for (const k of ks) {
+          const take = Math.min(parts[k], need);
+          parts[k] -= take; need -= take;
+          if (need <= 0) break;
+        }
+      }
+    }
+
+    /* ---------- render ---------- */
+    function render() {
+      // Median benchmarks: where the user stands vs the middle of Singapore.
+      // Salary median: MOM 2024 S$5,500 incl. employer CPF -> ~S$4,700 payslip basis.
+      // Essentials benchmark: HES 2023 S$1,986 per person (typical, not a median).
+      $("salaryMedHint").textContent = vsMedian(state.salary, 4700,
+        "Median full-time salary is S$4,700 (MOM 2024).");
+      $("essMedHint").textContent = vsMedian(state.essentials, 1986,
+        "A typical Singaporean spends S$1,986 a month (HES 2023).");
+      // Retirement handoff: carry age + essentials (as the income starting point)
+      // so the user never retypes them.
+      const qp = new URLSearchParams();
+      qp.set("age", Math.round(state.age));
+      if (state.essentials > 0) qp.set("income", Math.round(state.essentials));
+      $("retireCta").href = "/?" + qp.toString();
+
+      const p = plan();
+      let rows = "";
+
+      if (state.salary <= 0) {
+        $("heroKicker").textContent = "Your monthly plan";
+        $("heroCurrency").textContent = "";
+        $("heroFigure").textContent = "—";
+        $("heroUnit").textContent = "";
+        $("heroCaption").textContent = "Enter your salary to see your plan.";
+        $("capNote").hidden = true;
+        $("detailGrid").innerHTML = "";
+        return;
+      }
+
+      if (p.target <= 0) {
+        $("heroKicker").textContent = "Safety net";
+        $("heroCurrency").textContent = "";
+        $("heroFigure").textContent = "Covered";
+        $("heroUnit").textContent = "";
+        $("heroCaption").innerHTML = "Your safety net is covered. " +
+          "Keep the habit going — <strong>" + money(p.guilt) + "/mo</strong> is yours to redirect, " +
+          "and the retirement calculator sizes the investing amount.";
+        $("capNote").hidden = true;
+        rows += detailRow("Cash savings rate", "nothing left to build", "—");
+        rows += detailRow("Take-home pay", money(state.salary) + " − " + money(p.cpfEmployee) + " CPF − " + taxStr(p.taxMonth) + " tax", money(p.takeHome) + "/mo");
+        rows += detailRow("Discretionary", "take-home − essentials", money(p.discretion) + "/mo");
+        $("detailGrid").innerHTML = rows;
+        return;
+      }
+
+      if (p.discretion <= 0) {
+        $("heroKicker").textContent = "Your monthly plan";
+        $("heroCurrency").textContent = "S$";
+        $("heroFigure").textContent = "0";
+        $("heroUnit").textContent = "/mo to save";
+        $("heroCaption").textContent = "Your essentials already use up your take-home. Trim spending or grow income before this plan can start.";
+        $("capNote").hidden = true;
+        rows += detailRow("Take-home pay", money(state.salary) + " − " + money(p.cpfEmployee) + " CPF − " + taxStr(p.taxMonth) + " tax", money(p.takeHome) + "/mo");
+        rows += detailRow("Emergency fund target", state.cover + " months of essentials", money(p.target));
+        $("detailGrid").innerHTML = rows;
+        return;
+      }
+
+      const monthsRounded = Math.max(1, Math.round(p.months));
+      $("heroKicker").textContent = "Your monthly plan";
+      $("heroCurrency").textContent = "S$";
+      $("heroFigure").textContent = Math.round(p.actual).toLocaleString("en-SG");
+      $("heroUnit").textContent = "/mo to save";
+      $("heroCaption").innerHTML = "<strong>" + money(p.guilt) + "/mo</strong> is guilt-free while you build.";
+
+      const capNote = $("capNote");
+      if (p.capBinds) {
+        capNote.innerHTML = "We capped saving at <strong>80% of what's left</strong>, so there is always something for you. " +
+          "That stretches the finish to <strong>about " + monthsRounded + " months</strong> instead of " + state.timeline + ".";
+        capNote.hidden = false;
+      } else {
+        capNote.hidden = true;
+      }
+
+      rows += detailRow("Cash savings rate", "of take-home", pct(p.rate), true);
+      rows += detailRow("Plus forced into CPF", money(p.cpfEmployee) + " from you + " + money(p.cpfEmployer) + " from your employer", money(p.cpfEmployee + p.cpfEmployer) + "/mo");
+      rows += detailRow("Emergency fund target", state.cover + " months of essentials" + (state.cash > 0 ? ", " + money(state.cash) + " already saved" : ""), money(p.target));
+      rows += detailRow("Monthly saving", null, money(p.actual) + "/mo");
+      rows += detailRow("Fund done in", p.capBinds ? "capped at 80% of what's left" : "at this pace", "about " + monthsRounded + " months");
+      rows += detailRow("Take-home pay", money(state.salary) + " − " + money(p.cpfEmployee) + " CPF − " + taxStr(p.taxMonth) + " tax", money(p.takeHome) + "/mo");
+      rows += detailRow("20%-of-gross check", "what the flat rule would demand", money(0.2 * state.salary) + "/mo");
+      $("detailGrid").innerHTML = rows;
+    }
+
+    /* ---------- wiring ---------- */
+    function setFill(el) {
+      const pctv = (el.value - el.min) / (el.max - el.min) * 100;
+      el.style.setProperty("--fill", pctv + "%");
+    }
+
+    function segWire(attr, key) {
+      document.querySelectorAll("[data-" + attr + "]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("[data-" + attr + "]").forEach(b => {
+            b.classList.remove("active"); b.setAttribute("aria-pressed", "false");
+          });
+          btn.classList.add("active"); btn.setAttribute("aria-pressed", "true");
+          const v = btn.dataset[attr];
+          state[key] = (key === "cover") ? parseInt(v, 10) : v;
+          render();
+        });
+      });
+    }
+
+    function rangeWire(id, valId, key, fmt) {
+      const el = $(id);
+      const update = () => {
+        state[key] = parseFloat(el.value);
+        $(valId).textContent = fmt(state[key]);
+        setFill(el);
+        render();
+      };
+      el.addEventListener("input", update);
+      setFill(el);
+      $(valId).textContent = fmt(state[key]);
+    }
+
+    const moneyMo = n => money(n);
+    rangeWire("salary", "salaryVal", "salary", moneyMo);
+    rangeWire("cash", "cashVal", "cash", moneyMo);
+    rangeWire("age", "ageVal", "age", n => String(Math.round(n)));
+    rangeWire("timeline", "timelineVal", "timeline", n => Math.round(n) + " months");
+
+    /* essentials: main slider + optional 6-part breakdown, one shared number */
+    const essMain = $("essentials");
+    const essDefs = [
+      ["housing", "essHousing", "essHousingVal"],
+      ["food", "essFood", "essFoodVal"],
+      ["transport", "essTransport", "essTransportVal"],
+      ["bills", "essBills", "essBillsVal"],
+      ["insurance", "essInsurance", "essInsuranceVal"],
+      ["other", "essOther", "essOtherVal"]
+    ];
+    function syncEssSubs() {
+      const sum = essSum(essParts);
+      essDefs.forEach(([k, id, valId]) => {
+        const el = $(id);
+        el.value = essParts[k];
+        el.max = ESS_MAX - (sum - essParts[k]);
+        setFill(el);
+        $(valId).textContent = money(essParts[k]);
+      });
+      $("essTotalVal").textContent = money(sum);
+    }
+    essDefs.forEach(([k, id]) => {
+      $(id).addEventListener("input", e => {
+        essParts[k] = parseFloat(e.target.value);
+        state.essentials = essSum(essParts);
+        essMain.value = state.essentials;
+        setFill(essMain);
+        $("essentialsVal").textContent = money(state.essentials);
+        syncEssSubs();
+        render();
+      });
+    });
+    essMain.addEventListener("input", () => {
+      rescaleEssParts(essParts, parseFloat(essMain.value));
+      state.essentials = parseFloat(essMain.value);
+      $("essentialsVal").textContent = money(state.essentials);
+      setFill(essMain);
+      syncEssSubs();
+      render();
+    });
+    setFill(essMain);
+    // SingStat HES 2023 averages, per person per month.
+    // Household figures (S$/mo): housing&utilities cash 549, food 1422, transport 951,
+    // info&comm 270, insurance&financial 590, everything else 2150. Per-member factor
+    // 1986/5931. "Other" is the residual so the parts sum to exactly 1986.
+    const ESS_AVG_PRESET = { housing: 185, food: 475, transport: 320, bills: 90, insurance: 200, other: 716 };
+    $("essAvgBtn").addEventListener("click", () => {
+      Object.assign(essParts, ESS_AVG_PRESET);
+      state.essentials = essSum(essParts);
+      essMain.value = state.essentials;
+      setFill(essMain);
+      $("essentialsVal").textContent = money(state.essentials);
+      syncEssSubs();
+      render();
+    });
+    $("essToggle").addEventListener("click", () => {
+      const bd = $("essBreakdown");
+      const open = bd.hidden;
+      bd.hidden = !open;
+      const tg = $("essToggle");
+      tg.setAttribute("aria-expanded", String(open));
+      tg.querySelector(".ess-toggle-label").textContent = open ? "Hide the breakdown" : "Break it down by category";
+      essMain.closest(".range-wrap").style.display = open ? "none" : "";
+      if (open) syncEssSubs();
+    });
+    segWire("residency", "residency");
+    segWire("taxstatus", "taxStatus");
+    segWire("cover", "cover");
+
+    render();
+  </script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "de45d534b5534b8c98fff31a31425b3a}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
