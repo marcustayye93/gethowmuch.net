@@ -135,6 +135,13 @@ tax overstatement is why the toggle is split.
 
 ## Inputs (UI)
 
+Every slider's figure is also a number field: tapping the value lets the user
+type an exact number (numeric keyboard on mobile, select-all on focus, same as
+the income-tax calculator). Typing updates the slider and the result live;
+leaving the field clamps to the slider's range and snaps to its step, then
+shows the committed value. Clearing the field and leaving it restores the
+current value.
+
 1. Monthly gross salary — slider, S$0-30,000 step S$100, default S$4,700.
    Helper line under the label: "The top number on your payslip, before CPF and
    tax come out. Not what lands in your bank account." Default is the median:
