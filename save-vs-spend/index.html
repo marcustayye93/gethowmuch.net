@@ -501,7 +501,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
 
     <section class="card" aria-label="Your money in">
       <h2>Your money in</h2>
-      <p class="card-sub">Essentials are what you must spend to live. Salary starts at the median of Singapore's workforce, because averages get dragged up by high earners. Move the sliders and we'll show you whether you're above or below the middle.</p>
+      <p class="card-sub">Essentials are what you must spend to live. Salary starts at the median of Singapore's workforce, because averages get dragged up by high earners.</p>
 
       <div class="field">
         <div class="field-label"><span>Gross monthly salary</span><span class="field-value" id="salaryVal">S$4,700</span></div>
@@ -528,28 +528,28 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
           <button type="button" class="ess-avg" id="essAvgBtn">Start from the typical Singaporean</button>
           <p class="ess-avg-note">Based on SingStat's 2023 Household Expenditure Survey, per person. SingStat publishes averages, not medians, for spending.</p>
           <div class="sub-field">
-            <div class="sub-head"><span>Housing <small>rent or mortgage</small></span><span class="sub-val" id="essHousingVal">S$185</span></div>
-            <input id="essHousing" type="range" min="0" max="15000" step="1" value="185" aria-label="Housing, rent or mortgage" />
+            <div class="sub-head"><span>Housing <small>rent or mortgage</small></span><span class="sub-val" id="essHousingVal">S$219</span></div>
+            <input id="essHousing" type="range" min="0" max="15000" step="1" value="219" aria-label="Housing, rent or mortgage" />
           </div>
           <div class="sub-field">
-            <div class="sub-head"><span>Food <small>groceries + eating out</small></span><span class="sub-val" id="essFoodVal">S$475</span></div>
-            <input id="essFood" type="range" min="0" max="15000" step="1" value="475" aria-label="Food, groceries and eating out" />
+            <div class="sub-head"><span>Food <small>groceries + eating out</small></span><span class="sub-val" id="essFoodVal">S$486</span></div>
+            <input id="essFood" type="range" min="0" max="15000" step="1" value="486" aria-label="Food, groceries and eating out" />
           </div>
           <div class="sub-field">
-            <div class="sub-head"><span>Transport <small>MRT, bus, taxi, car</small></span><span class="sub-val" id="essTransportVal">S$320</span></div>
-            <input id="essTransport" type="range" min="0" max="15000" step="1" value="320" aria-label="Transport" />
+            <div class="sub-head"><span>Transport <small>MRT, bus, taxi, car</small></span><span class="sub-val" id="essTransportVal">S$300</span></div>
+            <input id="essTransport" type="range" min="0" max="15000" step="1" value="300" aria-label="Transport" />
           </div>
           <div class="sub-field">
-            <div class="sub-head"><span>Bills &amp; utilities <small>phone, internet, SP</small></span><span class="sub-val" id="essBillsVal">S$90</span></div>
+            <div class="sub-head"><span>Bills &amp; utilities <small>phone, internet</small></span><span class="sub-val" id="essBillsVal">S$90</span></div>
             <input id="essBills" type="range" min="0" max="15000" step="1" value="90" aria-label="Bills and utilities" />
           </div>
           <div class="sub-field">
-            <div class="sub-head"><span>Insurance <small>premiums</small></span><span class="sub-val" id="essInsuranceVal">S$200</span></div>
-            <input id="essInsurance" type="range" min="0" max="15000" step="1" value="200" aria-label="Insurance premiums" />
+            <div class="sub-head"><span>Insurance <small>premiums</small></span><span class="sub-val" id="essInsuranceVal">S$198</span></div>
+            <input id="essInsurance" type="range" min="0" max="15000" step="1" value="198" aria-label="Insurance premiums" />
           </div>
           <div class="sub-field">
-            <div class="sub-head"><span>Everything else <small>the rest</small></span><span class="sub-val" id="essOtherVal">S$716</span></div>
-            <input id="essOther" type="range" min="0" max="15000" step="1" value="716" aria-label="Everything else" />
+            <div class="sub-head"><span>Everything else <small>the rest</small></span><span class="sub-val" id="essOtherVal">S$693</span></div>
+            <input id="essOther" type="range" min="0" max="15000" step="1" value="693" aria-label="Everything else" />
           </div>
           <div class="sub-total"><span>Essentials total</span><span class="sub-val" id="essTotalVal">S$1,986</span></div>
         </div>
@@ -855,7 +855,7 @@ savings rate  = monthly save ÷ take-home</pre>
 
     /* ---------- essentials breakdown ---------- */
     const ESS_MAX = 15000;
-    const essParts = { housing: 185, food: 475, transport: 320, bills: 90, insurance: 200, other: 716 };
+    const essParts = { housing: 219, food: 486, transport: 300, bills: 90, insurance: 198, other: 693 };
     function essSum(parts) {
       return Object.values(parts).reduce((a, b) => a + b, 0);
     }
@@ -1049,11 +1049,14 @@ savings rate  = monthly save ÷ take-home</pre>
       render();
     });
     setFill(essMain);
-    // SingStat HES 2023 averages, per person per month.
-    // Household figures (S$/mo): housing&utilities cash 549, food 1422, transport 951,
-    // info&comm 270, insurance&financial 590, everything else 2150. Per-member factor
-    // 1986/5931. "Other" is the residual so the parts sum to exactly 1986.
-    const ESS_AVG_PRESET = { housing: 185, food: 475, transport: 320, bills: 90, insurance: 200, other: 716 };
+    // SingStat HES 2023 official per-member cells (cash spending only, imputed rent excluded).
+    // Per member (S$/mo): housing = utilities + dwelling repairs + actual rent 219;
+    // food (groceries + eating out) 486; transport 300. Bills = info & comms
+    // household S$270 / 2.99 ≈ 90 (utilities already sit inside housing). Insurance =
+    // insurance & financial services household S$590 / 2.99 ≈ 198 (no official
+    // per-member cell published, treat as unverified at the last dollar). "Other" is
+    // the residual so the parts sum to exactly 1986.
+    const ESS_AVG_PRESET = { housing: 219, food: 486, transport: 300, bills: 90, insurance: 198, other: 693 };
     $("essAvgBtn").addEventListener("click", () => {
       Object.assign(essParts, ESS_AVG_PRESET);
       state.essentials = essSum(essParts);
