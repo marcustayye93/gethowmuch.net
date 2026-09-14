@@ -326,3 +326,13 @@ Build status 2026-09-14: built locally, NOT pushed. Awaiting Marcus's review of 
 3. Defaults: salary S$4,700 (median) / essentials S$2,667 (HES categories, renter housing) / cash saved S$0 / age 40 /
    cover 6 mo / timeline 12 mo?
 4. URL: `/save-vs-spend/` ok?
+- 2026-09-14 (evening): growth projection section added per Marcus. The covered
+  state no longer just says "Covered": the hero shows the monthly investable
+  amount (e.g. "S$6,220 /mo to invest") with the caption pointing at the chart
+  below. A "Your money at work" section projects the monthly amount (covered:
+  discretionary; building: actual monthly save) forward with monthly
+  contributions: FV = PMT x (((1+r/12)^(12T) - 1) / (r/12)). Three editable-rate
+  dotted lines: Bank savings 0.5%, S-REITs 6.0%, S&P 500 7.0% (same equities
+  assumption as the retirement page). Year slider 1-30, default 10. Illustrative
+  disclaimer, not financial advice. Emergency cash ceiling raised 100,000 ->
+  5,000,000 (slider + number field + S$5M label).
