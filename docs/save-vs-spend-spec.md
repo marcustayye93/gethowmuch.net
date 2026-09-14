@@ -149,31 +149,35 @@ current value.
    adjusted to payslip basis (÷ 1.17). A live hint under the slider reads
    "Median full-time salary is S$4,700 (MOM 2024). You're S$X above/below it."
    (or "You're right at the middle.").
-2. Monthly essentials — slider, S$0-15,000 step S$1, default S$1,986.
+2. Monthly essentials — slider, S$0-15,000 step S$1, default S$2,667 (HES categories with housing at a renter's S$900, Marcus's call).
    Label: "Monthly essentials, or break it down by category right below it".
    Helper line: "Rent, food, transport, bills, insurance, parents' allowance,
    loan repayments. Not dining out or shopping, that comes out of the guilt-free pool."
    Card subline: "Essentials are what you must spend to live. Salary starts at
    the median of Singapore's workforce, because averages get dragged up by
-   high earners." A live hint reads "A typical Singaporean spends S$1,986
-   a month (HES 2023). You're S$X above/below it." (or "right at the middle.").
+   high earners." A live hint reads "Housing follows a renter's S$900; the
+   rest is HES 2023 (S$2,667 total)." with the above/below line. (or "right at
+   the middle.").
    Optional "Break it down by category" toggle (full-width button, ink border +
-   hard shadow) reveals 6 sub-sliders (Housing 219 / Food 486 / Transport 300 /
+   hard shadow) reveals 6 sub-sliders (Housing 900 / Food 486 / Transport 300 /
    Bills & utilities 90 / Insurance 198 / Everything else 693, summing to the
-   S$1,986 default; sub-sliders use step S$1 so the exact figures are valid).
+   S$2,667 default; sub-sliders use step S$1 so the exact figures are valid).
    Sub-sliders sum to the main value; dragging the main slider
    re-scales the parts proportionally (snapped to S$50). Each sub-slider's max is capped live so
    the parts can never exceed S$15,000.
    Inside the breakdown, a dashed "Start from the typical Singaporean" button
-   fills the six sliders from SingStat HES 2023 official per-member cells
-   (cash spending only, imputed rent excluded): Housing 219 (utilities +
-   dwelling repairs + actual rent, per member) / Food 486 (groceries + eating
+   fills the six sliders from SingStat HES 2023 per-member cells (cash spending
+   only, imputed rent excluded) EXCEPT housing: Housing 900 is Marcus's call
+   (2026-09-14), a renter's room, because the survey's S$219 mixes in homeowners
+   who pay almost no cash rent and reads as broken to anyone renting. S$900 is
+   Marcus's figure, not a published stat. / Food 486 (groceries + eating
    out) / Transport 300 / Bills 90 (info & comms household S$270 / 2.99;
    utilities already sit inside Housing, so the label no longer says "SP") /
    Insurance 198 (insurance & financial services household S$590 / 2.99; no
    official per-member cell published, treat as unverified at the last dollar) /
-   Everything else 693 (residual so parts sum to S$1,986, the official
-   per-member total). Implied household size 5931/1986 = 2.99. Derivation
+   Everything else 693 (residual so parts sum to S$2,667). The old S$219 figure
+   (utilities + dwelling repairs + actual rent, per member) is recorded here for
+   provenance. Implied household size 5931/1986 = 2.99. Derivation
    corrected 2026-09-14: the previous defaults (185/475/320/200/716) divided
    household figures by 2.99, which is wrong for housing; SingStat's own
    per-member column is now used where published.
@@ -319,6 +323,6 @@ Build status 2026-09-14: built locally, NOT pushed. Awaiting Marcus's review of 
 
 1. Accent color: coral `#e8553f` ok, or pick another?
 2. Nav position: after Retirement, or at the end?
-3. Defaults: salary S$4,700 (median) / essentials S$1,986 (typical) / cash saved S$0 / age 40 /
+3. Defaults: salary S$4,700 (median) / essentials S$2,667 (HES categories, renter housing) / cash saved S$0 / age 40 /
    cover 6 mo / timeline 12 mo?
 4. URL: `/save-vs-spend/` ok?
