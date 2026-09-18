@@ -185,6 +185,43 @@
     .partner-card .partner-blurb{margin:0 0 12px;font-size:15px;line-height:1.55;color:#101828}
     .partner-card .partner-cta{display:inline-block;padding:10px 16px;background:#ffd84c;border:2px solid #101828;box-shadow:3px 3px 0 #101828;font-weight:800;text-decoration:none;color:#101828}
     .partner-card .partner-disc{margin:10px 0 0;font-size:11px;line-height:1.45;color:#667085}
+/* ===== Wait-or-buy card (COE watch) ===== */
+.wob-banner{background:var(--brand);border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:20px 22px 18px;margin:0 0 10px}
+.wob-kicker{font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.wob-hero{font-family:"Space Mono",monospace;font-weight:700;font-size:clamp(42px,11vw,72px);letter-spacing:-.045em;line-height:1;margin:8px 0 10px}
+.wob-meta{font-weight:700;font-size:15px;line-height:1.5}
+.wob-meta.dim{font-weight:600;font-size:14px;margin-top:4px}
+.wob-cats{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.wob-cats button{border:2px solid var(--ink);background:#fff;border-radius:12px;min-width:46px;padding:8px 12px;font-weight:800;font-size:14px;cursor:pointer;color:var(--ink)}
+.wob-cats button:active{transform:scale(.97)}
+.wob-cats button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.wob-fine{font-size:13px;color:var(--muted);margin:0 0 30px;line-height:1.55;max-width:640px}
+.wob-card{background:#fff;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:22px;margin:0 0 34px}
+.wob-card h2{font-size:24px;letter-spacing:-.02em;margin:0 0 4px}
+.wob-cardsub{color:var(--muted);font-size:13.5px;margin:0 0 4px}
+.wob-clearing{font-size:13px;color:var(--muted);margin:0 0 16px;line-height:1.5}
+.wob-kchips{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 6px;font-weight:800;font-size:14px}
+.wob-kchips button{border:2px solid var(--ink);background:#fff;border-radius:12px;padding:8px 13px;font-weight:800;cursor:pointer;font-size:13.5px;color:var(--ink)}
+.wob-kchips button:active{transform:scale(.97)}
+.wob-kchips button[aria-pressed="true"]{background:var(--brand);box-shadow:2px 2px 0 var(--ink)}
+.wob-field{border-top:1px solid var(--line);padding:14px 0}
+.wob-flabel{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
+.wob-field p{margin:0;font-size:15px;line-height:1.6}
+.wob-sent{font-size:16px !important}
+.wob-assump{color:var(--muted);font-size:12.5px}
+.wob-disc p{font-size:12.5px;color:var(--muted);line-height:1.6}
+.wob-exp{border-top:1px solid var(--line);padding-top:14px}
+.wob-expgrid{display:grid;gap:14px;margin-top:10px}
+.wob-expgrid .field-label{font-size:13px;font-weight:700;display:block;margin-bottom:6px}
+.wob-path{display:grid;gap:6px;font-size:14px}
+.wob-path label{display:flex;gap:8px;align-items:flex-start;cursor:pointer;line-height:1.45}
+.wob-check{display:flex;gap:8px;align-items:flex-start;font-size:14px;font-weight:700;cursor:pointer;line-height:1.45}
+.wob-expgrid input[type=date]{border:2px solid var(--ink);border-radius:0;padding:10px;font:inherit;background:#fff;max-width:240px;color:var(--ink)}
+.wob-expgrid .money-input{max-width:240px}
+#wobExpOut{margin-top:14px;display:grid;gap:10px}
+#wobExpOut[hidden]{display:none}
+.wob-exp-line{background:var(--paper);border:1px solid var(--line);padding:12px 14px;font-size:14px;line-height:1.55}
+
   </style>
 <script type="application/ld+json">
 {
@@ -249,6 +286,53 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     <h1>Car &amp; COE Calculator</h1>
     <p class="lede">Not just the instalment. Add COE, road tax, fuel or charging, insurance and the everyday costs of driving in Singapore.</p>
   </header>
+
+  <section class="wob-banner" aria-label="Latest COE result">
+    <div class="wob-kicker" id="wobKicker">Category A clearing premium</div>
+    <div class="wob-hero" id="wobHero">S$133,009</div>
+    <div class="wob-meta" id="wobMeta">September 2026 · Round 1 · Printed 9 Sep 2026</div>
+    <div class="wob-meta dim" id="wobNext">Next result: 23 Sep 2026, 4:00pm SGT</div>
+    <div class="wob-cats" role="group" aria-label="Banner COE category">
+      <button type="button" data-wobcat="A" aria-pressed="true">A</button>
+      <button type="button" data-wobcat="B" aria-pressed="false">B</button>
+      <button type="button" data-wobcat="C" aria-pressed="false">C</button>
+      <button type="button" data-wobcat="D" aria-pressed="false">D</button>
+      <button type="button" data-wobcat="E" aria-pressed="false">E</button>
+    </div>
+  </section>
+  <p class="wob-fine" id="wobFine"></p>
+
+  <section class="wob-card" aria-label="Wait or buy">
+    <h2>Wait or buy?</h2>
+    <p class="wob-cardsub" id="wobCardSub"></p>
+    <p class="wob-clearing">Bidding for a new COE. Figures below use the round's clearing premium, not your bid. An uncleared bid is a separate decision this data cannot speak to.</p>
+    <div class="wob-kchips" role="group" aria-label="Rounds you would wait">
+      <span>Wait</span>
+      <button type="button" data-wobk="1" aria-pressed="false">1 round</button>
+      <button type="button" data-wobk="2" aria-pressed="true">2 rounds</button>
+      <button type="button" data-wobk="4" aria-pressed="false">4 rounds</button>
+    </div>
+    <div class="wob-field"><div class="wob-flabel">Buy today</div><p id="wobLock"></p></div>
+    <div class="wob-field"><div class="wob-flabel">The wait, in one sentence</div><p id="wobSent" class="wob-sent"></p></div>
+    <div class="wob-field"><div class="wob-flabel">Usual move, monthly</div><p id="wobBandMo"></p></div>
+    <div class="wob-field"><div class="wob-flabel">Outside the usual</div><p id="wobBandOut"></p></div>
+    <div class="wob-field wob-disc"><div class="wob-flabel">Fine print</div><p id="wobDisc"></p></div>
+    <div class="wob-exp">
+      <div class="wob-flabel">Your current COE (optional)</div>
+      <div class="wob-expgrid">
+        <div><span class="field-label">COE expiry date</span><input type="date" id="wobE" aria-label="Current COE expiry date"></div>
+        <div class="wob-path" role="group" aria-label="What happens to the old car">
+          <span class="field-label">When the new car arrives</span>
+          <label><input type="radio" name="wobPath" value="replace" checked> <span>Replace: deregister or sell the old car</span></label>
+          <label><input type="radio" name="wobPath" value="overlap"> <span>Overlap: keep both for a while</span></label>
+        </div>
+        <label class="wob-check"><input type="checkbox" id="wobNeed"> <span>I need a car every day (no gap acceptable)</span></label>
+        <div><span class="field-label">Old car running cost (optional)</span><span class="money-input"><span>S$</span><input id="wobRun" type="number" inputmode="numeric" min="0" step="10" placeholder="0" aria-label="Old car monthly running cost"></span><span class="field-note">per month: insurance + road tax + loan</span></div>
+        <div><span class="field-label">What you paid for the current COE (optional)</span><span class="money-input"><span>S$</span><input id="wobPaid" type="number" inputmode="numeric" min="0" step="100" placeholder="0" aria-label="Amount paid for current COE"></span><span class="field-note">for a rough rebate sketch only</span></div>
+      </div>
+      <div id="wobExpOut" hidden></div>
+    </div>
+  </section>
 
   <div class="fuel-toggle" aria-label="Choose fuel type">
     <button id="petrolBtn" type="button" aria-pressed="true"><span class="dot"></span>Petrol</button>
@@ -551,6 +635,205 @@ async function refreshCoeFromApi(){
 }
 refreshCoeFromApi();
 </script>
+<script>
+/* ===== Wait-or-buy card (COE watch) =====
+   Frozen stats ship in WOB_FALLBACK. Live data.gov.sg data replaces them only
+   when the round key (month + bidding number) changes, so the card never
+   twitches on no-new-print nights. This card never computes a forecast. */
+const WOB_KEY='2026-09|1';
+const WOB_FALLBACK={"A":{"latest":{"month":"2026-09","bidding":"1","premium":133009},"key":"2026-09|1","window5y":"2021-09","q1":83000,"q3":103009,"buckets":{"top":{"1":{"n":30,"H":0.5,"med":-164,"medUp":4088,"medDn":-2720,"p10":-6244,"p25":-2580,"p75":3984,"p90":5249},"2":{"n":29,"H":0.552,"med":1000,"medUp":2994,"medDn":-5560,"p10":-11977,"p25":-4589,"p75":2997,"p90":10048},"4":{"n":27,"H":0.556,"med":837,"medUp":4210,"medDn":-9901,"p10":-17588,"p25":-8896,"p75":4432,"p90":14007}},"mid":{"1":{"n":59,"H":0.576,"med":898,"medUp":2834,"medDn":-2301,"p10":-6003,"p25":-1844,"p75":3008,"p90":5063},"2":{"n":59,"H":0.61,"med":2000,"medUp":4258,"medDn":-3000,"p10":-5577,"p25":-2203,"p75":4552,"p90":6278},"4":{"n":59,"H":0.576,"med":3011,"medUp":6494,"medDn":-3412,"p10":-6967,"p25":-2862,"p75":6638,"p90":10323}},"bottom":{"1":{"n":31,"H":0.806,"med":1791,"medUp":2239,"medDn":-2394,"p10":-2199,"p25":743,"p75":4278,"p90":6146},"2":{"n":31,"H":0.839,"med":4200,"medUp":4906,"medDn":-2095,"p10":-903,"p25":2146,"p75":6721,"p90":8688},"4":{"n":31,"H":0.968,"med":6918,"medUp":6960,"medDn":-3555,"p10":2400,"p25":4050,"p75":10306,"p90":12900}},"all":{"1":{"n":120,"H":0.617,"med":1113,"medUp":2920,"medDn":-2445,"p10":-4317,"p25":-1796,"p75":3357,"p90":5820},"2":{"n":119,"H":0.655,"med":2292,"medUp":4344,"medDn":-3650,"p10":-5577,"p25":-1909,"p75":4999,"p90":8505},"4":{"n":117,"H":0.675,"med":3890,"medUp":6589,"medDn":-4950,"p10":-8075,"p25":-1907,"p75":7999,"p90":12493}}},"uncond5y":{"1":0.617,"2":0.655,"4":0.675},"disc10y":{"1":{"H":0.558,"p25":-1692,"p75":2515,"n":233},"2":{"H":0.569,"p25":-1519,"p75":3828,"n":232},"4":{"H":0.613,"p25":-2499,"p75":5292,"n":230}}},"B":{"latest":{"month":"2026-09","bidding":"1","premium":135001},"key":"2026-09|1","window5y":"2021-09","q1":102334,"q3":120889,"buckets":{"top":{"1":{"n":30,"H":0.533,"med":10,"medUp":4000,"medDn":-5613,"p10":-11358,"p25":-5146,"p75":4000,"p90":5312},"2":{"n":29,"H":0.483,"med":-979,"medUp":7194,"medDn":-10397,"p10":-25468,"p25":-10397,"p75":6388,"p90":11022},"4":{"n":27,"H":0.481,"med":-5553,"medUp":5989,"medDn":-14456,"p10":-23957,"p25":-14456,"p75":5321,"p90":12335}},"mid":{"1":{"n":59,"H":0.593,"med":700,"medUp":3402,"medDn":-4468,"p10":-5912,"p25":-2911,"p75":3796,"p90":7912},"2":{"n":59,"H":0.661,"med":1999,"medUp":4688,"medDn":-5433,"p10":-7222,"p25":-3028,"p75":6266,"p90":9574},"4":{"n":59,"H":0.627,"med":2388,"medUp":6995,"medDn":-4910,"p10":-10310,"p25":-2584,"p75":7951,"p90":13082}},"bottom":{"1":{"n":31,"H":0.774,"med":2591,"medUp":3900,"medDn":-1433,"p10":-1433,"p25":294,"p75":5056,"p90":7488},"2":{"n":31,"H":0.774,"med":5299,"medUp":5940,"medDn":-2400,"p10":-2400,"p25":653,"p75":8498,"p90":11900},"4":{"n":31,"H":0.839,"med":8992,"medUp":9840,"medDn":-3000,"p10":-2799,"p25":2348,"p75":12444,"p90":15999}},"all":{"1":{"n":120,"H":0.625,"med":1050,"medUp":3701,"medDn":-3988,"p10":-6040,"p25":-2610,"p75":4103,"p90":7397},"2":{"n":119,"H":0.647,"med":3112,"medUp":5433,"medDn":-5937,"p10":-8825,"p25":-2850,"p75":7057,"p90":10653},"4":{"n":117,"H":0.65,"med":3898,"medUp":7494,"medDn":-6066,"p10":-12996,"p25":-3588,"p75":9678,"p90":14752}}},"uncond5y":{"1":0.625,"2":0.647,"4":0.65},"disc10y":{"1":{"H":0.558,"p25":-1990,"p75":3001,"n":233},"2":{"H":0.569,"p25":-2745,"p75":5118,"n":232},"4":{"H":0.565,"p25":-3355,"p75":6721,"n":230}}},"C":{"latest":{"month":"2026-09","bidding":"1","premium":93101},"key":"2026-09|1","window5y":"2021-09","q1":65001,"q3":77501,"buckets":{"top":{"1":{"n":30,"H":0.533,"med":94,"medUp":2050,"medDn":-1327,"p10":-4272,"p25":-1111,"p75":2074,"p90":3548},"2":{"n":29,"H":0.552,"med":778,"medUp":1278,"medDn":-3887,"p10":-8330,"p25":-3602,"p75":1556,"p90":6090},"4":{"n":27,"H":0.481,"med":-339,"medUp":3800,"medDn":-8103,"p10":-13433,"p25":-8103,"p75":3709,"p90":9536}},"mid":{"1":{"n":59,"H":0.593,"med":402,"medUp":1401,"medDn":-1484,"p10":-2454,"p25":-1158,"p75":1700,"p90":2696},"2":{"n":59,"H":0.61,"med":1008,"medUp":2823,"medDn":-2101,"p10":-4424,"p25":-1317,"p75":3256,"p90":5040},"4":{"n":59,"H":0.61,"med":1398,"medUp":3954,"medDn":-4455,"p10":-5120,"p25":-1852,"p75":4528,"p90":8056}},"bottom":{"1":{"n":31,"H":0.742,"med":1200,"medUp":1501,"medDn":-1150,"p10":-1189,"p25":-50,"p75":2200,"p90":3000},"2":{"n":31,"H":0.774,"med":1878,"medUp":3000,"medDn":-1111,"p10":-1111,"p25":498,"p75":3900,"p90":5003},"4":{"n":31,"H":0.839,"med":4502,"medUp":5790,"medDn":-501,"p10":-3,"p25":2000,"p75":7596,"p90":10988}},"all":{"1":{"n":120,"H":0.617,"med":636,"medUp":1606,"medDn":-1440,"p10":-2435,"p25":-1003,"p75":1934,"p90":3120},"2":{"n":119,"H":0.639,"med":1000,"medUp":2823,"medDn":-2401,"p10":-4243,"p25":-1125,"p75":3406,"p90":5708},"4":{"n":117,"H":0.641,"med":2001,"medUp":4444,"medDn":-4499,"p10":-5752,"p25":-1700,"p75":5411,"p90":9715}}},"uncond5y":{"1":0.617,"2":0.639,"4":0.641},"disc10y":{"1":{"H":0.541,"p25":-1010,"p75":1800,"n":233},"2":{"H":0.556,"p25":-1799,"p75":3000,"n":232},"4":{"H":0.557,"p25":-2418,"p75":4300,"n":230}}},"D":{"latest":{"month":"2026-09","bidding":"1","premium":12556},"key":"2026-09|1","window5y":"2021-09","q1":9089,"q3":10709,"buckets":{"top":{"1":{"n":30,"H":0.5,"med":10,"medUp":211,"medDn":-495,"p10":-809,"p25":-469,"p75":208,"p90":510},"2":{"n":29,"H":0.414,"med":-208,"medUp":469,"medDn":-897,"p10":-1202,"p25":-899,"p75":301,"p90":848},"4":{"n":29,"H":0.448,"med":-12,"medUp":693,"medDn":-1255,"p10":-1969,"p25":-1399,"p75":679,"p90":1100}},"mid":{"1":{"n":59,"H":0.61,"med":88,"medUp":295,"medDn":-396,"p10":-584,"p25":-317,"p75":310,"p90":524},"2":{"n":59,"H":0.576,"med":176,"medUp":399,"medDn":-602,"p10":-778,"p25":-506,"p75":506,"p90":827},"4":{"n":57,"H":0.509,"med":100,"medUp":609,"medDn":-699,"p10":-1011,"p25":-692,"p75":609,"p90":993}},"bottom":{"1":{"n":31,"H":0.645,"med":189,"medUp":496,"medDn":-400,"p10":-440,"p25":-155,"p75":508,"p90":620},"2":{"n":31,"H":0.677,"med":313,"medUp":701,"medDn":-524,"p10":-660,"p25":-198,"p75":778,"p90":1123},"4":{"n":31,"H":0.806,"med":411,"medUp":612,"medDn":-91,"p10":-88,"p25":160,"p75":830,"p90":1600}},"all":{"1":{"n":120,"H":0.592,"med":100,"medUp":301,"medDn":-412,"p10":-600,"p25":-322,"p75":320,"p90":588},"2":{"n":119,"H":0.563,"med":176,"medUp":450,"medDn":-642,"p10":-914,"p25":-568,"p75":530,"p90":944},"4":{"n":117,"H":0.573,"med":279,"medUp":619,"medDn":-710,"p10":-1217,"p25":-568,"p75":693,"p90":1305}}},"uncond5y":{"1":0.592,"2":0.563,"4":0.573},"disc10y":{"1":{"H":0.519,"p25":-201,"p75":301,"n":233},"2":{"H":0.487,"p25":-311,"p75":427,"n":232},"4":{"H":0.513,"p25":-473,"p75":617,"n":230}}},"E":{"latest":{"month":"2026-09","bidding":"1","premium":137890},"key":"2026-09|1","window5y":"2021-09","q1":104400,"q3":123000,"buckets":{"top":{"1":{"n":30,"H":0.567,"med":484,"medUp":2900,"medDn":-4000,"p10":-8598,"p25":-2001,"p75":3725,"p90":7388},"2":{"n":29,"H":0.517,"med":499,"medUp":6890,"medDn":-8500,"p10":-19800,"p25":-6001,"p75":6890,"p90":13419},"4":{"n":27,"H":0.333,"med":-4110,"medUp":8000,"medDn":-11044,"p10":-21573,"p25":-16250,"p75":3050,"p90":9253}},"mid":{"1":{"n":59,"H":0.593,"med":888,"medUp":2882,"medDn":-2384,"p10":-4266,"p25":-1854,"p75":2934,"p90":4090},"2":{"n":59,"H":0.61,"med":1596,"medUp":4800,"medDn":-4999,"p10":-6430,"p25":-3749,"p75":5215,"p90":7379},"4":{"n":59,"H":0.661,"med":3278,"medUp":7999,"medDn":-5909,"p10":-7288,"p25":-3899,"p75":8418,"p90":13046}},"bottom":{"1":{"n":31,"H":0.71,"med":1440,"medUp":3396,"medDn":-1600,"p10":-1999,"p25":-774,"p75":4847,"p90":5788},"2":{"n":31,"H":0.774,"med":4350,"medUp":5950,"medDn":-3000,"p10":-3000,"p25":61,"p75":8845,"p90":11890},"4":{"n":31,"H":0.806,"med":7601,"medUp":9213,"medDn":-3179,"p10":-3109,"p25":800,"p75":12533,"p90":16389}},"all":{"1":{"n":120,"H":0.617,"med":994,"medUp":2900,"medDn":-2100,"p10":-4247,"p25":-1604,"p75":3124,"p90":6000},"2":{"n":119,"H":0.63,"med":1491,"medUp":5201,"medDn":-4994,"p10":-7359,"p25":-2944,"p75":6116,"p90":10839},"4":{"n":117,"H":0.624,"med":2699,"medUp":8089,"medDn":-6846,"p10":-11622,"p25":-4110,"p75":8980,"p90":14440}}},"uncond5y":{"1":0.617,"2":0.63,"4":0.624},"disc10y":{"1":{"H":0.567,"p25":-1474,"p75":2612,"n":233},"2":{"H":0.565,"p25":-2621,"p75":4337,"n":232},"4":{"H":0.557,"p25":-3942,"p75":7528,"n":230}}}};
+const WOB_MIDPOINT=false; /* midpoint fine line: off unless Marcus turns it on */
+const COE_CAL={"2026-09":{"1":"2026-09-09","2":"2026-09-23"},"2026-10":{"1":"2026-10-07","2":"2026-10-21"},"2026-11":{"1":"2026-11-04","2":"2026-11-18"},"2026-12":{"1":"2026-12-07","2":"2026-12-23"}};
+const WOB_MON={1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul',8:'Aug',9:'Sep',10:'Oct',11:'Nov',12:'Dec'};
+const WOB_MONF={1:'January',2:'February',3:'March',4:'April',5:'May',6:'June',7:'July',8:'August',9:'September',10:'October',11:'November',12:'December'};
+const WOB_API='https://data.gov.sg/api/action/datastore_search?resource_id=d_69b3380ad7e51aff3a7dcc84eba52b8a&limit=1975&sort=month%20asc';
+let wobCat='A',wobK=2,wobStats=WOB_FALLBACK,wobKey=WOB_KEY;
+const $w=id=>document.getElementById(id);
+function wobPct(xs,q){xs=xs.slice().sort((a,b)=>a-b);if(!xs.length)return null;const k=(xs.length-1)*q/100,f=Math.floor(k),c=Math.min(f+1,xs.length-1);return xs[f]+(xs[c]-xs[f])*(k-f);}
+function wobFmtD(d){if(!d)return'';const p=d.split('-');return parseInt(p[2],10)+' '+WOB_MON[parseInt(p[1],10)]+' '+p[0];}
+function wobMonthName(m){const p=m.split('-');return WOB_MON[parseInt(p[1],10)]+' '+p[0];}
+function wobMonthFull(m){const p=m.split('-');return WOB_MONF[parseInt(p[1],10)]+' '+p[0];}
+function wobKAdj(){return wobK+'-round';}
+function wobSigned(n){n=Math.round(n);return (n<0?'-S$':'+S$')+Math.abs(n).toLocaleString('en-SG');}
+function wobDays(a,b){return Math.round((Date.parse(b+'T00:00:00Z')-Date.parse(a+'T00:00:00Z'))/864e5);}
+function wobAddDays(d,n){return new Date(Date.parse(d+'T00:00:00Z')+n*864e5).toISOString().slice(0,10);}
+function wobCompute(recs){
+  const byCat={};
+  for(const r of recs){
+    const c=String(r.vehicle_class||'').replace('Category ','');
+    if(!/^[A-E]$/.test(c))continue;
+    const p=parseInt(String(r.premium).replace(/[^0-9]/g,''),10);
+    if(!isFinite(p)||p<=0)continue;
+    (byCat[c]=byCat[c]||[]).push({month:String(r.month),bid:String(r.bidding_no),p:p});
+  }
+  const out={};
+  for(const c of Object.keys(byCat)){
+    const rows=byCat[c].sort((a,b)=>(a.month+a.bid)<(b.month+b.bid)?-1:1);
+    const P=rows.map(r=>r.p),n=rows.length;
+    if(n<50)continue;
+    const isGap=i=>rows[i].month==='2020-03'&&rows[i].bid==='2'&&i+1<n&&rows[i+1].month==='2020-07'&&rows[i+1].bid==='1';
+    const lm=rows[n-1].month,cut5=(parseInt(lm.slice(0,4),10)-5)+lm.slice(4),cut10=(parseInt(lm.slice(0,4),10)-10)+lm.slice(4);
+    const W=[],W10=[];
+    rows.forEach((r,i)=>{if(r.month>=cut5)W.push(i);if(r.month>=cut10)W10.push(i);});
+    const stats=(idxs,K)=>{
+      const chg=[];for(const i of idxs){if(i+K<n&&!isGap(i))chg.push(P[i+K]-P[i]);}
+      if(!chg.length)return{n:0};
+      const up=chg.filter(x=>x>0),dn=chg.filter(x=>x<0);
+      const q=v=>{const x=wobPct(chg,v);return x==null?null:Math.round(x);};
+      const m1=wobPct(up,50),m2=wobPct(dn,50);
+      return{n:chg.length,H:Math.round(chg.filter(x=>x>0).length/chg.length*1000)/1000,
+        med:q(50),medUp:m1==null?null:Math.round(m1),medDn:m2==null?null:Math.round(m2),
+        p10:q(10),p25:q(25),p75:q(75),p90:q(90)};
+    };
+    const prints=W.map(i=>P[i]),q1=wobPct(prints,25),q3=wobPct(prints,75);
+    const bk={top:W.filter(i=>P[i]>=q3),mid:W.filter(i=>P[i]<q3&&P[i]>q1),bottom:W.filter(i=>P[i]<=q1),all:W};
+    const buckets={};for(const b of Object.keys(bk)){buckets[b]={};for(const K of[1,2,4])buckets[b][K]=stats(bk[b],K);}
+    const disc={};for(const K of[1,2,4]){const s=stats(W10,K);disc[K]={H:s.H,p25:s.p25,p75:s.p75,n:s.n};}
+    const unc={};for(const K of[1,2,4])unc[K]=stats(W,K).H;
+    out[c]={latest:{month:rows[n-1].month,bidding:rows[n-1].bid,premium:P[n-1]},key:rows[n-1].month+'|'+rows[n-1].bid,
+      window5y:cut5,q1:Math.round(q1),q3:Math.round(q3),buckets:buckets,uncond5y:unc,disc10y:disc};
+  }
+  return out;
+}
+function wobBucket(){const s=wobStats[wobCat],p0=s.latest.premium;if(p0>=s.q3)return['top','this high'];if(p0<=s.q1)return['bottom','this low'];return['mid','in the middle of the range'];}
+function wobBStats(){
+  const s=wobStats[wobCat],b=wobBucket()[0],st=s.buckets[b][wobK];
+  if(st&&st.n>=20&&st.medUp!=null&&st.medDn!=null)return{thin:false,st:st};
+  return{thin:true,st:s.buckets.all[wobK]};
+}
+function wobAssump(){const d=$w('downRange').value,y=$w('tenure').value,r=$w('interest').value;return{d:Number(d)/100,yrs:Number(y),r:Number(r)/100,label:d+'% down, '+y+' yrs, '+r+'% flat'};}
+function wobMoF(){const a=wobAssump();return a.yrs>0?(1-a.d)*(1+a.r*a.yrs)/(12*a.yrs):0;}
+function wobKWord(){return wobK+(wobK===1?' round':' rounds');}
+function wobNextKey(){
+  const now=Date.now(),out=[];
+  Object.keys(COE_CAL).sort().forEach(m=>{['1','2'].forEach(b=>{const d=COE_CAL[m][b];if(d)out.push({month:m,bid:b,date:d});});});
+  out.sort((a,b)=>a.date<b.date?-1:1);
+  for(const k of out){if(Date.parse(k.date+'T16:00:00+08:00')>=now)return k;}
+  return null;
+}
+function wobStepKey(month,bid,K){
+  let m=month,b=String(bid);
+  for(let i=0;i<K;i++){if(b==='1')b='2';else{b='1';let y=parseInt(m.slice(0,4),10),mo=parseInt(m.slice(5),10);mo++;if(mo>12){mo=1;y++;}m=y+'-'+String(mo).padStart(2,'0');}}
+  return{month:m,bid:b,date:(COE_CAL[m]||{})[b]||null};
+}
+function wobRenderBanner(){
+  const s=wobStats[wobCat],L=s.latest,p0=L.premium;
+  $w('wobHero').textContent=money(p0);
+  $w('wobKicker').textContent='Category '+wobCat+' clearing premium';
+  const printed=(COE_CAL[L.month]||{})[L.bidding];
+  $w('wobMeta').textContent=wobMonthFull(L.month)+' \u00B7 Round '+parseInt(L.bidding,10)+' \u00B7 Printed '+(printed?wobFmtD(printed):wobMonthName(L.month));
+  const nx=wobNextKey();
+  $w('wobNext').style.display=nx?'':'none';
+  if(nx)$w('wobNext').textContent='Next result: '+wobFmtD(nx.date)+', 4:00pm SGT';
+  const b=wobBucket(),bs=wobBStats().st;
+  let fine='No predicted next premium. Waiting '+wobKWord()+' from prints '+b[1]+' has historically landed inside '+wobSigned(bs.p25)+' to '+wobSigned(bs.p75)+'.';
+  if(WOB_MIDPOINT&&bs.med!=null)fine+=' History\u2019s midpoint of '+wobKWord()+' changes from prints '+b[1]+': '+money(p0+bs.med)+'. That is not a forecast we stand behind. The band is '+wobSigned(bs.p25)+' to '+wobSigned(bs.p75)+'.';
+  $w('wobFine').textContent=fine;
+}
+function wobRenderMoney(){
+  const s=wobStats[wobCat],p0=s.latest.premium,a=wobAssump(),f=wobMoF();
+  const car=clampInput($w('carPrice')),total=car+p0;
+  const inst=a.yrs>0?total*(1-a.d)*(1+a.r*a.yrs)/(12*a.yrs):0;
+  $w('wobLock').innerHTML='If your bid clears this round at '+money(p0)+': <strong>'+money(total)+' all-in</strong>, <strong>'+money(inst)+'/month</strong> instalment <span class="wob-assump">('+money(car)+' car, '+a.label+')</span>';
+  const bs=wobBStats().st;
+  $w('wobBandMo').innerHTML='Inside the usual band, the COE line moves '+wobSigned(bs.p25)+' to '+wobSigned(bs.p75)+'. That is about <strong>'+wobSigned(bs.p25*f)+' to '+wobSigned(bs.p75*f)+'</strong> a month on the instalment <span class="wob-assump">('+a.label+')</span>.';
+  $w('wobBandOut').innerHTML='Outside the usual band, roughly 1 in 10 moves each way: '+wobSigned(bs.p10)+' to '+wobSigned(bs.p90)+' on the COE line, about <strong>'+wobSigned(bs.p10*f)+' to '+wobSigned(bs.p90*f)+'</strong> a month.';
+}
+function wobExpiryData(){
+  const e=$w('wobE').value;
+  if(!e||!/^\d{4}-\d{2}-\d{2}$/.test(e))return null;
+  const r0=wobNextKey();if(!r0)return null;
+  const rk=wobStepKey(r0.month,r0.bid,wobK);
+  let rkDate=rk.date,approx=false;
+  if(!rkDate){rkDate=wobAddDays(r0.date,14*wobK);approx=true;}
+  const pathEl=document.querySelector('input[name=wobPath]:checked');
+  return{e:e,path:pathEl?pathEl.value:'replace',r0:r0.date,rk:rkDate,rkApprox:approx};
+}
+function wobPathOutcome(Rd,E){
+  const needDaily=$w('wobNeed').checked,runCost=Number($w('wobRun').value)||0,paid=Number($w('wobPaid').value)||0;
+  const pathEl=document.querySelector('input[name=wobPath]:checked'),path=pathEl?pathEl.value:'replace';
+  if(Rd>E){const n=wobDays(E,Rd);return'No car for '+n+' day'+(n===1?'':'s')+'.'+(needDaily?' <strong>You said a gap is unacceptable.</strong>':'');}
+  const n=wobDays(Rd,E);
+  if(n<=14)return'Clean handoff: lands within 2 weeks of '+wobFmtD(E)+', the least-waste window.';
+  if(path==='replace'){
+    const mo=n/30.44,ms=mo<1?('about '+Math.max(1,Math.round(n/7))+' weeks'):('about '+Math.round(mo)+' months');
+    let t=ms+' of the current COE unused.';
+    if(paid>0){const mm=Math.round(mo*10)/10;t+=' Rough rebate sketch: '+money(mm/120*paid)+' <span class="wob-assump">(remaining '+mm+' of 120 months \u00D7 '+money(paid)+'; LTA rebate rules are the authority)</span>.';}
+    return t;
+  }
+  let t='Two cars for '+n+' days.';
+  if(runCost>0){const mo=n/30.44;t+=' About '+money(runCost*mo)+' extra running cost <span class="wob-assump">(your '+money(runCost)+'/month \u00D7 '+(Math.round(mo*10)/10)+' months)</span>.';}
+  return t;
+}
+function wobOutcomeKind(Rd,E){if(Rd>E)return'gap';const n=wobDays(Rd,E);return n<=14?'clean':'over';}
+function wobUnusedWords(n){const mo=n/30.44;return mo<1?('about '+Math.max(1,Math.round(n/7))+' weeks'):('about '+Math.round(mo)+' months');}
+function wobClause(){
+  const x=wobExpiryData();if(!x)return'';
+  const oW=wobOutcomeKind(x.rk,x.e),oB=wobOutcomeKind(x.r0,x.e);
+  if(oW==='gap'){const n=wobDays(x.e,x.rk);return' And you would have no car for '+n+' day'+(n===1?'':'s')+' after '+wobFmtD(x.e)+'.';}
+  if(oB==='gap'){const n=wobDays(x.e,x.r0);return' And you would already be without a car for '+n+' day'+(n===1?'':'s')+' by '+wobFmtD(x.r0)+'.';}
+  if(oB==='over'&&x.path==='replace')return' And '+wobUnusedWords(wobDays(x.r0,x.e))+' of the current COE would still be unused on '+wobFmtD(x.r0)+'.';
+  if(oB==='over')return' And you would run two cars for '+wobDays(x.r0,x.e)+' days.';
+  if(oW==='over'&&x.path==='replace')return' And '+wobUnusedWords(wobDays(x.rk,x.e))+' of the current COE would still be unused on '+wobFmtD(x.rk)+'.';
+  if(oW==='over')return' And you would run two cars for '+wobDays(x.rk,x.e)+' days.';
+  const rc=oW==='clean'?x.rk:x.r0;return' And '+wobFmtD(rc)+' lands within 2 weeks of your COE expiry, the least-waste window.';
+}
+function wobRenderSentence(){
+  const s=wobStats[wobCat],p0=s.latest.premium,b=wobBucket(),bs=wobBStats(),st=bs.st;
+  let t='Bid and clear this round and Cat '+wobCat+' is '+money(p0)+' on your COE line. ';
+  if(bs.thin||st.medUp==null||st.medDn==null){t+='Across all prints in the last 5 years, waiting '+wobKWord()+' finished higher '+Math.round(st.H*100)+'% of the time. ';}
+  else{t+='From prints '+b[1]+' in the last 5 years, waiting '+wobKWord()+' finished higher '+Math.round(st.H*100)+'% of the time; when higher the median extra was '+money(st.medUp)+', when lower the median saving was '+money(-st.medDn)+'. ';}
+  t+='Waiting is a bet the next '+wobKWord()+' land'+(wobK===1?'s':'')+' inside '+wobSigned(st.p25)+' to '+wobSigned(st.p75)+', not a discount.';
+  t+=wobClause();
+  $w('wobSent').textContent=t;
+}
+function wobRenderExpiry(){
+  const x=wobExpiryData(),box=$w('wobExpOut');
+  if(!x){
+    if($w('wobE').value&&!wobNextKey()){
+      box.hidden=false;
+      box.innerHTML='<p class="wob-assump neg">Your COE expiry is set, but the LTA result calendar on file ends in December 2026, so the round clock cannot be placed against it yet.</p>';
+      return;
+    }
+    box.hidden=true;return;
+  }
+  box.hidden=false;
+  box.innerHTML='<div class="wob-exp-line"><strong>Bid now</strong> (result '+wobFmtD(x.r0)+'): '+wobPathOutcome(x.r0,x.e)+'</div>'
+    +'<div class="wob-exp-line"><strong>Wait '+wobKWord()+'</strong> (result '+wobFmtD(x.rk)+(x.rkApprox?'*':'')+'): '+wobPathOutcome(x.rk,x.e)+'</div>'
+    +(x.rkApprox?'<p class="wob-assump">*Result date estimated: the LTA schedule for that month is not on file yet.</p>':'');
+}
+function wobRenderCard(){
+  const s=wobStats[wobCat],L=s.latest;
+  $w('wobCardSub').textContent='Bidding for a new COE \u00B7 Cat '+wobCat+' \u00B7 '+wobMonthName(L.month)+' round '+parseInt(L.bidding,10);
+  wobRenderMoney();
+  wobRenderSentence();
+  const uh=Math.round(s.uncond5y[wobK]*100),dh=s.disc10y[wobK];
+  $w('wobDisc').textContent='All waiters, last 5 years: '+uh+'% finished higher after '+wobKWord()+'. Last 10 years: '+Math.round(dh.H*100)+'% \u00B7 '+wobKAdj()+' moves sat between '+wobSigned(dh.p25)+' and '+wobSigned(dh.p75)+'. This card updates only when a new round prints.';
+  wobRenderExpiry();
+}
+function wobRender(){wobRenderBanner();wobRenderCard();}
+async function wobRefresh(){
+  wobRender();
+  try{
+    const ctrl=new AbortController(),t=setTimeout(()=>ctrl.abort(),8000);
+    const r=await fetch(WOB_API,{signal:ctrl.signal});clearTimeout(t);
+    if(!r.ok)return;
+    const j=await r.json(),recs=(j.result&&j.result.records)||[];
+    if(recs.length<100)return;
+    const comp=wobCompute(recs);
+    const ok=['A','B','C','D','E'].every(c=>comp[c]&&comp[c].key);
+    if(ok&&comp.A.key!==wobKey){wobStats=comp;wobKey=comp.A.key;wobRender();}
+  }catch(e){/* frozen fallback stands */}
+}
+document.querySelectorAll('[data-wobcat]').forEach(b=>b.addEventListener('click',()=>{wobCat=b.getAttribute('data-wobcat');document.querySelectorAll('[data-wobcat]').forEach(x=>x.setAttribute('aria-pressed',x===b));wobRender();}));
+document.querySelectorAll('[data-wobk]').forEach(b=>b.addEventListener('click',()=>{wobK=parseInt(b.getAttribute('data-wobk'),10);document.querySelectorAll('[data-wobk]').forEach(x=>x.setAttribute('aria-pressed',x===b));wobRender();}));
+['wobE','wobRun','wobPaid'].forEach(id=>{const el=$w(id);if(el)el.addEventListener('input',()=>{wobRenderExpiry();wobRenderSentence();});});
+document.querySelectorAll('input[name=wobPath]').forEach(r=>r.addEventListener('change',()=>{wobRenderExpiry();wobRenderSentence();}));
+$w('wobNeed').addEventListener('change',()=>{wobRenderExpiry();wobRenderSentence();});
+['carPrice','downRange','downInput','tenure','interest'].forEach(id=>{const el=$w(id);if(el)el.addEventListener('input',wobRenderMoney);});
+wobRefresh();
+</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
