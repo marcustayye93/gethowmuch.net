@@ -160,6 +160,9 @@
       font-weight: 700;
     }
     .field-value { font-family: "Space Mono", monospace; font-weight: 700; color: var(--brick); white-space: nowrap; }
+    .field-value input[type=number] { width: 7ch; border: 0; background: transparent; text-align: right; font-family: "Space Mono", monospace; font-weight: 700; font-size: 1em; color: inherit; outline: 0; padding: 0; -moz-appearance: textfield; appearance: textfield; }
+    .field-value input[type=number]::-webkit-outer-spin-button, .field-value input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .field-value input[type=number]:focus { border-bottom: 2px solid var(--brick); }
     .field-note { margin: 8px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
 
     .seg {
@@ -501,7 +504,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <p class="card-sub">Use gross monthly income before CPF, the way banks assess it.</p>
 
       <div class="field">
-        <div class="field-label"><span id="incomeLabel">Your gross monthly income</span><span class="field-value" id="incomeVal">S$9,000</span></div>
+        <div class="field-label"><span id="incomeLabel">Your gross monthly income</span><span class="field-value">S$<input type="number" id="incomeVal" inputmode="numeric" min="2000" max="40000" step="100" value="9000" aria-label="Gross monthly income, type an amount" />/mo</span></div>
         <div class="range-wrap">
           <input id="income" type="range" min="2000" max="40000" step="100" value="9000" aria-label="Gross monthly income" />
           <div class="range-labels" aria-hidden="true"><span>S$2k</span><span id="incomeMaxLabel">S$40k</span></div>
@@ -510,7 +513,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       </div>
 
       <div class="field">
-        <div class="field-label"><span id="debtsLabel">Other monthly debts</span><span class="field-value" id="debtsVal">S$500</span></div>
+        <div class="field-label"><span id="debtsLabel">Other monthly debts</span><span class="field-value">S$<input type="number" id="debtsVal" inputmode="numeric" min="0" max="10000" step="50" value="500" aria-label="Other monthly debts, type an amount" />/mo</span></div>
         <div class="range-wrap">
           <input id="debts" type="range" min="0" max="10000" step="50" value="500" aria-label="Other monthly debt payments" />
           <div class="range-labels" aria-hidden="true"><span>S$0</span><span>S$10k</span></div>
@@ -523,7 +526,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <h2 id="targetTitle">Target loan</h2>
       <p class="card-sub" id="targetSub">How much do you want to borrow?</p>
       <div class="field">
-        <div class="field-label"><span id="targetLabel">Loan amount</span><span class="field-value" id="targetVal">S$500,000</span></div>
+        <div class="field-label"><span id="targetLabel">Loan amount</span><span class="field-value">S$<input type="number" id="targetVal" inputmode="numeric" min="100000" max="2000000" step="10000" value="500000" aria-label="Target amount, type a number" /></span></div>
         <div class="range-wrap">
           <input id="target" type="range" min="100000" max="2000000" step="10000" value="500000" aria-label="Target amount" />
           <div class="range-labels" aria-hidden="true"><span>S$100k</span><span>S$2M</span></div>
@@ -536,7 +539,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <p class="card-sub" id="termsSub">The rate and tenure the bank will assess you on.</p>
 
       <div class="field" id="rateField">
-        <div class="field-label"><span>Interest rate</span><span class="field-value" id="rateVal">2.80% p.a.</span></div>
+        <div class="field-label"><span>Interest rate</span><span class="field-value"><input type="number" id="rateVal" inputmode="decimal" min="1.5" max="6" step="0.05" value="2.8" aria-label="Interest rate, type a number" />% p.a.</span></div>
         <div class="range-wrap">
           <input id="rate" type="range" min="1.5" max="6" step="0.05" value="2.8" aria-label="Interest rate" />
           <div class="range-labels" aria-hidden="true"><span>1.5%</span><span>6%</span></div>
@@ -547,7 +550,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <p class="field-note" id="hdbRateNote" hidden style="margin:0 0 20px">The HDB concessionary loan charges a flat <strong>2.6% p.a.</strong> and is not stress-tested, so there is no rate to adjust.</p>
 
       <div class="field">
-        <div class="field-label"><span>Loan tenure</span><span class="field-value" id="tenureVal">25 years</span></div>
+        <div class="field-label"><span>Loan tenure</span><span class="field-value"><input type="number" id="tenureVal" inputmode="numeric" min="5" max="25" step="1" value="25" aria-label="Loan tenure in years, type a number" /> years</span></div>
         <div class="range-wrap">
           <input id="tenure" type="range" min="5" max="25" step="1" value="25" aria-label="Loan tenure in years" />
           <div class="range-labels" aria-hidden="true"><span>5 yrs</span><span id="tenureMaxLabel">25 yrs</span></div>
@@ -803,18 +806,42 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       });
     }
 
-    function rangeWire(id, valId, key, fmt, after) {
-      const el = $(id);
+    /* Typeable slider pairs: the Val element is a number input showing the raw
+       number, with the unit as a separate non-editable suffix. Typing clamps to
+       the slider's live min/max and snaps to its live step on commit. */
+    const stripNum = v => parseFloat(String(v).replace(/[^0-9.]/g, ""));
+    const clampLive = (el, v) => Math.min(parseFloat(el.max), Math.max(parseFloat(el.min), v));
+    const snapLive = (el, v) => {
+      const s = parseFloat(el.step) || 1;
+      const d = (String(el.step).split(".")[1] || "").length;
+      return Number((Math.round(v / s) * s).toFixed(d));
+    };
+
+    function typeableWire(id, valId, key, after) {
+      const el = $(id), numEl = $(valId);
+      const showNum = () => { if (document.activeElement !== numEl) numEl.value = String(state[key]); };
       const update = () => {
         state[key] = parseFloat(el.value);
-        $(valId).textContent = fmt(state[key]);
+        showNum();
         setFill(el);
         if (after) after();
         render();
       };
+      const fromNum = snap => {
+        let v = stripNum(numEl.value);
+        if (isNaN(v)) { if (snap) numEl.value = String(state[key]); return; }
+        v = clampLive(el, v);
+        if (snap) v = snapLive(el, v);
+        el.value = v;
+        update();
+        if (snap) numEl.value = String(state[key]);
+      };
       el.addEventListener("input", update);
+      numEl.addEventListener("input", () => fromNum(false));
+      numEl.addEventListener("change", () => fromNum(true));
+      numEl.addEventListener("focus", () => numEl.select());
       setFill(el);
-      $(valId).textContent = fmt(state[key]);
+      showNum();
     }
 
     const moneyMo = n => money(n) + "/mo";
@@ -887,7 +914,9 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       } else {
         ceilNote.hidden = true;
       }
-      $("incomeVal").textContent = moneyMo(state.income);
+      const incVal = $("incomeVal");
+      incVal.max = cap;
+      if (document.activeElement !== incVal) incVal.value = String(state.income);
       setFill(inc);
     }
 
@@ -900,7 +929,9 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       const t = $("target");
       if (isLoan) { t.min = 100000; t.max = 2000000; t.step = 10000; t.value = state.targetLoan; }
       if (isPrice) { t.min = 200000; t.max = 3000000; t.step = 10000; t.value = state.targetPrice; }
-      $("targetVal").textContent = money(parseFloat(t.value));
+      const tv = $("targetVal");
+      tv.min = t.min; tv.max = t.max; tv.step = t.step;
+      if (document.activeElement !== tv) tv.value = String(parseFloat(t.value));
       setFill(t);
     });
 
@@ -938,7 +969,9 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       t.max = r.maxTenure;
       $("tenureMaxLabel").textContent = r.maxTenure + " yrs";
       if (state.tenure > r.maxTenure) { state.tenure = r.maxTenure; t.value = r.maxTenure; }
-      $("tenureVal").textContent = state.tenure + " years";
+      const tVal = $("tenureVal");
+      tVal.max = r.maxTenure;
+      if (document.activeElement !== tVal) tVal.value = String(state.tenure);
       $("tenureNote").textContent = !r.bank
         ? "HDB loans cap at 25 years. A longer tenure lowers the monthly instalment but raises total interest."
         : (state.prop === "hdb"
@@ -947,23 +980,37 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       setFill(t);
     }
 
-    rangeWire("income", "incomeVal", "income", moneyMo);
-    rangeWire("debts", "debtsVal", "debts", moneyMo);
-    rangeWire("rate", "rateVal", "rate", n => n.toFixed(2) + "% p.a.");
-    rangeWire("tenure", "tenureVal", "tenure", n => n + " years");
+    typeableWire("income", "incomeVal", "income");
+    typeableWire("debts", "debtsVal", "debts");
+    typeableWire("rate", "rateVal", "rate");
+    typeableWire("tenure", "tenureVal", "tenure");
 
     /* target slider writes to the key matching the active mode */
     (function () {
-      const t = $("target");
-      t.addEventListener("input", () => {
-        const v = parseFloat(t.value);
+      const t = $("target"), numEl = $("targetVal");
+      const targetVal = () => state.mode === "loan" ? state.targetLoan : state.targetPrice;
+      const showNum = () => { if (document.activeElement !== numEl) numEl.value = String(targetVal()); };
+      const commit = v => {
         if (state.mode === "loan") state.targetLoan = v; else state.targetPrice = v;
-        $("targetVal").textContent = money(v);
+        showNum();
         setFill(t);
         render();
-      });
+      };
+      t.addEventListener("input", () => commit(parseFloat(t.value)));
+      const fromNum = snap => {
+        let v = stripNum(numEl.value);
+        if (isNaN(v)) { if (snap) numEl.value = String(targetVal()); return; }
+        v = clampLive(t, v);
+        if (snap) v = snapLive(t, v);
+        t.value = v;
+        commit(v);
+        if (snap) numEl.value = String(targetVal());
+      };
+      numEl.addEventListener("input", () => fromNum(false));
+      numEl.addEventListener("change", () => fromNum(true));
+      numEl.addEventListener("focus", () => numEl.select());
       setFill(t);
-      $("targetVal").textContent = money(state.targetLoan);
+      showNum();
     })();
 
     renderCitizen();

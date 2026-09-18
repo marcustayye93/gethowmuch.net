@@ -679,7 +679,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <h2>Your money at work</h2>
       <p class="growth-sub" id="growthSub"></p>
       <div class="field">
-        <div class="field-label"><span>Years invested</span><span class="field-value"><span id="growth-years-label">10 yrs</span></span></div>
+        <div class="field-label"><span>Years invested</span><span class="field-value"><input class="num-field num-sm" id="growthYearsVal" type="number" inputmode="numeric" min="1" max="30" step="1" value="10" aria-label="Years invested, type a number" /> yrs</span></div>
         <div class="range-wrap">
           <input id="growth-years" type="range" min="1" max="30" step="1" value="10" aria-label="Years invested" />
           <div class="range-labels" aria-hidden="true"><span>1 yr</span><span>30 yrs</span></div>
@@ -1094,7 +1094,8 @@ savings rate  = monthly save ÷ take-home</pre>
       growthAmt = amt;
       const yearsEl = $("growth-years");
       const T = clampG(Math.round(num(yearsEl.value)) || 10, 1, 30);
-      $("growth-years-label").textContent = T + " yrs";
+      const gyNumEl = $("growthYearsVal");
+      if (gyNumEl && document.activeElement !== gyNumEl) gyNumEl.value = String(T);
       $("growthSub").innerHTML = amt > 0
         ? "Investing <strong>" + money(amt) + "/mo</strong>:"
         : "Enter your salary to see what monthly saving becomes.";
@@ -1129,8 +1130,27 @@ savings rate  = monthly save ÷ take-home</pre>
       const el = e.target;
       const pctv = (el.value - el.min) / (el.max - el.min) * 100;
       el.style.setProperty("--fill", pctv + "%");
+      const gyN = $("growthYearsVal");
+      if (gyN && document.activeElement !== gyN) gyN.value = el.value;
       renderGrowth(growthAmt);
     });
+    // Typeable years: typing updates live, leaving the field clamps to the
+    // slider's live min/max and snaps to its step.
+    const gyRange = $("growth-years"), gyNum = $("growthYearsVal");
+    const gyFromNum = snap => {
+      const step = parseFloat(gyRange.step) || 1;
+      let v = parseFloat(String(gyNum.value).replace(/[^0-9.]/g, ""));
+      if (isNaN(v)) { if (snap) gyNum.value = gyRange.value; return; }
+      v = clampG(v, parseFloat(gyRange.min), parseFloat(gyRange.max));
+      if (snap) v = Math.round(v / step) * step;
+      gyRange.value = v;
+      setFill(gyRange);
+      if (snap || document.activeElement !== gyNum) gyNum.value = String(Math.round(v));
+      renderGrowth(growthAmt);
+    };
+    gyNum.addEventListener("input", () => gyFromNum(false));
+    gyNum.addEventListener("change", () => gyFromNum(true));
+    gyNum.addEventListener("focus", () => gyNum.select());
 
     /* ---------- wiring ---------- */
     function setFill(el) {

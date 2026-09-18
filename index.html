@@ -260,6 +260,21 @@
       .preset{padding:7px 8px}
     }
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+    /* GHM ads: A1 below result, A2 end of content. Hidden until AdSense approves.
+       Activate: set data-ads="on" on <html>, replace UNIT_A1/UNIT_A2 with real unit IDs. */
+    .ad-slot{display:none;margin:30px 0}
+    html[data-ads="on"] .ad-slot{display:block}
+    .ad-slot .ad-frame{border:2px solid #101828;box-shadow:4px 4px 0 #101828;background:#fff;padding:12px}
+    .ad-slot .ad-label{display:block;margin:0 0 8px;font-size:10px;font-weight:700;letter-spacing:.08em;color:#667085;text-transform:uppercase}
+    .ad-a1 .ad-frame{min-height:250px}
+    @media(min-width:640px){.ad-a1 .ad-frame{min-height:90px}}
+    .ad-a2 .ad-frame{min-height:250px}
+    /* GHM partner card: native affiliate slot. Disabled until a partner is signed. */
+    .partner-card{margin:30px 0;border:2px solid #101828;box-shadow:4px 4px 0 #101828;background:#fff;padding:16px}
+    .partner-card .ad-label{display:block;margin:0 0 8px;font-size:10px;font-weight:700;letter-spacing:.08em;color:#667085;text-transform:uppercase}
+    .partner-card .partner-blurb{margin:0 0 12px;font-size:15px;line-height:1.55;color:#101828}
+    .partner-card .partner-cta{display:inline-block;padding:10px 16px;background:#ffd84c;border:2px solid #101828;box-shadow:3px 3px 0 #101828;font-weight:800;text-decoration:none;color:#101828}
+    .partner-card .partner-disc{margin:10px 0 0;font-size:11px;line-height:1.45;color:#667085}
   </style>
 <script type="application/ld+json">
 {
@@ -438,6 +453,14 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       </div>
     </section>
 
+    <!-- GHM-A1: below the result panel. Replace UNIT_A1 with the real AdSense unit ID after approval. -->
+    <div class="ad-slot ad-a1" data-unit="UNIT_A1">
+      <div class="ad-frame">
+        <span class="ad-label">Advertisement</span>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3717851073331246" data-ad-slot="UNIT_A1" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      </div>
+    </div>
+
     <section class="compound" aria-label="What compounding does to your money">
       <h2>Looks far away? Watch compounding work.</h2>
       <p class="compound-sub">The amount below starts as the savings you entered above. It grows untouched: no top-ups, no leverage, just time.</p>
@@ -461,6 +484,23 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <ul class="compound-legend" id="compound-legend"></ul>
       <p class="compound-note">Illustrative only. Each line compounds yearly at the rate you set. Real returns vary year to year and can be negative. Not financial advice.</p>
     </section>
+    <!-- GHM-PARTNER: native affiliate card. Disabled until a partner is signed: set PARTNER.enabled=true and fill name/url/blurb/cta. -->
+    <aside class="partner-card" id="partnerCard" hidden>
+      <span class="ad-label">Partner</span>
+      <p class="partner-blurb" id="partnerBlurb"></p>
+      <a class="partner-cta" id="partnerCta" href="#" rel="sponsored noopener noreferrer" target="_blank">Learn more</a>
+      <p class="partner-disc">We may earn a commission if you sign up through this link. It costs you nothing extra.</p>
+    </aside>
+    <script>
+    var PARTNER={enabled:false,name:"",url:"",blurb:"",cta:"Learn more"};
+    (function(){
+      if(!PARTNER.enabled)return;
+      document.getElementById('partnerCard').hidden=false;
+      document.getElementById('partnerBlurb').textContent=PARTNER.blurb;
+      var cta=document.getElementById('partnerCta');
+      cta.href=PARTNER.url; cta.textContent=PARTNER.cta;
+    })();
+    </script>
     <style>
 .faq { margin: 36px 0 6px; }
 .faq h2 { font-size: 22px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 12px; }
@@ -489,6 +529,13 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <p>Yes. Prices are assumed to rise 2.5% a year, roughly Singapore's long-run average, and your monthly payouts grow at that rate — so the lump sum shown keeps its buying power in today's dollars. If your yield sits below inflation, the real return is floored at 0.5% to keep the figure plannable.</p>
       </details>
     </section>
+    <!-- GHM-A2: end of content. Replace UNIT_A2 with the real AdSense unit ID after approval. -->
+    <div class="ad-slot ad-a2" data-unit="UNIT_A2">
+      <div class="ad-frame">
+        <span class="ad-label">Advertisement</span>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3717851073331246" data-ad-slot="UNIT_A2" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      </div>
+    </div>
     <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · Estimates for planning only. Not financial advice. © 2026</footer>
   </main>
 
@@ -865,6 +912,26 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     }
   ]
 }
+</script>
+<script>
+/* GHM ads loader: runs only when <html data-ads="on"> and real unit IDs are set. Collapses unfilled slots. */
+(function(){
+  if(document.documentElement.getAttribute('data-ads')!=='on')return;
+  document.querySelectorAll('.ad-slot').forEach(function(slot){
+    var unit=slot.getAttribute('data-unit')||'';
+    var ins=slot.querySelector('ins.adsbygoogle');
+    if(!ins||unit.indexOf('UNIT_')===0)return;
+    ins.setAttribute('data-ad-slot',unit);
+    try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}
+    catch(e){slot.style.display='none';return;}
+    var done=false;
+    var hide=function(){if(!done){done=true;slot.style.display='none';}};
+    new MutationObserver(function(muts,obs){
+      if(ins.getAttribute('data-ad-status')==='unfilled'){obs.disconnect();hide();}
+    }).observe(ins,{attributes:true,attributeFilter:['data-ad-status']});
+    setTimeout(function(){if(!ins.querySelector('iframe'))hide();},6000);
+  });
+})();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1550ed6503d34b4c91d4fc70197e00c0"}'></script><!-- End Cloudflare Web Analytics -->
 </body>

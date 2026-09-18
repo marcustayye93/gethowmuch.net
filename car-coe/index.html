@@ -120,6 +120,8 @@
     .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--ink);color:var(--ink);box-shadow:2px 2px 0 var(--ink)}
     .coe-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}
     .field-label{display:block;color:#58645d;font-size:12px;font-weight:700;margin:0 0 6px}
+    label.field-label{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    label.field-label .plain-input{flex:0 1 132px;min-width:96px}
     .field-note{margin:8px 0 0;color:#6d7971;font-size:11px}
     .badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#365044;background:#e9f1ec;border:2px solid var(--ink);border-radius:0;padding:5px 8px}
     .badge:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
@@ -177,6 +179,12 @@
       .chart-foot{align-items:flex-start;flex-direction:column}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+    /* GHM partner card: native affiliate slot. Disabled until a partner is signed. */
+    .partner-card{margin:30px 0;border:2px solid #101828;box-shadow:4px 4px 0 #101828;background:#fff;padding:16px}
+    .partner-card .ad-label{display:block;margin:0 0 8px;font-size:10px;font-weight:700;letter-spacing:.08em;color:#667085;text-transform:uppercase}
+    .partner-card .partner-blurb{margin:0 0 12px;font-size:15px;line-height:1.55;color:#101828}
+    .partner-card .partner-cta{display:inline-block;padding:10px 16px;background:#ffd84c;border:2px solid #101828;box-shadow:3px 3px 0 #101828;font-weight:800;text-decoration:none;color:#101828}
+    .partner-card .partner-disc{margin:10px 0 0;font-size:11px;line-height:1.45;color:#667085}
   </style>
 <script type="application/ld+json">
 {
@@ -285,7 +293,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <section class="panel">
         <h2 class="panel-title"><span>How you finance it</span><span class="step">03</span></h2>
         <p class="hint">The lower the deposit, the more interest you carry each month.</p>
-        <label class="field-label" for="downRange">Downpayment <strong id="downOut">40%</strong></label>
+        <label class="field-label" for="downRange"><span>Downpayment</span><span class="plain-input"><input id="downInput" type="number" inputmode="numeric" min="30" max="70" step="5" value="40" aria-label="Downpayment percent"><strong>%</strong></span></label>
         <input id="downRange" type="range" min="30" max="70" step="5" value="40">
         <div class="range-labels"><span>30%</span><span>70%</span></div>
         <p class="field-note">MAS maximum loan is 60% when OMV exceeds S$20,000, or 70% when OMV is S$20,000 or less. Maximum tenure: 7 years.</p>
@@ -298,7 +306,7 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       <section class="panel">
         <h2 class="panel-title"><span id="energyTitle">Your driving</span><span class="step">04</span></h2>
         <p id="energyHint" class="hint">Adjust the distance and petrol assumptions to match your routine.</p>
-        <label class="field-label" for="distance">Distance each month <strong id="distanceOut">1,500 km</strong></label>
+        <label class="field-label" for="distance"><span>Distance each month</span><span class="plain-input"><input id="distanceInput" type="number" inputmode="numeric" min="200" max="5000" step="100" value="1500" aria-label="Distance each month in kilometres"><strong>km</strong></span></label>
         <input id="distance" type="range" min="200" max="5000" step="100" value="1500">
         <div class="range-labels"><span>200 km</span><span>5,000 km</span></div>
         <div class="dual">
@@ -365,6 +373,24 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     </div>
   </section>
 
+    <!-- GHM-PARTNER: native affiliate card. Disabled until a partner is signed: set PARTNER.enabled=true and fill name/url/blurb/cta. -->
+    <aside class="partner-card" id="partnerCard" hidden>
+      <span class="ad-label">Partner</span>
+      <p class="partner-blurb" id="partnerBlurb"></p>
+      <a class="partner-cta" id="partnerCta" href="#" rel="sponsored noopener noreferrer" target="_blank">Learn more</a>
+      <p class="partner-disc">We may earn a commission if you sign up through this link. It costs you nothing extra.</p>
+    </aside>
+    <script>
+    var PARTNER={enabled:false,name:"",url:"",blurb:"",cta:"Learn more"};
+    (function(){
+      if(!PARTNER.enabled)return;
+      document.getElementById('partnerCard').hidden=false;
+      document.getElementById('partnerBlurb').textContent=PARTNER.blurb;
+      var cta=document.getElementById('partnerCta');
+      cta.href=PARTNER.url; cta.textContent=PARTNER.cta;
+    })();
+    </script>
+
   <footer class="method">
     <p><strong>Method:</strong> instalment uses Singapore flat-rate financing. Monthly total adds road tax, energy, insurance, parking/ERP and maintenance. Insurance and maintenance defaults depend on fuel type: S$1,400 a year and S$120 a month for petrol, S$1,650 a year and S$80 a month for electric, reflecting higher EV repair costs and cheaper EV servicing. The 10-year cash outlay includes the upfront payment once, instalments only for the chosen loan tenure, and current running costs across one COE cycle; it does not model resale value, depreciation, changing costs or PARF.</p>
     <p><strong>Sources:</strong> <a href="https://data.gov.sg/api/action/datastore_search?resource_id=d_69b3380ad7e51aff3a7dcc84eba52b8a&amp;limit=1975">data.gov.sg COE bidding results</a>, <a href="https://onemotoring.lta.gov.sg/content/dam/onemotoring/pdf/Circulars%20to%20ESAs/2022/VRL_04_2022.pdf">LTA COE category rules</a>, <a href="https://www.nas.gov.sg:443/archivesonline/data/pdfdoc/20160526003/MAS%20Press%20Statement_MV%2026%20May%202016.pdf">MAS loan rules</a>, <a href="https://www.lta.gov.sg/content/dam/ltagov/news/press/2021/160221_road_tax_rebates.pdf">LTA road-tax tables</a>, <a href="https://www.lta.gov.sg/content/ltagov/en/newsroom/2025/9/news-releases/extension_of_ves_and_eeai_to_support_vehicle_electrification.html">LTA/NEA EV incentives</a>. COE fallback snapshot: Sep 2026 first bidding. Energy prices are dated, editable assumptions. <a href="https://getgo.sg/blog/evs-vs-petrol-cars-in-singapore-guide">GetGo EV vs petrol ownership costs</a>, <a href="https://www.budgetdirect.com.sg/car-insurance/articles/get-cheaper-car-service">Budget Direct 2026 insurance guide</a>.</p>
@@ -423,9 +449,10 @@ function clampInput(el){const hasMin=el.hasAttribute('min'),hasMax=el.hasAttribu
 function setRangeFill(el){const p=(Number(el.value)-Number(el.min))/(Number(el.max)-Number(el.min))*100;el.style.setProperty('--fill',p+'%')}
 function bindPair(range,input){range.addEventListener('input',()=>{input.value=range.value;setRangeFill(range);calculate()});input.addEventListener('input',()=>{range.value=clampInput(input);setRangeFill(range);calculate()});setRangeFill(range)}
 bindPair($('#carPriceRange'),$('#carPrice'));
-$('#downRange').addEventListener('input',()=>{$('#downOut').textContent=$('#downRange').value+'%';setRangeFill($('#downRange'));calculate()});
-$('#distance').addEventListener('input',()=>{$('#distanceOut').textContent=Number($('#distance').value).toLocaleString('en-SG')+' km';setRangeFill($('#distance'));calculate()});
-setRangeFill($('#downRange'));setRangeFill($('#distance'));
+bindPair($('#downRange'),$('#downInput'));
+bindPair($('#distance'),$('#distanceInput'));
+$('#downInput').addEventListener('blur',()=>{const v=clampInput($('#downInput'));$('#downInput').value=v;$('#downRange').value=v;setRangeFill($('#downRange'));calculate()});
+$('#distanceInput').addEventListener('blur',()=>{const v=clampInput($('#distanceInput'));$('#distanceInput').value=v;$('#distance').value=v;setRangeFill($('#distance'));calculate()});
 ids.forEach(id=>$('#'+id).addEventListener('input',()=>{if(id==='engine')suggestCategory();calculate()}));
 function roadTax(){
   const x=clampInput($('#engine'));let six=0;

@@ -408,6 +408,15 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
     }
+    /* GHM ads: A1 below result, A2 end of content. Hidden until AdSense approves.
+       Activate: set data-ads="on" on <html>, replace UNIT_A1/UNIT_A2 with real unit IDs. */
+    .ad-slot{display:none;margin:30px 0}
+    html[data-ads="on"] .ad-slot{display:block}
+    .ad-slot .ad-frame{border:2px solid #101828;box-shadow:4px 4px 0 #101828;background:#fff;padding:12px}
+    .ad-slot .ad-label{display:block;margin:0 0 8px;font-size:10px;font-weight:700;letter-spacing:.08em;color:#667085;text-transform:uppercase}
+    .ad-a1 .ad-frame{min-height:250px}
+    @media(min-width:640px){.ad-a1 .ad-frame{min-height:90px}}
+    .ad-a2 .ad-frame{min-height:250px}
   </style>
 <script type="application/ld+json">
 {
@@ -586,6 +595,14 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     </details>
 
     <p class="fine-print">Estimates are for planning only and are not financial advice. CPF rules and payout terms can change.</p>
+
+    <!-- GHM-A1: below the result panel. Replace UNIT_A1 with the real AdSense unit ID after approval. -->
+    <div class="ad-slot ad-a1" data-unit="UNIT_A1">
+      <div class="ad-frame">
+        <span class="ad-label">Advertisement</span>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3717851073331246" data-ad-slot="UNIT_A1" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      </div>
+    </div>
     <style>
 .faq { margin: 36px 0 6px; }
 .faq h2 { font-size: 24px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 12px; }
@@ -625,6 +642,13 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
         <p>Yes. The projection applies the full 2026 contribution rates to your salary, which cover both the employer and employee shares, allocated across OA, SA and MediSave by age.</p>
       </details>
     </section>
+    <!-- GHM-A2: end of content. Replace UNIT_A2 with the real AdSense unit ID after approval. -->
+    <div class="ad-slot ad-a2" data-unit="UNIT_A2">
+      <div class="ad-frame">
+        <span class="ad-label">Advertisement</span>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3717851073331246" data-ad-slot="UNIT_A2" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      </div>
+    </div>
     <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a> · Estimates for planning only. Not financial advice. © 2026</footer>
   </main>
 
@@ -914,6 +938,26 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     }
   ]
 }
+</script>
+<script>
+/* GHM ads loader: runs only when <html data-ads="on"> and real unit IDs are set. Collapses unfilled slots. */
+(function(){
+  if(document.documentElement.getAttribute('data-ads')!=='on')return;
+  document.querySelectorAll('.ad-slot').forEach(function(slot){
+    var unit=slot.getAttribute('data-unit')||'';
+    var ins=slot.querySelector('ins.adsbygoogle');
+    if(!ins||unit.indexOf('UNIT_')===0)return;
+    ins.setAttribute('data-ad-slot',unit);
+    try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}
+    catch(e){slot.style.display='none';return;}
+    var done=false;
+    var hide=function(){if(!done){done=true;slot.style.display='none';}};
+    new MutationObserver(function(muts,obs){
+      if(ins.getAttribute('data-ad-status')==='unfilled'){obs.disconnect();hide();}
+    }).observe(ins,{attributes:true,attributeFilter:['data-ad-status']});
+    setTimeout(function(){if(!ins.querySelector('iframe'))hide();},6000);
+  });
+})();
 </script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1550ed6503d34b4c91d4fc70197e00c0"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
