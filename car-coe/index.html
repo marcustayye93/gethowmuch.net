@@ -186,6 +186,9 @@
     .partner-card .partner-cta{display:inline-block;padding:10px 16px;background:#ffd84c;border:2px solid #101828;box-shadow:3px 3px 0 #101828;font-weight:800;text-decoration:none;color:#101828}
     .partner-card .partner-disc{margin:10px 0 0;font-size:11px;line-height:1.45;color:#667085}
 /* ===== Wait-or-buy card (COE watch) ===== */
+.wob-jump{display:block;background:var(--brand);border:2px solid var(--ink);border-radius:12px;box-shadow:3px 3px 0 var(--ink);padding:13px 16px;margin:0 0 26px;font-weight:800;font-size:15px;color:var(--ink);text-decoration:none;text-align:center}
+.wob-jump:active{transform:scale(.98)}
+#wob-section{scroll-margin-top:16px}
 .wob-banner{background:var(--brand);border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:20px 22px 18px;margin:0 0 10px}
 .wob-kicker{font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
 .wob-hero{font-family:"Space Mono",monospace;font-weight:700;font-size:clamp(42px,11vw,72px);letter-spacing:-.045em;line-height:1;margin:8px 0 10px}
@@ -286,53 +289,8 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
     <h1>Car &amp; COE Calculator</h1>
     <p class="lede">Not just the instalment. Add COE, road tax, fuel or charging, insurance and the everyday costs of driving in Singapore.</p>
   </header>
+  <a class="wob-jump" href="#wob-section">Bidding for a new COE? See the wait-or-buy analysis <span aria-hidden="true">&#8595;</span></a>
 
-  <section class="wob-banner" aria-label="Latest COE result">
-    <div class="wob-kicker" id="wobKicker">Category A clearing premium</div>
-    <div class="wob-hero" id="wobHero">S$133,009</div>
-    <div class="wob-meta" id="wobMeta">September 2026 · Round 1 · Printed 9 Sep 2026</div>
-    <div class="wob-meta dim" id="wobNext">Next result: 23 Sep 2026, 4:00pm SGT</div>
-    <div class="wob-cats" role="group" aria-label="Banner COE category">
-      <button type="button" data-wobcat="A" aria-pressed="true">A</button>
-      <button type="button" data-wobcat="B" aria-pressed="false">B</button>
-      <button type="button" data-wobcat="C" aria-pressed="false">C</button>
-      <button type="button" data-wobcat="D" aria-pressed="false">D</button>
-      <button type="button" data-wobcat="E" aria-pressed="false">E</button>
-    </div>
-  </section>
-  <p class="wob-fine" id="wobFine"></p>
-
-  <section class="wob-card" aria-label="Wait or buy">
-    <h2>Wait or buy?</h2>
-    <p class="wob-cardsub" id="wobCardSub"></p>
-    <p class="wob-clearing">Bidding for a new COE. Figures below use the round's clearing premium, not your bid. An uncleared bid is a separate decision this data cannot speak to.</p>
-    <div class="wob-kchips" role="group" aria-label="Rounds you would wait">
-      <span>Wait</span>
-      <button type="button" data-wobk="1" aria-pressed="false">1 round</button>
-      <button type="button" data-wobk="2" aria-pressed="true">2 rounds</button>
-      <button type="button" data-wobk="4" aria-pressed="false">4 rounds</button>
-    </div>
-    <div class="wob-field"><div class="wob-flabel">Buy today</div><p id="wobLock"></p></div>
-    <div class="wob-field"><div class="wob-flabel">The wait, in one sentence</div><p id="wobSent" class="wob-sent"></p></div>
-    <div class="wob-field"><div class="wob-flabel">Usual move, monthly</div><p id="wobBandMo"></p></div>
-    <div class="wob-field"><div class="wob-flabel">Outside the usual</div><p id="wobBandOut"></p></div>
-    <div class="wob-field wob-disc"><div class="wob-flabel">Fine print</div><p id="wobDisc"></p></div>
-    <div class="wob-exp">
-      <div class="wob-flabel">Your current COE (optional)</div>
-      <div class="wob-expgrid">
-        <div><span class="field-label">COE expiry date</span><input type="date" id="wobE" aria-label="Current COE expiry date"></div>
-        <div class="wob-path" role="group" aria-label="What happens to the old car">
-          <span class="field-label">When the new car arrives</span>
-          <label><input type="radio" name="wobPath" value="replace" checked> <span>Replace: deregister or sell the old car</span></label>
-          <label><input type="radio" name="wobPath" value="overlap"> <span>Overlap: keep both for a while</span></label>
-        </div>
-        <label class="wob-check"><input type="checkbox" id="wobNeed"> <span>I need a car every day (no gap acceptable)</span></label>
-        <div><span class="field-label">Old car running cost (optional)</span><span class="money-input"><span>S$</span><input id="wobRun" type="number" inputmode="numeric" min="0" step="10" placeholder="0" aria-label="Old car monthly running cost"></span><span class="field-note">per month: insurance + road tax + loan</span></div>
-        <div><span class="field-label">What you paid for the current COE (optional)</span><span class="money-input"><span>S$</span><input id="wobPaid" type="number" inputmode="numeric" min="0" step="100" placeholder="0" aria-label="Amount paid for current COE"></span><span class="field-note">for a rough rebate sketch only</span></div>
-      </div>
-      <div id="wobExpOut" hidden></div>
-    </div>
-  </section>
 
   <div class="fuel-toggle" aria-label="Choose fuel type">
     <button id="petrolBtn" type="button" aria-pressed="true"><span class="dot"></span>Petrol</button>
@@ -474,6 +432,56 @@ src="https://www.facebook.com/tr?id=1088119527164384&ev=PageView&noscript=1"
       cta.href=PARTNER.url; cta.textContent=PARTNER.cta;
     })();
     </script>
+
+<div id="wob-section">
+  <section class="wob-banner" aria-label="Latest COE result">
+    <div class="wob-kicker" id="wobKicker">Category A clearing premium</div>
+    <div class="wob-hero" id="wobHero">S$133,009</div>
+    <div class="wob-meta" id="wobMeta">September 2026 · Round 1 · Printed 9 Sep 2026</div>
+    <div class="wob-meta dim" id="wobNext">Next result: 23 Sep 2026, 4:00pm SGT</div>
+    <div class="wob-cats" role="group" aria-label="Banner COE category">
+      <button type="button" data-wobcat="A" aria-pressed="true">A</button>
+      <button type="button" data-wobcat="B" aria-pressed="false">B</button>
+      <button type="button" data-wobcat="C" aria-pressed="false">C</button>
+      <button type="button" data-wobcat="D" aria-pressed="false">D</button>
+      <button type="button" data-wobcat="E" aria-pressed="false">E</button>
+    </div>
+  </section>
+  <p class="wob-fine" id="wobFine"></p>
+
+  <section class="wob-card" aria-label="Wait or buy">
+    <h2>Wait or buy?</h2>
+    <p class="wob-cardsub" id="wobCardSub"></p>
+    <p class="wob-clearing">Bidding for a new COE. Figures below use the round's clearing premium, not your bid. An uncleared bid is a separate decision this data cannot speak to.</p>
+    <div class="wob-kchips" role="group" aria-label="Rounds you would wait">
+      <span>Wait</span>
+      <button type="button" data-wobk="1" aria-pressed="false">1 round</button>
+      <button type="button" data-wobk="2" aria-pressed="true">2 rounds</button>
+      <button type="button" data-wobk="4" aria-pressed="false">4 rounds</button>
+    </div>
+    <div class="wob-field"><div class="wob-flabel">Buy today</div><p id="wobLock"></p></div>
+    <div class="wob-field"><div class="wob-flabel">The wait, in one sentence</div><p id="wobSent" class="wob-sent"></p></div>
+    <div class="wob-field"><div class="wob-flabel">Usual move, monthly</div><p id="wobBandMo"></p></div>
+    <div class="wob-field"><div class="wob-flabel">Outside the usual</div><p id="wobBandOut"></p></div>
+    <div class="wob-field wob-disc"><div class="wob-flabel">Fine print</div><p id="wobDisc"></p></div>
+    <div class="wob-exp">
+      <div class="wob-flabel">Your current COE (optional)</div>
+      <div class="wob-expgrid">
+        <div><span class="field-label">COE expiry date</span><input type="date" id="wobE" aria-label="Current COE expiry date"></div>
+        <div class="wob-path" role="group" aria-label="What happens to the old car">
+          <span class="field-label">When the new car arrives</span>
+          <label><input type="radio" name="wobPath" value="replace" checked> <span>Replace: deregister or sell the old car</span></label>
+          <label><input type="radio" name="wobPath" value="overlap"> <span>Overlap: keep both for a while</span></label>
+        </div>
+        <label class="wob-check"><input type="checkbox" id="wobNeed"> <span>I need a car every day (no gap acceptable)</span></label>
+        <div><span class="field-label">Old car running cost (optional)</span><span class="money-input"><span>S$</span><input id="wobRun" type="number" inputmode="numeric" min="0" step="10" placeholder="0" aria-label="Old car monthly running cost"></span><span class="field-note">per month: insurance + road tax + loan</span></div>
+        <div><span class="field-label">What you paid for the current COE (optional)</span><span class="money-input"><span>S$</span><input id="wobPaid" type="number" inputmode="numeric" min="0" step="100" placeholder="0" aria-label="Amount paid for current COE"></span><span class="field-note">for a rough rebate sketch only</span></div>
+      </div>
+      <div id="wobExpOut" hidden></div>
+    </div>
+  </section>
+
+</div>
 
   <footer class="method">
     <p><strong>Method:</strong> instalment uses Singapore flat-rate financing. Monthly total adds road tax, energy, insurance, parking/ERP and maintenance. Insurance and maintenance defaults depend on fuel type: S$1,400 a year and S$120 a month for petrol, S$1,650 a year and S$80 a month for electric, reflecting higher EV repair costs and cheaper EV servicing. The 10-year cash outlay includes the upfront payment once, instalments only for the chosen loan tenure, and current running costs across one COE cycle; it does not model resale value, depreciation, changing costs or PARF.</p>
