@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<title>Career Switch Calculator Singapore — GetHowMuch</title>
+  <meta name="description" content="Should you switch careers in Singapore? Price the switch in dollars: 36-month cash vs staying, your runway, reskilling costs and CPF math." />
+  <link rel="canonical" href="https://gethowmuch.net/career-switch/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GetHowMuch" />
+  <meta property="og:title" content="Career Switch Calculator Singapore — GetHowMuch" />
+  <meta property="og:url" content="https://gethowmuch.net/career-switch/" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:description" content="Should you switch careers in Singapore? Price the switch in dollars: 36-month cash vs staying, your runway, reskilling costs and CPF math." />
+  <meta name="twitter:description" content="Should you switch careers in Singapore? Price the switch in dollars: 36-month cash vs staying, your runway, reskilling costs and CPF math." />
+  <meta name="twitter:title" content="Career Switch Calculator Singapore — GetHowMuch" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffd84c'/%3E%3Ctext x='32' y='45' font-family='sans-serif' font-size='42' font-weight='bold' text-anchor='middle' fill='%23101828'%3E?%3C/text%3E%3C/svg%3E" />
+  <link rel="preload" href="/assets/fonts/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{
+  --ink:#101828; --paper:#f6f7f4; --muted:#667085; --line:#e6eae6;
+  --yellow:#ffd84c; --amber:#8a6100;
+  --good:#0a6c4e; --bad:#b42318;
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+body{margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Space Grotesk',system-ui,sans-serif; font-size:16px; line-height:1.5;}
+.mono{font-family:'Space Mono',monospace;}
+.wrap{max-width:720px; margin:0 auto; padding:20px 22px 64px;}
+.brand{font-weight:700; font-size:17px; letter-spacing:-.5px; text-decoration:none; color:var(--ink);}
+h1{font-size:clamp(34px,8vw,52px); font-weight:700; letter-spacing:-.045em; line-height:1.05; margin:18px 0 10px;}
+.lede{color:var(--muted); font-size:17px; max-width:34em;}
+.screen{display:none;}
+.screen.active{display:block; animation:fade .25s ease;}
+@keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+.q{font-size:22px; font-weight:700; letter-spacing:-.02em; margin:26px 0 6px;}
+.help{color:var(--muted); font-size:14px; margin:0 0 18px;}
+input[type=number],input[type=text]{width:100%; font-family:'Space Mono',monospace; font-size:28px; font-weight:700;
+  padding:14px 16px; border:2px solid var(--ink); border-radius:16px; background:#fff; color:var(--ink);}
+input:focus{outline:3px solid var(--yellow); outline-offset:2px;}
+.field{margin:18px 0;}
+.field label{display:block; font-weight:500; margin-bottom:8px;}
+.unit{font-size:13px; color:var(--muted); margin-top:6px;}
+.chips{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0;}
+.chip{border:2px solid var(--ink); background:#fff; border-radius:999px; padding:12px 20px;
+  font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:500; cursor:pointer; min-height:48px;}
+.chip[aria-pressed=true]{background:var(--yellow); border-color:var(--ink);}
+.chip small{display:block; font-size:12px; color:var(--muted); font-weight:400;}
+.chip[aria-pressed=true] small{color:var(--ink);}
+.nav{display:flex; gap:12px; margin-top:28px;}
+.btn{flex:1; border:none; border-radius:16px; padding:16px; font-family:'Space Grotesk',sans-serif;
+  font-size:17px; font-weight:700; cursor:pointer; min-height:56px;}
+.btn.primary{background:var(--ink); color:#fff;}
+.btn.ghost{background:#fff; border:2px solid var(--ink); color:var(--ink); flex:0 0 auto; padding:16px 22px;}
+.btn:disabled{opacity:.35; cursor:default;}
+.dots{display:flex; gap:6px; margin:18px 0 4px;}
+.dot{width:8px; height:8px; border-radius:99px; background:var(--line);}
+.dot.on{background:var(--ink); width:26px;}
+.card{background:#fff; border:1px solid var(--line); border-radius:22px; padding:20px; margin:16px 0;}
+.card.hero{background:var(--ink); color:#fff; border:none; box-shadow:0 12px 32px rgba(16,24,40,.18);}
+.card.hero .big{font-family:'Space Mono',monospace; font-size:clamp(30px,7.5vw,44px); font-weight:700; letter-spacing:-.03em;}
+.card.warn{border:2px solid var(--yellow); background:#fffdf2;}
+.kicker{font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+.card.hero .kicker{color:#ffd84c;}
+.fig{font-family:'Space Mono',monospace; font-weight:700;}
+.pos{color:var(--good);} .neg{color:var(--bad);}
+.card.hero .pos{color:#7ee2b0;} .card.hero .neg{color:#ff9b8a;}
+.bar-row{display:flex; align-items:center; gap:10px; margin:8px 0; font-size:14px;}
+.bar{flex:1; height:10px; background:var(--line); border-radius:99px; overflow:hidden;}
+.bar i{display:block; height:100%; background:var(--yellow); border-radius:99px;}
+.fine{font-size:13px; color:var(--muted); margin-top:10px;}
+.notice{font-size:13px; color:var(--muted); font-style:italic; margin-top:12px;}
+.tag{display:inline-block; font-size:12px; font-weight:700; border-radius:999px; padding:4px 12px; margin:2px 4px 2px 0;}
+.tag.q{background:#fff3c4; border:1px solid #e8c93a;}
+.toggle{display:flex; background:#fff; border:2px solid var(--ink); border-radius:16px; overflow:hidden; margin:14px 0;}
+.toggle button{flex:1; border:none; background:#fff; padding:14px 8px; font-family:'Space Grotesk',sans-serif;
+  font-size:15px; font-weight:700; cursor:pointer;}
+.toggle button[aria-pressed=true]{background:var(--yellow);}
+h2.sec{font-size:24px; letter-spacing:-.02em; margin:34px 0 6px;}
+.stepper{display:flex; align-items:center; gap:14px; margin:14px 0;}
+.stepper button{width:56px; height:56px; border-radius:50%; border:2px solid var(--ink); background:#fff;
+  font-size:26px; font-weight:700; cursor:pointer;}
+.stepper .val{font-family:'Space Mono',monospace; font-size:34px; font-weight:700; min-width:70px; text-align:center;}
+
+/* site chrome */
+.tool-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 28px;}
+.tool-nav a{min-width:0;min-height:54px;display:flex;align-items:center;justify-content:center;padding:10px 7px;border:2px solid var(--ink);border-radius:0;background:#45dbdd;color:var(--ink);font-size:12px;font-weight:800;line-height:1.05;text-align:center;text-decoration:none;box-shadow:3px 3px 0 var(--ink);}
+.tool-nav a:active{transform:scale(.97)}
+.tool-nav a:focus-visible{outline:3px solid #ff7448;outline-offset:3px}
+@media(max-width:360px){.tool-nav{gap:6px}.tool-nav a{padding-left:5px;padding-right:5px;font-size:11px}}
+.brand{display:inline-block;margin:4px 0 16px;font-weight:700;font-size:17px;letter-spacing:-.5px;color:var(--ink);text-decoration:none}
+.site-foot{margin:32px 0 10px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);text-align:center}
+.site-foot a{color:var(--ink);font-weight:800;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="/">GetHowMuch</a>
+  <nav class="tool-nav" aria-label="GetHowMuch calculators">
+    <a href="/">Retirement</a>
+    <a href="/save-vs-spend/">Save vs Spend</a>
+    <a href="/income-tax/">Income Tax</a>
+    <a href="/cpf/">CPF</a>
+    <a href="/car-coe/">Car &amp; COE</a>
+    <a href="/forex/">Currency</a>
+    <a href="/mortgage/">Mortgage</a>
+    <a class="active" href="/career-switch/" aria-current="page">Career Switch</a>
+  </nav>
+
+  <!-- INTRO -->
+  <div class="screen active" id="s-intro">
+    <div class="dots" id="dots"></div>
+    <h1>Career switch calculator</h1>
+    <p class="lede">Most people can't pick a career they don't know exists. This tool finds what you're actually optimizing for, checks whether your current role serves it, and prices the switch in dollars.</p>
+    <p class="lede">It's blunt but never cruel. It can tell you to stay. It can tell you no switch survives your constraints. Seven questions, about a minute.</p>
+    <div class="nav"><button class="btn primary" onclick="go('s-q1')">Start</button></div>
+  </div>
+
+  <!-- Q1 current pay -->
+  <div class="screen" id="s-q1">
+    <div class="dots"></div>
+    <p class="q">What do you take home each month?</p>
+    <p class="help">Monthly cash after employee CPF, before tax. Exclude AWS and bonuses.</p>
+    <div class="field"><input type="number" id="in-current" inputmode="numeric" placeholder="6,000" min="0"></div>
+    <p class="unit">S$ per month, cash in hand.</p>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" onclick="q1next()">Next</button></div>
+  </div>
+
+  <!-- Q2 floor + runway + qualifier -->
+  <div class="screen" id="s-q2">
+    <div class="dots"></div>
+    <p class="q">What's the lowest monthly pay you can live with?</p>
+    <div class="field"><input type="number" id="in-floor" inputmode="numeric" placeholder="4,500" min="0"></div>
+    <p class="q" style="font-size:19px; margin-top:26px;">How many months can you run below that floor?</p>
+    <div class="stepper">
+      <button onclick="stepRunway(-1)" aria-label="fewer months">−</button>
+      <div class="val" id="runway-val">6</div>
+      <button onclick="stepRunway(1)" aria-label="more months">+</button>
+    </div>
+    <p class="q" style="font-size:19px; margin-top:26px;">Is that floor your share, or the household's?</p>
+    <div class="chips" id="qual-chips">
+      <button class="chip" data-v="personal" aria-pressed="true">My share</button>
+      <button class="chip" data-v="household" aria-pressed="false">The household's</button>
+    </div>
+    <p class="help">This only changes how we talk about the dip. It never changes the math.</p>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" onclick="q2next()">Next</button></div>
+  </div>
+
+  <!-- Q3 objective -->
+  <div class="screen" id="s-q3">
+    <div class="dots"></div>
+    <p class="q">What are you optimizing for?</p>
+    <p class="help">Pick your primary first, then your secondary.</p>
+    <p class="field"><label>Primary</label></p>
+    <div class="chips" id="prim-chips"></div>
+    <p class="field"><label>Secondary</label></p>
+    <div class="chips" id="sec-chips"></div>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q3next" onclick="q3next()" disabled>Next</button></div>
+  </div>
+
+  <!-- Q4 alignment -->
+  <div class="screen" id="s-q4">
+    <div class="dots"></div>
+    <p class="q" id="q4-text">Does your current role already serve that?</p>
+    <div class="chips" id="align-chips">
+      <button class="chip" data-v="yes" aria-pressed="false">Yes</button>
+      <button class="chip" data-v="partly" aria-pressed="false">Partly</button>
+      <button class="chip" data-v="no" aria-pressed="false">No</button>
+    </div>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q4next" onclick="q4next()" disabled>Next</button></div>
+  </div>
+
+  <!-- Q5 timeline -->
+  <div class="screen" id="s-q5">
+    <div class="dots"></div>
+    <p class="q">When would you make the move?</p>
+    <div class="chips" id="time-chips">
+      <button class="chip" data-v="asap" aria-pressed="false">ASAP<small>within 3 months</small></button>
+      <button class="chip" data-v="6-12" aria-pressed="false">6–12 months<small>within a year</small></button>
+      <button class="chip" data-v="1-2y" aria-pressed="false">1–2 years<small>within 24 months</small></button>
+      <button class="chip" data-v="exploring" aria-pressed="false">Just exploring<small>up to 36 months</small></button>
+    </div>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q5next" onclick="q5next()" disabled>Next</button></div>
+  </div>
+
+  <!-- Q6 age + residency -->
+  <div class="screen" id="s-q6">
+    <div class="dots"></div>
+    <p class="q">Your age band?</p>
+    <div class="chips" id="age-chips">
+      <button class="chip" data-v="under40" aria-pressed="false">Under 40</button>
+      <button class="chip" data-v="40-54" aria-pressed="false">40–54</button>
+      <button class="chip" data-v="55+" aria-pressed="false">55+</button>
+    </div>
+    <p class="q" style="font-size:19px; margin-top:26px;">Residency?</p>
+    <div class="chips" id="res-chips">
+      <button class="chip" data-v="citizen" aria-pressed="false">Citizen</button>
+      <button class="chip" data-v="pr" aria-pressed="false">PR</button>
+      <button class="chip" data-v="ep" aria-pressed="false">EP holder</button>
+    </div>
+    <p class="help">Used for CPF math and SkillsFuture subsidies only.</p>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q6next" onclick="q6next()" disabled>Next</button></div>
+  </div>
+
+  <!-- Q7 housing loan -->
+  <div class="screen" id="s-q7">
+    <div class="dots"></div>
+    <p class="q">Any outstanding housing loan?</p>
+    <div class="chips" id="loan-chips">
+      <button class="chip" data-v="yes" aria-pressed="false">Yes</button>
+      <button class="chip" data-v="no" aria-pressed="false">No</button>
+    </div>
+    <p class="help">A loan plus a variable-pay path triggers a TDSR flag. It never kills a role outright.</p>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q7next" onclick="showResults()" disabled>See my result</button></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="screen" id="s-results">
+    <div id="results"></div>
+    <div class="nav"><button class="btn ghost" onclick="go('s-intro'); reset();">Start over</button></div>
+    <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a> · Estimates for planning only. Not financial advice. © 2026</footer>
+  </div>
+</div>
+
+<script src="engine.js"></script>
+<script src="roles-15.js"></script>
+<script>
+var ROLES = ROLES15; /* researched 15-role sheet. roles.js (Section 7 fixture) is kept for the test suite only. */
+var E = window.CareerEngine;
+var DIMS = [['money','Money'],['time','Time / freedom'],['meaning','Meaning / passion'],['stability','Stability']];
+var S = { step:0, runway:6, qualifier:'personal', primary:null, secondary:null, alignment:null, timeline:null, ageBand:null, residency:null, housingLoan:null, sortMode:'survival' };
+var ORDER = ['s-intro','s-q1','s-q2','s-q3','s-q4','s-q5','s-q6','s-q7','s-results'];
+
+function money(n){ return E.money(n); }
+function pct(n){ var v = Math.round(n*100); return (v>0?'+':'') + v + '%'; }
+
+function go(id){
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  S.step = ORDER.indexOf(id);
+  paintDots();
+  window.scrollTo(0,0);
+}
+function back(){ go(ORDER[Math.max(0,S.step-1)]); }
+function paintDots(){
+  document.querySelectorAll('.dots').forEach(function(d){
+    d.innerHTML='';
+    for(var i=1;i<=7;i++){ var s=document.createElement('span'); s.className='dot'+(i<=S.step?' on':''); d.appendChild(s); }
+  });
+}
+function chipGroup(elId, cb){
+  var el = document.getElementById(elId);
+  if(el.dataset.bound) return; /* reset() rebuilds chips; never stack listeners */
+  el.dataset.bound = '1';
+  el.addEventListener('click', function(ev){
+    var b = ev.target.closest('.chip'); if(!b) return;
+    el.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+    b.setAttribute('aria-pressed','true');
+    cb(b.dataset.v);
+  });
+}
+function stepRunway(d){ S.runway = Math.max(0, Math.min(60, S.runway + d)); document.getElementById('runway-val').textContent = S.runway; }
+
+function q1next(){
+  var v = parseFloat(document.getElementById('in-current').value);
+  if(!(v>0)){ alert('Enter your monthly take-home pay.'); return; }
+  S.current_pay = v; go('s-q2');
+}
+function q2next(){
+  var v = parseFloat(document.getElementById('in-floor').value);
+  if(!(v>0)){ alert('Enter your minimum viable monthly pay.'); return; }
+  S.min_viable = v; S.qualifier = document.querySelector('#qual-chips .chip[aria-pressed=true]').dataset.v;
+  go('s-q3');
+}
+function dimLabel(d){ return ({money:'money',time:'time/freedom',meaning:'meaning/passion',stability:'stability'})[d] || d; }
+function q3next(){
+  if(!(S.primary && S.secondary)) return;
+  document.getElementById('q4-text').textContent = 'Does your current role already serve your ' + dimLabel(S.primary) + ' objective?';
+  go('s-q4');
+}
+function q4next(){ if(S.alignment) go('s-q5'); }
+function q5next(){ if(S.timeline) go('s-q6'); }
+function q6next(){ if(S.ageBand && S.residency) go('s-q7'); }
+
+function reset(){
+  S = { step:0, runway:6, qualifier:'personal', primary:null, secondary:null, alignment:null, timeline:null, ageBand:null, residency:null, housingLoan:null, sortMode:'survival' };
+  document.getElementById('runway-val').textContent = '6';
+  ['in-current','in-floor'].forEach(function(id){ document.getElementById(id).value=''; });
+  document.querySelectorAll('#s-q2 .chip, #s-q4 .chip, #s-q5 .chip, #s-q6 .chip, #s-q7 .chip').forEach(function(c){
+    c.setAttribute('aria-pressed', (c.closest('#qual-chips') && c.dataset.v==='personal') ? 'true' : 'false');
+  });
+  ['q3next','q4next','q5next','q6next','q7next'].forEach(function(id){ document.getElementById(id).disabled = true; });
+  buildChips();
+}
+
+// chips
+function buildChips(){
+  var pc = document.getElementById('prim-chips'), sc = document.getElementById('sec-chips');
+  pc.innerHTML=''; sc.innerHTML='';
+  DIMS.forEach(function(d){
+    var b=document.createElement('button'); b.className='chip'; b.dataset.v=d[0]; b.setAttribute('aria-pressed','false'); b.textContent=d[1]; pc.appendChild(b);
+    var b2=document.createElement('button'); b2.className='chip'; b2.dataset.v=d[0]; b2.setAttribute('aria-pressed','false'); b2.textContent=d[1]; sc.appendChild(b2);
+  });
+  chipGroup('prim-chips', function(v){ S.primary=v; refreshSec(); document.getElementById('q3next').disabled = !(S.primary&&S.secondary); });
+  chipGroup('sec-chips', function(v){ S.secondary=v; document.getElementById('q3next').disabled = !(S.primary&&S.secondary); });
+  chipGroup('align-chips', function(v){ S.alignment=v; document.getElementById('q4next').disabled=false; });
+  chipGroup('time-chips', function(v){ S.timeline=v; document.getElementById('q5next').disabled=false; });
+  chipGroup('age-chips', function(v){ S.ageBand=v; document.getElementById('q6next').disabled = !(S.ageBand&&S.residency); });
+  chipGroup('res-chips', function(v){ S.residency=v; document.getElementById('q6next').disabled = !(S.ageBand&&S.residency); });
+  chipGroup('loan-chips', function(v){ S.housingLoan=(v==='yes'); document.getElementById('q7next').disabled=false; });
+  chipGroup('qual-chips', function(){});
+}
+function refreshSec(){
+  document.querySelectorAll('#sec-chips .chip').forEach(function(c){
+    var dis = c.dataset.v===S.primary;
+    c.style.opacity = dis? .35 : 1; c.style.pointerEvents = dis? 'none':'auto';
+    if(dis && c.getAttribute('aria-pressed')==='true'){ c.setAttribute('aria-pressed','false'); S.secondary=null; }
+  });
+  document.getElementById('q3next').disabled = !(S.primary&&S.secondary);
+}
+
+function userObj(){
+  return { current_pay:S.current_pay, min_viable:S.min_viable, runway:S.runway,
+    floorQualifier:S.qualifier, primary:S.primary, secondary:S.secondary, alignment:S.alignment,
+    timeline:S.timeline, ageBand:S.ageBand, residency:S.residency, housingLoan:S.housingLoan, sortMode:S.sortMode };
+}
+
+function showResults(){
+  var u = userObj();
+  var res = E.analyze(u, ROLES);
+  renderResults(u, res);
+  go('s-results');
+}
+
+function verdictCard(u, res){
+  var v = res.verdict, html='';
+  if(v.key==='stay'){
+    if(res.ranked.length===0 && res.quarantined.length>0){
+      var nq = res.quarantined.length;
+      html = '<div class="card hero"><div class="kicker">The verdict</div><div class="big">On hold.</div>' +
+        '<p>Nothing cleared your runway. ' + nq + ' path' + (nq===1?' is':'s are') +
+        ' quarantined below, not beaten. Raise the runway or stretch the timeline and they come back.</p></div>';
+    } else {
+      var r0 = res.ranked[0];
+      html = '<div class="card hero"><div class="kicker">The verdict</div><div class="big">Stay.</div>' +
+        '<p>On your inputs, no switch beats staying on 36-month cash' +
+        (r0 ? ' — the closest, ' + r0.role.title + ', trails by ' + money(-r0.analysis.delta36) : '') +
+        '. Clock starts today. Your notice period is not subtracted.</p></div>';
+    }
+  } else if(v.key==='serves-but-money'){
+    html = '<div class="card warn"><div class="kicker">The verdict</div>' +
+      '<p style="font-size:18px; font-weight:700; margin:0 0 8px;">Your role serves your objective, but the money says otherwise.</p>' +
+      '<p>Which do you trust?</p></div>';
+  } else if(v.key==='serves'){
+    html = '<div class="card hero"><div class="kicker">The verdict</div><div class="big">It serves you.</div>' +
+      '<p>You said your current role serves your ' + dimLabel(u.primary) + ' objective. A switch below is only worth it if the path itself calls to you.</p></div>';
+  } else {
+    var ans = u.alignment==='partly' ? 'partly serves' : 'does not serve';
+    html = '<div class="card warn"><div class="kicker">The verdict</div>' +
+      '<p style="font-size:18px; font-weight:700; margin:0 0 8px;">Your current role ' + ans + ' your ' + dimLabel(u.primary) + ' objective.</p>' +
+      '<p>That\'s your word, not ours. The paths below are conditional on it.</p></div>';
+  }
+  return html;
+}
+
+function pushbackCards(res){
+  if(!res.pushbacks.length) return '';
+  return res.pushbacks.map(function(p){
+    return '<div class="card"><div class="kicker">Pushback · ' + p.id + '</div><p style="margin:0;">' + p.copy + '</p></div>';
+  }).join('');
+}
+
+function roleCard(u, item, res, sortLabel){
+  var r = item.role, a = item.analysis;
+  var score = Math.round(E.rubricScore(r, u.primary));
+  var mb = a.monthsBelow;
+  var d36 = a.delta36;
+  var d36cls = d36>0?'pos':(d36<0?'neg':'');
+  var html = '<div class="card">';
+  html += '<div class="kicker">' + (u.primary==='money' ? '36-month cash vs staying' : dimLabel(u.primary) + ' score') + '</div>';
+  html += '<p style="font-size:21px; font-weight:700; margin:0 0 4px;">' + r.title + '</p>';
+  if(u.primary!=='money') html += '<p class="fig" style="font-size:26px; margin:0 0 8px;">' + score + '<span style="font-size:14px; color:var(--muted);">/100</span></p>';
+  html += '<p style="margin:6px 0;">The dip: <span class="fig ' + (a.dip<0?'neg':'pos') + '">' + money(a.dip) + '/mo (' + pct(a.dipPct) + ')</span> at entry ' + money(r.entry_pay) + '.</p>';
+  html += '<p style="margin:6px 0;">The landing: <span class="fig">' + money(r.settled_pay) + '</span> settled vs ' + money(u.current_pay) + ' today (' + pct(a.landingPct) + ').</p>';
+  if(mb.count>0) html += '<p style="margin:6px 0;"><span class="tag q">' + mb.count + ' months below your floor</span> ' + mb.unpaid + ' unpaid + ' + mb.employed + ' employed.</p>';
+  html += '<p style="margin:6px 0;">36 months vs staying: <span class="fig ' + d36cls + '">' + money(d36) + '</span>' +
+    (u.primary==='money' && sortLabel==='career' && a.delta120!=null ? ' · 120 months: <span class="fig ' + (a.delta120>0?'pos':'neg') + '">' + money(a.delta120) + '</span>' : '') + '</p>';
+  if(a.delta120!=null && u.primary==='money' && sortLabel==='survival'){
+    html += '<p class="fine">120-month view: <span class="fig">' + money(a.delta120) + '</span>. In today\'s dollars this is ' + money(a.sensToday) +
+      ' over ten years. If both paths rose 3% a year, ' + money(a.sensDrift) + '.</p>';
+  }
+  if(r.reskill_months>=12 && sortLabel==='survival' && u.primary==='money'){
+    html += '<p class="fine">' + r.reskill_months + ' of your first 36 months are unpaid.</p>';
+  }
+  var p7 = res.p7(r);
+  if(p7) html += '<p class="fine" style="color:var(--ink); font-weight:500;">' + p7 + '</p>';
+  if(item.reason==='F4'){
+    html += '<p class="fine" style="color:var(--ink); font-weight:500;">Quarantined: housing loan + variable pay. Banks assess at 55% of gross stress-tested at 4%, with a ≥30% haircut on variable income.</p>';
+  }
+  // tradeoff bars. Money has no 0-100 rubric in the spec; show the 36-month cash delta instead of a fake 0.
+  html += '<div style="margin-top:12px;">' + DIMS.map(function(d){
+    if(d[0]==='money'){
+      var m = a.delta36, mcls = m>0?'pos':(m<0?'neg':'');
+      return '<div class="bar-row"><span style="width:110px;">' + d[1] + '</span><span class="fig ' + mcls + '">' + money(m) + ' / 36 mo</span></div>';
+    }
+    var s = Math.round(E.rubricScore(r, d[0]));
+    return '<div class="bar-row"><span style="width:110px;">' + d[1] + '</span><div class="bar"><i style="width:' + s + '%;"></i></div><span class="fig" style="width:34px; text-align:right;">' + s + '</span></div>';
+  }).join('') + '</div>';
+  html += '<p class="fine">Base-like pay; bonus extra.' + (r.wage_label ? ' Pay bands: ' + r.wage_label + '.' : '') + ' Occupation settled pay is not a promise the switcher lands inside it.</p>';
+  if(r.card_note) html += '<p class="fine" style="color:var(--ink); font-weight:500;">' + r.card_note + '</p>';
+  html += '<p class="notice">Clock starts today. Your notice period is not subtracted.</p>';
+  html += '</div>';
+  return html;
+}
+
+function renderResults(u, res){
+  var el = document.getElementById('results');
+  var html = verdictCard(u, res) + pushbackCards(res);
+  var sortLabel = S.sortMode;
+
+  if(u.primary==='money'){
+    html += '<h2 class="sec">Ranked paths</h2>';
+    html += '<div class="toggle" role="group" aria-label="Sort window">' +
+      '<button aria-pressed="' + (sortLabel==='survival') + '" onclick="setSort(\'survival\')">36 months (survival)</button>' +
+      '<button aria-pressed="' + (sortLabel==='career') + '" onclick="setSort(\'career\')">120 months (career)</button></div>';
+    if(sortLabel==='survival') html += '<p class="fine" style="margin-top:-6px;">This is the survival rank.</p>';
+  } else {
+    html += '<h2 class="sec">Ranked by ' + dimLabel(u.primary) + '</h2>';
+  }
+
+  if(res.ranked.length===0 && res.quarantined.length===0){
+    html += '<div class="card"><div class="kicker">Empty state</div>' +
+      '<p style="font-size:18px; font-weight:700;">Nothing survives your constraints.</p>' +
+      '<p>Killed, in order: ' +
+      'licence/pass gates ' + res.killed.F3 + ' · ' +
+      'floor ' + res.killed.F1 + ' · ' +
+      'timeline ' + res.killed.F2 + '.</p>';
+    var unlock = [
+      { n: res.killed.F1, copy: 'lowering your floor' },
+      { n: res.killed.F2, copy: 'stretching your timeline' }
+    ].filter(function(x){ return x.n>0; }).sort(function(a,b){ return b.n-a.n; });
+    if(unlock.length){
+      html += '<p>Biggest unlock: ' + unlock[0].copy + ' brings back up to ' + unlock[0].n + ' role' + (unlock[0].n===1?'':'s') + '.</p>';
+    } else if(res.killed.F3>0){
+      html += '<p>' + res.killed.F3 + ' role' + (res.killed.F3===1?' is':'s are') + ' licence-gated on your timeline; only a longer runway into "just exploring" changes that.</p>';
+    }
+    html += '<p class="fine">A same-employer move is outside this calculator.</p></div>';
+  }
+
+  if(res.ranked.length>0){
+    html += res.ranked.map(function(it){ return roleCard(u, it, res, sortLabel); }).join('');
+  }
+
+  if(res.quarantined.length>0){
+    html += '<h2 class="sec">' + (res.ranked.length===0 ? '0 ranked, ' : '') + res.quarantined.length + ' quarantined</h2>';
+    if(res.ranked.length===0) html += '<p class="fine" style="margin-top:-6px;">This is a successful run, not an error. Raise your runway or extend your timeline to bring paths back.</p>';
+    html += res.quarantined.map(function(it){
+      var why = it.reason==='F1b'
+        ? 'Quarantined: ' + it.analysis.monthsBelow.count + ' months below your floor beats your ' + u.runway + '-month runway.'
+        : 'Quarantined: housing loan plus variable pay.';
+      var inner = roleCard(u, it, res, sortLabel).replace('<div class="card">','').replace(/<\/div>\s*$/, '');
+      return '<div class="card" style="opacity:.92;"><div class="kicker">Quarantined</div>' + inner + '<p class="fine" style="color:var(--ink); font-weight:500;">' + why + '</p></div>';
+    }).join('');
+  }
+
+  // stay sentence
+  var stayTxt = u.primary==='money'
+    ? 'Staying keeps ' + money(u.current_pay) + '/mo, every month. No dip, no runway spent.'
+    : 'Staying keeps ' + money(u.current_pay) + '/mo. You said your role ' + (u.alignment==='yes'?'serves':(u.alignment==='partly'?'partly serves':'does not serve')) + ' your ' + dimLabel(u.primary) + ' objective.';
+  html += '<div class="card"><div class="kicker">Staying</div><p style="margin:0;">' + stayTxt + '</p><p class="notice">Clock starts today. Your notice period is not subtracted.</p></div>';
+
+  el.innerHTML = html;
+}
+
+function setSort(m){ S.sortMode = m; showResultsKeep(); }
+function showResultsKeep(){
+  var u = userObj();
+  var res = E.analyze(u, ROLES);
+  renderResults(u, res);
+  document.getElementById('s-results').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+buildChips();
+paintDots();
+document.querySelectorAll('input[type=number]').forEach(function(i){
+  i.addEventListener('focus', function(){ i.select(); });
+});
+</script>
+</body>
+</html>
