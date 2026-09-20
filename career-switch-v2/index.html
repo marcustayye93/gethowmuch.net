@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Career Switch Calculator v2 Singapore — GetHowMuch</title>
+<meta name="description" content="Should you switch careers in Singapore? v2 prices the switch in dollars with your education, timeline and ranked passions: 36-month cash vs staying, gated paths, and an honest pushback." />
+<link rel="canonical" href="https://gethowmuch.net/career-switch-v2/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="GetHowMuch" />
+<meta property="og:title" content="Career Switch Calculator v2 Singapore — GetHowMuch" />
+<meta property="og:url" content="https://gethowmuch.net/career-switch-v2/" />
+<meta name="twitter:card" content="summary" />
+<meta property="og:description" content="Should you switch careers in Singapore? v2 prices the switch in dollars with your education, timeline and ranked passions." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ffd84c'/%3E%3Ctext x='32' y='45' font-family='sans-serif' font-size='42' font-weight='bold' text-anchor='middle' fill='%23101828'%3E?%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#101828; --paper:#f6f7f4; --muted:#667085; --line:#e6eae6;
+  --yellow:#ffd84c; --amber:#8a6100;
+  --good:#0a6c4e; --bad:#b42318;
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+body{margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Space Grotesk',system-ui,sans-serif; font-size:16px; line-height:1.5;}
+.mono{font-family:'Space Mono',monospace;}
+.wrap{max-width:720px; margin:0 auto; padding:20px 22px 64px;}
+.brand{font-weight:700; font-size:17px; letter-spacing:-.5px; text-decoration:none; color:var(--ink);}
+.brandbar{padding:14px 0 6px;}
+h1{font-size:clamp(34px,8vw,52px); font-weight:700; letter-spacing:-.045em; line-height:1.05; margin:18px 0 10px;}
+.lede{color:var(--muted); font-size:17px; max-width:34em;}
+.screen{display:none;}
+.screen.active{display:block; animation:fade .25s ease;}
+@keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+.q{font-size:22px; font-weight:700; letter-spacing:-.02em; margin:26px 0 6px;}
+.help{color:var(--muted); font-size:14px; margin:0 0 18px;}
+input[type=number],input[type=text]{width:100%; font-family:'Space Mono',monospace; font-size:28px; font-weight:700;
+  padding:14px 16px; border:2px solid var(--ink); border-radius:16px; background:#fff; color:var(--ink);}
+input:focus{outline:3px solid var(--yellow); outline-offset:2px;}
+.field{margin:18px 0;}
+.field label{display:block; font-weight:500; margin-bottom:8px;}
+.unit{font-size:13px; color:var(--muted); margin-top:6px;}
+.chips{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0;}
+.chip{border:2px solid var(--ink); background:#fff; border-radius:999px; padding:12px 20px;
+  font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:500; cursor:pointer; min-height:48px; position:relative;}
+.chip[aria-pressed=true]{background:var(--yellow); border-color:var(--ink);}
+.chip small{display:block; font-size:12px; color:var(--muted); font-weight:400;}
+.chip[aria-pressed=true] small{color:var(--ink);}
+.chip .rank{position:absolute; top:-10px; right:-6px; background:var(--ink); color:#fff; font-size:12px; font-weight:700;
+  width:24px; height:24px; border-radius:99px; display:flex; align-items:center; justify-content:center;}
+.chips.grid2{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+.nav{display:flex; gap:12px; margin-top:28px;}
+.btn{flex:1; border:none; border-radius:16px; padding:16px; font-family:'Space Grotesk',sans-serif;
+  font-size:17px; font-weight:700; cursor:pointer; min-height:56px;}
+.btn.primary{background:var(--ink); color:#fff;}
+.btn.ghost{background:#fff; border:2px solid var(--ink); color:var(--ink); flex:0 0 auto; padding:16px 22px;}
+.btn:disabled{opacity:.35; cursor:default;}
+.dots{display:flex; gap:6px; margin:18px 0 4px;}
+.dot{width:8px; height:8px; border-radius:99px; background:var(--line);}
+.dot.on{background:var(--ink); width:26px;}
+.card{background:#fff; border:1px solid var(--line); border-radius:22px; padding:20px; margin:16px 0;}
+.card.hero{background:var(--ink); color:#fff; border:none; box-shadow:0 12px 32px rgba(16,24,40,.18);}
+.card.hero .big{font-family:'Space Mono',monospace; font-size:clamp(30px,7.5vw,44px); font-weight:700; letter-spacing:-.03em;}
+.card.warn{border:2px solid var(--yellow); background:#fffdf2;}
+.card.bench{border:2px solid var(--ink);}
+.card.gated{border-style:dashed;}
+.kicker{font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
+.card.hero .kicker{color:#ffd84c;}
+.fig{font-family:'Space Mono',monospace; font-weight:700;}
+.pos{color:var(--good);} .neg{color:var(--bad);}
+.card.hero .pos{color:#7ee2b0;} .card.hero .neg{color:#ff9b8a;}
+.fine{font-size:13px; color:var(--muted); margin-top:10px;}
+.notice{font-size:13px; color:var(--muted); font-style:italic; margin-top:12px;}
+.tag{display:inline-block; font-size:12px; font-weight:700; border-radius:999px; padding:4px 12px; margin:2px 4px 2px 0;}
+.tag.q{background:#fff3c4; border:1px solid #e8c93a;}
+.tag.pass{background:var(--ink); color:#fff; border:1px solid var(--ink);}
+.prov{font-size:13px; color:var(--muted); font-style:italic; margin:8px 0 0;}
+h2.sec{font-size:24px; letter-spacing:-.02em; margin:34px 0 6px;}
+h3.rank-h{font-size:18px; margin:26px 0 2px; letter-spacing:-.01em;}
+.foot{margin-top:44px; padding-top:16px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted);}
+.stepper{display:flex; align-items:center; gap:14px; margin:14px 0;}
+.stepper button{width:56px; height:56px; border-radius:50%; border:2px solid var(--ink); background:#fff;
+  font-size:26px; font-weight:700; cursor:pointer;}
+.stepper .val{font-family:'Space Mono',monospace; font-size:34px; font-weight:700; min-width:70px; text-align:center;}
+details.t2{border:2px dashed var(--line); border-radius:22px; padding:6px 20px; margin:16px 0; background:#fff;}
+details.t2 summary{cursor:pointer; font-weight:700; font-size:17px; padding:14px 0; list-style:none;}
+details.t2 summary::-webkit-details-marker{display:none;}
+details.t2 summary:before{content:"+ "; font-family:'Space Mono',monospace;}
+details.t2[open] summary:before{content:"− ";}
+.banner{background:var(--yellow); border-radius:14px; padding:12px 16px; font-weight:700; font-size:14px; margin:0 0 16px;}
+.switchrow{display:flex; align-items:center; justify-content:space-between; gap:12px; margin:14px 0;}
+.switchrow .lbl{font-weight:500;}
+.togglerow{display:flex; background:#fff; border:2px solid var(--ink); border-radius:999px; overflow:hidden;}
+.togglerow button{border:none; background:#fff; padding:10px 18px; font-family:'Space Grotesk',sans-serif;
+  font-size:14px; font-weight:700; cursor:pointer;}
+.togglerow button[aria-pressed=true]{background:var(--yellow);}
+.site-foot{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted);}
+.site-foot a{color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brandbar"><a class="brand" href="/">GetHowMuch</a> <span class="tag q">v2</span></div>
+
+  <!-- INTRO -->
+  <div class="screen active" id="s-intro">
+    <div class="dots" id="dots"></div>
+    <h1>Career switch calculator</h1>
+    <p class="lede">Tell us your job, your pay, and what you're drawn to. We check which switches survive your constraints, price them in dollars, and show your current pay as the benchmark to beat.</p>
+    <p class="lede">It can tell you to stay. It can tell you no switch survives. Seven screens, about two minutes.</p>
+    <div class="nav"><button class="btn primary" onclick="go('s-q1')">Start</button></div>
+  </div>
+
+  <!-- Q1: current pay + current domain + current role -->
+  <div class="screen" id="s-q1">
+    <div class="dots"></div>
+    <p class="q">Your job now.</p>
+    <p class="help">Monthly cash after employee CPF, before tax. Exclude AWS and bonuses.</p>
+    <div class="field"><input type="number" id="in-current" inputmode="numeric" placeholder="6,000" min="0"></div>
+    <p class="unit">S$ per month, cash in hand.</p>
+    <p class="q" style="font-size:19px;">Which domain is your current role in?</p>
+    <div class="chips" id="curdom-chips"></div>
+    <div id="currole-wrap" style="display:none;">
+      <p class="q" style="font-size:19px;">Which one is closest?</p>
+      <div class="chips" id="currole-chips"></div>
+    </div>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q1next" onclick="q1next()" disabled>Next</button></div>
+  </div>
+
+  <!-- Q2: floor + runway + qualifier -->
+  <div class="screen" id="s-q2">
+    <div class="dots"></div>
+    <p class="q">What's the lowest monthly pay you can live with?</p>
+    <div class="field"><input type="number" id="in-floor" inputmode="numeric" placeholder="4,500" min="0"></div>
+    <p class="q" style="font-size:19px; margin-top:26px;">If a switch pays below that floor for a while, how many months could your savings cover the gap?</p>
+    <div class="stepper">
+      <button onclick="stepRunway(-1)" aria-label="fewer months">−</button>
+      <div class="val" id="runway-val">6</div>
+      <button onclick="stepRunway(1)" aria-label="more months">+</button>
+    </div>
+    <p class="q" style="font-size:19px; margin-top:26px;">Is that floor yours or the household's?</p>
+    <div class="switchrow">
+      <span class="lbl">Household-share floor</span>
+      <div class="togglerow" role="group" aria-label="Household share">
+        <button id="hh-off" aria-pressed="true" onclick="setHH(false)">Mine</button>
+        <button id="hh-on" aria-pressed="false" onclick="setHH(true)">Household's</button>
+      </div>
+    </div>
+    <p class="help">This only changes how we talk about the dip. It never changes the math.</p>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" onclick="q2next()">Next</button></div>
+  </div>
+
+  <!-- Q3: objectives -->
+  <div class="screen" id="s-q3">
+    <div class="dots"></div>
+    <p class="q">What are you optimizing for?</p>
+    <p class="help">Pick your primary first, then your secondary.</p>
+    <p class="field"><label>Primary</label></p>
+    <div class="chips" id="prim-chips"></div>
+    <p class="field"><label>Secondary</label></p>
+    <div class="chips" id="sec-chips"></div>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q3next" onclick="q3next()" disabled>Next</button></div>
+  </div>
+
+  <!-- Q4: alignment + ranked target domains -->
+  <div class="screen" id="s-q4">
+    <div class="dots"></div>
+    <p class="q" id="q4-text">Does your current role already serve that?</p>
+    <div class="chips" id="align-chips">
+      <button class="chip" data-v="yes" aria-pressed="false">Yes</button>
+      <button class="chip" data-v="partly" aria-pressed="false">Partly</button>
+      <button class="chip" data-v="no" aria-pressed="false">No</button>
+    </div>
+    <p class="q" style="font-size:19px; margin-top:26px;">Which domains are you drawn to? <span style="font-weight:400; font-size:15px;">Tap in order, up to 3.</span></p>
+    <p class="help">These are the domains this calculator can price.</p>
+    <div class="chips grid2" id="target-chips"></div>
+    <div class="switchrow">
+      <span class="lbl">Only my passion domains</span>
+      <div class="togglerow" role="group" aria-label="Only my passion domains">
+        <button id="po-off" aria-pressed="true" onclick="setPassionOnly(false)">Off</button>
+        <button id="po-on" aria-pressed="false" onclick="setPassionOnly(true)">On</button>
+      </div>
+    </div>
+    <p class="help">Off by default. When off, we may show up to 3 strong picks outside your list, clearly labelled.</p>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q4next" onclick="q4next()" disabled>Next</button></div>
+  </div>
+
+  <!-- Q5: timeline -->
+  <div class="screen" id="s-q5">
+    <div class="dots"></div>
+    <p class="q">When would you make the move?</p>
+    <div class="chips" id="time-chips">
+      <button class="chip" data-v="asap" aria-pressed="false">ASAP<small>within 3 months</small></button>
+      <button class="chip" data-v="6-12" aria-pressed="false">6–12 months<small>within a year</small></button>
+      <button class="chip" data-v="1-2y" aria-pressed="false">1–2 years<small>within 24 months</small></button>
+      <button class="chip" data-v="exploring" aria-pressed="false">Just exploring<small>up to 36 months</small></button>
+    </div>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q5next" onclick="q5next()" disabled>Next</button></div>
+  </div>
+
+  <!-- Q6: age + residency + qualification -->
+  <div class="screen" id="s-q6">
+    <div class="dots"></div>
+    <p class="q">About you.</p>
+    <p class="field"><label>Age band</label></p>
+    <div class="chips" id="age-chips">
+      <button class="chip" data-v="under40" aria-pressed="false">Under 40</button>
+      <button class="chip" data-v="40-54" aria-pressed="false">40–54</button>
+      <button class="chip" data-v="55+" aria-pressed="false">55+</button>
+    </div>
+    <p class="field"><label>Residency</label></p>
+    <div class="chips" id="res-chips">
+      <button class="chip" data-v="citizen" aria-pressed="false">Citizen</button>
+      <button class="chip" data-v="pr" aria-pressed="false">PR</button>
+      <button class="chip" data-v="ep" aria-pressed="false">EP holder</button>
+    </div>
+    <p class="field"><label>Highest qualification</label></p>
+    <div class="chips" id="edu-chips">
+      <button class="chip" data-v="olevel" aria-pressed="false">O / N levels</button>
+      <button class="chip" data-v="diploma" aria-pressed="false">Diploma</button>
+      <button class="chip" data-v="degree" aria-pressed="false">Degree</button>
+      <button class="chip" data-v="postgrad" aria-pressed="false">Postgrad</button>
+    </div>
+    <p class="help">Used for CPF math, SkillsFuture subsidies, and degree-gated paths only.</p>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q6next" onclick="q6next()" disabled>Next</button></div>
+  </div>
+
+  <!-- Q7: housing loan -->
+  <div class="screen" id="s-q7">
+    <div class="dots"></div>
+    <p class="q">Any outstanding housing loan?</p>
+    <div class="chips" id="loan-chips">
+      <button class="chip" data-v="yes" aria-pressed="false">Yes</button>
+      <button class="chip" data-v="no" aria-pressed="false">No</button>
+    </div>
+    <p class="help">A loan plus a variable-pay path triggers a TDSR flag. It never kills a role outright.</p>
+    <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q7next" onclick="showResults()" disabled>See my result</button></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="screen" id="s-results">
+    <div id="results"></div>
+    <div class="nav"><button class="btn ghost" onclick="go('s-intro'); reset();">Start over</button></div>
+    <div class="foot" id="results-foot"></div>
+  </div>
+</div>
+
+<script src="engine.js"></script>
+<script src="engine-v2.js"></script>
+<script src="roles-index.js"></script>
+<script>
+var ROLES = ROLES_INDEX;
+var E = window.CareerEngine, V2 = window.CareerEngineV2;
+var DOMAINS = ['tech','data','design','marketing','finance','people','healthcare','trades','hospitality','ops'];
+var DIMS = [['money','Money'],['time','Time / freedom'],['meaning','Meaning / passion'],['stability','Stability']];
+var S = null;
+var ORDER = ['s-intro','s-q1','s-q2','s-q3','s-q4','s-q5','s-q6','s-q7','s-results'];
+function freshState(){
+  return { step:0, current_pay:null, currentDomain:null, currentRoleId:null,
+    min_viable:null, runway:6, household:false,
+    primary:null, secondary:null, alignment:null, targets:[],
+    timeline:null, ageBand:null, residency:null, education:null,
+    housingLoan:null, passionOnly:false, chips:{} };
+}
+S = freshState();
+
+function money(n){ return E.money(n); }
+function pct(n){ if(n==null) return '—'; var v = Math.round(n*100); return (v>0?'+':'') + v + '%'; }
+function dimLabel(d){ return ({money:'money',time:'time/freedom',meaning:'meaning/passion',stability:'stability'})[d] || d; }
+
+function go(id){
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  S.step = ORDER.indexOf(id);
+  paintDots();
+  window.scrollTo(0,0);
+  if(id==='s-q1'||id==='s-q4') V2.Instrument.emit('screen_view',{screen:id});
+}
+function back(){ go(ORDER[Math.max(0,S.step-1)]); }
+function paintDots(){
+  document.querySelectorAll('.dots').forEach(function(d){
+    d.innerHTML='';
+    for(var i=1;i<=7;i++){ var s=document.createElement('span'); s.className='dot'+(i<=S.step?' on':''); d.appendChild(s); }
+  });
+}
+function chipGroup(elId, cb){
+  var el = document.getElementById(elId);
+  el.addEventListener('click', function(ev){
+    var b = ev.target.closest('.chip'); if(!b) return;
+    el.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+    b.setAttribute('aria-pressed','true');
+    cb(b.dataset.v, b);
+  });
+}
+function stepRunway(d){ S.runway = Math.max(0, Math.min(60, S.runway + d)); document.getElementById('runway-val').textContent = S.runway; }
+function setHH(v){
+  S.household = v;
+  document.getElementById('hh-on').setAttribute('aria-pressed', v);
+  document.getElementById('hh-off').setAttribute('aria-pressed', !v);
+}
+function setPassionOnly(v){
+  S.passionOnly = v;
+  document.getElementById('po-on').setAttribute('aria-pressed', v);
+  document.getElementById('po-off').setAttribute('aria-pressed', !v);
+}
+
+/* ---- s-q1: current domain + role ---- */
+function buildCurDom(){
+  var el = document.getElementById('curdom-chips');
+  el.innerHTML = '';
+  DOMAINS.forEach(function(d){
+    var b = document.createElement('button');
+    b.className='chip'; b.dataset.v=d; b.setAttribute('aria-pressed','false');
+    b.textContent = V2.domainLabel(d);
+    el.appendChild(b);
+  });
+  var se = document.createElement('button');
+  se.className='chip'; se.dataset.v=''; se.setAttribute('aria-pressed','false');
+  se.innerHTML = 'Something else<small>no domain match</small>';
+  el.appendChild(se);
+  el.addEventListener('click', function(ev){
+    var b = ev.target.closest('.chip'); if(!b) return;
+    el.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+    b.setAttribute('aria-pressed','true');
+    S.currentDomain = b.dataset.v || null;
+    buildCurRole();
+    document.getElementById('q1next').disabled = false;
+  });
+}
+function buildCurRole(){
+  var wrap = document.getElementById('currole-wrap');
+  var el = document.getElementById('currole-chips');
+  el.innerHTML = '';
+  S.currentRoleId = null;
+  if(!S.currentDomain){ wrap.style.display='none'; return; }
+  wrap.style.display='block';
+  var roles = ROLES.filter(function(r){ return r.domain_primary===S.currentDomain; });
+  roles.forEach(function(r){
+    var b = document.createElement('button');
+    b.className='chip'; b.dataset.v=r.id; b.setAttribute('aria-pressed','false');
+    b.textContent = r.title;
+    el.appendChild(b);
+  });
+  var none = document.createElement('button');
+  none.className='chip'; none.dataset.v=''; none.setAttribute('aria-pressed','true');
+  none.textContent = 'None of these';
+  el.appendChild(none);
+  el.addEventListener('click', function(ev){
+    var b = ev.target.closest('.chip'); if(!b) return;
+    el.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+    b.setAttribute('aria-pressed','true');
+    S.currentRoleId = b.dataset.v || null;
+  });
+}
+function q1next(){
+  var v = parseFloat(document.getElementById('in-current').value);
+  if(!(v>0)){ alert('Enter your monthly take-home pay.'); return; }
+  if(!S.currentDomain && document.querySelector('#curdom-chips .chip[aria-pressed=true]')===null){
+    alert('Pick the domain closest to your current role, or Something else.');
+    return;
+  }
+  // domain chip required; "Something else" sets currentDomain=null
+  var picked = document.querySelector('#curdom-chips .chip[aria-pressed=true]');
+  if(!picked){ alert('Pick the domain closest to your current role, or Something else.'); return; }
+  S.current_pay = v;
+  go('s-q2');
+}
+function q2next(){
+  var v = parseFloat(document.getElementById('in-floor').value);
+  if(!(v>0)){ alert('Enter your minimum viable monthly pay.'); return; }
+  S.min_viable = v;
+  go('s-q3');
+}
+function q3next(){
+  if(!(S.primary && S.secondary)) return;
+  document.getElementById('q4-text').textContent = 'Does your current role already serve your ' + dimLabel(S.primary) + ' objective?';
+  go('s-q4');
+}
+function q4next(){ if(S.alignment) go('s-q5'); }
+function q5next(){ if(S.timeline) go('s-q6'); }
+function q6next(){ if(S.ageBand && S.residency && S.education) go('s-q7'); }
+
+/* ---- s-q4: ranked target domains, cap 3, 4th tap replaces #3 ---- */
+function buildTargets(){
+  var el = document.getElementById('target-chips');
+  el.innerHTML = '';
+  DOMAINS.forEach(function(d){
+    var b = document.createElement('button');
+    b.className='chip'; b.dataset.v=d; b.setAttribute('aria-pressed','false');
+    b.innerHTML = V2.domainLabel(d) + '<span class="rank" style="display:none;"></span>';
+    el.appendChild(b);
+  });
+  el.addEventListener('click', function(ev){
+    var b = ev.target.closest('.chip'); if(!b) return;
+    var v = b.dataset.v;
+    var i = S.targets.indexOf(v);
+    if(i >= 0){ S.targets.splice(i,1); }            // deselect; others promote
+    else {
+      if(S.targets.length >= 3) S.targets[2] = v;   // 4th tap replaces #3
+      else S.targets.push(v);
+    }
+    paintTargets();
+    document.getElementById('q4next').disabled = !S.alignment;
+  });
+}
+function paintTargets(){
+  document.querySelectorAll('#target-chips .chip').forEach(function(c){
+    var i = S.targets.indexOf(c.dataset.v);
+    c.setAttribute('aria-pressed', i>=0 ? 'true' : 'false');
+    var r = c.querySelector('.rank');
+    if(i>=0){ r.style.display='flex'; r.textContent = (i+1); }
+    else r.style.display='none';
+  });
+}
+
+function reset(){
+  var hh = S.household, po = S.passionOnly;
+  S = freshState();
+  document.getElementById('runway-val').textContent = '6';
+  ['in-current','in-floor'].forEach(function(id){ document.getElementById(id).value=''; });
+  document.querySelectorAll('.chip[aria-pressed=true]').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+  document.querySelector('#qual-fallback') && null;
+  setHH(false); setPassionOnly(false);
+  S.currentDomain = null;
+  document.getElementById('currole-wrap').style.display='none';
+  ['q1next','q3next','q4next','q5next','q6next','q7next'].forEach(function(id){ document.getElementById(id).disabled = true; });
+  paintTargets();
+}
+
+function buildStatic(){
+  var pc = document.getElementById('prim-chips'), sc = document.getElementById('sec-chips');
+  DIMS.forEach(function(d){
+    var b=document.createElement('button'); b.className='chip'; b.dataset.v=d[0]; b.setAttribute('aria-pressed','false'); b.textContent=d[1]; pc.appendChild(b);
+    var b2=document.createElement('button'); b2.className='chip'; b2.dataset.v=d[0]; b2.setAttribute('aria-pressed','false'); b2.textContent=d[1]; sc.appendChild(b2);
+  });
+  chipGroup('prim-chips', function(v){ S.primary=v; refreshSec(); document.getElementById('q3next').disabled = !(S.primary&&S.secondary); });
+  chipGroup('sec-chips', function(v){ S.secondary=v; document.getElementById('q3next').disabled = !(S.primary&&S.secondary); });
+  chipGroup('align-chips', function(v){ S.alignment=v; document.getElementById('q4next').disabled=false; });
+  chipGroup('time-chips', function(v){ S.timeline=v; document.getElementById('q5next').disabled=false; });
+  chipGroup('age-chips', function(v){ S.ageBand=v; document.getElementById('q6next').disabled = !(S.ageBand&&S.residency&&S.education); });
+  chipGroup('res-chips', function(v){ S.residency=v; document.getElementById('q6next').disabled = !(S.ageBand&&S.residency&&S.education); });
+  chipGroup('edu-chips', function(v){ S.education=v; document.getElementById('q6next').disabled = !(S.ageBand&&S.residency&&S.education); });
+  chipGroup('loan-chips', function(v){ S.housingLoan=(v==='yes'); document.getElementById('q7next').disabled=false; });
+  buildCurDom();
+  buildTargets();
+}
+function refreshSec(){
+  document.querySelectorAll('#sec-chips .chip').forEach(function(c){
+    var dis = c.dataset.v===S.primary;
+    c.style.opacity = dis? .35 : 1; c.style.pointerEvents = dis? 'none':'auto';
+    if(dis && c.getAttribute('aria-pressed')==='true'){ c.setAttribute('aria-pressed','false'); S.secondary=null; }
+  });
+  document.getElementById('q3next').disabled = !(S.primary&&S.secondary);
+}
+
+function userObj(){
+  return { current_pay:S.current_pay, min_viable:S.min_viable, runway:S.runway,
+    floorQualifier: S.household?'household':'personal',
+    primary:S.primary, secondary:S.secondary, alignment:S.alignment,
+    timeline:S.timeline, ageBand:S.ageBand, residency:S.residency, education:S.education,
+    housingLoan:S.housingLoan, sortMode:'survival',
+    currentRoleId:S.currentRoleId, currentDomain:S.currentDomain,
+    targetDomains:S.targets.slice(), passionOnly:S.passionOnly };
+}
+
+/* ================= RESULTS ================= */
+function leverLine(lever){
+  if(!lever) return '';
+  var t = lever.kind==='timeline'
+    ? 'A switch wins if you can give it ' + lever.label + '.'
+    : 'A switch wins if your floor drops to ' + money(lever.value) + '.';
+  return '<p style="margin:10px 0 0; font-weight:700;">' + t + '</p>';
+}
+
+function verdictCard(u, res){
+  var v = res.verdict, html='';
+  if(v.key==='guard'){
+    html = '<div class="card hero"><div class="kicker">The verdict</div>' +
+      '<p style="font-size:20px; font-weight:700; margin:0 0 8px;">' + V2.GUARD_COPY + '</p>' +
+      leverLine(v.lever) + '</div>';
+  } else if(v.key==='stay-money'){
+    html = '<div class="card hero"><div class="kicker">The verdict</div><div class="big">Stay.</div>' +
+      '<p>Your current path beats every switch on money by ' + money(v.gap) + ' over 36 months.</p>' +
+      leverLine(v.lever) + '</div>';
+  } else if(v.key==='stay-money-disclaimed'){
+    html = '<div class="card warn"><div class="kicker">The verdict</div>' +
+      '<p style="font-size:18px; font-weight:700; margin:0 0 8px;">On money, your current path wins by ' + money(v.gap) + '. This tool can\'t price ' + dimLabel(u.primary) + '.</p>' +
+      leverLine(v.lever) + '</div>';
+  } else if(v.key==='unpriced'){
+    var vv = v.v1verdict;
+    html = v1verdictCard(u, vv) +
+      '<p class="fine" style="font-weight:700; color:var(--ink);">' + v.caption + '</p>';
+  } else if(v.key==='empty'){
+    html = '';
+  } else {
+    html = v1verdictCard(u, E.alignmentVerdict(u, res.survivors));
+  }
+  return html;
+}
+
+function v1verdictCard(u, vv){
+  if(vv.key==='stay'){
+    return '<div class="card hero"><div class="kicker">The verdict</div><div class="big">Stay.</div>' +
+      '<p>On your inputs, no switch beats staying on 36-month cash.</p></div>';
+  } else if(vv.key==='serves-but-money'){
+    return '<div class="card warn"><div class="kicker">The verdict</div>' +
+      '<p style="font-size:18px; font-weight:700; margin:0 0 8px;">Your role serves your objective, but the money says otherwise.</p>' +
+      '<p>Which do you trust?</p></div>';
+  } else if(vv.key==='serves'){
+    return '<div class="card hero"><div class="kicker">The verdict</div><div class="big">It serves you.</div>' +
+      '<p>You said your current role serves your ' + dimLabel(u.primary) + ' objective. A switch below is only worth it if the path itself calls to you.</p></div>';
+  }
+  var ans = u.alignment==='partly' ? 'partly serves' : 'does not serve';
+  return '<div class="card warn"><div class="kicker">The verdict</div>' +
+    '<p style="font-size:18px; font-weight:700; margin:0 0 8px;">Your current role ' + ans + ' your ' + dimLabel(u.primary) + ' objective.</p>' +
+    '<p>That\'s your word, not ours. The paths below are conditional on it.</p></div>';
+}
+
+function emptyCard(res){
+  var k = res.killed;
+  var html = '<div class="card"><div class="kicker">Empty state</div>' +
+    '<p style="font-size:20px; font-weight:700; margin:0 0 8px;">No switch survives your constraints.</p>' +
+    '<p>That is not proof your current job is best. It is proof the filters are tight. What killed the rest, in order:</p>' +
+    '<p>Licence / pass gates: <span class="fig">' + k.F3 + '</span> · ' +
+    'floor: <span class="fig">' + k.F1 + '</span> · ' +
+    'timeline: <span class="fig">' + k.F2 + '</span>.</p>';
+  var unlock = [
+    { n: k.F1, copy: 'lowering your floor' },
+    { n: k.F2, copy: 'stretching your timeline' }
+  ].filter(function(x){ return x.n>0; }).sort(function(a,b){ return b.n-a.n; });
+  if(unlock.length){
+    html += '<p>Biggest unlock: ' + unlock[0].copy + ' brings back up to ' + unlock[0].n + ' role' + (unlock[0].n===1?'':'s') + '.</p>';
+  } else if(k.F3>0){
+    html += '<p>' + k.F3 + ' role' + (k.F3===1?' is':'s are') + ' licence-gated on your timeline; only "just exploring" changes that.</p>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function roleCard(u, item, res){
+  var r = item.role, a = item.analysis;
+  var d36 = a.delta36, d36cls = d36>0?'pos':(d36<0?'neg':'');
+  var mb = a.monthsBelow;
+  var targets = u.targetDomains;
+  var inPassion = targets.indexOf(r.domain_primary)>=0 || r.domain_adjacent.some(function(x){ return targets.indexOf(x)>=0; });
+  var prov = V2.provenance(r, targets);
+  var html = '<div class="card">';
+  html += '<p style="font-size:21px; font-weight:700; margin:0 0 4px;">' + r.title +
+    (inPassion ? ' <span class="tag pass">Passion pick</span>' : '') + '</p>';
+  if(prov) html += '<p class="prov">' + prov + '</p>';
+  html += '<p style="margin:10px 0 6px;">The dip: <span class="fig ' + (a.dip<0?'neg':'pos') + '">' + money(a.dip) + '/mo (' + pct(a.dipPct) + ')</span> at entry ' + money(r.entry_pay) + '.</p>';
+  html += '<p style="margin:6px 0;">The landing: <span class="fig">' + money(r.settled_pay) + '</span> settled vs ' + money(u.current_pay) + ' today (' + pct(a.landingPct) + ').</p>';
+  if(mb.count>0) html += '<p style="margin:6px 0;"><span class="tag q">' + mb.count + ' months below your floor</span> ' + mb.unpaid + ' unpaid + ' + mb.employed + ' employed.</p>';
+  html += '<p style="margin:6px 0;">36 months vs staying: <span class="fig ' + d36cls + '">' + money(d36) + '</span></p>';
+  if(a.delta120!=null){
+    html += '<p class="fine">120-month view: <span class="fig">' + money(a.delta120) + '</span>. Over ten years this assumes your pay never moves. Read it as scale, not a forecast.</p>';
+  }
+  var p7 = res.p7(r);
+  if(p7) html += '<p class="fine" style="color:var(--ink); font-weight:500;">' + p7 + '</p>';
+  if(item.reason==='F4'){
+    html += '<p class="fine" style="color:var(--ink); font-weight:500;">Quarantined: housing loan + variable pay. Banks assess at 55% of gross stress-tested at 4%, with a ≥30% haircut on variable income.</p>';
+  }
+  html += '<p class="fine">Pay confidence: ' + (r.pay_confidence || 'unrated') + '. Base-like pay; bonus extra. Occupation settled pay is not a promise the switcher lands inside it.</p>';
+  html += '</div>';
+  return html;
+}
+
+function gatedCard(g){
+  var r = g.role, chip = V2.CHIPS[g.chipId];
+  var html = '<div class="card gated"><div class="kicker">Gated path</div>';
+  html += '<p style="font-size:19px; font-weight:700; margin:0 0 6px;">' + r.title + '</p>';
+  if(g.kind==='f0a'){
+    html += '<p style="margin:6px 0;">The accounting degree route is about four years part-time — longer than any timeline this tool prices.</p>';
+    html += '<p class="fine" style="color:var(--ink);">In v1, "just exploring" users could see Accountant ranked. v2.0 routes below-degree holders here with the degree priced.</p>';
+  } else {
+    html += '<p style="margin:6px 0;">Gate: ' + chip.gateCopy + ' — about ' + r.v2.gateMonths + ' months, past your timeline.</p>';
+    if(chip.question){
+      var ans = S.chips[g.chipId];
+      html += '<p style="font-weight:700; margin:12px 0 8px;">' + chip.question + '</p>';
+      html += '<div class="chips">' +
+        '<button class="chip" aria-pressed="' + (ans==='yes') + '" onclick="answerChip(\'' + g.chipId + '\',\'yes\')">Yes</button>' +
+        '<button class="chip" aria-pressed="' + (ans==='no') + '" onclick="answerChip(\'' + g.chipId + '\',\'no\')">No</button></div>';
+      html += '<p class="fine">' + chip.accaNote + '</p>';
+    } else {
+      html += '<p class="fine">' + chip.accaNote + '</p>';
+    }
+  }
+  html += '</div>';
+  return html;
+}
+
+function answerChip(chipId, ans){
+  S.chips[chipId] = (S.chips[chipId]===ans) ? null : ans; // tap again to clear
+  showResults(true);
+}
+
+function showResults(changed){
+  var u = userObj();
+  var res = V2.analyze(u, ROLES, S.chips);
+  renderResults(u, res, !!changed);
+  if(!changed) go('s-results'); else { window.scrollTo(0,0); }
+}
+
+function renderResults(u, res){
+  var el = document.getElementById('results');
+  var html = '';
+  if(res.changed) html += '<div class="banner">Your answer changed the result.</div>';
+
+  // 1. benchmark row — always rendered, never a switch card
+  var b = res.benchmark;
+  html += '<div class="card bench"><div class="kicker">Your benchmark — not a switch card</div>' +
+    '<p style="font-size:21px; font-weight:700; margin:0 0 4px;">' + b.label + '</p>' +
+    '<p style="margin:6px 0;"><span class="fig" style="font-size:24px;">' + money(u.current_pay) + '</span>/mo flat</p>' +
+    '<p style="margin:6px 0;" class="fine">36 months: <span class="fig">' + money(b.m36) + '</span> · ' +
+    '120 months: <span class="fig">' + money(b.m120) + '</span></p>' +
+    b.lines.map(function(l){ return '<p class="fine" style="margin:4px 0;">' + l + '</p>'; }).join('') +
+    '<p class="fine" style="margin:4px 0;">' + b.caveat120 + '</p></div>';
+
+  // EP honesty: only subsidy-netted reskill costs are verified; EP holders
+  // get no subsidy, so their true reskill cost is higher than shown (S$0).
+  if (u.residency === 'ep') {
+    html += '<div class="card warn"><div class="kicker">EP holder note</div>' +
+      '<p style="margin:0; font-weight:700;">Reskill costs below are shown as S$0 for you, and that understates them.</p>' +
+      '<p class="fine" style="color:var(--ink);">This tool only carries SkillsFuture-netted reskill costs, which don\'t apply to EP holders. Your real reskill cost is the full course fee. Treat every 36-month figure as optimistic on cost.</p></div>';
+  }
+
+  // 2. pushbacks (P2 fires against the benchmark row)
+  if(res.pushbacks.length){
+    html += res.pushbacks.map(function(p){
+      return '<div class="card"><div class="kicker">Pushback · ' + p.id + '</div><p style="margin:0;">' + p.copy + '</p></div>';
+    }).join('');
+  }
+
+  // 3. verdict
+  html += verdictCard(u, res);
+
+  var n = res.survivors.length;
+  if(n===0){
+    html += emptyCard(res);
+  } else {
+    if(res.lowSurvivor){
+      html += '<div class="card warn"><div class="kicker">Thin field</div>' +
+        '<p style="margin:0; font-weight:700;">Only ' + n + ' switch' + (n===1?'':'es') + ' survive your constraints. Here\'s what made it, and what killed the rest.</p>' +
+        '<p class="fine">Killed — licence/pass gates ' + res.killed.F3 + ' · floor ' + res.killed.F1 + ' · timeline ' + res.killed.F2 + '.</p></div>';
+    }
+    // Tier 1 grouped by passion rank
+    var groups = res.orderedTier1;
+    groups.forEach(function(g){
+      if(g.rank >= 0 && groups.length > 1){
+        html += '<h3 class="rank-h">Your #' + (g.rank+1) + ': ' + V2.domainLabel(u.targetDomains[g.rank]) + '</h3>';
+      }
+      html += g.items.map(function(it){ return roleCard(u, it, res); }).join('');
+    });
+    // Tier 2 collapsed
+    if(res.tier2.length){
+      var head = res.tier2trigger==='a'
+        ? 'None of your picks survived your constraints. Closest outside them.'
+        : 'Not one of your picks, but the money says look.';
+      html += '<details class="t2"><summary>Outside your picks (' + res.tier2.length + ')</summary>' +
+        '<p class="prov">' + head + '</p>' +
+        res.tier2.map(function(it){
+          var best = it.analysis.delta36;
+          var tag = '<p class="prov">Not one of your picks, but it pays ' + money(best) + ' more over 36 months.</p>';
+          return roleCard(u, it, res).replace('</p>', '</p>').replace('<div class="card">', '<div class="card">' + tag);
+        }).join('') + '</details>';
+    }
+  }
+
+  // quarantined (L6: excluded from survivor count, own section)
+  if(res.quarantined.length){
+    html += '<h2 class="sec">' + res.quarantined.length + ' quarantined</h2>' +
+      '<p class="fine" style="margin-top:-6px;">Not beaten — parked. Raise your runway or extend your timeline to bring paths back.</p>';
+    html += res.quarantined.map(function(it){
+      var why = it.reason==='F1b'
+        ? 'Quarantined: ' + it.analysis.monthsBelow.count + ' months below your floor beats your ' + u.runway + '-month runway.'
+        : 'Quarantined: housing loan plus variable pay.';
+      var inner = roleCard(u, it, res).replace('<div class="card">','').replace(/<\/div>\s*$/, '');
+      return '<div class="card" style="opacity:.94;"><div class="kicker">Quarantined</div>' + inner +
+        '<p class="fine" style="color:var(--ink); font-weight:500;">' + why + '</p></div>';
+    }).join('');
+  }
+
+  // gated paths
+  if(res.gated.length){
+    var ordered = res.gated.slice().sort(function(a,bb){
+      function rk(x){ var i = u.targetDomains.indexOf(x.role.domain_primary); return i<0?99:i; }
+      return rk(a)-rk(bb);
+    });
+    html += '<h2 class="sec">Gated paths (' + ordered.length + ')</h2>' +
+      '<p class="fine" style="margin-top:-6px;">Killed by a licence or credential gate, not by the money. Answer the question and the math re-runs.</p>';
+    html += ordered.map(gatedCard).join('');
+  }
+
+  el.innerHTML = html;
+  document.getElementById('results-foot').innerHTML =
+    'These are the domains this calculator can price.<br>' +
+    ROLES.length + ' roles is not the Singapore labour market.<br><br>' +
+    'Estimates for planning only. Not financial advice. Role pay is occupation-level data, base-like; bonus extra. ' +
+    'Occupation settled pay is not a promise the switcher lands inside it. A same-employer move is outside this calculator. © 2026';
+
+  V2.Instrument.emit('quiz_complete', {
+    survivors: n, zeroSurvivor: n===0,
+    reframe: res.verdict.key, tautology: res.tautology,
+    tier2shown: res.tier2.length>0,
+    f0cYes: Object.keys(S.chips).filter(function(k){ return S.chips[k]==='yes'; }).length
+  });
+}
+
+buildStatic();
+paintDots();
+document.querySelectorAll('input[type=number]').forEach(function(i){
+  i.addEventListener('focus', function(){ i.select(); });
+});
+</script>
+<footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a> · Estimates for planning only. Not financial advice. © 2026</footer>
+</body>
+</html>
