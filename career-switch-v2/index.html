@@ -485,7 +485,7 @@ function verdictCard(u, res){
       '<p>Your current path beats every switch on money by ' + money(v.gap) + ' over 36 months.</p>' +
       leverLine(v.lever) + '</div>';
   } else if(v.key==='stay-money-disclaimed'){
-    html = '<div class="card warn"><div class="kicker">The verdict</div>' +
+    html = '<div class="card hero"><div class="kicker">The verdict</div>' +
       '<p style="font-size:18px; font-weight:700; margin:0 0 8px;">On money, your current path wins by ' + money(v.gap) + '. This tool can\'t price ' + dimLabel(u.primary) + '.</p>' +
       leverLine(v.lever) + '</div>';
   } else if(v.key==='unpriced'){
@@ -505,7 +505,7 @@ function v1verdictCard(u, vv){
     return '<div class="card hero"><div class="kicker">The verdict</div><div class="big">Stay.</div>' +
       '<p>On your inputs, no switch beats staying on 36-month cash.</p></div>';
   } else if(vv.key==='serves-but-money'){
-    return '<div class="card warn"><div class="kicker">The verdict</div>' +
+    return '<div class="card hero"><div class="kicker">The verdict</div>' +
       '<p style="font-size:18px; font-weight:700; margin:0 0 8px;">Your role serves your objective, but the money says otherwise.</p>' +
       '<p>Which do you trust?</p></div>';
   } else if(vv.key==='serves'){
@@ -513,7 +513,7 @@ function v1verdictCard(u, vv){
       '<p>You said your current role serves your ' + dimLabel(u.primary) + ' objective. A switch below is only worth it if the path itself calls to you.</p></div>';
   }
   var ans = u.alignment==='partly' ? 'partly serves' : 'does not serve';
-  return '<div class="card warn"><div class="kicker">The verdict</div>' +
+  return '<div class="card hero"><div class="kicker">The verdict</div>' +
     '<p style="font-size:18px; font-weight:700; margin:0 0 8px;">Your current role ' + ans + ' your ' + dimLabel(u.primary) + ' objective.</p>' +
     '<p>That\'s your word, not ours. The paths below are conditional on it.</p></div>';
 }
@@ -603,10 +603,22 @@ function showResults(changed){
   if(!changed) go('s-results'); else { window.scrollTo(0,0); }
 }
 
+function introCard(u, res){
+  var n = res.survivors.length, pool = ROLES.length;
+  var picks = (u.targetDomains || []).map(function(d){ return V2.domainLabel(d); }).join(', ');
+  var html = '<div class="card"><div class="kicker">How to read this</div>' +
+    '<p style="margin:0 0 6px;">Your benchmark is staying at <span class="fig">' + money(u.current_pay) + '/mo</span>.</p>' +
+    '<p style="margin:0 0 6px;">We ran all <span class="fig">' + pool + '</span> priced roles through your gates, floor and timeline. <span class="fig">' + n + '</span> survived.</p>' +
+    (picks ? '<p style="margin:0 0 6px;">Your picks lead: ' + picks + '.</p>' : '') +
+    '<p class="fine" style="margin:8px 0 0;">Every switch is modeled from entry-level pay for that role, gliding to settled pay over about 5 years. Your own seniority is not modeled: with years behind you, your real starting pay may land above entry.</p></div>';
+  return html;
+}
+
 function renderResults(u, res){
   var el = document.getElementById('results');
   var html = '';
   if(res.changed) html += '<div class="banner">Your answer changed the result.</div>';
+  html += introCard(u, res);
 
   // 1. benchmark row — always rendered, never a switch card
   var b = res.benchmark;
