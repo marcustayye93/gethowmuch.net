@@ -66,6 +66,19 @@ input:focus{outline:3px solid var(--yellow); outline-offset:2px;}
 .card.warn{border:2px solid var(--yellow); background:#fffdf2;}
 .card.bench{border:2px solid var(--ink);}
 .card.gated{border-style:dashed;}
+.card.push{border:2px solid var(--yellow); background:#fffdf2;}
+.card.featured{border:2px solid var(--ink);}
+.bench-strip{background:#fff; border:1px solid var(--line); border-radius:16px;
+  padding:12px 16px; margin:16px 0; font-size:14px;}
+.bench-strip .kicker{margin-bottom:4px;}
+details.how{border:1px solid var(--line); border-radius:22px; padding:6px 20px; margin:16px 0; background:#fff;}
+details.how summary{cursor:pointer; font-weight:700; font-size:17px; padding:14px 0; list-style:none;}
+details.how summary::-webkit-details-marker{display:none;}
+details.how summary:before{content:"+ "; font-family:'Space Mono',monospace;}
+details.how[open] summary:before{content:"− ";}
+.mini{margin:8px 0 12px; padding:0; list-style:none; font-size:14px;}
+.mini li{padding:8px 0; border-top:1px solid var(--line);}
+.mini li:first-child{border-top:none;}
 .kicker{font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px;}
 .card.hero .kicker{color:#ffd84c;}
 .fig{font-family:'Space Mono',monospace; font-weight:700;}
@@ -489,18 +502,26 @@ function verdictCard(u, res){
       '<p style="font-size:18px; font-weight:700; margin:0 0 8px;">On money, your current path wins by ' + money(v.gap) + '. This tool can\'t price ' + dimLabel(u.primary) + '.</p>' +
       leverLine(v.lever) + '</div>';
   } else if(v.key==='unpriced'){
-    var vv = v.v1verdict;
-    html = v1verdictCard(u, vv) +
-      '<p class="fine" style="font-weight:700; color:var(--ink);">' + v.caption + '</p>';
+    html = v1verdictCard(u, v.v1verdict, v.caption);
   } else if(v.key==='empty'){
-    html = '';
+    html = '<div class="card hero"><div class="kicker">The verdict</div><div class="big">No switch survives.</div>' +
+      '<p>Not proof your current job is best. Proof the filters are tight. What killed the rest is in "How we got here" below.</p></div>';
   } else {
     html = v1verdictCard(u, E.alignmentVerdict(u, res.survivors));
   }
   return html;
 }
 
-function v1verdictCard(u, vv){
+function v1verdictCard(u, vv, caption){
+  var h = v1verdictInner(u, vv);
+  if(caption){
+    h = h.replace(/<\/div>$/,
+      '<p style="margin:12px 0 0; font-weight:700;">' + caption + '</p></div>');
+  }
+  return h;
+}
+
+function v1verdictInner(u, vv){
   if(vv.key==='stay'){
     return '<div class="card hero"><div class="kicker">The verdict</div><div class="big">Stay.</div>' +
       '<p>On your inputs, no switch beats staying on 36-month cash.</p></div>';
@@ -518,51 +539,30 @@ function v1verdictCard(u, vv){
     '<p>That\'s your word, not ours. The paths below are conditional on it.</p></div>';
 }
 
-function emptyCard(res){
-  var k = res.killed;
-  var html = '<div class="card"><div class="kicker">Empty state</div>' +
-    '<p style="font-size:20px; font-weight:700; margin:0 0 8px;">No switch survives your constraints.</p>' +
-    '<p>That is not proof your current job is best. It is proof the filters are tight. What killed the rest, in order:</p>' +
-    '<p>Licence / pass gates: <span class="fig">' + k.F3 + '</span> · ' +
-    'floor: <span class="fig">' + k.F1 + '</span> · ' +
-    'timeline: <span class="fig">' + k.F2 + '</span>.</p>';
-  var unlock = [
-    { n: k.F1, copy: 'lowering your floor' },
-    { n: k.F2, copy: 'stretching your timeline' }
-  ].filter(function(x){ return x.n>0; }).sort(function(a,b){ return b.n-a.n; });
-  if(unlock.length){
-    html += '<p>Biggest unlock: ' + unlock[0].copy + ' brings back up to ' + unlock[0].n + ' role' + (unlock[0].n===1?'':'s') + '.</p>';
-  } else if(k.F3>0){
-    html += '<p>' + k.F3 + ' role' + (k.F3===1?' is':'s are') + ' licence-gated on your timeline; only "just exploring" changes that.</p>';
-  }
-  html += '</div>';
-  return html;
-}
-
-function roleCard(u, item, res){
+function roleCard(u, item, res, featured){
   var r = item.role, a = item.analysis;
   var d36 = a.delta36, d36cls = d36>0?'pos':(d36<0?'neg':'');
   var mb = a.monthsBelow;
   var targets = u.targetDomains;
-  var inPassion = targets.indexOf(r.domain_primary)>=0 || r.domain_adjacent.some(function(x){ return targets.indexOf(x)>=0; });
+  var primaryPick = targets.indexOf(r.domain_primary) >= 0;
   var prov = V2.provenance(r, targets);
-  var html = '<div class="card">';
+  var html = '<div class="card' + (featured ? ' featured' : '') + '">';
+  if(featured) html += '<div class="kicker">Best match</div>';
   html += '<p style="font-size:21px; font-weight:700; margin:0 0 4px;">' + r.title +
-    (inPassion ? ' <span class="tag pass">Passion pick</span>' : '') + '</p>';
+    (primaryPick ? ' <span class="tag pass">Passion pick</span>' : '') + '</p>';
   if(prov) html += '<p class="prov">' + prov + '</p>';
+  html += '<p style="margin:10px 0 6px; font-size:19px;">36 months vs staying: <span class="fig ' + d36cls + '">' + money(d36) + '</span></p>';
   html += '<p style="margin:10px 0 6px;">The dip: <span class="fig ' + (a.dip<0?'neg':'pos') + '">' + money(a.dip) + '/mo (' + pct(a.dipPct) + ')</span> at entry ' + money(r.entry_pay) + '.</p>';
   html += '<p style="margin:6px 0;">The landing: <span class="fig">' + money(r.settled_pay) + '</span> settled vs ' + money(u.current_pay) + ' today (' + pct(a.landingPct) + ').</p>';
   if(mb.count>0) html += '<p style="margin:6px 0;"><span class="tag q">' + mb.count + ' months below your floor</span> ' + mb.unpaid + ' unpaid + ' + mb.employed + ' employed.</p>';
-  html += '<p style="margin:6px 0;">36 months vs staying: <span class="fig ' + d36cls + '">' + money(d36) + '</span></p>';
-  if(a.delta120!=null){
-    html += '<p class="fine">120-month view: <span class="fig">' + money(a.delta120) + '</span>. Over ten years this assumes your pay never moves. Read it as scale, not a forecast.</p>';
-  }
   var p7 = res.p7(r);
   if(p7) html += '<p class="fine" style="color:var(--ink); font-weight:500;">' + p7 + '</p>';
   if(item.reason==='F4'){
-    html += '<p class="fine" style="color:var(--ink); font-weight:500;">Quarantined: housing loan + variable pay. Banks assess at 55% of gross stress-tested at 4%, with a ≥30% haircut on variable income.</p>';
+    html += '<p class="fine" style="color:var(--ink); font-weight:500;">Quarantined: housing loan + variable pay. Banks assess at 55% of gross stress-tested at 4%, with a 30% or more haircut on variable income.</p>';
   }
-  html += '<p class="fine">Pay confidence: ' + (r.pay_confidence || 'unrated') + '. Base-like pay; bonus extra. Occupation settled pay is not a promise the switcher lands inside it.</p>';
+  html += '<p class="fine">';
+  if(a.delta120!=null) html += '120-month view: <span class="fig">' + money(a.delta120) + '</span> (assumes your pay never moves; scale, not a forecast). ';
+  html += 'Pay confidence: ' + (r.pay_confidence || 'unrated') + '. Base-like pay; bonus extra. Occupation settled pay is not a promise the switcher lands inside it.</p>';
   html += '</div>';
   return html;
 }
@@ -572,7 +572,7 @@ function gatedCard(g){
   var html = '<div class="card gated"><div class="kicker">Gated path</div>';
   html += '<p style="font-size:19px; font-weight:700; margin:0 0 6px;">' + r.title + '</p>';
   if(g.kind==='f0a'){
-    html += '<p style="margin:6px 0;">The accounting degree route is about four years part-time — longer than any timeline this tool prices.</p>';
+    html += '<p style="margin:6px 0;">The accounting degree route is priced at about 36 months, longer than any timeline this tool prices.</p>';
     html += '<p class="fine" style="color:var(--ink);">In v1, "just exploring" users could see Accountant ranked. v2.0 routes below-degree holders here with the degree priced.</p>';
   } else {
     html += '<p style="margin:6px 0;">Gate: ' + chip.gateCopy + ' — about ' + r.v2.gateMonths + ' months, past your timeline.</p>';
@@ -603,32 +603,92 @@ function showResults(changed){
   if(!changed) go('s-results'); else { window.scrollTo(0,0); }
 }
 
-function introCard(u, res){
-  var n = res.survivors.length, pool = ROLES.length;
-  var picks = (u.targetDomains || []).map(function(d){ return V2.domainLabel(d); }).join(', ');
-  var html = '<div class="card"><div class="kicker">How to read this</div>' +
-    '<p style="margin:0 0 6px;">Your benchmark is staying at <span class="fig">' + money(u.current_pay) + '/mo</span>.</p>' +
-    '<p style="margin:0 0 6px;">We ran all <span class="fig">' + pool + '</span> priced roles through your gates, floor and timeline. <span class="fig">' + n + '</span> survived.</p>' +
-    (picks ? '<p style="margin:0 0 6px;">Your picks lead: ' + picks + '.</p>' : '') +
-    '<p class="fine" style="margin:8px 0 0;">Every switch is modeled from entry-level pay for that role, gliding to settled pay over about 5 years. Your own seniority is not modeled: with years behind you, your real starting pay may land above entry.</p></div>';
+// Best surviving switch inside the user's picks, rendered in full. The rest
+// of Tier 1 collapses below it so the page reads verdict -> pick -> evidence.
+function featuredSwitch(u, res){
+  var groups = res.orderedTier1;
+  if(!groups.length || !groups[0].items.length) return '';
+  var first = groups[0].items[0];
+  var html = roleCard(u, first, res, true);
+  var rest = [];
+  groups.forEach(function(g, gi){
+    g.items.forEach(function(it, ii){
+      if(!(gi===0 && ii===0)) rest.push(it);
+    });
+  });
+  if(rest.length){
+    html += '<details class="t2"><summary>Other surviving switches (' + rest.length + ')</summary>' +
+      rest.map(function(it){ return roleCard(u, it, res); }).join('') + '</details>';
+  }
   return html;
+}
+
+// Collapsed audit trail: pool counts plus every considered role with its fate.
+// Replaces the old "How to read this" manual card; nothing here tells the
+// user how to read, it just shows the work.
+function howWeGotHere(u, res){
+  var pool = ROLES.length;
+  var k = res.killed;
+  var n = res.survivors.length;
+  var stageName = { F3: 'licence / residency gate', F1: 'settled pay below your floor', F2: 'reskill time past your timeline' };
+  var picks = (u.targetDomains || []).map(function(d){ return V2.domainLabel(d); }).join(', ');
+
+  var html = '<details class="how"><summary>How we got here (' + pool + ' roles considered)</summary>';
+  html += '<p style="margin:8px 0;">We ran <span class="fig">' + pool + '</span> priced roles through your gates, floor, and timeline.</p>';
+  html += '<p style="margin:6px 0;"><span class="fig">' + n + '</span> survive · ' +
+    '<span class="fig">' + res.quarantined.length + '</span> quarantined · ' +
+    '<span class="fig">' + res.gated.length + '</span> gated · ' +
+    '<span class="fig">' + (k.F3 + k.F1 + k.F2) + '</span> filtered out ' +
+    '(gates ' + k.F3 + ' · floor ' + k.F1 + ' · timeline ' + k.F2 + ').</p>';
+  if(picks) html += '<p style="margin:6px 0;">Your picks led: ' + picks + '.</p>';
+  var unlock = [
+    { n: k.F1, copy: 'lowering your floor' },
+    { n: k.F2, copy: 'stretching your timeline' }
+  ].filter(function(x){ return x.n>0; }).sort(function(a,b){ return b.n-a.n; });
+  if(n===0 && unlock.length){
+    html += '<p style="margin:6px 0;">Biggest unlock: ' + unlock[0].copy + ' brings back up to ' + unlock[0].n + ' role' + (unlock[0].n===1?'':'s') + '.</p>';
+  } else if(n===0 && k.F3>0){
+    html += '<p style="margin:6px 0;">' + k.F3 + ' role' + (k.F3===1?' is':'s are') + ' licence-gated on your timeline; only "just exploring" changes that.</p>';
+  }
+  html += '<p class="fine">Only priced roles enter the pool. Roles in the index without verified pay, reskill route, and gates are not shown here.</p>';
+  html += '<p class="fine">Every switch starts at entry-level pay for that role and glides toward settled pay over about five years. Your own years of experience are not modeled: with years behind you, your real starting pay may land above entry.</p>';
+  html += '<p class="fine">Staying assumes your pay never moves. Switch pay is the occupation median, not a promise you land inside it.</p>';
+  html += '<ul class="mini">' + ROLES.map(function(r){ return poolRow(u, res, r, stageName); }).join('') + '</ul></details>';
+  return html;
+}
+
+function poolRow(u, res, r, stageName){
+  var status, detail = '';
+  if(u.currentRoleId && r.id === u.currentRoleId){
+    status = 'Your current role'; detail = 'excluded as the benchmark, never a switch card';
+  } else if(res.killStages && res.killStages[r.id]){
+    status = 'Filtered out'; detail = stageName[res.killStages[r.id]];
+  } else {
+    var hit = null, kind = '';
+    res.survivors.forEach(function(it){ if(it.role.id===r.id){ hit = it; kind = 's'; } });
+    if(!hit) res.quarantined.forEach(function(it){ if(it.role.id===r.id){ hit = it; kind = 'q'; } });
+    if(!hit) res.gated.forEach(function(g){ if(g.role.id===r.id){ hit = g; kind = 'g'; } });
+    if(kind==='s'){ status = 'Survives'; detail = '36 months vs staying: ' + money(hit.analysis.delta36); }
+    else if(kind==='q'){ status = 'Quarantined'; detail = hit.reason==='F1b' ? 'months below floor beat your runway' : 'housing loan + variable pay'; }
+    else if(kind==='g'){ status = 'Gated'; detail = 'licence / credential gate'; }
+    else { status = 'Filtered out'; detail = 'see counts above'; }
+  }
+  return '<li><span class="fig">' + r.title + '</span> — ' + status + (detail ? ' · ' + detail : '') + '</li>';
 }
 
 function renderResults(u, res){
   var el = document.getElementById('results');
   var html = '';
   if(res.changed) html += '<div class="banner">Your answer changed the result.</div>';
-  html += introCard(u, res);
 
-  // 1. benchmark row — always rendered, never a switch card
+  // 1. verdict — always first, always the dark hero
+  html += verdictCard(u, res);
+
+  // 2. benchmark strip — context for the verdict, never a switch card
   var b = res.benchmark;
-  html += '<div class="card bench"><div class="kicker">Your benchmark — not a switch card</div>' +
-    '<p style="font-size:21px; font-weight:700; margin:0 0 4px;">' + b.label + '</p>' +
-    '<p style="margin:6px 0;"><span class="fig" style="font-size:24px;">' + money(u.current_pay) + '</span>/mo flat</p>' +
-    '<p style="margin:6px 0;" class="fine">36 months: <span class="fig">' + money(b.m36) + '</span> · ' +
-    '120 months: <span class="fig">' + money(b.m120) + '</span></p>' +
-    b.lines.map(function(l){ return '<p class="fine" style="margin:4px 0;">' + l + '</p>'; }).join('') +
-    '<p class="fine" style="margin:4px 0;">' + b.caveat120 + '</p></div>';
+  html += '<div class="bench-strip"><div class="kicker">Your benchmark — not a switch</div>' +
+    '<span class="fig" style="font-size:19px;">' + money(u.current_pay) + '/mo</span> flat · ' +
+    '36 months: <span class="fig">' + money(b.m36) + '</span></div>';
 
   // EP honesty: only subsidy-netted reskill costs are verified; EP holders
   // get no subsidy, so their true reskill cost is higher than shown (S$0).
@@ -638,46 +698,29 @@ function renderResults(u, res){
       '<p class="fine" style="color:var(--ink);">This tool only carries SkillsFuture-netted reskill costs, which don\'t apply to EP holders. Your real reskill cost is the full course fee. Treat every 36-month figure as optimistic on cost.</p></div>';
   }
 
-  // 2. verdict
-  html += verdictCard(u, res);
-
-  // 3. pushbacks, below the verdict
+  // 3. pushbacks, below the verdict, in their own yellow treatment
   if(res.pushbacks.length){
     html += res.pushbacks.map(function(p){
-      return '<div class="card"><div class="kicker">Pushback · ' + p.id + '</div><p style="margin:0;">' + p.copy + '</p></div>';
+      return '<div class="card push"><div class="kicker">Pushback · ' + p.id + '</div><p style="margin:0;">' + p.copy + '</p></div>';
     }).join('');
   }
 
+  // 4. best surviving switch inside the user's picks, then the rest collapsed
   var n = res.survivors.length;
-  if(n===0){
-    html += emptyCard(res);
-  } else {
+  if(n>0){
     if(res.lowSurvivor){
       html += '<div class="card warn"><div class="kicker">Thin field</div>' +
-        '<p style="margin:0; font-weight:700;">Only ' + n + ' switch' + (n===1?'':'es') + ' survive your constraints. Here\'s what made it, and what killed the rest.</p>' +
-        '<p class="fine">Killed — licence/pass gates ' + res.killed.F3 + ' · floor ' + res.killed.F1 + ' · timeline ' + res.killed.F2 + '.</p></div>';
+        '<p style="margin:0; font-weight:700;">Only ' + n + ' switch' + (n===1?'':'es') + ' survive your constraints.</p>' +
+        '<p class="fine">What killed the rest is in "How we got here" below.</p></div>';
     }
-    // Tier 1 grouped by passion rank
-    var groups = res.orderedTier1;
-    groups.forEach(function(g){
-      if(g.rank >= 0 && groups.length > 1){
-        html += '<h3 class="rank-h">Your #' + (g.rank+1) + ': ' + V2.domainLabel(u.targetDomains[g.rank]) + '</h3>';
-      }
-      html += g.items.map(function(it){ return roleCard(u, it, res); }).join('');
-    });
-    // Tier 2 collapsed
-    if(res.tier2.length){
-      var head = res.tier2trigger==='a'
-        ? 'None of your picks survived your constraints. Closest outside them.'
-        : 'Not one of your picks, but the money says look.';
-      html += '<details class="t2"><summary>Outside your picks (' + res.tier2.length + ')</summary>' +
-        '<p class="prov">' + head + '</p>' +
-        res.tier2.map(function(it){
-          var best = it.analysis.delta36;
-          var tag = '<p class="prov">Not one of your picks, but it pays ' + money(best) + ' more over 36 months.</p>';
-          return roleCard(u, it, res).replace('</p>', '</p>').replace('<div class="card">', '<div class="card">' + tag);
-        }).join('') + '</details>';
-    }
+    html += featuredSwitch(u, res);
+  }
+
+  // Tier 2 collapsed (the engine only shows it when no pick survived)
+  if(res.tier2.length){
+    html += '<details class="t2"><summary>Outside your picks (' + res.tier2.length + ')</summary>' +
+      '<p class="prov">None of your picks survived your constraints. Closest outside them.</p>' +
+      res.tier2.map(function(it){ return roleCard(u, it, res); }).join('') + '</details>';
   }
 
   // quarantined (L6: excluded from survivor count, own section)
@@ -704,6 +747,9 @@ function renderResults(u, res){
       '<p class="fine" style="margin-top:-6px;">Killed by a licence or credential gate, not by the money. Answer the question and the math re-runs.</p>';
     html += ordered.map(gatedCard).join('');
   }
+
+  // 5. the full considered pool, collapsed — the audit trail, not a manual
+  html += howWeGotHere(u, res);
 
   el.innerHTML = html;
   document.getElementById('results-foot').innerHTML =
