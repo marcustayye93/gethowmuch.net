@@ -626,15 +626,15 @@ function renderResults(u, res){
       '<p class="fine" style="color:var(--ink);">This tool only carries SkillsFuture-netted reskill costs, which don\'t apply to EP holders. Your real reskill cost is the full course fee. Treat every 36-month figure as optimistic on cost.</p></div>';
   }
 
-  // 2. pushbacks (P2 fires against the benchmark row)
+  // 2. verdict
+  html += verdictCard(u, res);
+
+  // 3. pushbacks, below the verdict
   if(res.pushbacks.length){
     html += res.pushbacks.map(function(p){
       return '<div class="card"><div class="kicker">Pushback · ' + p.id + '</div><p style="margin:0;">' + p.copy + '</p></div>';
     }).join('');
   }
-
-  // 3. verdict
-  html += verdictCard(u, res);
 
   var n = res.survivors.length;
   if(n===0){
