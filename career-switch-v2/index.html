@@ -701,7 +701,7 @@ function renderResults(u, res){
   // 3. pushbacks, below the verdict, in their own yellow treatment
   if(res.pushbacks.length){
     html += res.pushbacks.map(function(p){
-      return '<div class="card push"><div class="kicker">Pushback · ' + p.id + '</div><p style="margin:0;">' + p.copy + '</p></div>';
+      return '<div class="card push"><div class="kicker">Pushback</div><p style="margin:0;">' + p.copy + '</p></div>';
     }).join('');
   }
 
@@ -716,10 +716,11 @@ function renderResults(u, res){
     html += featuredSwitch(u, res);
   }
 
-  // Tier 2 collapsed (the engine only shows it when no pick survived)
+  // Tier 2 collapsed (the engine only shows money-winning outside picks, and
+  // only when no pick survived)
   if(res.tier2.length){
     html += '<details class="t2"><summary>Outside your picks (' + res.tier2.length + ')</summary>' +
-      '<p class="prov">None of your picks survived your constraints. Closest outside them.</p>' +
+      '<p class="prov">None of your picks beat staying. These outside your picks do, on 36-month cash.</p>' +
       res.tier2.map(function(it){ return roleCard(u, it, res); }).join('') + '</details>';
   }
 
