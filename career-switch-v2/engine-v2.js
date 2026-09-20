@@ -176,15 +176,11 @@
     var tier2 = restPool.slice().sort(function (a, b) {
       return b.analysis.delta36 - a.analysis.delta36;
     }).slice(0, TIER2_CAP);
+    // Tier 2 only when Tier 1 is empty. A role outside the user's ranked
+    // passions never outranks their picks on money alone.
     var trigger = null;
     if (tier2.length && config.tier2 && !(user.passionOnly)) {
       if (tier1.length === 0) trigger = 'a';
-      else {
-        var best1 = -Infinity, best2 = -Infinity;
-        tier1.forEach(function (it) { if (it.analysis.delta36 > best1) best1 = it.analysis.delta36; });
-        tier2.forEach(function (it) { if (it.analysis.delta36 > best2) best2 = it.analysis.delta36; });
-        if (best2 > best1) trigger = 'b';
-      }
     }
     if (!trigger) tier2 = [];
     return {
@@ -363,6 +359,19 @@
     // v1 pushbacks still apply (P2 fires against the benchmark row).
     var pb = E.pushbacks(user, pipe.survivors, pipe.quarantined, pipe.killed,
       pipe._roles.filter(function (r) { return !(user.currentRoleId && r.id === user.currentRoleId); }));
+    // v2 rewrites P6 in plain language (v1 engine.js copy untouched).
+    pb = pb.map(function (p) {
+      if (p.id !== 'P6') return p;
+      var pool = pipe.survivors.concat(pipe.quarantined).filter(function (r) { return r.analysis.monthsBelow.count > 0; });
+      if (!pool.length) return p;
+      var worst = pool.slice().sort(function (a, b) { return b.analysis.monthsBelow.count - a.analysis.monthsBelow.count; })[0];
+      var mb = worst.analysis.monthsBelow;
+      var hh = user.floorQualifier === 'household' ? " (the household's)" : '';
+      p.copy = worst.role.title + ' pays under your ' + E.money(user.min_viable) + '/mo floor' + hh +
+        ' for ' + mb.count + ' months: ' + mb.unpaid + ' with no pay while you retrain, then ' +
+        mb.employed + ' earning below your floor. Your savings have to bridge that stretch.';
+      return p;
+    });
     var n = pipe.survivors.length;
     return {
       benchmark: bench,
