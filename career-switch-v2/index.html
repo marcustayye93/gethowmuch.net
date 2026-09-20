@@ -39,6 +39,12 @@ h1{font-size:clamp(34px,8vw,52px); font-weight:700; letter-spacing:-.045em; line
 input[type=number],input[type=text]{width:100%; font-family:'Space Mono',monospace; font-size:28px; font-weight:700;
   padding:14px 16px; border:2px solid var(--ink); border-radius:16px; background:#fff; color:var(--ink);}
 input:focus{outline:3px solid var(--yellow); outline-offset:2px;}
+input::placeholder{color:#98a2b3; font-weight:400;}
+.moneywrap{position:relative;}
+.moneywrap .cur{position:absolute; left:16px; top:50%; transform:translateY(-50%);
+  font-family:'Space Mono',monospace; font-size:28px; font-weight:700; color:var(--muted); pointer-events:none;}
+.moneywrap input{padding-left:62px;}
+.err{color:var(--bad); font-size:14px; font-weight:500; margin:8px 0 0;}
 .field{margin:18px 0;}
 .field label{display:block; font-weight:500; margin-bottom:8px;}
 .unit{font-size:13px; color:var(--muted); margin-top:6px;}
@@ -59,6 +65,7 @@ input:focus{outline:3px solid var(--yellow); outline-offset:2px;}
 .btn:disabled{opacity:.35; cursor:default;}
 .dots{display:flex; gap:6px; margin:18px 0 4px;}
 .dot{width:8px; height:8px; border-radius:99px; background:var(--line);}
+button.dot{border:none; padding:0; cursor:pointer;}
 .dot.on{background:var(--ink); width:26px;}
 .card{background:#fff; border:1px solid var(--line); border-radius:22px; padding:20px; margin:16px 0;}
 .card.hero{background:var(--ink); color:#fff; border:none; box-shadow:0 12px 32px rgba(16,24,40,.18);}
@@ -102,20 +109,35 @@ details.t2 summary{cursor:pointer; font-weight:700; font-size:17px; padding:14px
 details.t2 summary::-webkit-details-marker{display:none;}
 details.t2 summary:before{content:"+ "; font-family:'Space Mono',monospace;}
 details.t2[open] summary:before{content:"− ";}
-.banner{background:var(--yellow); border-radius:14px; padding:12px 16px; font-weight:700; font-size:14px; margin:0 0 16px;}
-.switchrow{display:flex; align-items:center; justify-content:space-between; gap:12px; margin:14px 0;}
-.switchrow .lbl{font-weight:500;}
-.togglerow{display:flex; background:#fff; border:2px solid var(--ink); border-radius:999px; overflow:hidden;}
-.togglerow button{border:none; background:#fff; padding:10px 18px; font-family:'Space Grotesk',sans-serif;
-  font-size:14px; font-weight:700; cursor:pointer;}
-.togglerow button[aria-pressed=true]{background:var(--yellow);}
-.site-foot{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted);}
+details.adjust{position:sticky; top:10px; z-index:30; background:#fff; border:2px solid var(--ink);
+  border-radius:18px; padding:2px 18px; margin:16px 0; box-shadow:0 10px 28px rgba(16,24,40,.14);}
+details.adjust summary{cursor:pointer; font-weight:700; font-size:16px; padding:12px 0; list-style:none;}
+details.adjust summary::-webkit-details-marker{display:none;}
+details.adjust summary:before{content:"+ "; font-family:'Space Mono',monospace;}
+details.adjust[open] summary:before{content:"− ";}
+details.adjust .chips{margin:8px 0;}
+details.adjust .chip{font-size:14px; padding:10px 16px; min-height:44px;}
+.adjust-grid{display:grid; gap:4px;}
+.resume{display:flex; align-items:center; justify-content:space-between; gap:12px; background:#fff;
+  border:1px solid var(--line); border-radius:14px; padding:10px 14px; font-size:14px; margin:12px 0;}
+.resume button{border:none; background:none; color:var(--ink); font-weight:700; cursor:pointer; font-size:14px; padding:6px 4px;}
+.site-foot{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted); line-height:2.1;}
 .site-foot a{color:var(--muted);}
+.banner{background:var(--yellow); border-radius:14px; padding:12px 16px; font-weight:700; font-size:14px; margin:0 0 16px;}
+.switchrow{display:flex; align-items:center; justify-content:space-between; gap:12px; margin:14px 0; flex-wrap:wrap;}
+.switchrow .lbl{font-weight:500;}
+.togglerow{display:flex; background:#fff; border:2px solid var(--ink); border-radius:999px; overflow:hidden; flex-shrink:0;}
+.togglerow button{border:none; background:#fff; padding:10px 20px; font-family:'Space Grotesk',sans-serif;
+  font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap;}
+.togglerow button[aria-pressed=true]{background:var(--yellow);}
+@media(max-width:480px){
+  .chips .chip{flex:1 1 auto; text-align:center;}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="brandbar"><a class="brand" href="/">GetHowMuch</a> <span class="tag q">v2</span></div>
+  <div class="brandbar"><a class="brand" href="/">GetHowMuch</a></div>
 
   <!-- INTRO -->
   <div class="screen active" id="s-intro">
@@ -131,8 +153,9 @@ details.t2[open] summary:before{content:"− ";}
     <div class="dots"></div>
     <p class="q">Your job now.</p>
     <p class="help">Monthly cash after employee CPF, before tax. Exclude AWS and bonuses.</p>
-    <div class="field"><input type="number" id="in-current" inputmode="numeric" placeholder="6,000" min="0"></div>
-    <p class="unit">S$ per month, cash in hand.</p>
+    <div class="field moneywrap"><span class="cur">S$</span><input type="text" id="in-current" inputmode="numeric" placeholder="6,000" autocomplete="off"></div>
+    <p class="unit">Per month, cash in hand.</p>
+    <p class="err" id="q1err"></p>
     <p class="q" style="font-size:19px;">Which domain is your current role in?</p>
     <div class="chips" id="curdom-chips"></div>
     <div id="currole-wrap" style="display:none;">
@@ -146,7 +169,8 @@ details.t2[open] summary:before{content:"− ";}
   <div class="screen" id="s-q2">
     <div class="dots"></div>
     <p class="q">What's the lowest monthly pay you can live with?</p>
-    <div class="field"><input type="number" id="in-floor" inputmode="numeric" placeholder="4,500" min="0"></div>
+    <div class="field moneywrap"><span class="cur">S$</span><input type="text" id="in-floor" inputmode="numeric" placeholder="4,500" autocomplete="off"></div>
+    <p class="err" id="q2err"></p>
     <p class="q" style="font-size:19px; margin-top:26px;">If a switch pays below that floor for a while, how many months could your savings cover the gap?</p>
     <div class="stepper">
       <button onclick="stepRunway(-1)" aria-label="fewer months">−</button>
@@ -186,17 +210,17 @@ details.t2[open] summary:before{content:"− ";}
       <button class="chip" data-v="partly" aria-pressed="false">Partly</button>
       <button class="chip" data-v="no" aria-pressed="false">No</button>
     </div>
-    <p class="q" style="font-size:19px; margin-top:26px;">Which domains are you drawn to? <span style="font-weight:400; font-size:15px;">Tap in order, up to 3.</span></p>
+    <p class="q" style="font-size:19px; margin-top:26px;">Which domains are you drawn to? <span style="font-weight:400; font-size:15px; display:block; margin-top:2px;">Tap in order, up to 3.</span></p>
     <p class="help">These are the domains this calculator can price.</p>
     <div class="chips grid2" id="target-chips"></div>
     <div class="switchrow">
-      <span class="lbl">Only my passion domains</span>
-      <div class="togglerow" role="group" aria-label="Only my passion domains">
+      <span class="lbl">Only my picked domains</span>
+      <div class="togglerow" role="group" aria-label="Only my picked domains">
         <button id="po-off" aria-pressed="true" onclick="setPassionOnly(false)">Off</button>
         <button id="po-on" aria-pressed="false" onclick="setPassionOnly(true)">On</button>
       </div>
     </div>
-    <p class="help">Off by default. When off, we may show up to 3 strong picks outside your list, clearly labelled.</p>
+    <p class="help">Off by default. When off, we may show outside picks that beat staying, clearly labelled.</p>
     <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q4next" onclick="q4next()" disabled>Next</button></div>
   </div>
 
@@ -248,16 +272,17 @@ details.t2[open] summary:before{content:"− ";}
       <button class="chip" data-v="yes" aria-pressed="false">Yes</button>
       <button class="chip" data-v="no" aria-pressed="false">No</button>
     </div>
-    <p class="help">A loan plus a variable-pay path triggers a TDSR flag. It never kills a role outright.</p>
+    <p class="help">A housing loan plus variable pay parks the path instead of killing it. Banks only count part of variable income.</p>
     <div class="nav"><button class="btn ghost" onclick="back()">Back</button><button class="btn primary" id="q7next" onclick="showResults()" disabled>See my result</button></div>
   </div>
 
   <!-- RESULTS -->
   <div class="screen" id="s-results">
+    <div class="dots"></div>
     <div id="results"></div>
-    <div class="nav"><button class="btn ghost" onclick="go('s-intro'); reset();">Start over</button></div>
     <div class="foot" id="results-foot"></div>
   </div>
+  <footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a><br>Estimates for planning only. Not financial advice. © 2026</footer>
 </div>
 
 <script src="engine.js"></script>
@@ -271,23 +296,31 @@ var DIMS = [['money','Money'],['time','Time / freedom'],['meaning','Meaning / pa
 var S = null;
 var ORDER = ['s-intro','s-q1','s-q2','s-q3','s-q4','s-q5','s-q6','s-q7','s-results'];
 function freshState(){
-  return { step:0, current_pay:null, currentDomain:null, currentRoleId:null,
+  return { step:0, maxStep:0, current_pay:null, currentDomain:null, currentRoleId:null,
     min_viable:null, runway:6, household:false,
     primary:null, secondary:null, alignment:null, targets:[],
     timeline:null, ageBand:null, residency:null, education:null,
     housingLoan:null, passionOnly:false, chips:{} };
 }
 S = freshState();
+var ADJ = { runway: 6 };       // adjust-strip working copy; committed on Update
+var RESTORING = false;         // true while re-rendering a restored session
+var LS_KEY = 'ghm-cs-v2-progress';
 
 function money(n){ return E.money(n); }
-function pct(n){ if(n==null) return '—'; var v = Math.round(n*100); return (v>0?'+':'') + v + '%'; }
 function dimLabel(d){ return ({money:'money',time:'time/freedom',meaning:'meaning/passion',stability:'stability'})[d] || d; }
+function parsePay(v){ var s = String(v==null?'':v).replace(/[$,\s]/g,''); if(!s) return null; var n = parseFloat(s); return (isFinite(n) && n>0) ? n : null; }
+function fmtNum(n){ return Number(n).toLocaleString('en-SG', { maximumFractionDigits: 0 }); }
 
 function go(id){
+  dismissResume();
   document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
   S.step = ORDER.indexOf(id);
+  S.maxStep = Math.max(S.maxStep||0, S.step);
+  if(id!=='s-results') syncScreen(id);
   paintDots();
+  saveProgress();
   window.scrollTo(0,0);
   if(id==='s-q1'||id==='s-q4') V2.Instrument.emit('screen_view',{screen:id});
 }
@@ -295,9 +328,77 @@ function back(){ go(ORDER[Math.max(0,S.step-1)]); }
 function paintDots(){
   document.querySelectorAll('.dots').forEach(function(d){
     d.innerHTML='';
-    for(var i=1;i<=7;i++){ var s=document.createElement('span'); s.className='dot'+(i<=S.step?' on':''); d.appendChild(s); }
+    for(var i=1;i<=7;i++){
+      var clickable = i <= (S.maxStep||0);
+      var s = document.createElement(clickable ? 'button' : 'span');
+      s.className = 'dot' + (i<=S.step ? ' on' : '');
+      s.setAttribute('aria-label', 'Go to question ' + i);
+      if(clickable){ (function(n){ s.addEventListener('click', function(){ go(ORDER[n]); }); })(i); }
+      d.appendChild(s);
+    }
   });
 }
+/* Repaint a quiz screen from S: used when jumping back via progress dots
+   or restoring a saved session. S is the source of truth; the DOM follows. */
+function pressIn(elId, v){
+  var vv = (v==null) ? '' : String(v);
+  document.querySelectorAll('#'+elId+' .chip').forEach(function(c){
+    c.setAttribute('aria-pressed', c.dataset.v===vv ? 'true' : 'false');
+  });
+}
+function q1ready(){
+  var dom = document.querySelector('#curdom-chips .chip[aria-pressed=true]');
+  if(!dom) return false;
+  if(S.currentDomain && !document.querySelector('#currole-chips .chip[aria-pressed=true]')) return false;
+  return true;
+}
+function syncScreen(id){
+  if(id==='s-q1'){
+    document.getElementById('in-current').value = S.current_pay==null ? '' : fmtNum(S.current_pay);
+    pressIn('curdom-chips', S.currentDomain);
+    var rid = S.currentRoleId;
+    buildCurRole();
+    if(S.currentDomain){ pressIn('currole-chips', rid); S.currentRoleId = rid; }
+    document.getElementById('q1next').disabled = !q1ready();
+  } else if(id==='s-q2'){
+    document.getElementById('in-floor').value = S.min_viable==null ? '' : fmtNum(S.min_viable);
+    document.getElementById('runway-val').textContent = S.runway;
+    setHH(!!S.household);
+  } else if(id==='s-q3'){
+    pressIn('prim-chips', S.primary); pressIn('sec-chips', S.secondary); refreshSec();
+    document.getElementById('q3next').disabled = !(S.primary&&S.secondary);
+  } else if(id==='s-q4'){
+    pressIn('align-chips', S.alignment); paintTargets(); setPassionOnly(!!S.passionOnly);
+    document.getElementById('q4next').disabled = !S.alignment;
+  } else if(id==='s-q5'){
+    pressIn('time-chips', S.timeline);
+    document.getElementById('q5next').disabled = !S.timeline;
+  } else if(id==='s-q6'){
+    pressIn('age-chips', S.ageBand); pressIn('res-chips', S.residency); pressIn('edu-chips', S.education);
+    document.getElementById('q6next').disabled = !(S.ageBand&&S.residency&&S.education);
+  } else if(id==='s-q7'){
+    pressIn('loan-chips', S.housingLoan==null ? null : (S.housingLoan?'yes':'no'));
+    document.getElementById('q7next').disabled = S.housingLoan==null;
+  }
+}
+/* Progress persistence: refresh survival. Saved on every navigation. */
+function saveProgress(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(S)); }catch(e){} }
+function loadProgress(){
+  try{
+    var s = JSON.parse(localStorage.getItem(LS_KEY));
+    if(s && typeof s.step==='number' && s.step>=0 && s.step<ORDER.length) return s;
+  }catch(e){}
+  return null;
+}
+function showResumeBanner(){
+  if(document.getElementById('resume-banner')) return;
+  var b = document.createElement('div');
+  b.className = 'resume'; b.id = 'resume-banner';
+  b.innerHTML = '<span>Picked up where you left off.</span><span><button onclick="dismissResume()">Keep going</button> &middot; <button onclick="reset();go(\'s-intro\')">Start over</button></span>';
+  var wrap = document.querySelector('.wrap');
+  wrap.insertBefore(b, wrap.children[1]);
+}
+function dismissResume(){ var b = document.getElementById('resume-banner'); if(b) b.remove(); }
 function chipGroup(elId, cb){
   var el = document.getElementById(elId);
   el.addEventListener('click', function(ev){
@@ -338,15 +439,15 @@ function buildCurDom(){
     el.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
     b.setAttribute('aria-pressed','true');
     S.currentDomain = b.dataset.v || null;
+    S.currentRoleId = null;
     buildCurRole();
-    document.getElementById('q1next').disabled = false;
+    document.getElementById('q1next').disabled = !q1ready();
   });
 }
 function buildCurRole(){
   var wrap = document.getElementById('currole-wrap');
   var el = document.getElementById('currole-chips');
   el.innerHTML = '';
-  S.currentRoleId = null;
   if(!S.currentDomain){ wrap.style.display='none'; return; }
   wrap.style.display='block';
   var roles = ROLES.filter(function(r){ return r.domain_primary===S.currentDomain; });
@@ -357,32 +458,28 @@ function buildCurRole(){
     el.appendChild(b);
   });
   var none = document.createElement('button');
-  none.className='chip'; none.dataset.v=''; none.setAttribute('aria-pressed','true');
-  none.textContent = 'None of these';
+  none.className='chip'; none.dataset.v=''; none.setAttribute('aria-pressed','false');
+  none.innerHTML = 'None of these<small>role not listed</small>';
   el.appendChild(none);
-  el.addEventListener('click', function(ev){
-    var b = ev.target.closest('.chip'); if(!b) return;
-    el.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
-    b.setAttribute('aria-pressed','true');
-    S.currentRoleId = b.dataset.v || null;
-  });
+  document.getElementById('q1next').disabled = true;
 }
 function q1next(){
-  var v = parseFloat(document.getElementById('in-current').value);
-  if(!(v>0)){ alert('Enter your monthly take-home pay.'); return; }
-  if(!S.currentDomain && document.querySelector('#curdom-chips .chip[aria-pressed=true]')===null){
-    alert('Pick the domain closest to your current role, or Something else.');
+  var err = document.getElementById('q1err');
+  var v = parsePay(document.getElementById('in-current').value);
+  if(v==null){ err.textContent = 'Enter your monthly take-home pay, numbers only.'; document.getElementById('in-current').focus(); return; }
+  err.textContent = '';
+  if(!q1ready()){
+    err.textContent = S.currentDomain ? 'Pick the closest role, or None of these.' : 'Pick the domain closest to your current role, or Something else.';
     return;
   }
-  // domain chip required; "Something else" sets currentDomain=null
-  var picked = document.querySelector('#curdom-chips .chip[aria-pressed=true]');
-  if(!picked){ alert('Pick the domain closest to your current role, or Something else.'); return; }
   S.current_pay = v;
   go('s-q2');
 }
 function q2next(){
-  var v = parseFloat(document.getElementById('in-floor').value);
-  if(!(v>0)){ alert('Enter your minimum viable monthly pay.'); return; }
+  var err = document.getElementById('q2err');
+  var v = parsePay(document.getElementById('in-floor').value);
+  if(v==null){ err.textContent = 'Enter your minimum viable monthly pay, numbers only.'; document.getElementById('in-floor').focus(); return; }
+  err.textContent = '';
   S.min_viable = v;
   go('s-q3');
 }
@@ -431,6 +528,8 @@ function paintTargets(){
 function reset(){
   var hh = S.household, po = S.passionOnly;
   S = freshState();
+  try{ localStorage.removeItem(LS_KEY); }catch(e){}
+  dismissResume();
   document.getElementById('runway-val').textContent = '6';
   ['in-current','in-floor'].forEach(function(id){ document.getElementById(id).value=''; });
   document.querySelectorAll('.chip[aria-pressed=true]').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
@@ -456,6 +555,29 @@ function buildStatic(){
   chipGroup('res-chips', function(v){ S.residency=v; document.getElementById('q6next').disabled = !(S.ageBand&&S.residency&&S.education); });
   chipGroup('edu-chips', function(v){ S.education=v; document.getElementById('q6next').disabled = !(S.ageBand&&S.residency&&S.education); });
   chipGroup('loan-chips', function(v){ S.housingLoan=(v==='yes'); document.getElementById('q7next').disabled=false; });
+  // current-role chips: bound once; buildCurRole only rebuilds the buttons
+  document.getElementById('currole-chips').addEventListener('click', function(ev){
+    var b = ev.target.closest('.chip'); if(!b) return;
+    document.querySelectorAll('#currole-chips .chip').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+    b.setAttribute('aria-pressed','true');
+    S.currentRoleId = b.dataset.v || null;
+    document.getElementById('q1next').disabled = !q1ready();
+  });
+  // results-area delegation: adjust-strip timeline chips, retake link, error clearing
+  document.getElementById('results').addEventListener('click', function(ev){
+    var t = ev.target;
+    if(t.id==='retake'){ ev.preventDefault(); reset(); go('s-intro'); return; }
+    var b = t.closest ? t.closest('#adj-time .chip') : null;
+    if(b){
+      document.querySelectorAll('#adj-time .chip').forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+    }
+  });
+  document.getElementById('results').addEventListener('input', function(ev){
+    if(ev.target && ev.target.id==='adj-floor'){ var e = document.getElementById('adj-err'); if(e) e.textContent=''; }
+  });
+  document.getElementById('in-current').addEventListener('input', function(){ document.getElementById('q1err').textContent=''; });
+  document.getElementById('in-floor').addEventListener('input', function(){ document.getElementById('q2err').textContent=''; });
   buildCurDom();
   buildTargets();
 }
@@ -487,27 +609,62 @@ function leverLine(lever){
   return '<p style="margin:10px 0 0; font-weight:700;">' + t + '</p>';
 }
 
+/* Verdict-level interpretation: what the overall result means, in words.
+   The hero states the answer; this states the reading. */
+function verdictReading(u, res){
+  var v = res.verdict;
+  var picks = (u.targetDomains || []).map(function(d){ return V2.domainLabel(d); }).join(', ');
+  var s = '';
+  if(v.key==='empty'){
+    s = 'On a ' + money(u.min_viable) + ' floor with ' + u.runway + ' months of runway, ' +
+      (picks ? 'nothing in ' + picks + ' beats staying. ' : 'nothing beats staying. ');
+    if(res.quarantined.length){
+      var nq = res.quarantined.length;
+      var f1b = res.quarantined.filter(function(it){ return it.reason==='F1b'; }).length;
+      s += nq + ' parked path' + (nq===1 ? '' : 's') + ' came closest';
+      s += (f1b * 2 >= nq)
+        ? ' — they dip under your floor longer than your runway covers.'
+        : ' — mostly held back by a housing loan plus variable pay.';
+    }
+  } else if(v.key==='stay-money'){
+    s = 'Every switch below costs money versus staying. Only take one for a reason this tool can\'t price.';
+  } else if(v.key==='stay-money-disclaimed'){
+    s = 'The paths below are still priced on money alone. Your ' + dimLabel(u.primary) + ' call is yours — this tool can\'t price it.';
+  } else if(v.key==='guard'){
+    s = 'Your pay is the outlier here, not the switches. Only compare further if you\'d take a real pay cut to move.';
+  } else if(v.key==='none'){
+    s = 'At least one switch beats staying on money. The strongest is featured below — read the trade line before the figures.';
+  }
+  return s ? '<p style="margin:10px 0 0;">' + s + '</p>' : '';
+}
+
 function verdictCard(u, res){
   var v = res.verdict, html='';
   if(v.key==='guard'){
     html = '<div class="card hero"><div class="kicker">The verdict</div>' +
       '<p style="font-size:20px; font-weight:700; margin:0 0 8px;">' + V2.GUARD_COPY + '</p>' +
+      verdictReading(u, res) +
       leverLine(v.lever) + '</div>';
   } else if(v.key==='stay-money'){
     html = '<div class="card hero"><div class="kicker">The verdict</div><div class="big">Stay.</div>' +
       '<p>Your current path beats every switch on money by ' + money(v.gap) + ' over 36 months.</p>' +
+      verdictReading(u, res) +
       leverLine(v.lever) + '</div>';
   } else if(v.key==='stay-money-disclaimed'){
     html = '<div class="card hero"><div class="kicker">The verdict</div>' +
       '<p style="font-size:18px; font-weight:700; margin:0 0 8px;">On money, your current path wins by ' + money(v.gap) + '. This tool can\'t price ' + dimLabel(u.primary) + '.</p>' +
+      verdictReading(u, res) +
       leverLine(v.lever) + '</div>';
   } else if(v.key==='unpriced'){
     html = v1verdictCard(u, v.v1verdict, v.caption);
   } else if(v.key==='empty'){
     html = '<div class="card hero"><div class="kicker">The verdict</div><div class="big">No switch survives.</div>' +
-      '<p>Not proof your current job is best. Proof the filters are tight. What killed the rest is in "How we got here" below.</p></div>';
+      '<p>Not proof your current job is best. Proof the filters are tight. What killed the rest is in "How we got here" below.</p>' +
+      verdictReading(u, res) + '</div>';
   } else {
     html = v1verdictCard(u, E.alignmentVerdict(u, res.survivors));
+    var reading = verdictReading(u, res);
+    if(reading) html = html.replace(/<\/div>$/, reading + '</div>');
   }
   return html;
 }
@@ -539,26 +696,45 @@ function v1verdictInner(u, vv){
     '<p>That\'s your word, not ours. The paths below are conditional on it.</p></div>';
 }
 
+/* One-line reading of a role card: the 36-month outcome plus the catch, in
+   words. This is the interpretation layer — figures follow, never lead. */
+function tradeLine(u, item){
+  var r = item.role, a = item.analysis, mb = a.monthsBelow;
+  var d36 = a.delta36;
+  var lead = d36 > 0
+    ? 'Comes out <span class="fig">' + money(d36) + ' ahead of staying</span> over 36 months.'
+    : (d36 < 0
+      ? 'Comes out <span class="fig">' + money(-d36) + ' behind staying</span> over 36 months.'
+      : 'Breaks even with staying over 36 months.');
+  var n = mb.count || 0;
+  var catch_;
+  if(n > 0){
+    catch_ = 'The catch: ' + n + ' month' + (n===1 ? '' : 's') + ' below your ' + money(u.min_viable) +
+      ' floor, starting at ' + money(r.entry_pay) + ' a month.';
+  } else if(a.dip < 0){
+    catch_ = 'The catch: you start at ' + money(r.entry_pay) + ' a month, ' + money(-a.dip) + ' below what you earn now.';
+  } else {
+    catch_ = 'No pay cut to get in — you start at ' + money(r.entry_pay) + ' a month.';
+  }
+  return lead + ' ' + catch_;
+}
+
 function roleCard(u, item, res, featured){
   var r = item.role, a = item.analysis;
-  var d36 = a.delta36, d36cls = d36>0?'pos':(d36<0?'neg':'');
-  var mb = a.monthsBelow;
   var targets = u.targetDomains;
   var primaryPick = targets.indexOf(r.domain_primary) >= 0;
   var prov = V2.provenance(r, targets);
   var html = '<div class="card' + (featured ? ' featured' : '') + '">';
   if(featured) html += '<div class="kicker">Best match</div>';
   html += '<p style="font-size:21px; font-weight:700; margin:0 0 4px;">' + r.title +
-    (primaryPick ? ' <span class="tag pass">Passion pick</span>' : '') + '</p>';
+    (primaryPick ? ' <span class="tag pass">Your pick</span>' : '') + '</p>';
   if(prov) html += '<p class="prov">' + prov + '</p>';
-  html += '<p style="margin:10px 0 6px; font-size:19px;">36 months vs staying: <span class="fig ' + d36cls + '">' + money(d36) + '</span></p>';
-  html += '<p style="margin:10px 0 6px;">The dip: <span class="fig ' + (a.dip<0?'neg':'pos') + '">' + money(a.dip) + '/mo (' + pct(a.dipPct) + ')</span> at entry ' + money(r.entry_pay) + '.</p>';
-  html += '<p style="margin:6px 0;">The landing: <span class="fig">' + money(r.settled_pay) + '</span> settled vs ' + money(u.current_pay) + ' today (' + pct(a.landingPct) + ').</p>';
-  if(mb.count>0) html += '<p style="margin:6px 0;"><span class="tag q">' + mb.count + ' months below your floor</span> ' + mb.unpaid + ' unpaid + ' + mb.employed + ' employed.</p>';
+  html += '<p style="font-size:17px; margin:10px 0 6px;">' + tradeLine(u, item) + '</p>';
+  html += '<p style="margin:6px 0;">Entry <span class="fig">' + money(r.entry_pay) + '</span>/mo → settled <span class="fig">' + money(r.settled_pay) + '</span>/mo <span class="fine">· you earn ' + money(u.current_pay) + ' now</span></p>';
   var p7 = res.p7(r);
   if(p7) html += '<p class="fine" style="color:var(--ink); font-weight:500;">' + p7 + '</p>';
   if(item.reason==='F4'){
-    html += '<p class="fine" style="color:var(--ink); font-weight:500;">Quarantined: housing loan + variable pay. Banks assess at 55% of gross stress-tested at 4%, with a 30% or more haircut on variable income.</p>';
+    html += '<p class="fine" style="color:var(--ink); font-weight:500;">Parked: housing loan plus variable pay. Banks assess at 55% of gross stress-tested at 4%, with a 30% or more haircut on variable income.</p>';
   }
   html += '<p class="fine">';
   if(a.delta120!=null) html += '120-month view: <span class="fig">' + money(a.delta120) + '</span> (assumes your pay never moves; scale, not a forecast). ';
@@ -569,11 +745,10 @@ function roleCard(u, item, res, featured){
 
 function gatedCard(g){
   var r = g.role, chip = V2.CHIPS[g.chipId];
-  var html = '<div class="card gated"><div class="kicker">Gated path</div>';
+  var html = '<div class="card gated"><div class="kicker">Needs a licence first</div>';
   html += '<p style="font-size:19px; font-weight:700; margin:0 0 6px;">' + r.title + '</p>';
   if(g.kind==='f0a'){
     html += '<p style="margin:6px 0;">The accounting degree route is priced at about 36 months, longer than any timeline this tool prices.</p>';
-    html += '<p class="fine" style="color:var(--ink);">In v1, "just exploring" users could see Accountant ranked. v2.0 routes below-degree holders here with the degree priced.</p>';
   } else {
     html += '<p style="margin:6px 0;">Gate: ' + chip.gateCopy + ' — about ' + r.v2.gateMonths + ' months, past your timeline.</p>';
     if(chip.question){
@@ -596,10 +771,47 @@ function answerChip(chipId, ans){
   showResults(true);
 }
 
+/* Sticky adjust strip: timeline, floor and runway can be re-run in place
+   without wiping the quiz. Rendered right after the verdict. */
+function adjustStrip(u){
+  var times = [['asap','ASAP'],['6-12','6–12 months'],['1-2y','1–2 years'],['exploring','Just exploring']];
+  var chips = times.map(function(t){
+    return '<button class="chip" data-v="'+t[0]+'" aria-pressed="'+(u.timeline===t[0])+'">'+t[1]+'</button>';
+  }).join('');
+  return '<details class="adjust" id="adjust"><summary>Adjust inputs <span class="fine" style="margin:0;">timeline · floor · runway</span></summary>' +
+    '<div class="adjust-grid">' +
+    '<div><p class="field" style="margin:10px 0 0;"><label>Timeline</label></p><div class="chips" id="adj-time">'+chips+'</div></div>' +
+    '<div><p class="field" style="margin:10px 0 0;"><label>Lowest pay you can live with</label></p>' +
+    '<div class="field moneywrap" style="margin:6px 0 4px;"><span class="cur">S$</span><input type="text" id="adj-floor" inputmode="numeric" autocomplete="off" value="'+fmtNum(u.min_viable)+'"></div>' +
+    '<p class="err" id="adj-err"></p></div>' +
+    '<div><p class="field" style="margin:10px 0 0;"><label>Savings cover (months)</label></p>' +
+    '<div class="stepper" style="margin:6px 0;"><button onclick="stepAdj(-1)" aria-label="fewer months">−</button><div class="val" id="adj-runway">'+u.runway+'</div><button onclick="stepAdj(1)" aria-label="more months">+</button></div></div>' +
+    '</div>' +
+    '<div class="nav" style="margin:12px 0 14px;"><button class="btn primary" onclick="applyAdjust()">Update result</button></div>' +
+    '</details>';
+}
+function stepAdj(d){ ADJ.runway = Math.max(0, Math.min(60, ADJ.runway + d)); document.getElementById('adj-runway').textContent = ADJ.runway; }
+function applyAdjust(){
+  var errEl = document.getElementById('adj-err');
+  var fv = parsePay(document.getElementById('adj-floor').value);
+  if(fv==null){ errEl.textContent = 'Enter a floor above S$0, numbers only.'; document.getElementById('adj-floor').focus(); return; }
+  errEl.textContent = '';
+  var t = document.querySelector('#adj-time .chip[aria-pressed=true]');
+  if(t) S.timeline = t.dataset.v;
+  S.min_viable = fv;
+  S.runway = ADJ.runway;
+  V2.Instrument.emit('adjust_inputs', { timeline: S.timeline, floor: fv, runway: S.runway });
+  saveProgress();
+  showResults(true);
+}
+
 function showResults(changed){
+  var adjOpen = !!((document.getElementById('adjust') || {}).open);
   var u = userObj();
+  ADJ.runway = u.runway;
   var res = V2.analyze(u, ROLES, S.chips);
   renderResults(u, res, !!changed);
+  if(adjOpen){ var d = document.getElementById('adjust'); if(d) d.open = true; }
   if(!changed) go('s-results'); else { window.scrollTo(0,0); }
 }
 
@@ -636,8 +848,8 @@ function howWeGotHere(u, res){
   var html = '<details class="how"><summary>How we got here (' + pool + ' roles considered)</summary>';
   html += '<p style="margin:8px 0;">We ran <span class="fig">' + pool + '</span> priced roles through your gates, floor, and timeline.</p>';
   html += '<p style="margin:6px 0;"><span class="fig">' + n + '</span> survive · ' +
-    '<span class="fig">' + res.quarantined.length + '</span> quarantined · ' +
-    '<span class="fig">' + res.gated.length + '</span> gated · ' +
+    '<span class="fig">' + res.quarantined.length + '</span> parked · ' +
+    '<span class="fig">' + res.gated.length + '</span> need a licence · ' +
     '<span class="fig">' + (k.F3 + k.F1 + k.F2) + '</span> filtered out ' +
     '(gates ' + k.F3 + ' · floor ' + k.F1 + ' · timeline ' + k.F2 + ').</p>';
   if(picks) html += '<p style="margin:6px 0;">Your picks led: ' + picks + '.</p>';
@@ -669,8 +881,8 @@ function poolRow(u, res, r, stageName){
     if(!hit) res.quarantined.forEach(function(it){ if(it.role.id===r.id){ hit = it; kind = 'q'; } });
     if(!hit) res.gated.forEach(function(g){ if(g.role.id===r.id){ hit = g; kind = 'g'; } });
     if(kind==='s'){ status = 'Survives'; detail = '36 months vs staying: ' + money(hit.analysis.delta36); }
-    else if(kind==='q'){ status = 'Quarantined'; detail = hit.reason==='F1b' ? 'months below floor beat your runway' : 'housing loan + variable pay'; }
-    else if(kind==='g'){ status = 'Gated'; detail = 'licence / credential gate'; }
+    else if(kind==='q'){ status = 'Parked'; detail = hit.reason==='F1b' ? 'months below floor beat your runway' : 'housing loan plus variable pay'; }
+    else if(kind==='g'){ status = 'Needs a licence'; detail = 'licence / credential gate'; }
     else { status = 'Filtered out'; detail = 'see counts above'; }
   }
   return '<li><span class="fig">' + r.title + '</span> — ' + status + (detail ? ' · ' + detail : '') + '</li>';
@@ -684,11 +896,14 @@ function renderResults(u, res){
   // 1. verdict — always first, always the dark hero
   html += verdictCard(u, res);
 
+  // 1b. adjust strip — sticky; re-runs the verdict without wiping the quiz
+  html += adjustStrip(u);
+
   // 2. benchmark strip — context for the verdict, never a switch card
   var b = res.benchmark;
   html += '<div class="bench-strip"><div class="kicker">Your benchmark — not a switch</div>' +
     '<span class="fig" style="font-size:19px;">' + money(u.current_pay) + '/mo</span> flat · ' +
-    '36 months: <span class="fig">' + money(b.m36) + '</span></div>';
+    '36 months: <span class="fig">' + money(b.m36) + '</span> — the number every switch has to beat.</div>';
 
   // EP honesty: only subsidy-netted reskill costs are verified; EP holders
   // get no subsidy, so their true reskill cost is higher than shown (S$0).
@@ -724,33 +939,36 @@ function renderResults(u, res){
       res.tier2.map(function(it){ return roleCard(u, it, res); }).join('') + '</details>';
   }
 
-  // quarantined (L6: excluded from survivor count, own section)
+  // parked (L6: excluded from survivor count, collapsed by default)
   if(res.quarantined.length){
-    html += '<h2 class="sec">' + res.quarantined.length + ' quarantined</h2>' +
-      '<p class="fine" style="margin-top:-6px;">Not beaten — parked. Raise your runway or extend your timeline to bring paths back.</p>';
-    html += res.quarantined.map(function(it){
-      var why = it.reason==='F1b'
-        ? 'Quarantined: ' + it.analysis.monthsBelow.count + ' months below your floor beats your ' + u.runway + '-month runway.'
-        : 'Quarantined: housing loan plus variable pay.';
-      var inner = roleCard(u, it, res).replace('<div class="card">','').replace(/<\/div>\s*$/, '');
-      return '<div class="card" style="opacity:.94;"><div class="kicker">Quarantined</div>' + inner +
-        '<p class="fine" style="color:var(--ink); font-weight:500;">' + why + '</p></div>';
-    }).join('');
+    html += '<details class="t2"><summary>' + res.quarantined.length + ' parked</summary>' +
+      '<p class="prov">Not ruled out, just parked. More savings runway or a longer timeline brings them back.</p>' +
+      res.quarantined.map(function(it){
+        var why = it.reason==='F1b'
+          ? it.analysis.monthsBelow.count + ' months below your floor is longer than your ' + u.runway + '-month runway.'
+          : 'Held back by a housing loan plus variable pay.';
+        var inner = roleCard(u, it, res).replace('<div class="card">','').replace(/<\/div>\s*$/, '');
+        return '<div class="card" style="opacity:.94;"><div class="kicker">Parked</div>' +
+          '<p style="font-weight:700; margin:0 0 8px;">' + why + '</p>' + inner + '</div>';
+      }).join('') + '</details>';
   }
 
-  // gated paths
+  // paths held back by a licence or credential gate, collapsed by default
   if(res.gated.length){
     var ordered = res.gated.slice().sort(function(a,bb){
       function rk(x){ var i = u.targetDomains.indexOf(x.role.domain_primary); return i<0?99:i; }
       return rk(a)-rk(bb);
     });
-    html += '<h2 class="sec">Gated paths (' + ordered.length + ')</h2>' +
-      '<p class="fine" style="margin-top:-6px;">Killed by a licence or credential gate, not by the money. Answer the question and the math re-runs.</p>';
-    html += ordered.map(gatedCard).join('');
+    html += '<details class="t2"><summary>Need a licence first (' + ordered.length + ')</summary>' +
+      '<p class="prov">Held back by a licence or credential gate, not by the money. Answer the question and the math re-runs.</p>' +
+      ordered.map(gatedCard).join('') + '</details>';
   }
 
   // 5. the full considered pool, collapsed — the audit trail, not a manual
   html += howWeGotHere(u, res);
+
+  // quiet escape hatch; the adjust strip above is the primary next move
+  html += '<p style="text-align:center; margin:30px 0 6px;"><a href="#" id="retake" style="color:var(--muted); font-size:14px;">Retake the quiz</a></p>';
 
   el.innerHTML = html;
   document.getElementById('results-foot').innerHTML =
@@ -759,7 +977,7 @@ function renderResults(u, res){
     'Estimates for planning only. Not financial advice. Role pay is occupation-level data, base-like; bonus extra. ' +
     'Occupation settled pay is not a promise the switcher lands inside it. A same-employer move is outside this calculator. © 2026';
 
-  V2.Instrument.emit('quiz_complete', {
+  if(!RESTORING) V2.Instrument.emit('quiz_complete', {
     survivors: n, zeroSurvivor: n===0,
     reframe: res.verdict.key, tautology: res.tautology,
     tier2shown: res.tier2.length>0,
@@ -768,11 +986,22 @@ function renderResults(u, res){
 }
 
 buildStatic();
-paintDots();
-document.querySelectorAll('input[type=number]').forEach(function(i){
+var restored = loadProgress();
+if(restored && restored.step>=1 && restored.step<ORDER.length){
+  S = restored;
+  if(!S.targets) S.targets = [];
+  if(!S.chips) S.chips = {};
+  RESTORING = true;
+  if(restored.step>=8){ var ru = userObj(); renderResults(ru, V2.analyze(ru, ROLES, S.chips)); }
+  go(ORDER[Math.min(restored.step, 8)]);
+  RESTORING = false;
+  showResumeBanner();
+} else {
+  paintDots();
+}
+document.querySelectorAll('input[inputmode=numeric]').forEach(function(i){
   i.addEventListener('focus', function(){ i.select(); });
 });
 </script>
-<footer class="site-foot"><a href="/">GetHowMuch</a> · <a href="/privacy/">Privacy</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="https://instagram.com/gethowmuch">Instagram</a> · <a href="https://facebook.com/gethowmuch">Facebook</a> · Estimates for planning only. Not financial advice. © 2026</footer>
 </body>
 </html>
