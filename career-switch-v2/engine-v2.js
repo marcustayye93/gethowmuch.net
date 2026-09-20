@@ -104,6 +104,21 @@
     return !!BELOW_DEGREE[user.education];
   }
 
+  // Per-role kill stage for the "How we got here" list. Read-only mirror of
+  // engine.js filterRoles order (F3 -> F1 -> F2): same fields, same order.
+  // engine.js stays frozen; if its filter order ever changes, this must follow.
+  function killStage(role, user) {
+    var cap = E.TIMELINE_CAPS[user.timeline];
+    var gates = role.gates || {};
+    var rank = { citizen: 3, pr: 2, ep: 1 };
+    var need = rank[gates.minResidency] || 1;
+    if ((rank[user.residency] || 1) < need) return 'F3';
+    if (gates.licenceMonths != null && gates.licenceMonths > cap) return 'F3';
+    if (role.settled_pay < user.min_viable) return 'F1';
+    if (role.reskill_months > cap) return 'F2';
+    return null;
+  }
+
   // ---- F0a + L2 + chip prep: returns {pool, gated} ----
   // gated entries: {role, kind:'f0a'|'f3', chipId}
   function f0stage(user, roles, chipAnswers) {
@@ -183,10 +198,18 @@
       if (tier1.length === 0) trigger = 'a';
     }
     if (!trigger) tier2 = [];
+    // Label every killed role with the filter stage that removed it.
+    var killStages = {};
+    var alive = {};
+    ranked.forEach(function (it) { alive[it.role.id] = 1; });
+    f.quarantined.forEach(function (it) { alive[it.role.id] = 1; });
+    st.pool.forEach(function (r) {
+      if (!alive[r.id]) killStages[r.id] = killStage(r, user);
+    });
     return {
       tier1: tier1, tier2: tier2, tier2trigger: trigger,
       quarantined: f.quarantined, killed: f.killed,
-      gated: st.gated, analyses: analyses,
+      gated: st.gated, analyses: analyses, killStages: killStages,
       survivors: tier1.concat(tier2)
     };
   }
@@ -385,6 +408,7 @@
       killed: pipe.killed,
       gated: pipe.gated,
       survivors: pipe.survivors,
+      killStages: pipe.killStages,
       lowSurvivor: n === 1 || n === 2,
       pushbacks: pb,
       p7: function (role) { return E.p7(role, user, user.primary); },
