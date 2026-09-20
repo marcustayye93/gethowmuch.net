@@ -187,10 +187,13 @@
     ranked.forEach(function (it) {
       (matchRank(it.role) >= 0 ? tier1 : restPool).push(it);
     });
-    // Tier 2: cap 3, 36-month money delta desc, from F0-F4 survivors only.
-    var tier2 = restPool.slice().sort(function (a, b) {
-      return b.analysis.delta36 - a.analysis.delta36;
-    }).slice(0, TIER2_CAP);
+    // Tier 2: cap 3, best 36-month money delta first, from F0-F4 survivors
+    // outside the user's picks — money winners only (delta36 > 0). An outside
+    // pick that also loses money is noise next to the verdict, not a suggestion.
+    var tier2 = restPool.filter(function (it) { return it.analysis.delta36 > 0; })
+      .slice().sort(function (a, b) {
+        return b.analysis.delta36 - a.analysis.delta36;
+      }).slice(0, TIER2_CAP);
     // Tier 2 only when Tier 1 is empty. A role outside the user's ranked
     // passions never outranks their picks on money alone.
     var trigger = null;
@@ -382,11 +385,26 @@
     // v1 pushbacks still apply (P2 fires against the benchmark row).
     var pb = E.pushbacks(user, pipe.survivors, pipe.quarantined, pipe.killed,
       pipe._roles.filter(function (r) { return !(user.currentRoleId && r.id === user.currentRoleId); }));
-    // v2 rewrites P6 in plain language (v1 engine.js copy untouched).
+    // v2 rewrites P4/P6 in plain language (v1 engine.js copy untouched).
+    // P6 only considers roles inside the user's picks — Tier 1 plus quarantined
+    // roles in a picked domain. Naming an outside-pick role here lectures the
+    // user about a shortlist they never made.
+    var inPicks = function (it) {
+      var r = it.role;
+      if (user.targetDomains.indexOf(r.domain_primary) >= 0) return true;
+      return (r.domain_adjacent || []).some(function (a) { return user.targetDomains.indexOf(a) >= 0; });
+    };
     pb = pb.map(function (p) {
+      if (p.id === 'P4') {
+        var serve = user.alignment === 'partly' ? 'partly serves' : 'does not serve';
+        p.copy = 'You said your current role ' + serve + ' your ' +
+          (E.DIM_LABELS[user.primary] || user.primary) + ' objective. The numbers below are conditional on that answer.';
+        return p;
+      }
       if (p.id !== 'P6') return p;
-      var pool = pipe.survivors.concat(pipe.quarantined).filter(function (r) { return r.analysis.monthsBelow.count > 0; });
-      if (!pool.length) return p;
+      var pool = pipe.tier1.concat(pipe.quarantined.filter(inPicks))
+        .filter(function (r) { return r.analysis.monthsBelow.count > 0; });
+      if (!pool.length) return null;
       var worst = pool.slice().sort(function (a, b) { return b.analysis.monthsBelow.count - a.analysis.monthsBelow.count; })[0];
       var mb = worst.analysis.monthsBelow;
       var hh = user.floorQualifier === 'household' ? " (the household's)" : '';
@@ -394,7 +412,7 @@
         ' for ' + mb.count + ' months: ' + mb.unpaid + ' with no pay while you retrain, then ' +
         mb.employed + ' earning below your floor. Your savings have to bridge that stretch.';
       return p;
-    });
+    }).filter(function (p) { return !!p; });
     var n = pipe.survivors.length;
     return {
       benchmark: bench,
