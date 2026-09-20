@@ -1,5 +1,5 @@
 // Career Switch v2 role data.
-// Generated from role-index-2026-09-20.json (priced=TRUE only, 112 roles).
+// Generated from role-index-2026-09-20.json (priced=TRUE only, 113 roles).
 // Regenerate with tools/build-roles-index-js.py after each Sheet export; never hand-edit.
 const ROLES_INDEX = [
  {
@@ -3216,6 +3216,35 @@ const ROLES_INDEX = [
   "gate_detail": "Entry-level HR ops; no cert gate. WSQ SoA covering Employment Act basics, payroll/CPF/SDL and HRMS software.",
   "pay_confidence": "med",
   "reskill_source": "https://beta.infotech.edu.sg/contents/images/course-revamp/brouchures/wsq-basichr.pdf",
+  "gates": {},
+  "hours_score": 0,
+  "sovereignty_score": 0,
+  "meaning_score": 0,
+  "stability_score": 0,
+  "v2": {
+   "chip": null,
+   "gateMonths": null
+  }
+ },
+ {
+  "id": "R170",
+  "title": "Account executive (tech sales)",
+  "entry_pay": 3200,
+  "settled_pay": 6746,
+  "reskill_months": 0.1,
+  "reskill_nett_base": 472.0,
+  "reskill_nett_40plus": null,
+  "reskill_list_price": null,
+  "allowance": 0,
+  "incomeStability": "stable",
+  "domain_primary": "tech",
+  "domain_adjacent": [
+   "marketing"
+  ],
+  "gate_type": "none",
+  "gate_detail": "No statutory licence or mandatory cert to sell tech/SaaS products in Singapore. De-facto gate: quota track record and discovery/demo ability.",
+  "pay_confidence": "med",
+  "reskill_source": "https://www.tertiarycourses.com.sg/media/courses/brochures/TGS-2025052342-SG.pdf?v=1780045557 - TGS-2025052342; SC 39 and below nett S$472 incl GST (50% SSG); SC 40+ S$312 incl GST; full fee S$800 + GST",
   "gates": {},
   "hours_score": 0,
   "sovereignty_score": 0,
