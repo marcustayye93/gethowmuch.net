@@ -1,7 +1,7 @@
 {
  "version": "2026-09-20",
- "generated": "2026-09-20 13:32 SGT",
- "source": "role-index.csv, 168 rows; healthcare batch 8 flips (R016-R019/R023/R028/R029/R031/R032 held); validator 0 errors",
+ "generated": "2026-09-20 13:43 SGT",
+ "source": "Sheet export (reviewed), 168 rows",
  "priced_count": 112,
  "taxonomy": [
   "data",
@@ -37,10 +37,10 @@
    "gate_source": "role-sheet research",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R002",
@@ -63,10 +63,10 @@
    "gate_source": "role-sheet research",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R003",
@@ -89,10 +89,10 @@
    "gate_source": "role-sheet research",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R004",
@@ -115,10 +115,10 @@
    "gate_source": "role-sheet research",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R005",
@@ -141,17 +141,17 @@
    "gate_source": "role-sheet research",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R006",
    "title": "Accountant",
    "ssoc_code": "24111",
    "domain_primary": "finance",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 3640,
    "settled_pay": 5360,
    "pay_sources": "MOM Job Vacancies 2025 'Accountant' gross S$4550-6700/mo basic range; cash-converted; Recruiter alt: Hays SG 2025: (Senior) Financial Accountant S$54-84k annual total package (Accountancy & Finance (C&I)) [SME cut]; Recruiter alt: Hays SG 2025: (Senior) Financial Accountant S$72-96k annual total package (Accountancy & Finance (C&I)) [MID cut]; Recruiter alt: Hays SG 2025: (Senior) Financial Accountant S$78-120k annual total package (Accountancy & Finance (C&I)) [MNC cut]; Recruiter alt: Hays SG 2025: Assistant Accountant (Graduate) S$45-55k annual total package (Accountancy & Finance (C&I)); Recruiter alt: Hays SG 2025: Graduate Accountant S$36-42k annual total package (Accountancy & Finance (C&I)); Recruiter alt: MP SG 2026: Accountant S$78,000 annual avg (Accounting & Finance); Recruiter alt: MP SG 2026: Senior Accountant S$105,000 annual avg (Accounting & Finance)",
@@ -167,17 +167,17 @@
    "gate_source": "ACRA scope note; role-sheet research",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R007",
    "title": "HR executive",
    "ssoc_code": "24233",
    "domain_primary": "people",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 2240,
    "settled_pay": 3200,
    "pay_sources": "MOM Q1 2026 top entry-level PMET 'HR officer' gross S$2800-3500 (low end); settled from salary guides; cash-converted; Recruiter alt: Hays SG 2025: HR Executive S$50-70k annual total package (Human Resources); Recruiter alt: Hays SG 2025: Senior HR Executive S$65-78k annual total package (Human Resources); Recruiter alt: Hays SG 2025: HR Coordinator S$42-54k annual total package (Human Resources)",
@@ -193,17 +193,17 @@
    "gate_source": "ihrp.sg",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R008",
    "title": "Enrolled nurse",
    "ssoc_code": "32200",
    "domain_primary": "healthcare",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 1640,
    "settled_pay": 2496,
    "pay_sources": "MOH community-care salary guidelines 14 Feb 2024: enrolled nurse starting base gross S$2050; band midpoint; cash-converted",
@@ -219,17 +219,17 @@
    "gate_source": "MOH healthcare CCP FAQ",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned. Grok round-2 2026-09-20: SSOC 32201 assigned; fifth digit pending SSOC 2020 workbook confirmation.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R009",
    "title": "Electrician",
    "ssoc_code": "74110",
    "domain_primary": "trades",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 1716,
    "settled_pay": 2400,
    "pay_sources": "MOM OW 2024 'Electrician' gross P25 S$2145 / median S$3000; cash-converted",
@@ -245,17 +245,17 @@
    "gate_source": "EMA licensing info; role-sheet research",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R010",
    "title": "Plumber",
    "ssoc_code": "71261",
    "domain_primary": "trades",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 1200,
    "settled_pay": 2400,
    "pay_sources": "Per-job model per Marcus 2026-09-20: S$120/job worker take-home (general tier, direct-sourced, transport deducted; range S$100-150). Entry = 10 jobs/mo conservative year-1; settled = 20 jobs/mo active freelancer. Sources: HWZ/Carousell anecdotes, SG provider price lists; detail in plumber-project-pricing.md",
@@ -267,8 +267,8 @@
    "reskill_cost_nett": 2434.0,
    "reskill_source": "BCA Academy; post-70% S$2433.61 (subsidy-only)",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "TRUE",
    "notes": "Marcus call 2026-09-20: model as per_job rate x jobs/mo (directional, not customizable). Tier grid small/med/large S$60-105/105-280/230-470 for future use. PUB-licensed work excluded. Claude audit 2026-09-20: pay_confidence 'low-med' normalised to 'low' (per-job model is directional).",
    "pay_model": "per_job",
@@ -281,7 +281,7 @@
    "title": "Cook",
    "ssoc_code": "51201",
    "domain_primary": "hospitality",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 1976,
    "settled_pay": 2016,
    "pay_sources": "Food Services PWM statutory ladder, current schedule from 1 Jul 2026: Cook (QS) gross S$2,470 / Cook (FS) gross S$2,520, to cash. Cash = 0.8 x gross (labeled assumption).",
@@ -297,17 +297,17 @@
    "gate_source": "SFA requirements",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). 2026-09-20 Marcus call: chef row split into cooks (this row) and chefs (R169). Old seed band entry S$1,856/settled S$2,016 (PWM kitchen-assistant basis) superseded. Title overlaps with R049 Cook (Tier C conflicted row); merge or differentiate pending cleanup. Grok decisions 2026-09-20: merged with R049 Cook (Tier C duplicate retired). QS vs FS cook differs by S$50 gross only; not a separate switch. Senior-cook market-forces tier sits with the chef ladder (R169/R048). Grok verification 2026-09-20: Grok: PWM cook gross S$2,750/2,800 are the 1 Jul 2028 QS/FS terminal floors, not the 2026 step. Band unchanged (locked by Marcus); settle-basis documented. Claude audit 2026-09-20: gate_type none->cert: SFA names cooks explicitly. 2026-09-20: entry/settled moved off the 1 Jul 2028 terminal PWM floors (S$2,750/S$2,800 gross) to the current 1 Jul 2026 floors (S$2,470/S$2,520 gross, x0.8 cash). 2028 column is provisional \u2014 TCF reviews the schedule in 2028.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R012",
    "title": "Logistics / production planner",
    "ssoc_code": "33461",
    "domain_primary": "ops",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 2240,
    "settled_pay": 3283,
    "pay_sources": "MOM Q1 2026 top entry-level PMET 'Logistics / production planner' gross S$2800-3500 (low end); settled from salary guides; cash-converted; Recruiter alt: Hays SG 2025: Supply Chain Planner S$40-84k annual total package (Procurement & Supply Chain); Recruiter alt: Hays SG 2025: Demand Planner S$48-96k annual total package (Procurement & Supply Chain); Recruiter alt: Hays SG 2025: Planning Manager S$96-126k annual total package (Procurement & Supply Chain) [manager-level; directional]",
@@ -323,17 +323,17 @@
    "gate_source": "role-sheet research",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R013",
    "title": "Compliance officer / risk analyst",
    "ssoc_code": "24132",
    "domain_primary": "finance",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 3200,
    "settled_pay": 7582,
    "pay_sources": "MOM OW 2024 'Compliance officer' band; salary guides (Hays/Robert Walters); cash-converted; Recruiter alt: Hays SG 2025: Officer / Senior Officer (Compliance, C&I) S$35-60k annual total package (Accountancy & Finance (C&I)); Recruiter alt: Hays SG 2025: Assistant Manager (Compliance, C&I) S$60-80k annual total package (Accountancy & Finance (C&I)); Recruiter alt: Hays SG 2025: Executive / Senior Executive (Risk, C&I) S$35-70k annual total package (Accountancy & Finance (C&I))",
@@ -349,17 +349,17 @@
    "gate_source": "MAS; role-sheet research",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R014",
    "title": "Training and staff development professional",
    "ssoc_code": "24240",
    "domain_primary": "people",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 3592,
    "settled_pay": 4768,
    "pay_sources": "MOM OW 2024 training-related band; salary guides; cash-converted; Recruiter alt: Hays SG 2025: L&D Officer S$66-80k annual total package (Human Resources); Recruiter alt: Hays SG 2025: HR Director / Head of L&D Manager S$80-108k annual total package (Human Resources) [manager-level; directional]; Recruiter alt: Hays SG 2025: Regional L&D Manager S$120-156k annual total package (Human Resources) [regional; directional]",
@@ -375,10 +375,10 @@
    "gate_source": "IAL; role-sheet research",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned. Recruiter check 2026-09-20: Hays L&D Officer S$66-80k pkg implies ~S$3.5-4.3k/mo cash (pkg/15 x0.8 assumption), inside the SEED entry S$3,592 - corroborates the seed band over the MOM-direct low. Bands unchanged pending one more source (postings). Grok round-2 2026-09-20: VERIFIED keep S$3,592/4,768, priced TRUE. Entry = MOM professional median; settled = MOM training-manager median. ACLP 3.0 nett S$2,149 live on IAL. Claude audit 2026-09-20: reskill_months '60' -> '6' (71h ACLP course ~6mo; the 60mo was the de-facto 5yr experience gate, kept in gate_detail).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R015",
@@ -401,10 +401,10 @@
    "gate_source": "role-sheet research",
    "priced": "TRUE",
    "notes": "Seed row from roles-15.js (v1 research 2026-09-19). SSOC code not yet assigned.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R016",
@@ -427,10 +427,10 @@
    "gate_source": "prior pass 2026-09-20",
    "priced": "FALSE",
    "notes": "Support-tier role distinct from Enrolled nurse (seed). Cash after 20% CPF. MOM OW page not directly scraped; proxy = employer job posts + Indeed aggregates Grok round-2 2026-09-20: SSOC 53201 assigned (round-2 clean mapping).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R017",
@@ -453,10 +453,10 @@
    "gate_source": "prior pass 2026-09-20",
    "priced": "FALSE",
    "notes": "Cash after 20% CPF. Settled reflects established clinic-operations executive bands",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R018",
@@ -479,10 +479,10 @@
    "gate_source": "PSS/SPC requirements (Sep 2026)",
    "priced": "FALSE",
    "notes": "Entry requires >=6 months experience as pharmacy/clinic assistant + full-time employment at registration: a switcher typically enters as a pharmacy assistant first. Approx nett cost ~S$2,953 (50% of S$5,905) before SkillsFuture Credit is derived, not quoted; left blank Grok round-2 2026-09-20: SSOC 32130 assigned (round-2 clean mapping).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R019",
@@ -505,10 +505,10 @@
    "gate_source": "prior pass 2026-09-20",
    "priced": "FALSE",
    "notes": "Fee/duration for the therapy-support variant not re-verified on MySkillsFuture. Cash after 20% CPF",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R020",
@@ -531,15 +531,15 @@
    "gate_source": "http://sda.org.sg/wp-content/uploads/2026/02/19th-Batch-Nitec-in-Dental-Assisting-Invitation-2025-2026-Invitation-1.pdf",
    "priced": "TRUE",
    "notes": "Cash = 0.8 x gross; plausible cash range S$1,760-2,560. MOM OW page not directly scraped; proxy = Indeed/Glassdoor aggregates + job post Grok round-2 2026-09-20: 1760/2080 -> 1840/2160. MOM 2024 dental aide/assistant P25/median gross S$2,300/2,700 to cash. Own note already flagged MOM vintages above band. Grok round-2 2026-09-20: SSOC 53203 assigned (round-2 clean mapping). Reskill research 2026-09-20 (healthcare batch): Learner nett S$0 only because the employer pays the S$6,540 fee; do not present this as a walk-in classroom route. No statutory registration: SDC registers dentists and oral health therapists only (Dental Registration Act). Third-party claims of a mandatory NDAE exam or assistant registration have no official basis. Claude audit 2026-09-20: gate_type 'Employer' normalised to 'employer'. 2026-09-20: flipped priced=TRUE (healthcare batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R021",
    "title": "Optical assistant",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "healthcare",
    "domain_adjacent": "people",
    "entry_pay": 1840,
@@ -557,15 +557,15 @@
    "gate_source": "https://isomer-user-content.by.gov.sg/7/45d2fac1-b713-4507-91e0-aab77f50763c/FAQs on HCSA_1.2.pdf",
    "priced": "TRUE",
    "notes": "Cash = 0.8 x gross. Settled band reflects experienced optical-sales staff; distinct from licensed optometrist Reskill research 2026-09-20 (healthcare batch): Adjacent route: covers visual-acuity tests, frontline services, clinical support and patient administration. Nett S$3,013.20 = S$10,044 full fee less S$7,030.80 SkillsFuture subsidy, before personal SkillsFuture Credit. Current runs include 24 Sep 2026 to 5 Feb 2027. Claude audit 2026-09-20: gate_type 'None' normalised to 'none'. 2026-09-20: flipped priced=TRUE (healthcare batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R022",
    "title": "Medical records officer",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "healthcare",
    "domain_adjacent": "ops|data",
    "entry_pay": 2152,
@@ -583,15 +583,15 @@
    "gate_source": "https://isomer-user-content.by.gov.sg/7/45d2fac1-b713-4507-91e0-aab77f50763c/FAQs on HCSA_1.2.pdf",
    "priced": "TRUE",
    "notes": "Entry cash = 0.8 x S$2,690 = S$2,152. Health-information management duties, not clinical Reskill research 2026-09-20 (healthcare batch): Relevant content: patient records, healthcare administration, admission/discharge, appointments and medical terminology. Nett S$3,013.20 = S$10,044 full fee less S$7,030.80 SkillsFuture subsidy, before personal SkillsFuture Credit. Current runs include 24 Sep 2026 to 5 Feb 2027. Claude audit 2026-09-20: gate_type 'None' normalised to 'none'. 2026-09-20: flipped priced=TRUE (healthcare batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R023",
    "title": "Clinical coder",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "healthcare",
    "domain_adjacent": "data|ops",
    "entry_pay": 2320,
@@ -603,16 +603,16 @@
    "reskill_path": "OPEN",
    "reskill_months": null,
    "reskill_cost_nett": null,
-   "reskill_source": "",
+   "reskill_source": null,
    "gate_type": "open",
-   "gate_detail": "",
+   "gate_detail": null,
    "gate_source": "No current Singapore enrolable training route verified; only international online courses (mostly US ICD-10-CM) found, which do not match Singapore's ICD-10-AM coding environment. No statutory registration for clinical coders. Check in-house coder training with hiring hospital groups.",
    "priced": "FALSE",
    "notes": "Wide disagreement between Jooble aggregate and JobStreet postings; low confidence. Cash = 0.8 x gross Grok round-2 2026-09-20: OPEN hold: JobStreet S$3,000-5,500 high end unused; settled uses bottom of range only. conf low. Claude audit 2026-09-20: gate_type '' normalised to 'open'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R024",
@@ -631,14 +631,14 @@
    "reskill_cost_nett": 2500.0,
    "reskill_source": "MySkillsFuture TGS-2024049369, TGS-2020505788, TGS-2024049471 (checked Sep 2026)",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "TRUE",
    "notes": "Facility-based tier below healthcare assistant; distinct from the home-based home care assistant row. Cash = 0.8 x gross 2026-09-20: index band (S$1,360/1,600 cash) sits well below MOM OW 2024 SSOC 53202 (cash ~S$1,946/2,400) and MOM 2025 (cash ~S$1,870/2,210). Either the level or an explicit junior-trainee definition needs stating before any band change. Band unchanged. Grok decisions 2026-09-20 (MOM/PWM official numbers): Re-based on MOM, scope = resident nursing aide/assistant (SSOC 53202), not attendant/trainee postings. priced FALSE (reskill/HCA cert path and employer gate unverified). Grok verification 2026-09-20: MOH Community Care Annex A (8 Apr 2026): Band 3 starting base S$2,480 (monthly base, not gross), corroborates MOM P25 rung. Scope locked to SSOC 53202, distinct from 53201 HCA / 53209 other personal care. Claude audit 2026-09-20: reskill_months '2 FT / 4-6 PT' -> '5' (PT range 4-6 midpoint). Claude audit 2026-09-20: reskill_cost_nett 'CSM Academy full S$6,000, from ~S$2,500 after subsidy + SFC; HMI SCTP full S$13,828, from ~S$3,650; KWSH Community Care from ~S$3,145' -> '2500' (CSM from ~S$2,500 after subsidy, verified floor). 2026-09-20: flipped priced=TRUE (healthcare batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R025",
@@ -661,10 +661,10 @@
    "gate_source": "https://courses.myskillsfuture.gov.sg/courses/TGS-2024050019--WSQ-Care-Assistance-Community-Care-Associate",
    "priced": "TRUE",
    "notes": "Community home-based care; distinct from facility-based nursing aide row. Cash = 0.8 x gross Reskill research 2026-09-20 (healthcare batch): Single classroom day (TGS-2024050019). Full fee S$300, standard subsidy S$150; nett S$150 before personal SkillsFuture Credit (the S$0 shown on the page applies only after deducting S$150 of personal credit). Covers daily-living assistance, health monitoring, safety and care planning. Claude audit 2026-09-20: gate_type 'None' normalised to 'none'. 2026-09-20: flipped priced=TRUE (healthcare batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R026",
@@ -687,15 +687,15 @@
    "gate_source": "https://courses.myskillsfuture.gov.sg/courses/TGS-2022012595--WSQ-Advanced-Certificate-Healthcare-Pharmacy-Support-Classroom-Synchronous-Asynchronous",
    "priced": "TRUE",
    "notes": "Wide disagreement between Indeed average and employer estimates; entry cash reflects lower end (0.8 x S$2,000). Feeder role into licenced pharmacy technician Reskill research 2026-09-20 (healthcare batch): 1 year part-time, 2 to 3 weekday nights (May and October runs). Nett S$2,952.50 before personal credit. No statutory registration for pharmacy assistants; only pharmacists register with the Singapore Pharmacy Council. Career switchers usually enter via employers hiring with on-the-job training, then take this course. Claude audit 2026-09-20: gate_type 'Employer' normalised to 'employer'. 2026-09-20: flipped priced=TRUE (healthcare batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R027",
    "title": "Phlebotomist",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "healthcare",
    "domain_adjacent": "ops",
    "entry_pay": 1920,
@@ -713,15 +713,15 @@
    "gate_source": "https://www.csmacademy.edu.sg/doc/brochure/Phlebotomy_Brochure_160126.pdf",
    "priced": "TRUE",
    "notes": "Four convergent sources (TTSH/Glassdoor/JobStreet/Recruit Express); earlier aggregator disagreement resolved. Hospital-employed tier; locum rates excluded. Confidence low->med 2026-09-20. Cash = 0.8 x gross Reskill research 2026-09-20 (healthcare batch): Nett S$822 = S$750 course fee plus S$50 application fee (both before GST) less the S$50 new-signup completion refund; excludes any partner-clinic OJT charge. The brochure does not specify the unit of the required '30 on the job training'; months recorded for classroom days only. Claude audit 2026-09-20: gate_type 'Professional' normalised to 'cert'. 2026-09-20: flipped priced=TRUE (healthcare batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R028",
    "title": "Care coordinator / patient navigator",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "healthcare",
    "domain_adjacent": "people|ops",
    "entry_pay": 2080,
@@ -733,21 +733,21 @@
    "reskill_path": "OPEN",
    "reskill_months": null,
    "reskill_cost_nett": null,
-   "reskill_source": "",
+   "reskill_source": null,
    "gate_type": "open",
-   "gate_detail": "",
+   "gate_detail": null,
    "gate_source": "SGUnited Health and Social Care Coordinator course (TGS-2021009397, SingHealth + Ngee Ann Poly CET Academy) was purpose-built for care coordinator roles, but it ran under the SGUnited Skills programme, which has ended; no current enrolable equivalent verified. No statutory registration for care coordinators.",
    "priced": "FALSE",
    "notes": "Non-licensed coordination role; distinct from medical administrator (clinic front desk). Cash = 0.8 x gross Claude audit 2026-09-20: gate_type '' normalised to 'open'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R029",
    "title": "CSSD / sterile processing technician",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "healthcare",
    "domain_adjacent": "ops",
    "entry_pay": 1760,
@@ -759,21 +759,21 @@
    "reskill_path": "OPEN",
    "reskill_months": null,
    "reskill_cost_nett": null,
-   "reskill_source": "",
+   "reskill_source": null,
    "gate_type": "open",
-   "gate_detail": "",
+   "gate_detail": null,
    "gate_source": "ICAS Basic CSSD Course (4.5 to 5 days) is the recognised route; latest verifiable run is 2025 (S$1,450 early-bird / S$1,800 regular, incl 9% GST). No 2026 run verified, so this row is OPEN until a current run is confirmed. SingHealth surgical-ancillary staff attended the 2024 run, supporting employer recognition. No statutory registration for CSSD technicians.",
    "priced": "FALSE",
    "notes": "Assistant/support tier (gross S$2,000-3,000) separated from technician tier (gross S$2,800-4,200). Confidence low->med 2026-09-20. Gate cert recommended and recorded; keep gate sourced. Cash = 0.8 x gross Claude audit 2026-09-20: gate_type '' normalised to 'open'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R030",
    "title": "Health screening coordinator",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "healthcare",
    "domain_adjacent": "people|ops",
    "entry_pay": 2160,
@@ -791,10 +791,10 @@
    "gate_source": "https://isomer-user-content.by.gov.sg/7/45d2fac1-b713-4507-91e0-aab77f50763c/FAQs on HCSA_1.2.pdf",
    "priced": "TRUE",
    "notes": "Coordinator-tier postings only; assistant tier excluded. Confidence low->med 2026-09-20. Cash = 0.8 x gross Reskill research 2026-09-20 (healthcare batch): Adjacent route: covers patient registration and services, clinical support (vital signs, visual acuity), patient education and billing. Nett S$3,013.20 = S$10,044 full fee less S$7,030.80 SkillsFuture subsidy, before personal SkillsFuture Credit. Current runs include 24 Sep 2026 to 5 Feb 2027. Claude audit 2026-09-20: gate_type 'None' normalised to 'none'. 2026-09-20: flipped priced=TRUE (healthcare batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R031",
@@ -817,10 +817,10 @@
    "gate_source": "Indeed oral-health-therapist career guide (Sep 2026)",
    "priced": "FALSE",
    "notes": "reskill_cost_nett not verified (polytechnic diploma tuition unconfirmed); priced stays FALSE. Cash = 0.8 x gross",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R032",
@@ -843,10 +843,10 @@
    "gate_source": "http://tsaofoundation.org/doc/WSQ_Higher_Cert.pdf",
    "priced": "FALSE",
    "notes": "Programme-side community role, not a nursing role. Cash = 0.8 x gross Reskill research 2026-09-20 (healthcare batch): 2.5 months full-time (19.5 classroom days plus 29.5 workplace-attachment days). Fee is the provider's archived published figure from the 7% GST era (nett S$490 + S$34.30 GST = S$524.30 payable); current schedule and fees are not verifiable, so confirm with Hua Mei Training Academy before relying on it. Claude audit 2026-09-20: gate_type 'Professional' normalised to 'cert'. 2026-09-20: cost S$524.30 kept but flagged stale \u2014 only provider-direct doc is the archived Tsao/Hua Mei PDF (S$490 + 7% GST); no current intake/fee found. Confirm with Hua Mei before any priced flip.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R033",
@@ -869,10 +869,10 @@
    "gate_source": "prior pass 2026-09-20",
    "priced": "TRUE",
    "notes": "CCP factsheet is 2022-vintage; current availability not re-verified. STB cautions on 2026 outlook 2026-09-20: flipped priced=TRUE \u2014 WSG CCP is employer-led 100% OJT, no individual course fee (cost=0); pay med-conf, no statutory gate.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R034",
@@ -895,10 +895,10 @@
    "gate_source": "prior pass 2026-09-20",
    "priced": "TRUE",
    "notes": "CCP factsheet is 2022-vintage; current availability not re-verified 2026-09-20: flipped priced=TRUE \u2014 WSG CCP is employer-led 100% OJT, no individual course fee (cost=0); pay med-conf, no statutory gate.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R035",
@@ -921,10 +921,10 @@
    "gate_source": "prior pass 2026-09-20",
    "priced": "FALSE",
    "notes": "Restaurant-manager wages left to market forces under Food Services PWM (brochure Apr 2026). Reskill programme 2026 availability not re-verified 2026-09-20: flipped priced=TRUE \u2014 WSG CCP is employer-led 100% OJT, no individual course fee (cost=0); pay med-conf, no statutory gate. 2026-09-20: flip reverted \u2014 reskill_months blank (Restaurant Manager CCP duration unconfirmed). Re-flip once duration is sourced.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R036",
@@ -947,10 +947,10 @@
    "gate_source": "prior pass 2026-09-20",
    "priced": "TRUE",
    "notes": "CCP factsheet is 2022-vintage; current availability not re-verified Grok round-2 2026-09-20: FLAGGED keep band: posting basis verified; MOM OW 2025 hotel executive (SSOC 42247) dropped as corroboration (that vintage sits below settled). 2026-09-20: flipped priced=TRUE \u2014 WSG CCP is employer-led 100% OJT, no individual course fee (cost=0); pay med-conf, no statutory gate.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R037",
@@ -973,15 +973,15 @@
    "gate_source": "Pullman Singapore Hill Street ad (secondary school, no experience required, training provided); luxury ads (Four Seasons, Bideford House) ask min 1 yr front-office or concierge experience",
    "priced": "TRUE",
    "notes": "Cash = 0.8 x gross. MOM OW page not directly scraped; proxy = Jooble/Glassdoor aggregates Grok round-2 2026-09-20: 1920/2240 -> 2060/2400. MOM 2024 concierge (hotel) P25/median gross S$2,580/3,002 to cash. Grok round-2 2026-09-20: SSOC 96272 assigned (round-2 clean mapping). Reskill research 2026-09-20 (hospitality batch): Entry-level ads state no experience/certification needed. Skills Framework for Hotel and Accommodation Services lists Concierge at operational level; no dedicated WSQ concierge qualification is live for new enrolments (SHATEC teaching out). WSQ HAS short courses exist as optional, not required. 2026-09-20: flipped priced=TRUE \u2014 no-course hiring-led route (precedent R040/R048); pay verified, no statutory gate.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R038",
    "title": "Night auditor",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "hospitality",
    "domain_adjacent": "ops|finance",
    "entry_pay": 1920,
@@ -999,10 +999,10 @@
    "gate_source": "Hilton Night Auditor posting (previous Front Office experience advantageous); Indeed night-audit ads (1+ yr hospitality/front-desk preferred)",
    "priced": "FALSE",
    "notes": "Indeed figure is dated (Feb 2024); Jooble figure is a night-hotel proxy not night-auditor-specific. A S$4,410 hotel-auditor result described a different audit role and was excluded. Cash = 0.8 x gross Reskill research 2026-09-20 (hospitality batch): No dedicated night-auditor course exists in Singapore (searches return only ISO auditor courses, unrelated). PMS rollover/audit procedures learned on the job; numeracy and Excel are the practical screen.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R039",
@@ -1025,10 +1025,10 @@
    "gate_source": "Mercure ad (secondary education, no experience required, Opera PMS a plus); Ritz-Carlton ad (no related work experience; no certification)",
    "priced": "TRUE",
    "notes": "Cash = 0.8 x gross. Reservations Officer is the junior tier; Executive is the settled tier Reskill research 2026-09-20 (hospitality batch): Mid-market hotels hire entry level and train on Opera/PMS in-house. Luxury hotels require prior experience, so a true switcher's entry route is via mid-market properties or prior call-centre/customer-service experience. 2026-09-20: flipped priced=TRUE \u2014 no-course hiring-led route (precedent R040/R048); pay verified, no statutory gate.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R040",
@@ -1051,10 +1051,10 @@
    "gate_source": "Jobstreet/Indeed/Glassdoor listings (e.g. SEAMEO Regional Language Centre ad: training provided for those without relevant experience; Park Hotel Group: no prior experience welcome)",
    "priced": "TRUE",
    "notes": "Entry cash = 0.8 x S$1,900; settled cash = 0.8 x S$2,200. Junior feeder into housekeeping supervisor Grok round-2 2026-09-20: SSOC 91121 assigned (round-2 clean mapping). Reskill research 2026-09-20 (hospitality batch): Modal requirement across listings: no experience required, training provided. 6-day shift weeks incl weekends/PH are the norm. priced=TRUE 2026-09-20: pay verified, reskill route found, gate set (Marcus approved flip).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R041",
@@ -1077,10 +1077,10 @@
    "gate_source": "http://www.sfa.gov.sg/food-handler-hygiene-officer/requirements-for-food-handler-hygiene-officer/requirements-for-food-handlers",
    "priced": "TRUE",
    "notes": "Cash = 0.8 x gross. Minimum-PSLE entry; training provided per Pullman post Grok round-2 2026-09-20: 1560/1800 -> 1660/1800. MOM 2024 bellboy/hotel porter P25/median gross S$2,078/2,255 to cash; settled already matched median. Grok round-2 2026-09-20: SSOC 96212 assigned (round-2 clean mapping). Reskill research 2026-09-20 (hospitality batch): Pullman Singapore bellman ad states 'No experience is required, training will be provided'; secondary school minimum. No licence or cert needed. 2026-09-20: flipped priced=TRUE \u2014 no-course hiring-led route (precedent R040/R048); pay verified, no statutory gate.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R042",
@@ -1103,10 +1103,10 @@
    "gate_source": "http://www.sfa.gov.sg/food-handler-hygiene-officer/requirements-for-food-handler-hygiene-officer/requirements-for-food-handlers",
    "priced": "TRUE",
    "notes": "Cash = 0.8 x gross. Many posts welcome no experience with training provided Reskill research 2026-09-20 (hospitality batch): $480 incl GST for all tiers per Bettr/FastLearn listing; SkillsFuture Credit claimable, no SSG course-fee subsidy shown. Many cafes sponsor FSC Level 1 for staff (1-day, roughly S$40 to S$150). priced=TRUE 2026-09-20: pay verified, reskill route found, gate set (Marcus approved flip). Claude audit 2026-09-20: reskill recoded to the mandatory object (FSC Level 1, S$40.50). Was: SCA Barista Skills Foundation \u2014 Bettr Barista (10H in-person...; SCA Barista Skills Foundation (S$480, Bettr Barista) \u2014 optional upgrade, not required.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R043",
@@ -1125,14 +1125,14 @@
    "reskill_cost_nett": 0.0,
    "reskill_source": "Food Services PWM training requirement (MOM PWM page)",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "TRUE",
    "notes": "Entry cash = 0.8 x S$2,320 = S$1,856. PWM applies to resident workers, excludes overtime. Settled cash = 0.8 x S$2,600 market estimate 2026-09-20: TIER C conflicted - columns, row notes, and the Food Services PWM statutory floor tell three different stories; do not use until resolved. Needs cleanup call: follow MOM observed figures, the PWM statutory floor, or a defined junior-trainee scope, then make columns and notes agree. Grok decisions 2026-09-20 (MOM/PWM official numbers): Rebased on PWM baseline gross (resident full-time, excl OT). Current step 1 Jul 2026, settled step 1 Jul 2027. Stale copied waiter columns discarded. MOM 2024 medians sit below the 2026 floor so cannot undercut the law. priced FALSE (reskill/gate unverified). Grok verification 2026-09-20: MOM press release 16 Mar 2026: PWM FS waiter/kitchen assistant gross S$2,320 (1 Jul 2026) / S$2,460 (1 Jul 2027) / S$2,600 (1 Jul 2028). No licence gate. Grok round-2 2026-09-20: SSOC 51311 assigned (round-2 clean mapping). Claude audit 2026-09-20: reskill_months '1-3' -> '2' (range 1-3 midpoint). Claude audit 2026-09-20: reskill_cost_nett 'Often employer-funded; public short modules a few hundred after SSG' -> '0' (typically employer-funded under PWM; public modules low hundreds after SSG). 2026-09-20: flipped priced=TRUE \u2014 no-course hiring-led route (precedent R040/R048); pay verified, no statutory gate.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R044",
@@ -1155,10 +1155,10 @@
    "gate_source": "https://avanta-acad.edu.sg/food-safety-course-level-1/",
    "priced": "FALSE",
    "notes": "Entry cash = 0.8 x S$2,875 = S$2,300. Settled cash = 0.8 x S$3,200 market estimate; settled-band market evidence thin 2026-09-20: TIER C conflicted - columns, row notes, and the Food Services PWM statutory floor tell three different stories; do not use until resolved. Needs cleanup call: follow MOM observed figures, the PWM statutory floor, or a defined junior-trainee scope, then make columns and notes agree. Grok decisions 2026-09-20 (MOM/PWM official numbers): Rebased on PWM baseline gross. Stale copied columns discarded. Grok verification 2026-09-20: MOM TCF Mar 2026: waiter supervisor gross S$2,875 (1 Jul 2026) / S$3,020 (1 Jul 2027) / S$3,165 (1 Jul 2028). Grok round-2 2026-09-20: SSOC 51312 assigned (round-2 clean mapping). Reskill research 2026-09-20 (hospitality batch): Nett S$808 is the self-sponsored SC 21-39 figure from the provider's 2020 published funding schedule (full fee S$1,080 per the 2024 brochure); re-verify nett on MySkillsFuture Training Exchange before it drives the calculator. Galiena Pte Ltd runs the same qualification at S$990 nett without SSG subsidy. Claude audit 2026-09-20: gate_type cert->none: SFA excludes service staff. 2026-09-20: cost blanked \u2014 Wine Language May 2025 brochure (TGS-2024048566) publishes full fee S$1,080 but no SSG-nett figure; S$808 from 2020 funding schedule is stale. Confirm nett with provider.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R045",
@@ -1177,14 +1177,14 @@
    "reskill_cost_nett": 0.0,
    "reskill_source": "Food Services PWM training requirement (MOM PWM page)",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "TRUE",
    "notes": "Entry cash = 0.8 x S$2,295 = S$1,836. PWM applies to resident workers, excludes overtime 2026-09-20: TIER C conflicted - columns, row notes, and the Food Services PWM statutory floor tell three different stories; do not use until resolved. Needs cleanup call: follow MOM observed figures, the PWM statutory floor, or a defined junior-trainee scope, then make columns and notes agree. Grok decisions 2026-09-20 (MOM/PWM official numbers): Rebased on PWM baseline gross. Stale copied columns discarded. Grok verification 2026-09-20: SSOC 52492 (exact title match). MOM TCF Mar 2026 Category A: kitchen assistant (QS) / food service counter attendant gross S$2,295 / S$2,435 / S$2,575. Claude audit 2026-09-20: reskill_months '1-3' -> '2' (range 1-3 midpoint). Claude audit 2026-09-20: reskill_cost_nett 'Often employer-funded; public short modules a few hundred after SSG' -> '0' (typically employer-funded under PWM; public modules low hundreds after SSG). 2026-09-20: flipped priced=TRUE \u2014 no-course hiring-led route (precedent R040/R048); pay verified, no statutory gate.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R046",
@@ -1207,10 +1207,10 @@
    "gate_source": "http://www.sfa.gov.sg/food-handler-hygiene-officer/requirements-for-food-handler-hygiene-officer/requirements-for-food-handlers",
    "priced": "FALSE",
    "notes": "Entry cash = 0.8 x S$2,220 = S$1,776. Lowest PWM tier; PWM applies to resident workers, excludes overtime Reskill research 2026-09-20 (hospitality batch): S$40.50 is the provider's advertised from-price; OPEN on exact under-40 SSG funding split. Employers commonly sponsor and send staff after hiring. 2026-09-20: cost 40.50 -> 67.50 \u2014 40.50 is the 40+ tier; under-40 figure derived, not directly published. 2026-09-20: hold on priced flip \u2014 S$67.50 is derived from the 40+ tier figure, not directly published for under-40. Confirm with Jacin first.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R047",
@@ -1233,10 +1233,10 @@
    "gate_source": "http://www.sfa.gov.sg/food-handler-hygiene-officer/requirements-for-food-handler-hygiene-officer/requirements-for-food-handlers",
    "priced": "TRUE",
    "notes": "Cash = 0.8 x gross. Entry reflects bar-back/junior bartender bands; settled reflects experienced bartender Grok round-2 2026-09-20: SSOC 51321 assigned (round-2 clean mapping). Reskill research 2026-09-20 (hospitality batch): $480 SGD full fee, no SSG funding shown. No bartender/liquor licence required for individuals in SG. Cheaper on-the-job-only route also common in bar hiring (OPEN: no-course variant not coded). priced=TRUE 2026-09-20: pay verified, reskill route found, gate set (Marcus approved flip). Claude audit 2026-09-20: reskill recoded to the mandatory object (FSC Level 1, S$40.50). Was: WSET Level 1 Award in Spirits (1-day in-person, 10am-6pm) \u2014 ...; WSET Level 1 Award in Spirits (S$480, The Beverage Clique) \u2014 optional upgrade, not required. Claude audit 2026-09-20: priced TRUE->FALSE: row carries an OPEN marker ('no-course variant not coded'), violating the priced rule; re-flip needs Marcus's call. Marcus call 2026-09-20: re-flipped to priced=TRUE on the cleaned FSC-based reskill row; OPEN marker refers to the uncoded no-course variant only.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R048",
@@ -1259,10 +1259,10 @@
    "gate_source": "https://avanta-acad.edu.sg/food-safety-course-level-1/",
    "priced": "TRUE",
    "notes": "Entry-level kitchen tier, distinct from seed Chef row. Cash = 0.8 x gross Grok round-2 2026-09-20: 2484/3080 -> 2142/2740. MOM 2024 senior cook (station chef, commis cook 1) P25/median gross S$2,678/3,425 to cash. Seed had copied the chef row (34341). Do not reuse 34341. Reskill research 2026-09-20 (hospitality batch): 1-day course (TGS-2017501274 at Avanta Academy; many ATOs run it, roughly S$40 to S$150 before SSG funding). Optional upgrade only: WSQ Certificate in Culinary Arts (19 days, EduQuest) exists but fees are unpublished, so not coded. SHATEC teaching out full-qualification programmes \u2014 no SHATEC route cited. priced=TRUE 2026-09-20: pay verified, reskill route found, gate set (Marcus approved flip).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R050",
@@ -1285,10 +1285,10 @@
    "gate_source": "https://avanta-acad.edu.sg/food-safety-course-level-1/",
    "priced": "FALSE",
    "notes": "Cash = 0.8 x gross. Manager wages left to market forces under Food Services PWM Grok round-2 2026-09-20: OPEN hold: no assistant restaurant manager row in MOM June 2024 T4; closest F&B operations manager P25 cash S$3,071 / kitchen operations head P25 cash S$2,663. conf med->low. Reskill research 2026-09-20 (hospitality batch): Fee OPEN: Avanta does not publish fees (aggregator Laimoon lists S$6,790, unverified and likely pre-subsidy). Provider FAQ confirms SFC eligibility and UTAP. Do not use IFI Academy's version for a cold switcher: it requires 2 years supervisory F&B experience for entry. Switchers with transferable management experience may also enter via the experience route with no course. Claude audit 2026-09-20: reskill_cost_nett 'OPEN' -> blank (unknown, not zero). Claude audit 2026-09-20: gate_type cert->none: SFA excludes managers. 2026-09-20: cost blank -> 3662.40 \u2014 Avanta now publishes fees: part-time S$3,662.40 w/GST (180 hrs, 1 Sun/wk); full-time S$3,760.50. No SSG subsidy published. Course title on page drifted to \"Diploma in Management of Food & Beverage Operations\".",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R051",
@@ -1311,10 +1311,10 @@
    "gate_source": "https://avanta-acad.edu.sg/food-safety-course-level-1/",
    "priced": "TRUE",
    "notes": "Cash = 0.8 x gross. worldsalaries average skews high (includes senior planners); entry/settled reflect coordinator-tier posts Reskill research 2026-09-20 (hospitality batch): Experience is the industry norm for hiring; WSQ catering/events short modules exist on the Training Exchange but none verified as a hiring requirement, so none coded. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R052",
@@ -1337,10 +1337,10 @@
    "gate_source": "https://advancescs.com/cips-diploma-procurement-supply/",
    "priced": "TRUE",
    "notes": "Entry = Glassdoor lower band S$3K gross to cash; settled = upper band S$4K gross to cash. Corporate tender/contract scope; distinct from merchandise Buyer. Reskill research 2026-09-20 (ops batch): S$3,000 tuition + S$600 course books as published; CIPS membership and per-subject exam fees are charged separately by CIPS and excluded from the S$3,600. Claude audit 2026-09-20: domain_adjacent 'procurement|logistics' mapped to closed taxonomy 'ops'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R053",
@@ -1363,10 +1363,10 @@
    "gate_source": "https://simm.org.sg/LSC/Certs/CPM.pdf",
    "priced": "TRUE",
    "notes": "Settled = MOM median S$4,694 gross to cash (S$3,755). Entry estimated at 0.8x median; merchandise/retail buying scope. Grok round-2 2026-09-20: SSOC 33231 assigned (round-2 clean mapping). Reskill research 2026-09-20 (ops batch): S$950 course fee + S$80 application fee as published; compulsory SIMM membership fee not published in the course PDF; 24 sessions run ~3 months part-time. Claude audit 2026-09-20: domain_adjacent 'procurement|retail' mapped to closed taxonomy 'ops'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R054",
@@ -1389,15 +1389,15 @@
    "gate_source": "http://www.ntuclearninghub.com/en-gb/-/course/wsq-effective-order-fulfilment",
    "priced": "TRUE",
    "notes": "Settled = MOM median S$2,850 gross to cash (S$2,280). PO processing and vendor admin scope. Reskill research 2026-09-20 (ops batch): S$390 before GST / S$460.20 after GST for SC aged 39 and below; Statement of Attainment from SWDA on passing. Claude audit 2026-09-20: domain_adjacent 'procurement' mapped to closed taxonomy 'ops'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R055",
    "title": "Supply-chain analyst",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "ops",
    "domain_adjacent": "ops|data",
    "entry_pay": 3200,
@@ -1415,10 +1415,10 @@
    "gate_source": "https://www.tertiarycourses.com.sg/media/courses/brochures/TGS-2020505444-SG.pdf?v=1780045494",
    "priced": "TRUE",
    "notes": "No clean SSOC fit (nearest 3323). MOM Material planning clerk S$6,000 median excluded as unreliable outlier; band from posting ranges instead. Reskill research 2026-09-20 (ops batch): Baseline nett S$472 incl GST for SG/PR (50% WSQ funding); full fee S$800 before GST. Claude audit 2026-09-20: domain_adjacent 'logistics|data' mapped to closed taxonomy 'ops|data'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R056",
@@ -1441,10 +1441,10 @@
    "gate_source": "https://www.ntuclearninghub.com/en-gb/-/course/wsq-inventory-management",
    "priced": "TRUE",
    "notes": "Settled = Indeed average S$3,560 gross to cash (S$2,848). Entry from Glassdoor lower band S$3K gross to cash. Reskill research 2026-09-20 (ops batch): S$425 before GST / S$501.50 after GST for SC aged 39 and below; weekend intakes available. Claude audit 2026-09-20: domain_adjacent 'logistics|warehouse' mapped to closed taxonomy 'ops'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R057",
@@ -1467,10 +1467,10 @@
    "gate_source": "http://www.ntuclearninghub.com/en-gb/-/course/wsq-perform-stock-control-housekeeping-operations",
    "priced": "TRUE",
    "notes": "Settled = MOM median S$2,706 gross to cash (S$2,165). Reskill research 2026-09-20 (ops batch): S$180 before GST / S$212.40 after GST for SC aged 39 and below; SOA from SSG plus NTUC LearningHub certificate. Claude audit 2026-09-20: domain_adjacent 'logistics|warehouse' mapped to closed taxonomy 'ops'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R058",
@@ -1493,10 +1493,10 @@
    "gate_source": "http://www.ntuclearninghub.com/en-gb/-/course/wsq-perform-warehouse-operations",
    "priced": "TRUE",
    "notes": "Settled = MOM median S$2,500 gross to cash (S$2,000). Grok round-2 2026-09-20: SSOC 43212 assigned (round-2 clean mapping). Reskill research 2026-09-20 (ops batch): S$180 before GST / S$212.40 after GST for SC aged 39 and below; SOA plus NTUC LearningHub certificate. Claude audit 2026-09-20: domain_adjacent 'logistics|warehouse' mapped to closed taxonomy 'ops'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R059",
@@ -1519,15 +1519,15 @@
    "gate_source": "http://www.ntuclearninghub.com/en-gb/-/course/effective-logistics-operations",
    "priced": "TRUE",
    "notes": "Settled = Glassdoor average S$3K gross to cash. No exact MOM occupation; SSOC 3331 best effort (shipping/clearing/forwarding agents). Reskill research 2026-09-20 (ops batch): S$500 before GST / S$590 after GST for SC aged 39 and below; SOA from SWDA (LOG-PIM-3001-1.1). Claude audit 2026-09-20: domain_adjacent 'logistics|freight' mapped to closed taxonomy 'ops'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R060",
    "title": "Warehouse / fulfilment supervisor",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "ops",
    "domain_adjacent": "ops",
    "entry_pay": 2240,
@@ -1545,10 +1545,10 @@
    "gate_source": "http://www.ntuclearninghub.com/en-gb/-/course/effective-logistics-operations",
    "priced": "TRUE",
    "notes": "No clean SSOC fit for warehouse supervisor (nearest 9333 covers workers). Entry S$2,800 gross to cash; settled S$4,000 gross to cash. Reskill research 2026-09-20 (ops batch): Same course, fee and award as R059; supervisor roles also gate on team-lead experience, which no short course confers. Claude audit 2026-09-20: domain_adjacent 'logistics|warehouse' mapped to closed taxonomy 'ops'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R061",
@@ -1571,15 +1571,15 @@
    "gate_source": "http://www.ntuclearninghub.com/en-gb/-/course/wsq-perform-warehouse-operations",
    "priced": "TRUE",
    "notes": "Settled = MOM median S$2,458 gross to cash (S$1,966). SSOC 9333 best effort (freight handlers). Grok round-2 2026-09-20: SSOC 93334 assigned (round-2 clean mapping). Reskill research 2026-09-20 (ops batch): S$180 before GST / S$212.40 after GST for SC aged 39 and below; SOA plus NTUC LearningHub certificate. Claude audit 2026-09-20: domain_adjacent 'logistics|warehouse' mapped to closed taxonomy 'ops'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R062",
    "title": "Operations executive",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "ops",
    "domain_adjacent": "ops",
    "entry_pay": 2400,
@@ -1597,10 +1597,10 @@
    "gate_source": "http://learnershub.com/courses/six-sigma-program/lean-sigma",
    "priced": "TRUE",
    "notes": "Generic title with no exact MOM occupation and no clean SSOC fit; band from earlier triangulation. Reskill research 2026-09-20 (ops batch): S$1,000 listed course fee; SkillsFuture subsidy is stated as available but no nett amount is published, so the full fee is shown; provider is not GST-registered; 2026 weekday intakes listed. Claude audit 2026-09-20: domain_adjacent 'operations' mapped to closed taxonomy 'ops'. 2026-09-20: cost verified at S$500 (Learners Hub live page). Flipped priced=TRUE 2026-09-20: pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R063",
@@ -1623,10 +1623,10 @@
    "gate_source": "https://pcdcpl.com.sg/outline-fees/",
    "priced": "TRUE",
    "notes": "Settled = MOM median S$4,507 gross to cash (S$3,606). No clean SSOC fit. Reskill research 2026-09-20 (ops batch): S$1,136.92 first-attempt total as published; ~3 months part-time is typical; check PCDC eligibility criteria before enrolling. Claude audit 2026-09-20: domain_adjacent 'logistics|transport' mapped to closed taxonomy 'ops'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R064",
@@ -1649,10 +1649,10 @@
    "gate_source": "http://www.ntuclearninghub.com/en-gb/-/course/wsq-traffic-management-in-logistics-industry",
    "priced": "TRUE",
    "notes": "Band from posting ranges to cash. SSOC 1324 best effort. Reskill research 2026-09-20 (ops batch): S$300 before GST / S$354 after GST for SC aged 39 and below; SOA from SSG in Transportation Route and Schedule Planning (LOG-TRM-3003-1.1). Claude audit 2026-09-20: domain_adjacent 'logistics|transport' mapped to closed taxonomy 'ops'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R065",
@@ -1675,10 +1675,10 @@
    "gate_source": "https://www.tertiarycourses.com.sg/media/courses/brochures/TGS-2024045800-SG.pdf?v=1780045544",
    "priced": "TRUE",
    "notes": "Settled = Glassdoor typical S$3K gross to cash; Indeed average S$2,723 gross = S$2,178 cash sits below settled. No clean SSOC fit. Reskill research 2026-09-20 (ops batch): Baseline nett S$885 incl GST for SG/PR under 40 (50% WSQ funding). Claude audit 2026-09-20: domain_adjacent 'facilities' mapped to closed taxonomy 'trades'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R066",
@@ -1701,10 +1701,10 @@
    "gate_source": "https://www.bcaa.edu.sg/what-we-offer/courses/Details/principles-and-application-of-integrated-facilities-management",
    "priced": "TRUE",
    "notes": "Settled = MOM median S$6,540 gross to cash (S$5,232). Entry S$4,500 gross to cash from Glassdoor lower range. No clean SSOC fit. Reskill research 2026-09-20 (ops batch): S$319.48 after 70% funding for SG/PR (full fee S$1,064.93); positioned for experienced FM practitioners, so this is an upskilling route rather than an entry gate. Claude audit 2026-09-20: domain_adjacent 'facilities' mapped to closed taxonomy 'trades'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R067",
@@ -1727,10 +1727,10 @@
    "gate_source": "https://www.tertiarycourses.com.sg/media/courses/brochures/TGS-2023020563-SG.pdf?v=1780045517",
    "priced": "TRUE",
    "notes": "Settled = MOM QA technician median S$4,292 gross to cash. Entry from posting lower bound S$2,500 gross to cash. Reskill research 2026-09-20 (ops batch): Baseline nett S$472 incl GST for SG/PR under 40 (50% WSQ funding). Claude audit 2026-09-20: domain_adjacent 'quality|manufacturing' mapped to closed taxonomy 'trades'. Marcus-approved pattern 2026-09-20 (ops batch review): pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R068",
@@ -1753,10 +1753,10 @@
    "gate_source": "https://www.mpa.gov.sg/docs/mpalibraries/mpa-documents-files/business-capability-development-division/list_of_2025_short_courses_approved_apr2025v2.pdf?sfvrsn=16c6c0ec_0",
    "priced": "FALSE",
    "notes": "Settled = MOM median S$3,318 gross to cash (S$2,654). SSOC 3331 best effort. Reskill research 2026-09-20 (ops batch): Fee S$481 via course aggregator Laimoon (listing crawled Sep 2026); confirm the current fee with SSA before budgeting; covers Incoterms, letters of credit, bills of lading, TradeNet permits. Claude audit 2026-09-20: domain_adjacent 'logistics|freight' mapped to closed taxonomy 'ops'. 2026-09-20: cost S$481 kept but flagged \u2014 provider-direct verification failed (SSA publishes no fee table); figure is from Laimoon aggregator, consistent across two crawls. Confirm with SSA (training@ssa.org.sg) before relying.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R069",
@@ -1779,10 +1779,10 @@
    "gate_source": "https://simm.org.sg/LSC/Full-Time/EDLSCM-FT.pdf",
    "priced": "FALSE",
    "notes": "Settled = MOM median S$6,625 gross to cash (S$5,300). Reskill research 2026-09-20 (ops batch): S$7,000 for SIMM members as published; compulsory membership fee not published in the PDF; management roles also gate on relevant experience. Claude audit 2026-09-20: domain_adjacent 'logistics|warehouse' mapped to closed taxonomy 'ops'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R070",
@@ -1805,10 +1805,10 @@
    "gate_source": "https://licensing.gobusiness.gov.sg/licence-directory/spf/security-officer-licence ; https://www.police.gov.sg/~/media/spf/files/e-services/licensing_conditions_for_security_officer_-_15_aug_2012__2_.pdf",
    "priced": "TRUE",
    "notes": "Entry/settled = PWM 2026 floors to cash. Senior rungs folded into band; separate supervisor row not created. Grok round-2 2026-09-20: Numbers verified; UNIT FIX: Security PWM 2026 floors are monthly BASIC (outsourced S$3,090 / senior S$3,390), not gross. In-house 2026 SO floor is gross S$2,475. Licence gate (PLRD) still blank. Claude audit 2026-09-20: domain_adjacent 'security' mapped to closed taxonomy 'ops'. 2026-09-20: PLRD gate filled \u2014 3 enhanced BLUs mandatory for new SOs from 1 Jan 2024; licence S$16 via GoBusiness, 5-yr validity, refresher quiz for renewal, medical fitness required. Flipped priced=TRUE 2026-09-20: pay high-conf PWM basic wages, reskill + PLRD gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R071",
@@ -1827,14 +1827,14 @@
    "reskill_cost_nett": null,
    "reskill_source": "NTUC landscape PWM publication (2022-2028 ladder; costs unverified)",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "FALSE",
    "notes": "PWM applies to resident workers in covered landscape maintenance firms; Indeed average sits below PWM floor, likely different scope/mix. Grok round-2 2026-09-20: Verified; unit labelled BASIC not gross (Landscape PWM 2026 basic floors technician S$2,490 / specialist S$2,685). Indeed S$1,717 below legal floor, discarded. Claude audit 2026-09-20: domain_adjacent 'landscaping' mapped to closed taxonomy 'ops'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R072",
@@ -1853,14 +1853,14 @@
    "reskill_cost_nett": null,
    "reskill_source": "NTUC landscape PWM publication (2022-2028 ladder; costs unverified)",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "FALSE",
    "notes": "Entry/settled = PWM specialist and senior specialist 2026 floors to cash. Claude audit 2026-09-20: domain_adjacent 'landscaping' mapped to closed taxonomy 'ops'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R073",
@@ -1883,10 +1883,10 @@
    "gate_source": "NEA GWDF briefing slides (nea.gov.sg)",
    "priced": "TRUE",
    "notes": "Entry = crew floor to cash; settled = team lead floor to cash. PWM applies to licensed waste collection firms; excludes OT pay. Reskill research 2026-09-20 (trades batch): Nett assumes standard 50% SSG subsidy for SC under 40 (GST payable on full fee). Modules open to new entrants with interest in the industry. Claude audit 2026-09-20: domain_adjacent 'waste|environment' mapped to closed taxonomy 'trades'. 2026-09-20: flipped priced=TRUE (trades batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R074",
@@ -1909,10 +1909,10 @@
    "gate_source": "NEA GWDF briefing slides (nea.gov.sg)",
    "priced": "TRUE",
    "notes": "Entry/settled = team lead and supervisor 2026 floors to cash. Reskill research 2026-09-20 (trades batch): Nett assumes standard 50% SSG subsidy for SC under 40 (GST on full fee). Module combination is illustrative; any 4 approved cumulative modules meet the PWM count. Claude audit 2026-09-20: domain_adjacent 'waste|environment' mapped to closed taxonomy 'trades'. 2026-09-20: flipped priced=TRUE (trades batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R075",
@@ -1935,10 +1935,10 @@
    "gate_source": "pcdcpl.com.sg; NEA GWDF PWM briefing slides",
    "priced": "TRUE",
    "notes": "Entry/settled = driver and senior driver 2026 floors to cash. Class 4/5 driving licence typically required by employers (gate kept none; licence is role-enabling, unverified as PWM gate). Reskill research 2026-09-20 (trades batch): TCC recognises Class 4/5 licence as equivalent to 1 PWM training module for truck drivers under the related conservancy PWM. Modules nett assumes 50% SSG subsidy for SC under 40. Claude audit 2026-09-20: domain_adjacent 'waste|transport' mapped to closed taxonomy 'trades'. 2026-09-20: flipped priced=TRUE (trades batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R076",
@@ -1961,10 +1961,10 @@
    "gate_source": "NEA GWDF briefing slides (nea.gov.sg)",
    "priced": "TRUE",
    "notes": "Entry = sorter floor to cash; settled = team lead floor to cash. Materials recovery facility scope. Reskill research 2026-09-20 (trades batch): Nett assumes standard 50% SSG subsidy for SC under 40 (GST payable on full fee). Modules open to new entrants with interest in the industry. Claude audit 2026-09-20: domain_adjacent 'waste|environment' mapped to closed taxonomy 'trades'. 2026-09-20: flipped priced=TRUE (trades batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R077",
@@ -1987,10 +1987,10 @@
    "gate_source": "NEA GWDF briefing slides (nea.gov.sg)",
    "priced": "TRUE",
    "notes": "Entry/settled = team lead and plant supervisor 2026 floors to cash. Reskill research 2026-09-20 (trades batch): Nett assumes standard 50% SSG subsidy for SC under 40 (GST on full fee). Module combination is illustrative; any 4 approved cumulative modules meet the PWM count. Claude audit 2026-09-20: domain_adjacent 'waste|environment' mapped to closed taxonomy 'trades'. 2026-09-20: flipped priced=TRUE (trades batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R078",
@@ -2007,16 +2007,16 @@
    "reskill_path": "OPEN",
    "reskill_months": null,
    "reskill_cost_nett": null,
-   "reskill_source": "",
+   "reskill_source": null,
    "gate_type": "cert",
    "gate_detail": "Cleaning PWM Enhanced Training Requirements: supervisors need 3 WSQ modules (1 WSH + 2 CORE) under Class 1 licensees, 2 modules under Class 2/3",
    "gate_source": "adepco.com.sg (citing NEA/TCC); NEA EDM74 Jul-2025",
    "priced": "FALSE",
    "notes": "Exact PWM rung-to-year mapping unverified (only summary range available); entry uses PWM range low S$1,910 gross to cash. SSOC 9112 best effort. Reskill research 2026-09-20 (trades batch): Route credible but full cost unverifiable: only one supervisor module fee found (AKC WSQ WSH System Management L3 for Cleaning Supervisors, TGS-2025056505, 2 days, S$368.42 incl GST); fees for the required CORE modules (e.g. EVS-CGO-3001-1.1, EVS-CFC-3005-1.1, EVS-PDV-3002-1.1) not published. Do not treat the single module as the full route. Claude audit 2026-09-20: domain_adjacent 'cleaning|facilities' mapped to closed taxonomy 'ops'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R079",
@@ -2035,14 +2035,14 @@
    "reskill_cost_nett": 0.0,
    "reskill_source": "MOM Cleaning PWM training requirement",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "TRUE",
    "notes": "Settled = MOM median S$2,270 gross to cash; entry from PWM range low. Exact rung mapping unverified. 2026-09-20: index SSOC 9112 corrected to MOM five-digit 91133; no band impact. Cleaning PWM statutory basic wage for this rung is >= S$2,530 (1 Jul 2025-30 Jun 2026) and >= S$2,700 (1 Jul 2026-30 Jun 2027) for full-time resident cleaners in covered employment - above the index band (MOM-observed basis, all employment types). Row needs an explicit scope note (covered vs uncovered) or a level review. Grok decisions 2026-09-20 (MOM/PWM official numbers): Follows Cleaning PWM statutory floor for covered full-time resident employment. June 2024 MOM median S$2,270 predates Jul 2025/2026 steps and sits below legal basic wage. priced FALSE (WSQ modules/gate unverified). Grok verification 2026-09-20: Cleaning PWM monthly basic (full-time 35-44h, resident, outsourced+in-house): S$2,530 / S$2,700 / S$2,870 for the three steps. MOM OW 2024 row 91133 gross P25/med/P75 1,908/2,270/2,873 now below legal basic. Do not collapse 91133 with 91154/91162 if index splits by workplace. Claude audit 2026-09-20: domain_adjacent 'cleaning|facilities' mapped to closed taxonomy 'ops'. Claude audit 2026-09-20: reskill_months '1-3' -> '2' (range 1-3 midpoint). Claude audit 2026-09-20: reskill_cost_nett 'Typically employer-funded under Cleaning PWM; public module fees low hundreds after SSG' -> '0' (typically employer-funded under PWM; public modules low hundreds after SSG). 2026-09-20: flipped priced=TRUE (trades batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R080",
@@ -2061,14 +2061,14 @@
    "reskill_cost_nett": null,
    "reskill_source": "ITE / earlier research (course fee unverified)",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "FALSE",
    "notes": "SSOC 7412 best effort. MOM lift technician median S$4,374 gross (S$3,499 cash) likely reflects experienced/senior mix; band here covers entry to competent technician. Claude audit 2026-09-20: domain_adjacent 'vertical-transport|facilities' mapped to closed taxonomy 'ops'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R081",
@@ -2091,10 +2091,10 @@
    "gate_source": "coursemology.sg course page",
    "priced": "TRUE",
    "notes": "SSOC 7127 best effort (air-con and refrigeration mechanics). Reskill research 2026-09-20 (trades batch): One-day course is a foundation only; independent technician competence is built through supervised on-the-job experience after hiring. No prior technical experience required (min age 16, primary education, WPLN L3). Claude audit 2026-09-20: domain_adjacent 'hvac|facilities' mapped to closed taxonomy 'ops'. 2026-09-20: flipped priced=TRUE (trades batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R082",
@@ -2117,10 +2117,10 @@
    "gate_source": "coursemology.sg course page",
    "priced": "TRUE",
    "notes": "2026-09-20 hygiene fix: old note claim \"settled = 0.8 x S$3,778 = S$3,022\" was wrong; correct basis is MOM 2024 automotive mechanic median S$2,776 gross to cash S$2,221. Columns were correct; note corrected. SSOC 7231 -> MOM five-digit 72310. Distinct from automotive mechanic (MOM S$2,776) and automotive engineer (higher). Grok round-2 2026-09-20: SSOC 72310 assigned (round-2 clean mapping). Reskill research 2026-09-20 (trades batch): Technician is the senior title; same entry route as mechanic (R083), progression via workshop experience. No prior technical experience required. Claude audit 2026-09-20: domain_adjacent 'automotive' mapped to closed taxonomy 'trades'. 2026-09-20: flipped priced=TRUE (trades batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R083",
@@ -2143,10 +2143,10 @@
    "gate_source": "coursemology.sg course page",
    "priced": "TRUE",
    "notes": "Settled = MOM median S$2,776 gross to cash (S$2,221). Reskill research 2026-09-20 (trades batch): Entry-level trade role; the one-day course plus workshop assistant/apprentice hiring is the genuine entry path. No prior technical experience required. Claude audit 2026-09-20: domain_adjacent 'automotive' mapped to closed taxonomy 'trades'. 2026-09-20: flipped priced=TRUE (trades batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R084",
@@ -2169,10 +2169,10 @@
    "gate_source": "bcaa.edu.sg course page",
    "priced": "TRUE",
    "notes": "Settled = MOM median S$3,623 gross to cash (S$2,898). SSOC 7412 best effort. Reskill research 2026-09-20 (trades batch): Course targets facilities-management switchers and leans supervisory; hands-on repair skills also built via employer training. Individual modular applicants not subject to full Specialist Diploma entry requirements. Claude audit 2026-09-20: domain_adjacent 'facilities|building' mapped to closed taxonomy 'ops'. 2026-09-20: flipped priced=TRUE (trades batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R085",
@@ -2189,16 +2189,16 @@
    "reskill_path": "OPEN",
    "reskill_months": null,
    "reskill_cost_nett": null,
-   "reskill_source": "",
+   "reskill_source": null,
    "gate_type": "none",
    "gate_detail": "No statutory licence; employers typically require mechanical engineering qualifications plus experience",
-   "gate_source": "",
+   "gate_source": null,
    "priced": "FALSE",
    "notes": "Settled = MOM median S$4,012 gross to cash (S$3,210). SSOC 7233 best effort. Reskill research 2026-09-20 (trades batch): No verifiable current route: ITE part-time mechanical/mechatronics Nitec modules are phasing out (2026 intakes for ongoing students only); private providers (e.g. ATTS) offer electrical, not mechanical, maintenance courses. Genuine entry is via engineering qualifications or employer traineeship, neither verifiable here. Claude audit 2026-09-20: domain_adjacent 'manufacturing' mapped to closed taxonomy 'trades'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R086",
@@ -2215,16 +2215,16 @@
    "reskill_path": "OPEN",
    "reskill_months": null,
    "reskill_cost_nett": null,
-   "reskill_source": "",
+   "reskill_source": null,
    "gate_type": "none",
    "gate_detail": "No statutory welder licence in SG; employability via skills certificate or employer-administered welder qualification tests",
-   "gate_source": "",
+   "gate_source": null,
    "priced": "FALSE",
    "notes": "Settled = MOM median S$3,050 gross to cash (S$2,440). SSOC 7212 best effort. Reskill research 2026-09-20 (trades batch): Credible route exists but current fee unverifiable: ITE Skills Certificate in Shielded Metal Arc Welding (C4SMA, 99 hrs incl 75 practical, ~6 months part-time evenings, no prereq; ITE states completers can work independently). 2026 advertised intakes show GTAW, not SMAW; no published fee. Rejected: Malaysian work-permit levy courses, 2015 listings, inspector courses. Claude audit 2026-09-20: domain_adjacent 'manufacturing|construction' mapped to closed taxonomy 'trades'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R087",
@@ -2241,16 +2241,16 @@
    "reskill_path": "OPEN",
    "reskill_months": null,
    "reskill_cost_nett": null,
-   "reskill_source": "",
+   "reskill_source": null,
    "gate_type": "none",
    "gate_detail": "No statutory licence; trade entry via apprenticeship with renovation/furniture firms",
-   "gate_source": "",
+   "gate_source": null,
    "priced": "FALSE",
    "notes": "Settled = MOM median S$2,902 gross to cash (S$2,322). SSOC 7115 best effort. Reskill research 2026-09-20 (trades batch): No verifiable occupational route: SFIC Institute's current public offering is a 2-day DIY furniture workshop (S$436 for under-50s, hobby level), not a trade pathway. Professional carpenters train on the job; no published apprenticeship fee/duration. Claude audit 2026-09-20: domain_adjacent 'construction' mapped to closed taxonomy 'trades'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R088",
@@ -2273,10 +2273,10 @@
    "gate_source": "gobusiness.gov.sg vector-control-technician-licence",
    "priced": "TRUE",
    "notes": "Settled = MOM median S$2,300 gross to cash (S$1,840). NEA licensing applies to operators (firm-level); no clean SSOC fit. Reskill research 2026-09-20 (trades batch): Certificate is for the full Technician licence, not the lower Vector Control Worker certificate. Cost = course S$222.36 + licence S$31. Claude audit 2026-09-20: domain_adjacent 'environment|facilities' mapped to closed taxonomy 'trades'. 2026-09-20: flipped priced=TRUE (trades batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R089",
@@ -2299,17 +2299,17 @@
    "gate_source": "galmon.com course page",
    "priced": "TRUE",
    "notes": "Settled = MOM median S$2,500 gross to cash (S$2,000). Employers typically require WSQ Operate Forklift course (unverified in this pass; gate kept none). SSOC 8344 best effort. Reskill research 2026-09-20 (trades batch): Nett assumes 50% SSG subsidy for SC under 40. Alternative: Absolute Kinetics, 4 days, S$632.20 incl GST (TGS-2014500850). Claude audit 2026-09-20: domain_adjacent 'logistics|warehouse' mapped to closed taxonomy 'ops'. 2026-09-20: flipped priced=TRUE (trades batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R090",
    "title": "Cloud Infrastructure Engineer",
    "ssoc_code": "25231",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4120,
    "settled_pay": 6066,
    "pay_sources": "MOM Occupational Wages 2024 (cloud specialist S$9,583 median gross); Indeed SG (S$5,150 avg, 42 postings, Jun 2026); Recruiter alt: Hays SG 2025: Cloud Engineer S$60-144k annual total package (Technology); Recruiter alt: MP SG 2026: Cloud Engineer S$135,000 annual avg (ERP & Cloud); Recruiter alt: MP SG 2026: Cloud DevOps Lead S$150,000 annual avg (ERP & Cloud) [lead-level; directional]",
@@ -2321,21 +2321,21 @@
    "reskill_cost_nett": 500.0,
    "reskill_source": "AWS official; Tertiary Infotech Academy",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "TRUE",
    "notes": "Entry pay from Indeed ad average; settled pay anchored on MOM cloud-specialist median gross converted to cash.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R091",
    "title": "DevOps Engineer",
    "ssoc_code": "25121",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4800,
    "settled_pay": 6800,
    "pay_sources": "Glassdoor SG (S$7,000 avg base, S$5K-8K range, 30+ salaries, 2026); Jooble SG (S$5,430 junior avg, S$4,663-6,148 range); Recruiter alt: Hays SG 2025: DevOps Engineer S$72-140k annual total package (Technology); Recruiter alt: MP SG 2026: DevOps Engineer S$140,000 annual avg (Development)",
@@ -2347,21 +2347,21 @@
    "reskill_cost_nett": 500.0,
    "reskill_source": "AWS official; Tertiary Infotech Academy",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "TRUE",
    "notes": "Settled pay from Glassdoor SG 2026 average converted to cash; overlaps cloud infra day-to-day but owns CI/CD pipelines.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R092",
    "title": "Network Engineer",
    "ssoc_code": "25232",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 3600,
    "settled_pay": 5440,
    "pay_sources": "Reeracoen SG Salary Guide 2026 (junior S$4,000-6,100 gross); Glassdoor SG (S$5,000 avg base, 2026); Recruiter alt: Hays SG 2025: Network Engineer S$70-130k annual total package (Technology); Recruiter alt: MP SG 2026: Network Engineer S$90,000 annual avg (Infrastructure)",
@@ -2377,17 +2377,17 @@
    "gate_source": "SSG listing; employer job ads",
    "priced": "TRUE",
    "notes": "Entry pay from Reeracoen junior band lower half; settled pay from Glassdoor average converted to cash.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R093",
    "title": "IT Support / Helpdesk Specialist",
    "ssoc_code": "35123",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 2400,
    "settled_pay": 3600,
    "pay_sources": "PayScale 2026 (S$3,052/mo gross entry avg); worldsalaries.com (S$5,568/mo gross median); Recruiter alt: Hays SG 2025: Technical Support / IT Helpdesk S$48-90k annual total package (Technology); Recruiter alt: MP SG 2026: IT Support Engineer S$96,000 annual avg (Infrastructure)",
@@ -2399,21 +2399,21 @@
    "reskill_cost_nett": 1180.0,
    "reskill_source": "SSG course listing; SkillsFuture Credit-eligible",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "TRUE",
    "notes": "Low switch risk, modest ceiling; settled figure uses the all-seniority average.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R094",
    "title": "QA / Software Test Engineer",
    "ssoc_code": "25151",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 3200,
    "settled_pay": 5200,
    "pay_sources": "Quess SG Salary Guide FY25/26 (QA manual S$4,000-6,000 gross); Indeed SG (S$5,527 avg, 113 salaries); Recruiter alt: Hays SG 2025: Test Analyst S$60-90k annual total package (Technology); Recruiter alt: Hays SG 2025: Senior Test Analyst S$80-140k annual total package (Technology) [senior-weighted; directional]; Recruiter alt: MP SG 2026: Test Analyst / QA Engineer S$115,000 annual avg (Development)",
@@ -2426,20 +2426,20 @@
    "reskill_source": "Singapore Polytechnic; The Knowledge Academy SG",
    "gate_type": "none",
    "gate_detail": "ISTQB/CSTP nice-to-have only",
-   "gate_source": "",
+   "gate_source": null,
    "priced": "FALSE",
    "notes": "No dedicated QA CCP or SCTP identified; reskill path is adjacent, not dedicated.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R095",
    "title": "IT Business Analyst",
    "ssoc_code": "25112",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4400,
    "settled_pay": 6800,
    "pay_sources": "MOM Occupational Wages 2024 (ICT business process consultant S$8,500 median gross); JobStreet via SP guides (S$5,000-7,000 range); Recruiter alt: Hays SG 2025: Business / Process Analyst S$70-144k annual total package (Technology); Recruiter alt: Hays SG 2025: Business Analyst (Change Management, Banking) S$60-130k annual total package (Technology) [banking segment; adjacent]; Recruiter alt: MP SG 2026: IT Business Analyst S$125,000 annual avg (IT Management & Architecture)",
@@ -2455,17 +2455,17 @@
    "gate_source": "https://www.iiba.org/globalassets/certification/fees/files/faq-non-members-certification-pricing-2022.pdf",
    "priced": "FALSE",
    "notes": "Settled pay uses the MOM ICT-business-process-consultant proxy; entry pay from the JobStreet band lower half. 2026-09-20 recruiter check: Hays Business/Process Analyst S$70-144k pkg and MP IT Business Analyst S$125k avg corroborate the index band (S$4,400/6,800 cash). MOM ICT-occupation proxy retained as primary. Reskill research 2026-09-20 (tech-data batch): ECBA is the newcomer entry point; CCBA/CBAP are experience-gated upgrades (3,750/7,500 BA hours). Cost range S$1,324-1,974 (training S$849-1,499 + exam ~S$475); no SkillsFuture subsidy on vendor certs.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R096",
    "title": "Technology Product Manager",
    "ssoc_code": "24313",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4200,
    "settled_pay": 6600,
    "pay_sources": "Indeed SG (S$6,861 avg, 2026); Glassdoor SG (S$6,000 avg base, S$5K-8K range); Recruiter alt: Hays SG 2025: Product Manager (Tech) S$80-180k annual total package (Technology); Recruiter alt: MP SG 2026: Product Manager S$158,000 annual avg (Digital); Recruiter alt: MP SG 2026: Senior Product Manager S$162,000 annual avg (Digital) [senior-weighted; directional]",
@@ -2481,17 +2481,17 @@
    "gate_source": "https://www.ntu.edu.sg/pace/for-individuals/SkillsFuture_Career_Transition_Programme/sctp-advanced-professional-certificate-in-product-management-for-ai-digital-finance",
    "priced": "FALSE",
    "notes": "No MOM OW label for product manager; settled pay from the Glassdoor average converted to cash. Reskill research 2026-09-20 (tech-data batch): S$5,722.50 incl GST after up to 70% SWDA funding (SC/PR 39 and below). GA PM short course retired; no poly specialist diploma in PM found. Cheaper SGInnovate/NUS cert (S$2,154.60) could not be confirmed as currently running.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R097",
    "title": "Site Reliability Engineer",
    "ssoc_code": "25232",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 5200,
    "settled_pay": 6400,
    "pay_sources": "PayScale 2026 (early-career S$72,000/yr total comp, 9 salaries); Glassdoor SG (S$8,000 avg base, S$7K-9K range); Recruiter alt: Hays SG 2025: Site Reliability Engineer S$84-180k annual total package (Technology)",
@@ -2507,17 +2507,17 @@
    "gate_source": "https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/",
    "priced": "FALSE",
    "notes": "No exact MOM OW label; SRE demand tracked within cloud/devops/infrastructure hiring. Reskill research 2026-09-20 (tech-data batch): Exam fees only; training materials separate. Linux Foundation runs periodic 30-50% discounts; one free CKA retake included. Realistic 3-6 months self-paced.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R098",
    "title": "Mobile Application Developer",
    "ssoc_code": "25122",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4400,
    "settled_pay": 5600,
    "pay_sources": "Salary.sg 2026 (junior S$5,500 gross); Indeed SG (S$6,164 avg, 2026); Recruiter alt: Hays SG 2025: Mobile Developer S$80-150k annual total package (Technology); Recruiter alt: MP SG 2026: Mobile Developer S$155,000 annual avg (Development)",
@@ -2533,17 +2533,17 @@
    "gate_source": "https://academy.smu.edu.sg/courses/sctp-advanced-certificate-ios-app-development-swift-programming",
    "priced": "FALSE",
    "notes": "Settled pay from the Indeed average converted to cash; MOM has no mobile-specific label. Reskill research 2026-09-20 (tech-data batch): Full fee S$19,620; S$1,386 is the maximum-funding bound, exact under-40 nett not published. Next intake listed as To be advised; re-check availability. Prereq: 2 years working experience. 120 hrs over ~4-5 months. 2026-09-20: cost corrected 1386 -> 5886 (SMU Academy live fee table).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R099",
    "title": "Web Developer",
    "ssoc_code": "25122",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 3800,
    "settled_pay": 5600,
    "pay_sources": "Salary.sg 2026 (junior S$4,800 gross); Indeed SG (S$6,164 avg, 2026); Recruiter alt: Hays SG 2025: Front-End Developer S$80-150k annual total package (Technology) [adjacent: closest Hays match]; Recruiter alt: Hays SG 2025: Back-End Developer S$80-180k annual total package (Technology) [adjacent: closest Hays match]",
@@ -2559,17 +2559,17 @@
    "gate_source": "https://www.rocketacademy.co/bootcamps/coding-bootcamp",
    "priced": "FALSE",
    "notes": "Settled pay from the Indeed average converted to cash; MOM web-mobile label skews to mobile apps. Reskill research 2026-09-20 (tech-data batch): S$13,500 full fee; IMDA TIPP grants up to 70% for SC/PR 21-39 give nett ~S$4,050 + S$250 app fee, subject to limited subsidised seats. 24-48 weeks part-time (Mon/Wed evenings + Sat).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R100",
    "title": "Low-code Developer",
    "ssoc_code": "25121",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4400,
    "settled_pay": 5600,
    "pay_sources": "Salary.sg 2026 (S$5,500-6,000 gross, 1-3 yrs); Glassdoor SG (junior S$5,000-6,000, 2026)",
@@ -2585,17 +2585,17 @@
    "gate_source": "Microsoft Learn; employer job ads",
    "priced": "TRUE",
    "notes": "Low-code demand rides enterprise digitalisation; vendor cert is not a legal gate.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R101",
    "title": "RPA Developer",
    "ssoc_code": "25121",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4400,
    "settled_pay": 5200,
    "pay_sources": "Glassdoor SG (UiPath RPA dev S$5,500 avg base, 2026); JobStreet via SP guides (S$5,000-6,000 range); Recruiter alt: MP SG 2026: Robotic Process Automation (RPA) Developer S$125,000 annual avg (Development)",
@@ -2611,10 +2611,10 @@
    "gate_source": "UiPath Academy; employer job ads",
    "priced": "TRUE",
    "notes": "UiPath training self-paced; exam fee currently not charged per the vendor listing.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R102",
@@ -2637,17 +2637,17 @@
    "gate_source": "https://www.isaca.org/credentialing/cisa",
    "priced": "FALSE",
    "notes": "MOM ICT-auditor median likely senior-skewed; entry pay from the Glassdoor 1-3yr band. Reskill research 2026-09-20 (tech-data batch): ~US$760 exam + US$50 application fee at S$1.34; ISACA membership (US$135/yr) drops exam to US$575. Employers hire junior IT auditors without CISA; the exam pass still signals. No SkillsFuture subsidy on vendor exams.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R103",
    "title": "Penetration Tester",
    "ssoc_code": "25242",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 5200,
    "settled_pay": 6919,
    "pay_sources": "Indeed SG (S$8,649 avg, 5 salaries); JobStreet ads (S$10,000-12,000 senior listings); Recruiter alt: Hays SG 2025: Penetration Tester S$100-200k annual total package (Technology)",
@@ -2663,17 +2663,17 @@
    "gate_source": "https://www.offsec.com/products/90-day-bundle/",
    "priced": "FALSE",
    "notes": "No exact MOM OW label; distinct from Cybersecurity Analyst: offensive VAPT work vs defensive SOC work. 2026-09-20 recruiter check: Hays SG 2025 Penetration Tester S$100-200k annual package; index entry S$5,200 cash sits at the Hays implied low end (pkg/15 x0.8 assumption). Indeed SG avg retained as primary. Reskill research 2026-09-20 (tech-data batch): Most recognised pentester credential; functions as HR filter for pentester/security consultant roles. Most switchers take 3-6 months with prep. Retakes cost extra. CEH (~US$950) is cheaper but carries less weight with technical hiring managers.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R104",
    "title": "IT Project Manager",
    "ssoc_code": "24213",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4000,
    "settled_pay": 5600,
    "pay_sources": "Glassdoor SG (S$7,000 avg base, S$5K-9K range, 2026); Jooble SG (S$8,051 avg); Recruiter alt: Hays SG 2025: IT Project Manager S$110-180k annual total package (Technology); Recruiter alt: Hays SG 2025: Project Manager (Tech) S$84-180k annual total package (Technology); Recruiter alt: MP SG 2026: IT Project Manager S$150,000 annual avg (IT Management & Architecture)",
@@ -2689,17 +2689,17 @@
    "gate_source": "https://courses.myskillsfuture.gov.sg/courses/TGS-2026061355--Certified-Associate-Project-Management-CAPM-59",
    "priced": "FALSE",
    "notes": "Entry pay from Glassdoor 1-3yr submissions; settled pay from the Glassdoor average converted to cash. Reskill research 2026-09-20 (tech-data batch): S$360 after S$840 SSG subsidy (full fee S$1,200) + PMI exam USD 225 (~S$300). SkillsFuture credit can cover the S$360.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R105",
    "title": "Technical Writer",
    "ssoc_code": "26414",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 3494,
    "settled_pay": 4713,
    "pay_sources": "MOM Occupational Wages 2024 Table T4 (direct xlsx parse: gross P25/median/P75); Recruiter alt: MP SG 2026: Technical Writer S$125,000 annual avg (Development)",
@@ -2715,17 +2715,17 @@
    "gate_source": "https://developers.google.com/tech-writing",
    "priced": "FALSE",
    "notes": "Indeed sample is small; the JobStreet ad range corroborates the level. Reskill research 2026-09-20 (tech-data batch): No certificate issued; the value is craft plus samples. No credible paid credential found in SG at comparable value. Realistic 2-3 month part-time portfolio-building run.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R106",
    "title": "Scrum Master",
    "ssoc_code": "24213",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4400,
    "settled_pay": 5600,
    "pay_sources": "Glassdoor SG (S$7,000 avg base, S$6K-9K, 50 salaries); worldsalaries.com (S$6,425 avg/mo); Recruiter alt: Hays SG 2025: Scrum Master S$90-150k annual total package (Technology); Recruiter alt: MP SG 2026: Scrum Master S$155,000 annual avg (IT Management & Architecture)",
@@ -2741,17 +2741,17 @@
    "gate_source": "https://www.simpliaxis.com/info/csm-certification-cost",
    "priced": "FALSE",
    "notes": "Settled pay from the Glassdoor average converted to cash. Reskill research 2026-09-20 (tech-data batch): S$449 promo seen; SG market range S$800-1,000; no subsidy. PSM I (Scrum.org, USD 200 exam-only) is cheaper but SG hiring skews toward CSM for agency roles.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R107",
    "title": "Solutions Consultant (Pre-sales)",
    "ssoc_code": "24333",
    "domain_primary": "tech",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4000,
    "settled_pay": 7132,
    "pay_sources": "worldsalaries.com (S$8,915 avg/mo); JobStreet SG (S$5,000-7,000 and S$7,000-10,000 ad ranges); Recruiter alt: Hays SG 2025: Presales Consultant S$130-215k annual total package (Technology); Recruiter alt: Hays SG 2025: Pre Sales Engineer S$120-190k annual total package (Technology) [adjacent]",
@@ -2767,17 +2767,17 @@
    "gate_source": "https://www.tertiarycourses.com.sg/media/courses/brochures/TGS-2024048315-SG.pdf?v=1780045548",
    "priced": "FALSE",
    "notes": "Pre-sales delivery of demos and POCs; settled pay from the worldsalaries average converted to cash. Reskill research 2026-09-20 (tech-data batch): S$885 incl GST after 50% baseline SSG subsidy (full fee S$1,500 + GST) + AWS exam voucher USD 150 (~S$200). Cert is a door-opener, not the gate; transferable domain experience is what no course can manufacture.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R108",
    "title": "Data Engineer",
    "ssoc_code": "25212",
    "domain_primary": "data",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4800,
    "settled_pay": 6000,
    "pay_sources": "NodeFlair SG 2025 (junior S$6,000/mo 50th pct gross); SG Tech Salary Guide 2025 (S$60-120K/yr lower band); Recruiter alt: Hays SG 2025: Data Warehouse Consultant S$72-120k annual total package (Technology); Recruiter alt: Hays SG 2025: Database Developer S$70-120k annual total package (Technology); Recruiter alt: MP SG 2026: Data Analyst / Engineer S$95,000 annual avg (Data & AI) [adjacent]",
@@ -2789,21 +2789,21 @@
    "reskill_cost_nett": null,
    "reskill_source": "NTU PACE",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "FALSE",
    "notes": "Full fee S$32,264 before funding; nett after 70-95% SSG funding unconfirmed, hence priced=FALSE.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R109",
    "title": "Machine Learning Engineer",
    "ssoc_code": "25190",
    "domain_primary": "data",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4400,
    "settled_pay": 6400,
    "pay_sources": "Quess SG Salary Guide 2025 (S$5,500-8,000 gross, 1-4 yrs); Glassdoor SG (S$7,000 avg base, 50 salaries); Recruiter alt: Hays SG 2025: Machine Learning Engineer S$100-200k annual total package (Technology); Recruiter alt: Hays SG 2025: AI Developer S$100-200k annual total package (Technology); Recruiter alt: MP SG 2026: Machine Learning / (IoT) Engineer S$120,000 annual avg (Data & AI); Recruiter alt: MP SG 2026: AI Engineer S$140,000 annual avg (Data & AI)",
@@ -2815,21 +2815,21 @@
    "reskill_cost_nett": null,
    "reskill_source": "NTU PACE",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "FALSE",
    "notes": "Glassdoor average strengthens the earlier small Indeed sample; reskill cost nett unconfirmed.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R110",
    "title": "Data Scientist",
    "ssoc_code": "21222",
    "domain_primary": "data",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 5512,
    "settled_pay": 7238,
    "pay_sources": "MOM Occupational Wages 2024 Table T4 (direct xlsx parse: gross P25/median/P75); Recruiter alt: Hays SG 2025: Data Scientist S$90-150k annual total package (Technology); Recruiter alt: MP SG 2026: Data Scientist S$180,000 annual avg (Data & AI) [avg skews senior; directional]",
@@ -2841,21 +2841,21 @@
    "reskill_cost_nett": null,
    "reskill_source": "NTU PACE; MySkillsFuture",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "FALSE",
    "notes": "Mid pay effectively needs the NTU-level programme; nett cost unconfirmed.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R111",
    "title": "Database Administrator",
    "ssoc_code": "25211",
    "domain_primary": "data",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4400,
    "settled_pay": 5370,
    "pay_sources": "MOM Occupational Wages 2024 (database administrator S$6,717 median gross); JobStreet SG (S$5,800-7,800, Jun 2026 ads); Recruiter alt: Hays SG 2025: DBA S$72-120k annual total package (Technology); Recruiter alt: Hays SG 2025: Sybase / Oracle / MS SQL DBA S$100-150k annual total package (Technology) [specialist; directional]; Recruiter alt: MP SG 2026: Database Administrator S$125,000 annual avg (Infrastructure)",
@@ -2871,17 +2871,17 @@
    "gate_source": "SSG listing; employer job ads",
    "priced": "TRUE",
    "notes": "Settled pay from the MOM median converted to cash; JobStreet ad range corroborates. Recruiter check 2026-09-20: Hays DBA S$72-120k pkg and MP DBA S$125k avg corroborate the SEED band and contradict the MOM-direct entry low (S$2,752) - MOM occupation/segment mismatch suspected. Bands unchanged. Grok round-2 2026-09-20: 4400/5600 -> 4400/5370. 0.8 x MOM 2024 DBA median S$6,717 = S$5,370; seed settled S$5,600 was 4% above. Entry S$4,400 kept (between Robert Half 25th and JobStreet range). priced TRUE.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R112",
    "title": "BI Developer",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "data",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4400,
    "settled_pay": 6000,
    "pay_sources": "PayScale 2025 (early-career S$5,767/mo gross); SG Tech Salary Guide 2025 (BI analyst S$4,167-7,500 lower band); Recruiter alt: Hays SG 2025: Business Intelligence S$80-150k annual total package (Technology); Recruiter alt: Hays SG 2025: Data Warehouse Consultant S$72-120k annual total package (Technology) [adjacent]",
@@ -2893,21 +2893,21 @@
    "reskill_cost_nett": 2453.0,
    "reskill_source": "NTU PACE (S$8,175 full fee; S$2,452.50 after 70% funding, S$952.50 after 90%)",
    "gate_type": "none",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "TRUE",
    "notes": "Distinct from Data Analyst: builds and maintains production BI pipelines, semantic models and dashboards, not ad-hoc analysis.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R113",
    "title": "Analytics Engineer",
    "ssoc_code": "25212",
    "domain_primary": "data",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4400,
    "settled_pay": 5264,
    "pay_sources": "worldsalaries.com (entry S$3,903 gross); Glassdoor SG (S$6,580 median, S$7,121 avg gross); Recruiter alt: Hays SG 2025: Data Analyst S$60-120k annual total package (Technology) [adjacent: closest Hays match]; Recruiter alt: Hays SG 2025: Business Intelligence S$80-150k annual total package (Technology) [adjacent]",
@@ -2923,17 +2923,17 @@
    "gate_source": "https://www.getdbt.com/certifications/analytics-engineer-certification-exam",
    "priced": "TRUE",
    "notes": "Hybrid role: dbt/SQL modelling plus pipeline ownership; no MOM OW label. Reskill research 2026-09-20 (tech-data batch): US$200 exam (~S$268); prep materials free; 65 questions, 2-hour online proctored, 2-year validity. Cert is new and not yet a job requirement in SG; employers hire on dbt/SQL/warehouse skills and portfolio, the cert is a signal on top. 2026-09-20: flipped priced=TRUE (tech-data batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R114",
    "title": "Statistician",
    "ssoc_code": "21221",
    "domain_primary": "data",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 3110,
    "settled_pay": 3776,
    "pay_sources": "MOM Occupational Wages 2024 Table T4 (direct xlsx parse: gross P25/median/P75)",
@@ -2949,17 +2949,17 @@
    "gate_source": "https://stat.nus.edu.sg/wp-content/uploads/sites/8/2026/05/Tuition-Fees-Structure-for-Local-Students_-AY2026-Intake.pdf",
    "priced": "FALSE",
    "notes": "The MOM statistician label is the closest exact OW match in this batch. Reskill research 2026-09-20 (tech-data batch): Full list S$58,860 incl GST + S$5,450 acceptance fee; SC/SPR get 40% rebate on non-SSG-funded courses and up to 70% SSG subsidy on SSG-funded courses, so realistic nett is S$17,700-35,300 depending on course funding split. Short courses do not clear the employer filter.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R115",
    "title": "Operations Research Analyst",
    "ssoc_code": "21212",
    "domain_primary": "data",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 3808,
    "settled_pay": 5082,
    "pay_sources": "MOM Occupational Wages 2024 Table T4 (direct xlsx parse: gross P25/median/P75)",
@@ -2975,17 +2975,17 @@
    "gate_source": "https://www.ntu.edu.sg/spms/about-us/mathematics/grad/msc-in-analytics",
    "priced": "TRUE",
    "notes": "Optimisation and simulation focus; often sits inside logistics or finance planning teams. Reskill research 2026-09-20 (tech-data batch): AY2026/27 flat fee S$62,348, self-funded programme; no nationality subsidy published. Chosen for genuine optimisation/OR content from NTUs math school plus a real part-time track. NUS has no dedicated MSc in OR. 2026-09-20: flipped priced=TRUE (tech-data batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R116",
    "title": "Database Architect",
    "ssoc_code": "25212",
    "domain_primary": "data",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 6400,
    "settled_pay": 8922,
    "pay_sources": "MOM Occupational Wages 2024 (database architect S$11,153 median gross); JobStreet SG (S$8,000-11,000 ad ranges); Recruiter alt: Hays SG 2025: Data Architect S$144-180k annual total package (Technology) [architect-level; directional]; Recruiter alt: MP SG 2026: Solution Architect S$180,000 annual avg (IT Management & Architecture) [architect-level; directional]",
@@ -3001,10 +3001,10 @@
    "gate_source": "SSG listing; employer job ads",
    "priced": "TRUE",
    "notes": "Architect-level role; entry pay reflects an experienced DBA pivot, not a true junior.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R117",
@@ -3027,10 +3027,10 @@
    "gate_source": "https://sg.indeed.com/viewjob?jk=08f0906964cac363",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC 21661 from ISCA salary-career tables mapping Graphic designer. No dedicated WSG CCP found for graphic design. Grok round-2 2026-09-20: SSOC 21661 assigned (round-2 clean mapping). Reskill research 2026-09-20 (design-marketing batch): 3-day/24-hr WSQ course (design fundamentals + Illustrator); portfolio does the real hiring. Nett S$708 incl GST at baseline 50% for SC/PR under 40. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R118",
@@ -3053,10 +3053,10 @@
    "gate_source": "https://idis.edu.sg/courses/diploma-in-interior-design-2/",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC code not assigned. No switcher-friendly conversion course found; NAFA/LASALLE diplomas are full-length school programmes, not conversion tracks. Reskill research 2026-09-20 (design-marketing batch): No SSG/WSQ interior design diploma found; IDIS part-time route is the accessible adult option. 18 months: 3 semesters x S$3,980 usual fee. NOT SkillsFuture-subsidized; school anniversary promo S$2,380/sem was time-limited. Fees include AutoCAD/SketchUp licences. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R119",
@@ -3079,10 +3079,10 @@
    "gate_source": "role-sheet research",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC 21662 is ISCA-mapped 'Multimedia (including games) designer', used as proxy. MOM OW percentile band includes bonuses/OT, so triangulated conservatively against Glassdoor base-pay reports. Recruiter check 2026-09-20: Hays Web Designer S$60-100k (adjacent), MP Senior Graphic Designer S$90k avg and Product Designer S$110k avg are senior-weighted comparables, all above seed entry. Seed entry S$2,400 rests on Glassdoor 1-3yr base; verify via advertised postings before any change. Bands unchanged. Grok round-2 2026-09-20: VERIFIED keep S$2,400/3,840, priced TRUE. Advertised floor S$3,000 gross supports entry; do not lift to S$2,800 midpoint.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R120",
@@ -3105,10 +3105,10 @@
    "gate_source": "https://cultjobs.com/job/studio-dam-singapore-full-time-brand-designer/",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC 21661 is graphic-designer code, used as proxy (brand designer not separately listed). No dedicated WSG CCP found for brand/visual design. Grok round-2 2026-09-20: SSOC 21661 assigned (round-2 clean mapping). Reskill research 2026-09-20 (design-marketing batch): No credible SSG-funded brand design course found; hiring is portfolio + 2-3 yrs experience. Cost is time to build 5-8 speculative identity projects, approx 6 months. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R121",
@@ -3131,10 +3131,10 @@
    "gate_source": "https://www.jobzmall.com/careers/packaging-designer/faqs",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC 21661 is graphic-designer code, used as proxy. Differs from brand designer in daily work (print specs, dielines, production) and lower pay band. Grok round-2 2026-09-20: SSOC 21661 assigned (round-2 clean mapping). Reskill research 2026-09-20 (design-marketing batch): No SSG-funded packaging design course found; hiring is portfolio of mockups/dielines/print-ready work plus Illustrator skill. Cost is time to build portfolio, approx 6 months. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R122",
@@ -3157,10 +3157,10 @@
    "gate_source": "https://www.tertiarycourses.com.sg/media/courses/brochures/TGS-2022015368-SG.pdf",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC 21662 is multimedia-designer code, used as proxy. Daily work is 3D modelling/rendering, distinct from motion design. Grok round-2 2026-09-20: SSOC 21662 assigned (round-2 clean mapping). Reskill research 2026-09-20 (design-marketing batch): 2-day/16-hr Blender course + approx 3 months building a 3D portfolio. Baseline nett S$413 incl GST. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R123",
@@ -3183,10 +3183,10 @@
    "gate_source": "https://www.tertiarycourses.com.sg/media/courses/brochures/TGS-2021005540-SG.pdf",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC 2015 unit group 2163 (Industrial product designer); SSOC 2020 five-digit code unverified. PayScale samples are small (5-15 salaries); band leaned on MOM median. Reskill research 2026-09-20 (design-marketing batch): 2-day/16-hr Fusion 360 course + approx 3 months portfolio. Baseline nett S$401.20 incl GST. Caveat: many industrial design roles prefer a full design degree; course + portfolio is the fastest credible switcher route. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R124",
@@ -3209,10 +3209,10 @@
    "gate_source": "https://www.tertiarycourses.com.sg/media/courses/brochures/TGS-2022014982-SG.pdf",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC 21662 from ISCA salary-career tables mapping 'Multimedia (including games) designer'. MOM-only direct occupation; secondary is an adjacent specialty, so band is conservative. Grok round-2 2026-09-20: SSOC 21662 assigned (round-2 clean mapping). Reskill research 2026-09-20 (design-marketing batch): 2-day/16-hr After Effects course + demo reel, approx 6 months. Baseline nett S$424.80 incl GST. SP motion graphics diploma requires a design diploma or 5 yrs experience, so NOT a switcher route. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R125",
@@ -3235,10 +3235,10 @@
    "gate_source": "https://www.trainingint.com/wsq-wordpress-web-design-course",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC 21664 is ISCA-mapped 'Interaction designer', used as proxy. No MOM direct occupation: this is the weakest design row on pay evidence; needs MOM proxy or recruiter-guide confirmation in a later batch. Grok round-2 2026-09-20: SSOC 21664 assigned (round-2 clean mapping). Reskill research 2026-09-20 (design-marketing batch): WSQ WordPress course (fee info current as of Jul 2026) + 3-5 live sites, approx 3 months. Baseline nett S$442.50 incl GST for SC 21-39. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R126",
@@ -3261,10 +3261,10 @@
    "gate_source": "https://careers.mcsaatchi.com/jobs/6571950-associate-creative-director-art",
    "priced": "FALSE",
    "notes": "Batch D row (research 2026-09-20). SSOC 26543 is ISCA-mapped 'Artistic director (stage, film, television, game and radio)', used as proxy for advertising art director. Settled pay triangulated below the MOM screen-arts proxy. Grok round-2 2026-09-20: SSOC 21664 assigned (round-2 clean mapping). Reskill research 2026-09-20 (design-marketing batch): Art director is a progression role, not an entry switch: SG job ads ask 4-6 yrs experience and a senior campaign portfolio. Realistic switcher path is to enter as graphic/brand designer (R117/R120) first.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R127",
@@ -3287,10 +3287,10 @@
    "gate_source": "https://www.ntuclearninghub.com/en-gb/-/course/wsq-visual-merchandising-presentation-handle-merch-display-",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC code not assigned. Daily work is physical retail display and store layout, distinct from graphic design. Reskill research 2026-09-20 (design-marketing batch): Full fee S$440 before GST; SC 39 and below nett S$259.60 incl GST (70% funding). No TGS code on the public page. Entry VM roles also hire from retail staff without the course. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R128",
@@ -3313,10 +3313,10 @@
    "gate_source": "https://cdn.prod.website-files.com/69a817c94060f9d4bfb1c760/6a022e0aacd50e37630495fe_Photography.pdf",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC code not assigned. MOM median reads high vs Glassdoor/PayScale baselines (likely corporate/in-house roles); settled band triangulated between them. Reskill research 2026-09-20 (design-marketing batch): TGS-2022012442 funding validity to 23 Mar 2027; SC 21-39 nett S$472 incl GST. The course is a skill shortcut, not a gate; photographers are hired on portfolio alone. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R129",
@@ -3339,10 +3339,10 @@
    "gate_source": "role-sheet research",
    "priced": "FALSE",
    "notes": "Batch D row (research 2026-09-20). SSOC 26413 is ISCA-mapped 'Content writer', used as proxy. CCP duration and net fee not yet verified, so reskill fields left blank.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R130",
@@ -3365,10 +3365,10 @@
    "gate_source": "seosandwitch SG; role-sheet research",
    "priced": "FALSE",
    "notes": "Batch D row (research 2026-09-20). SSOC 24314 is ISCA-mapped 'online, social media, ecommerce marketing professional', used as proxy. Distinct from media buyer roles: daily work is search-account optimisation, not display/programmatic buying.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R131",
@@ -3391,10 +3391,10 @@
    "gate_source": "role-sheet research",
    "priced": "FALSE",
    "notes": "Batch D row (research 2026-09-20). SSOC 24314 is ISCA-mapped 'online, social media, ecommerce marketing professional', used as proxy. Differs from seeded Digital marketer in daily work (organic social calendars vs paid/performance mix).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R132",
@@ -3417,10 +3417,10 @@
    "gate_source": "role-sheet research",
    "priced": "FALSE",
    "notes": "Batch D row (research 2026-09-20). SSOC 24314 matches ISCA 'ecommerce marketing professional'. Daily work is marketplace/listing/fulfilment operations, distinct from performance marketing.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R133",
@@ -3443,10 +3443,10 @@
    "gate_source": "https://www.digitalwaffle.co/job-descriptions/marketing-manager",
    "priced": "FALSE",
    "notes": "Batch D row (research 2026-09-20). SSOC code not assigned. No MOM direct occupation; Glassdoor brand data is noisy (some yearly figures mislabelled monthly). Needs MOM proxy or recruiter-guide confirmation. Reskill research 2026-09-20 (design-marketing batch): 3-6 months at US$49/mo; 7-day free trial. Course builds a portfolio (personas, social calendars) alongside the cert. A cheaper SkillsFuture-funded WSQ digital marketing alternative likely exists on MySkillsFuture but no specific course + TGS code was verified, so none is cited. Claude audit 2026-09-20: reskill_cost_nett 'US$147-294 (no SkillsFuture subsidy on Coursera)' -> '376' (US$294 upper x 1.28 FX 20 Sep 2026; no SkillsFuture subsidy on Coursera).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R134",
@@ -3469,10 +3469,10 @@
    "gate_source": "https://www.digitalwaffle.co/job-descriptions/marketing-manager",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC code not assigned. Daily work is integrated campaigns/internal-external comms, distinct from PR agency roles. Reskill research 2026-09-20 (design-marketing batch): Covers email, social, SEO, analytics; 113+ hours of content plus portfolio projects. Claude audit 2026-09-20: reskill_cost_nett 'US$147-294 (no SkillsFuture subsidy on Coursera)' -> '376' (US$294 upper x 1.28 FX 20 Sep 2026; no SkillsFuture subsidy on Coursera). 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R135",
@@ -3495,10 +3495,10 @@
    "gate_source": "https://knowledge.hubspot.com/help-and-resources",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC 24314 used as proxy. PayScale proxy is a weak match for lifecycle marketing; treat band as med-confidence and revisit with a direct source. Reskill research 2026-09-20 (design-marketing batch): Only free HubSpot account needed, no card. Salesforce Marketing Cloud route is far pricier, so HubSpot is the honest switcher route. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R136",
@@ -3521,10 +3521,10 @@
    "gate_source": "https://shopify.com/uk/blog/how-to-become-a-copywriter",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC 26413 is ISCA-mapped 'Content writer', used as proxy. Distinct from content writer in daily work (short-form ad/persuasion copy vs long-form content). Reskill research 2026-09-20 (design-marketing batch): Shopify guide: 'Your portfolio is your resume'; build samples via mock ads, rewrites, volunteering. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R137",
@@ -3547,17 +3547,17 @@
    "gate_source": "https://editorialge.com/free-certifications-for-digital-marketers/",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC 26413 from ISCA salary-career tables mapping Content writer. MOM median includes bonuses/OT; settled band triangulated below it against Glassdoor base-pay reports. Reskill research 2026-09-20 (design-marketing batch): Agency pattern documented: 'a marketer with two certificates and one documented account fix gets hired ahead of someone with eight badges and no examples'. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R138",
    "title": "PR / corporate communications executive",
    "ssoc_code": "24320",
    "domain_primary": "marketing",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 2400,
    "settled_pay": 3440,
    "pay_sources": "MOM OW 2024 'PR/corporate communications professional' gross median S$4,305; Glassdoor SG corp comms exec base S$3K-4K avg S$3,050; PayScale SG PR account exec avg base S$35,593/yr. Cash-converted.; Recruiter alt: Hays SG 2025: Public Relations / Communications Manager S$80-140k annual total package (Marketing & Digital) [manager-level; directional]; Recruiter alt: Hays SG 2025: Corporate Communications Manager S$80-140k annual total package (Marketing & Digital) [manager-level; directional]",
@@ -3573,17 +3573,17 @@
    "gate_source": "https://iprs.glueup.com/event/iprs-training-introduction-to-public-relations-and-mass-communication-124790/",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC code not assigned. Distinct from marcomms specialist in daily work (media relations/crisis vs integrated campaigns). Reskill research 2026-09-20 (design-marketing batch): S$1,200 non-member (S$1,000 IPRS member); UTAP possible for NTUC members only. Next intake Nov 2026 per IPRS LinkedIn. Honest route is the 3-day grounding plus portfolio, not the cert alone. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R139",
    "title": "Marketing manager",
    "ssoc_code": "12222",
    "domain_primary": "marketing",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 4800,
    "settled_pay": 7073,
    "pay_sources": "MOM Occupational Wages 2024 Table T4 (direct xlsx parse: gross P25/median/P75); Recruiter alt: Hays SG 2025: Marketing Manager S$90-150k annual total package (Marketing & Digital); Recruiter alt: MP SG 2026: Digital Marketing Manager S$175,000 annual avg (Digital)",
@@ -3599,10 +3599,10 @@
    "gate_source": "https://www.digitalwaffle.co/job-descriptions/marketing-manager",
    "priced": "FALSE",
    "notes": "Batch D row (research 2026-09-20). SSOC code not assigned. Entry band models a switcher entering at junior-management level, not the MOM median titleholder. Reskill research 2026-09-20 (design-marketing batch): Degree common but employers prioritise practical experience, leadership capability and ability to deliver results.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R140",
@@ -3625,10 +3625,10 @@
    "gate_source": "https://www.digitalwaffle.co/job-descriptions/marketing-manager",
    "priced": "FALSE",
    "notes": "Batch D row (research 2026-09-20). SSOC code not assigned. Distinct from marketing manager in daily work (product launches/positioning vs team and budget ownership). Reskill research 2026-09-20 (design-marketing batch): PMM additionally needs product-marketing overlap; no single verified course covers this; treat as track-record gate.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R141",
@@ -3651,10 +3651,10 @@
    "gate_source": "https://courses.myskillsfuture.gov.sg/search?q=event+management",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC code not assigned. Daily work is event planning and onsite execution, distinct from marketing campaigns. Reskill research 2026-09-20 (design-marketing batch): From S$158.44 estimated payable (full fee S$5,598 minus SkillsFuture subsidies S$4,939.56 and S$500 SkillsFuture Credit). 159 attended, 4.0 rating on MySkillsFuture. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R142",
@@ -3677,17 +3677,17 @@
    "gate_source": "https://www.lovesdata.com/blog/google-analytics-4-certification/",
    "priced": "TRUE",
    "notes": "Batch D row (research 2026-09-20). SSOC code not assigned. Distinct from seeded Data analyst in daily work (marketing mix/attribution vs general data pipelines). Reskill research 2026-09-20 (design-marketing batch): 5-10 hours study plus exam; practical scenario-based questions. Heavier Google Data Analytics cert (Coursera, approx 6 months, approx US$294) is optional overkill. 2026-09-20: flipped priced=TRUE (design-marketing batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R143",
    "title": "Affiliate / partnerships marketer",
    "ssoc_code": "24314",
    "domain_primary": "marketing",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 2943,
    "settled_pay": 4240,
    "pay_sources": "MOM Occupational Wages 2024 Table T4 (direct xlsx parse: gross P25/median/P75)",
@@ -3703,10 +3703,10 @@
    "gate_source": "https://editorialge.com/free-certifications-for-digital-marketers/",
    "priced": "FALSE",
    "notes": "Batch D row (research 2026-09-20). SSOC 24314 used as proxy. Worldsalaries figures appear inflated vs MOM baselines and were down-weighted; needs a direct second source. Reskill research 2026-09-20 (design-marketing batch): No verified WSQ, WSG or vendor course for affiliate marketing found; row is honest absence-of-evidence, not a gap in searching.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R144",
@@ -3729,10 +3729,10 @@
    "gate_source": "OPEN",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. SSOC 24131 explicitly covers credit analyst and equities analyst per SingStat; MOM figure is gross monthly median converted to cash after 20% employee CPF. Reskill research 2026-09-20 (finance batch): Cost uses 2026 early registration US$1,140 x 1.28 (mid-market USD/SGD observed 20 Sep 2026); standard registration US$1,490 = S$1,907; one-time enrolment fee removed for 2026. Exams run Feb/May/Aug/Nov. Official CFA Institute fee page not found; figures consistent across shiksha.com swiftintellect.com bajajfinserv.in. Prep window typically one exam cycle part-time. Claude audit 2026-09-20: reskill_cost_nett 'S$1,459' -> '1459' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)). Marcus approved flip 2026-09-20 (finance batch review).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R145",
@@ -3755,10 +3755,10 @@
    "gate_source": "OPEN",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Shares SSOC 24131 and the MOM occupation with financial analyst; distinct lending-risk job family. Reskill research 2026-09-20 (finance batch): Same costing basis as R144: 2026 early US$1,140 x 1.28; standard US$1,490 = S$1,907; enrolment fee removed for 2026. No standalone credit-analysis credential with verified SG pricing found; CFA Level I is the closest employer-recognised route. Official CFA Institute fee page not found; verify before budgeting. Claude audit 2026-09-20: domain_adjacent 'risk|ops' mapped to closed taxonomy 'finance|ops'. Claude audit 2026-09-20: reskill_cost_nett 'S$1,459' -> '1459' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)). Marcus approved flip 2026-09-20 (finance batch review).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R146",
@@ -3781,10 +3781,10 @@
    "gate_source": "https://iia-indonesia.org/certified-internal-auditor-cia/",
    "priced": "FALSE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Mapped to MOM Auditor (accounting) as closest proxy; MOM data does not split internal vs external audit. Reskill research 2026-09-20 (finance batch): Non-member fees per IIA affiliate table: application US$240 + Part 1 US$445 + Parts 2 and 3 US$415 each = US$1,515 x 1.28 (mid-market USD/SGD observed 20 Sep 2026). Members pay roughly a third less (total ~US$990); joining IIA before applying can pay for itself. Program window is 3 years; realistic part-time pace is 9-12 months for all 3 parts. Pricing may differ via national institutes; confirm with IIA Singapore; SG GST may apply on top. Claude audit 2026-09-20: gate_type 'professional-qualification' normalised to 'cert'. Claude audit 2026-09-20: domain_adjacent 'compliance|ops' mapped to closed taxonomy 'finance|ops'. Claude audit 2026-09-20: reskill_cost_nett 'S$1,939' -> '1939' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R147",
@@ -3807,10 +3807,10 @@
    "gate_source": "OPEN",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. MOM publishes no analyst-level treasury occupation; settled anchor uses the Treasury Manager proxy with low confidence. Reskill research 2026-09-20 (finance batch): 8.5 hours over one day; fee S$1,480 + GST = S$1,613.20 self-paid. FTS funding exists but is company-sponsored, so a self-funding switcher pays full price. Honest caveat: this is a one-day top-up, not a qualification; treasury analyst roles in practice go to candidates with banking or markets experience; CFA Level I is the stronger credential route if budget allows. Claude audit 2026-09-20: domain_adjacent 'risk|ops' mapped to closed taxonomy 'finance|ops'. Claude audit 2026-09-20: reskill_cost_nett 'S$1,613.20' -> '1613.2' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)). Marcus approved flip 2026-09-20 (finance batch review).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R148",
@@ -3827,16 +3827,16 @@
    "reskill_path": "OPEN",
    "reskill_months": null,
    "reskill_cost_nett": null,
-   "reskill_source": "",
+   "reskill_source": null,
    "gate_type": "open",
-   "gate_detail": "",
-   "gate_source": "",
+   "gate_detail": null,
+   "gate_source": null,
    "priced": "FALSE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. No direct MOM occupation found; SSOC left blank rather than reusing Accountant 24111. Reskill research 2026-09-20 (finance batch): No standalone entry credential verified: fund accountants are hired with accounting degrees or professional-qualification progress (ACCA/ISCA) and employers train fund-specific skills on the job. ACCA Applied Knowledge (3 on-demand papers) is the natural first step but the current SG exam-fee schedule was not publicly verified. Mark OPEN rather than guess.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R149",
@@ -3859,15 +3859,15 @@
    "gate_source": "https://www.taxacademy.sg/files/Intake_1_Course_brochure_L1_IT_2025_v2.pdf",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. SSOC 24113 is Tax Accountant at professional level; associate-level code unverified. Reskill research 2026-09-20 (finance batch): E-learning (videos quizzes case studies) plus one in-person revision session; 21 CPE hours; fee includes first exam sitting. Intake 1/2025 examined 30 Jul 2025 so realistic elapsed is about 3 months part-time. Self-funded individuals may claim UTAP. Exam optional: completion is based on finishing the e-learning and revision session. Recommended for people with little or no income-tax knowledge. Claude audit 2026-09-20: domain_adjacent 'compliance' mapped to closed taxonomy 'finance'. Claude audit 2026-09-20: reskill_cost_nett 'S$1,090' -> '1090' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)). Marcus approved flip 2026-09-20 (finance batch review).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R150",
    "title": "Fund operations / settlements analyst",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "finance",
    "domain_adjacent": "ops",
    "entry_pay": 2800,
@@ -3885,15 +3885,15 @@
    "gate_source": "https://www.cisi.org/cisiweb2/cisi-website/why-choose-a-CISI-qualification/operations/ioc",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Settled anchor uses MOM financial markets back-office administrator as proxy. Reskill research 2026-09-20 (finance batch): Suggested units for fund ops: International Introduction to Securities & Investment + Collective Investment Schemes Administration + Asset Servicing (all \u00a3155 exam fee). Cost: \u00a368 qualification registration + 3 x \u00a3155 = \u00a3533 x 1.7093 (GBP/SGD observed 19 Sep 2026) = S$911. Workbooks \u00a3105/unit mandatory for UK sitters only; SG candidates check local invigilation arrangements. Total qualification time 243 hours per CISI, about 6-9 months part-time. A local regulatory paper may replace the UK unit with firm agreement. Claude audit 2026-09-20: gate_type 'certification' normalised to 'cert'. Claude audit 2026-09-20: reskill_cost_nett 'S$911' -> '911' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)). Marcus approved flip 2026-09-20 (finance batch review).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R151",
    "title": "Trade finance executive",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "finance",
    "domain_adjacent": "ops",
    "entry_pay": 2800,
@@ -3911,15 +3911,15 @@
    "gate_source": "https://libf.in/study/certificate-for-documentary-credit-specialists-cdcs/",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Settled anchor uses MOM back-office proxy; trade finance is not split out in MOM data. Reskill research 2026-09-20 (finance batch): Fee \u00a3730 includes study materials and exam entry. x 1.7093 (GBP/SGD observed 19 Sep 2026) = S$1,248. On-demand study; LIBF cites 6 months average completion. Covers documentary credits UCP 600 ISP98 Incoterms 2020 document handling and transaction risk. Described as a globally recognised professional standard for documentary-credit specialists. Claude audit 2026-09-20: gate_type 'certification' normalised to 'cert'. Claude audit 2026-09-20: reskill_cost_nett 'S$1,248' -> '1248' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)). Marcus approved flip 2026-09-20 (finance batch review).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R152",
    "title": "Bank operations officer",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "finance",
    "domain_adjacent": "ops",
    "entry_pay": 2000,
@@ -3937,10 +3937,10 @@
    "gate_source": "https://www.cisi.org/cisiweb2/cisi-website/why-choose-a-CISI-qualification/operations/ioc",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Entry anchor from Hays teller range low end; settled uses MOM bank operations clerk. Reskill research 2026-09-20 (finance batch): Suggested units for bank ops: International Introduction to Securities & Investment + Global Securities Operations + Combating Financial Crime (all \u00a3155 exam fee). Cost: \u00a368 qualification registration + 3 x \u00a3155 = \u00a3533 x 1.7093 (GBP/SGD observed 19 Sep 2026) = S$911. No SG-specific bank-operations entry certificate found; IOC is the closest real provider route. Total qualification time 243 hours, about 6-9 months part-time. Claude audit 2026-09-20: gate_type 'certification' normalised to 'cert'. Claude audit 2026-09-20: domain_adjacent 'ops|customer' mapped to closed taxonomy 'ops'. Claude audit 2026-09-20: reskill_cost_nett 'S$911' -> '911' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)). Marcus approved flip 2026-09-20 (finance batch review).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R153",
@@ -3963,10 +3963,10 @@
    "gate_source": "https://www.scicollege.org.sg/Exam/ExamDetails/CGINM",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Underwriter only; the deliberately excluded insurance sales agent role is not this row. Reskill research 2026-09-20 (finance batch): Fees effective 1 Aug 2026 (day sessions): BCP S$49.05 + Commercial General Insurance S$98.10 + S$10.90 registration = S$158.05. Self-study pace; realistic 2-3 months. Surprising finding: CMFAS M5/M9/M9A apply to representatives advising on or selling financial-advisory and life products, not to salaried underwriters; the actual entry credential is the SCI general-insurance foundation. Claude audit 2026-09-20: domain_adjacent 'risk' mapped to closed taxonomy 'finance'. Claude audit 2026-09-20: reskill_cost_nett 'S$158.05' -> '158.05' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)). Marcus approved flip 2026-09-20 (finance batch review).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R154",
@@ -3989,10 +3989,10 @@
    "gate_source": "https://www.inspizone.com/lcci-level-2-bookkeeping-accounting/",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Reskill research 2026-09-20 (finance batch): 8 weeks / 48 hours. List price S$895 + GST = S$975.55; baseline 50% WSQ nett = S$447.50 + S$80.55 GST = S$528.05 for under-40 Singaporeans/PRs (up to 70% for 40+). Covers double-entry records accruals prepayments trial balance and financial-data analysis. Chosen over one-day software courses because it is a fuller occupational foundation. LCCI Level 1 needed first only if the candidate has no accounting background. Claude audit 2026-09-20: reskill_cost_nett 'S$528.05' -> '528.05' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)). Marcus approved flip 2026-09-20 (finance batch review).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R155",
@@ -4015,15 +4015,15 @@
    "gate_source": "https://www.tertiarycourses.com.sg/media/courses/brochures/TGS-2023020565-SG.pdf?v=1780045517",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Clerical AP/AR processing role; distinct from full-set bookkeeper row. Reskill research 2026-09-20 (finance batch): 2 days / 16 hours; baseline under-40 nett S$472 incl GST (QuickBooks Online version TGS-2023018989 same price; SME QuickBooks TGS-2020505113 is 1 day at S$206.50). Honest caveat: a two-day course builds tool fluency, not an accounting qualification; AP/AR ads screen for basic accounting knowledge, so pair with a bookkeeping foundation (see R154) if the candidate has none. Claude audit 2026-09-20: reskill_cost_nett 'S$472' -> '472' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)). Marcus approved flip 2026-09-20 (finance batch review).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R156",
    "title": "Corporate secretarial executive",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "finance",
    "domain_adjacent": "finance",
    "entry_pay": 2400,
@@ -4041,10 +4041,10 @@
    "gate_source": "https://stage-cgi-website.uksouth01.umbraco.io/qualifications-training/qualifications/qualifying-programme/",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. ACRA-related statutory work; no SSOC verified. Reskill research 2026-09-20 (finance batch): 7 modules x S$899.25 ACM preparatory tuition + S$54.50 registration = S$6,349.25 incl GST. This is tuition only: CGI examination and membership charges are separate and were not publicly verified, so total cost is higher. Typical full route 2-5 years alongside full-time work; 36 months used as the planning figure. Sample student contract confirms the tuition schedule. Claude audit 2026-09-20: gate_type 'professional-qualification' normalised to 'cert'. Claude audit 2026-09-20: domain_adjacent 'compliance|admin' mapped to closed taxonomy 'finance'. Claude audit 2026-09-20: reskill_cost_nett 'S$6,349.25' -> '6349.25' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)). Marcus approved flip 2026-09-20 (finance batch review).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R157",
@@ -4067,10 +4067,10 @@
    "gate_source": "https://www.scicollege.org.sg/Exam/ExamDetails/CGINM",
    "priced": "FALSE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Settled anchor conservative mid-point of assessor-level postings; claims support roles cluster lower. Reskill research 2026-09-20 (finance batch): Fees effective 1 Aug 2026 (day sessions): BCP S$49.05 + Personal General Insurance S$98.10 + S$10.90 registration = S$158.05; self-study pace, realistic 2-3 months. The dedicated claims certificate exists at SCI but its current fee and duration were not verified, so the verifiable CGI route is used. Same CMFAS note as R153: CMFAS M5/M9/M9A are for advisory reps, not salaried claims staff. Claude audit 2026-09-20: domain_adjacent 'ops|customer' mapped to closed taxonomy 'ops'. Claude audit 2026-09-20: reskill_cost_nett 'S$158.05' -> '158.05' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R158",
@@ -4093,10 +4093,10 @@
    "gate_source": "https://www.soa.org/globalassets/assets/files/edu/2026/2026-07-p-app-cbt.pdf",
    "priced": "FALSE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Credential-heavy (actuarial exams) in practice, but no gate verified via approved sources. Reskill research 2026-09-20 (finance batch): Exam P Tier 1 fee US$275 + Exam FM Tier 1 fee US$275 = US$550 x 1.28 (mid-market USD/SGD observed 20 Sep 2026) = S$704. Fees per SOA 2026 CBT application documents; SG test-centre tier to confirm at booking. Realistic 6-12 months part-time for both exams; 9 months used as the planning figure. Claude audit 2026-09-20: domain_adjacent 'risk|data' mapped to closed taxonomy 'finance|data'. Claude audit 2026-09-20: reskill_cost_nett 'S$704' -> '704' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R159",
@@ -4119,10 +4119,10 @@
    "gate_source": "https://www.cicm.com/static/05ac2274-3cea-4c89-a6cefe9e5dfb1d17/CICM-Qualfication-fees-2025.pdf",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Collections-side role; distinct from credit analyst (lending risk). 2026-09-20 recruiter check: Hays SG 2025 Credit Control (Support) S$48-60k annual package is an independent second source; index band S$2,000/2,672 sits below the Hays band. JobStreet ads + MOM proxy retained as primary. Reskill research 2026-09-20 (finance batch): Cheapest verified tier (self-study unsupported): registration \u00a364 + 4 unit assessments x \u00a3130 = \u00a3584 x 1.7093 (GBP/SGD observed 19 Sep 2026) = S$998. UK body; no SG-specific collections credential found. Fee document covers a 2-year route but a focused switcher can realistically complete the 4 units in about 12 months part-time. Tuition-supported tiers cost more. Claude audit 2026-09-20: gate_type 'certification' normalised to 'cert'. Claude audit 2026-09-20: reskill_cost_nett 'S$998' -> '998' (finance batch convention S$1,459 -> 1459 (unparseable format stripped)). Marcus approved flip 2026-09-20 (finance batch review).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R160",
@@ -4145,10 +4145,10 @@
    "gate_source": "https://ihrp.sg/certifications/ihrp-certified-associate-ihrp-ca/",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Mapped to MOM executive search consultant as closest proxy; corporate in-house TA vs agency not split. Reskill research 2026-09-20 (people batch): Nett S$649 = 50% SSG on S$1,100 + 9% GST. IHRP-CA needs no HR experience. IHRP assessment included in package per SHRI page. Switchers typically enter via HR generalist/admin or agency first, then move to TA. Enhanced 40+ cert fee S$163.50 (MOM subsidy to Sep 2026). Claude audit 2026-09-20: domain_adjacent 'recruitment' mapped to closed taxonomy 'people'. 2026-09-20: flipped priced=TRUE (people batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R161",
@@ -4171,15 +4171,15 @@
    "gate_source": "https://shri.org.sg/courses/diploma-in-compensation-and-benefit-management/",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Rewards specialisation; distinct from excluded HR Executive generalist seed row. 2026-09-20 recruiter check: Hays SG 2025 Compensation & Benefits Specialist S$70-120k annual package implies ~S$3.7-6.4k/mo cash (pkg/15 x0.8 assumption), matching the index band S$3,600/6,000. Paylab + Frazer Jones retained as primary. Reskill research 2026-09-20 (people batch): Fee S$3,787.50 after GST; no SSG funding listed on the course page. Heavyweight route; the lighter real-world route is HR generalist entry (IHRP-CA) then C&B exposure on the job. 2026-09-20: flipped priced=TRUE (people batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R162",
    "title": "HRIS analyst",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "people",
    "domain_adjacent": "tech|data",
    "entry_pay": 3440,
@@ -4197,10 +4197,10 @@
    "gate_source": "https://ihrp.sg/certifications/ihrp-certified-associate-ihrp-ca/",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Reskill research 2026-09-20 (people batch): Vendor courses (e.g. SAP SuccessFactors 5-day via The Knowledge Academy) exist but prices sit behind enquiry walls and are normally employer-sponsored, not taken by switchers upfront. The honest switcher route is HR entry first, systems second. 2026-09-20: flipped priced=TRUE (people batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R163",
@@ -4223,10 +4223,10 @@
    "gate_source": "https://ihrp.sg/certifications/ihrp-certified-associate-ihrp-ca/",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Settled anchor uses MOM industrial relations officer as proxy. Reskill research 2026-09-20 (people batch): Legislation course covers Employment Act, EFMA, Fair Consideration Framework, Retirement & Re-employment Act, Industrial Relations Act, CPF Act, WSHA, WICA. Nett S$649 = 50% SSG on S$1,100 + GST. Claude audit 2026-09-20: domain_adjacent 'compliance' mapped to closed taxonomy 'finance'. 2026-09-20: flipped priced=TRUE (people batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R164",
@@ -4249,15 +4249,15 @@
    "gate_source": "https://shri.org.sg/courses/certificate-in-payroll-administration/",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Reskill research 2026-09-20 (people batch): Nett ~S$974 = 50% SSG on S$1,651.38 + 9% GST. Next intake 10 Nov 2026 per page. Lighter alternative: WSQ Process Payroll (2 days, S$850 full) via PayrollServe. 2026-09-20: flipped priced=TRUE (people batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R165",
    "title": "Global mobility specialist",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "people",
    "domain_adjacent": "finance",
    "entry_pay": 3360,
@@ -4275,15 +4275,15 @@
    "gate_source": "https://www.talenteverywhere.org/Certification/Global-Mobility-Specialist",
    "priced": "FALSE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Single-source pay (Frazer Jones); second source not found in this pass. Reskill research 2026-09-20 (people batch): USD 1,500 non-member (~S$2,010 at ~1.34 FX, approximate; members USD 1,250). Self-paced online; no published schedule so 6 months is a realistic part-time estimate. No SSG funding. Claude audit 2026-09-20: domain_adjacent 'compliance' mapped to closed taxonomy 'finance'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R166",
    "title": "HR shared-services specialist",
-   "ssoc_code": "",
+   "ssoc_code": null,
    "domain_primary": "people",
    "domain_adjacent": "ops",
    "entry_pay": 2400,
@@ -4301,10 +4301,10 @@
    "gate_source": "https://beta.infotech.edu.sg/contents/images/course-revamp/brouchures/wsq-basichr.pdf",
    "priced": "TRUE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Operations/helpdesk side of HR; distinct from excluded HR Executive generalist seed row. Reskill research 2026-09-20 (people batch): Published nett S$590 (50% SSG, SG 21-39). Prerequisites: 3 O-level passes incl English and min 1 year of work experience (any field). 2026-09-20: flipped priced=TRUE (people batch review) \u2014 pay+reskill+gate verified.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R167",
@@ -4321,16 +4321,16 @@
    "reskill_path": "No course route: agencies hire on sales ability, network and drive",
    "reskill_months": null,
    "reskill_cost_nett": null,
-   "reskill_source": "",
+   "reskill_source": null,
    "gate_type": "none",
    "gate_detail": "No cert or licence required; switchers enter directly.",
-   "gate_source": "",
+   "gate_source": null,
    "priced": "FALSE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Base pay only; agency consultants earn significant variable commission not modelled here. Distinct from in-house TA specialist row. Reskill research 2026-09-20 (people batch): Honest answer per brief: no training purchase is needed or asked for. Some entrants do the SHRI IHRP-CA roadmap for HR credibility, but agencies do not require it. Claude audit 2026-09-20: domain_adjacent 'sales' mapped to closed taxonomy 'marketing'.",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R168",
@@ -4353,17 +4353,17 @@
    "gate_source": "https://ihrp.sg/certifications/ihrp-certified-professional-ihrp-cp/",
    "priced": "FALSE",
    "notes": "Skeleton row: reskill path and gates not yet verified via WSG CCP, SCTP/MySkillsFuture, MAS or ACRA; reskill/gate fields left blank. Mid-level advisory role partnering business units; distinct from excluded HR Executive generalist seed row. Reskill research 2026-09-20 (people batch): SHRI CP roadmap full fee S$1,300/S$1,417 with SSG funding available; nett ~S$767 at 50% SSG + cert fee S$272.50 = ~S$1,040. 36 months is the experience gate, not course length. Enhanced 40+ cert fee S$163.50 (MOM subsidy to Sep 2026).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   },
   {
    "role_id": "R169",
    "title": "Chef",
    "ssoc_code": "34341",
    "domain_primary": "hospitality",
-   "domain_adjacent": "",
+   "domain_adjacent": null,
    "entry_pay": 2484,
    "settled_pay": 3880,
    "pay_sources": "MOM OW 2024 chef SSOC 34341 gross P25/median/P75 S$3,105/3,850/4,850 (June 2024 parse G25/G50/G75 exact match); entry=P25, settled=P75, cash = 0.8 x gross (assumption). Corroborated by MOM OW 2025 gross S$2,743/3,650/4,784.",
@@ -4379,10 +4379,10 @@
    "gate_source": "SFA requirements",
    "priced": "FALSE",
    "notes": "Split from R011 per Marcus 2026-09-20: cooks vs chefs. Priced pending review as a new row. Commis/junior tier is R048; head-chef and private-chef tiers sit above this band. Grok decisions 2026-09-20 (MOM/PWM official numbers): Band confirmed as-is; priced TRUE. Pay, reskill (SHATEC WSQ Diploma 12-18mo), gate (none) all specified. Line/commis stays R048; head/private chef above. Grok verification 2026-09-20: priced TRUE->FALSE: SHATEC full-qual in teach-out, no new enrolments; reskill path replaced with live provider. Band unchanged (MOM 2024 verified). MOM 2025 chef row unverified. Claude audit 2026-09-20: reskill_months '12-18' -> '15' (range 12-18 midpoint). Claude audit 2026-09-20: reskill_cost_nett '2000-6000' -> '4000' (indicative S$2,000-6,000 midpoint, provider dependent).",
-   "pay_model": "",
+   "pay_model": null,
    "per_job_rate": null,
-   "jobs_per_month_entry": "",
-   "jobs_per_month_settled": ""
+   "jobs_per_month_entry": null,
+   "jobs_per_month_settled": null
   }
  ]
 }
