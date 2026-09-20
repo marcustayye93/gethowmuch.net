@@ -201,17 +201,30 @@
       if (tier1.length === 0) trigger = 'a';
     }
     if (!trigger) tier2 = [];
+    // Parked is a presented section, so it respects the user's picks exactly
+    // like Tier 1 does. An off-pick quarantined role has no path to the
+    // results (Tier 2 only fires when Tier 1 is empty, capped at 3 money
+    // winners), so listing it under Parked is noise: the user never
+    // shortlisted that domain.
+    var parked = f.quarantined.filter(function (it) {
+      var r = it.role;
+      if (targets.indexOf(r.domain_primary) >= 0) return true;
+      return (r.domain_adjacent || []).some(function (a) { return targets.indexOf(a) >= 0; });
+    });
     // Label every killed role with the filter stage that removed it.
     var killStages = {};
     var alive = {};
     ranked.forEach(function (it) { alive[it.role.id] = 1; });
+    // Full quarantined list here (not the in-pick `parked` view): off-pick
+    // quarantined roles were considered, not killed, so they get no kill stage.
+    // In the audit trail they read "Filtered out", same as off-pick survivors.
     f.quarantined.forEach(function (it) { alive[it.role.id] = 1; });
     st.pool.forEach(function (r) {
       if (!alive[r.id]) killStages[r.id] = killStage(r, user);
     });
     return {
       tier1: tier1, tier2: tier2, tier2trigger: trigger,
-      quarantined: f.quarantined, killed: f.killed,
+      quarantined: parked, killed: f.killed,
       gated: st.gated, analyses: analyses, killStages: killStages,
       survivors: tier1.concat(tier2)
     };
