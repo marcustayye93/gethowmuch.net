@@ -1,8 +1,8 @@
 {
  "version": "2026-09-20",
- "generated": "2026-09-20 12:24 SGT",
- "source": "role-index.csv, 168 rows; post-Claude-audit corrections applied; validator 0 errors",
- "priced_count": 28,
+ "generated": "2026-09-20 12:53 SGT",
+ "source": "role-index.csv, 168 rows; post-Claude-audit corrections; R047 re-flipped per Marcus; validator 0 errors",
+ "priced_count": 29,
  "taxonomy": [
   "tech",
   "data",
@@ -1231,8 +1231,8 @@
    "gate_type": "cert",
    "gate_detail": "SFA WSQ Food Safety Course Level 1 mandatory — SFA explicitly lists bartenders and mixologists as food handlers",
    "gate_source": "http://www.sfa.gov.sg/food-handler-hygiene-officer/requirements-for-food-handler-hygiene-officer/requirements-for-food-handlers",
-   "priced": "FALSE",
-   "notes": "Cash = 0.8 x gross. Entry reflects bar-back/junior bartender bands; settled reflects experienced bartender Grok round-2 2026-09-20: SSOC 51321 assigned (round-2 clean mapping). Reskill research 2026-09-20 (hospitality batch): $480 SGD full fee, no SSG funding shown. No bartender/liquor licence required for individuals in SG. Cheaper on-the-job-only route also common in bar hiring (OPEN: no-course variant not coded). priced=TRUE 2026-09-20: pay verified, reskill route found, gate set (Marcus approved flip). Claude audit 2026-09-20: reskill recoded to the mandatory object (FSC Level 1, S$40.50). Was: WSET Level 1 Award in Spirits (1-day in-person, 10am-6pm) — ...; WSET Level 1 Award in Spirits (S$480, The Beverage Clique) — optional upgrade, not required. Claude audit 2026-09-20: priced TRUE->FALSE: row carries an OPEN marker ('no-course variant not coded'), violating the priced rule; re-flip needs Marcus's call.",
+   "priced": "TRUE",
+   "notes": "Cash = 0.8 x gross. Entry reflects bar-back/junior bartender bands; settled reflects experienced bartender Grok round-2 2026-09-20: SSOC 51321 assigned (round-2 clean mapping). Reskill research 2026-09-20 (hospitality batch): $480 SGD full fee, no SSG funding shown. No bartender/liquor licence required for individuals in SG. Cheaper on-the-job-only route also common in bar hiring (OPEN: no-course variant not coded). priced=TRUE 2026-09-20: pay verified, reskill route found, gate set (Marcus approved flip). Claude audit 2026-09-20: reskill recoded to the mandatory object (FSC Level 1, S$40.50). Was: WSET Level 1 Award in Spirits (1-day in-person, 10am-6pm) — ...; WSET Level 1 Award in Spirits (S$480, The Beverage Clique) — optional upgrade, not required. Claude audit 2026-09-20: priced TRUE->FALSE: row carries an OPEN marker ('no-course variant not coded'), violating the priced rule; re-flip needs Marcus's call. Marcus call 2026-09-20: re-flipped to priced=TRUE on the cleaned FSC-based reskill row; OPEN marker refers to the uncoded no-course variant only.",
    "pay_model": null,
    "per_job_rate": null,
    "jobs_per_month_entry": null,
