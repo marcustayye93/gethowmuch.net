@@ -56,14 +56,14 @@
       question: 'Are you SNB registered?',
       yesMonths: 0, noMonths: 27,
       gateCopy: 'SNB registration',
-      accaNote: 'Yes = already licensed, no reskill wait. The enrolled-in-a-programme branch is held until the remaining-time figure is sourced.'
+      accaNote: 'Yes = already licensed, no reskill wait. Still in training? That path is not priced yet.'
     },
     plumber: {
       roleChip: 'plumber',
       question: null, // hidden until BCA/PUB documentation confirms the 24-month figure
       yesMonths: 24, noMonths: 36,
       gateCopy: 'BCA Builder Certificate (or equivalent)',
-      accaNote: 'About 36 months. The yes/no chip is hidden until the 24-month figure is sourced.'
+      accaNote: 'About 36 months on the verified route. A shorter licensed route is still being verified, so it stays out of the math.'
     }
   };
 
