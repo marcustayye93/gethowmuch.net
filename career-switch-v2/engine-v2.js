@@ -210,7 +210,7 @@
   function domainLabel(tag) {
     var names = { tech: 'Tech', data: 'Data', design: 'Design', marketing: 'Marketing',
       finance: 'Finance', people: 'People', healthcare: 'Healthcare',
-      trades: 'Trades', hospitality: 'Hospitality', ops: 'Ops' };
+      trades: 'Trades', hospitality: 'Hospitality', retail: 'Retail', ops: 'Ops' };
     return names[tag] || tag;
   }
 
