@@ -64,7 +64,7 @@ def build_list():
         # idxsub: withheld roles for this family
         wroles = withheld_by_fam.get(code, [])
         if wroles:
-            parts.append('<div class="idxsub"><h3>Researched switcher paths without an official pay band</h3>'
+            parts.append('<div class="idxsub"><h3>Switcher paths without an official pay band</h3>'
                 '<p class="fine">These roles have a career-index entry, but no MOM row is a fair proxy for '
                 'their pay, so no band is shown rather than a guessed one. Reskill paths are marked where researched.</p>')
             for r in sorted(wroles, key=lambda x: x['title'].lower()):
