@@ -100,7 +100,7 @@ function openOcc(ssoc){
       h += '<div class="warn">This pay band was measured for <b>'+esc(o.title)+'</b>, not for '+esc(r.title)+'. Treat it as a nearby reference, not this role\u2019s pay.</div>';
     h += pathBox(r);
   });
-  h += '<p class="fine">Source: MOM Occupational Wage Survey 2025, Table 4 (All Industries).</p>';
+  h += '<p class="fine">Source: MRSD, MOM, Occupational Wage Survey 2025, Table 4 (All Industries).</p>';
   cardEl.innerHTML = h;
   detailEl.classList.add('open');
   document.body.style.overflow = 'hidden';
