@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Career Switch — what else could you do? | GetHowMuch</title>
+<meta name="description" content="Answer three short questions and see which careers fit the work you are drawn to, with official MOM pay bands and honest reskill paths. Nothing you enter is stored.">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<style>
+:root{--ink:#101828; --paper:#f6f7f4; --muted:#667085; --line:#e6eae6; --yellow:#ffd84c; --amber:#8a6100; --card:#ffffff;}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:'Space Grotesk',system-ui,sans-serif; font-size:16px; line-height:1.55;}
+.mono{font-family:'Space Mono',monospace;}
+.wrap{max-width:760px; margin:0 auto; padding:20px 22px 72px;}
+.brandbar{padding:14px 22px 0; max-width:760px; margin:0 auto;}
+.brand{font-weight:800; font-size:17px; letter-spacing:-.5px; text-decoration:none; color:var(--ink);}
+h1{font-size:clamp(34px,8vw,54px); font-weight:700; letter-spacing:-.045em; line-height:1.03; margin:22px 0 12px;}
+.lede{font-size:17px; color:var(--ink); max-width:60ch;}
+.privacy{background:#fff; border:1px solid var(--line); border-radius:16px; padding:14px 18px; margin:18px 0; font-size:14.5px;}
+.privacy b{font-weight:700;}
+.btn{display:inline-block; background:var(--yellow); color:var(--ink); font-weight:700; font-size:17px; border:2px solid var(--ink); border-radius:16px; padding:14px 28px; cursor:pointer; text-decoration:none; min-height:52px;}
+.btn:active{transform:translateY(1px);}
+.btn-ghost{background:#fff; border:1.5px solid var(--line); color:var(--ink); font-weight:600; font-size:15px; border-radius:999px; padding:10px 20px; cursor:pointer;}
+.qhead{display:flex; justify-content:space-between; align-items:baseline; margin:8px 0 4px;}
+.qnum{font-size:13px; color:var(--muted); font-weight:600; letter-spacing:.04em; text-transform:uppercase;}
+.qtitle{font-size:24px; font-weight:700; letter-spacing:-.02em; margin:4px 0 6px;}
+.qsub{color:var(--muted); font-size:15px; margin:0 0 16px;}
+.chips{display:flex; flex-wrap:wrap; gap:10px; margin:0 0 8px;}
+.chip{border:2px solid var(--line); background:#fff; border-radius:999px; padding:12px 18px; font-size:15px; font-weight:600; cursor:pointer; min-height:48px;}
+.chip[aria-pressed="true"]{background:var(--ink); color:#fff; border-color:var(--ink);}
+.chip-static{border:1.5px solid var(--line); background:#fff; border-radius:999px; padding:5px 12px; font-size:12.5px; font-weight:600; color:var(--muted);}
+.chip-static.hot{border-color:var(--amber); color:var(--amber);}
+.qnav{display:flex; gap:10px; margin-top:22px; flex-wrap:wrap;}
+.rolepick{width:100%; font-size:16px; padding:14px 16px; border:2px solid var(--line); border-radius:14px; font-family:inherit; background:#fff; margin-bottom:8px;}
+.rolelist{max-height:300px; overflow:auto; border:1px solid var(--line); border-radius:14px; background:#fff;}
+.roleopt{display:block; width:100%; text-align:left; background:none; border:0; border-bottom:1px solid var(--line); padding:12px 16px; font-size:15px; font-family:inherit; cursor:pointer;}
+.roleopt:last-child{border-bottom:0;}
+.roleopt[aria-selected="true"]{background:var(--yellow); font-weight:700;}
+.resultbar{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:14px 0;}
+.find{flex:1; min-width:180px; font-size:15px; padding:11px 14px; border:2px solid var(--line); border-radius:999px; font-family:inherit; background:#fff;}
+.card{background:var(--card); border:1px solid var(--line); border-radius:20px; padding:18px 20px; margin:0 0 14px;}
+.card h3{margin:0 0 6px; font-size:19px; letter-spacing:-.02em;}
+.card .band{font-family:'Space Mono',monospace; font-size:15px; margin:6px 0;}
+.card .pathline{font-size:14.5px; color:var(--ink); margin:8px 0 0;}
+.card .fine{font-size:12.5px; color:var(--muted); margin:8px 0 0;}
+.cardchips{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;}
+mark{background:var(--yellow); padding:0 1px; border-radius:3px;}
+.recap{font-size:14px; color:var(--muted); margin:10px 0;}
+.recap b{color:var(--ink);}
+.footnote{font-size:13px; color:var(--muted); margin-top:28px; border-top:1px solid var(--line); padding-top:16px;}
+.hidden{display:none !important;}
+footer{max-width:760px; margin:0 auto; padding:0 22px 40px; font-size:12.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:16px;}
+footer a{color:var(--ink); text-decoration:none; font-weight:600;}
+</style>
+</head>
+<body>
+<div class="brandbar"><a class="brand" href="/">GetHowMuch</a></div>
+<div class="wrap" id="app">
+
+  <!-- Landing -->
+  <section id="view-landing">
+    <h1>What else could you do?</h1>
+    <p class="lede">Three short questions about the work you are drawn to. You get a
+    list of careers to consider, each with its official pay band and the real
+    path to get there. No verdicts, no rankings, nothing hidden.</p>
+    <div class="privacy"><b>Your answers stay on this page.</b> Nothing you type or
+    tap is stored, sent, or measured. Close the tab and it is gone.</div>
+    <button class="btn" id="startBtn">Start now</button>
+  </section>
+
+  <!-- Question 1 -->
+  <section id="view-q1" class="hidden">
+    <div class="qhead"><span class="qnum">Question 1 of 3</span>
+      <button class="btn-ghost" data-skip="q1">Skip</button></div>
+    <h2 class="qtitle">What kind of work are you drawn to?</h2>
+    <p class="qsub">Pick any that appeal. Skip and you will see every career.</p>
+    <div class="chips" id="interestChips"></div>
+    <div class="qnav">
+      <button class="btn" data-next="q2">Continue</button>
+      <button class="btn-ghost" data-exit>Exit to browse</button>
+    </div>
+  </section>
+
+  <!-- Question 2 -->
+  <section id="view-q2" class="hidden">
+    <div class="qhead"><span class="qnum">Question 2 of 3</span>
+      <button class="btn-ghost" data-skip="q2">Skip</button></div>
+    <h2 class="qtitle">What do you do now?</h2>
+    <p class="qsub">Pick the closest match. It is only used to show where your
+    skills overlap with each career. If yours is not listed, say so and no
+    comparison is made.</p>
+    <input class="rolepick" id="roleFilter" type="text" placeholder="Type to find your role" autocomplete="off">
+    <div class="rolelist" id="roleList" role="listbox"></div>
+    <div class="qnav">
+      <button class="btn-ghost" data-back="q1">Back</button>
+      <button class="btn" data-next="q3">Continue</button>
+      <button class="btn-ghost" data-exit>Exit to browse</button>
+    </div>
+  </section>
+
+  <!-- Question 3 -->
+  <section id="view-q3" class="hidden">
+    <div class="qhead"><span class="qnum">Question 3 of 3</span>
+      <button class="btn-ghost" data-skip="q3">Skip</button></div>
+    <h2 class="qtitle">What are you open to taking on?</h2>
+    <p class="qsub">These only add notes to the results. They never remove a career.</p>
+    <div class="chips" id="willChips"></div>
+    <div class="qnav">
+      <button class="btn-ghost" data-back="q2">Back</button>
+      <button class="btn" id="seeResults">See careers</button>
+      <button class="btn-ghost" data-exit>Exit to browse</button>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section id="view-results" class="hidden">
+    <h2 class="qtitle">Careers to consider</h2>
+    <p class="recap" id="recap"></p>
+    <div class="resultbar">
+      <input class="find" id="findBox" type="text" placeholder="Find a career (highlights, never hides)" autocomplete="off">
+      <button class="btn-ghost" id="browseAll">See all 171 roles</button>
+    </div>
+    <div id="cards"></div>
+    <div class="resultbar">
+      <a class="btn-ghost" href="/career-switch-v3/" style="text-decoration:none;">Browse all 523 occupations</a>
+      <button class="btn-ghost" data-back="q1">Change my answers</button>
+    </div>
+    <p class="footnote" id="wageNote"></p>
+  </section>
+
+</div>
+<footer><a href="/">GetHowMuch</a> &middot; Estimates for planning only. Not financial advice. &copy; 2026</footer>
+<script src="guided.js"></script>
+</body>
+</html>
