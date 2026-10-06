@@ -94,6 +94,10 @@ function openOcc(ssoc){
   h += '<table class="wagetable"><tr><th></th><th>25th percentile</th><th>Median</th><th>75th percentile</th></tr>';
   h += '<tr><td>Basic wage</td><td>'+money(b.p25)+'</td><td>'+money(b.p50)+'</td><td>'+money(b.p75)+'</td></tr>';
   h += '<tr><td>Gross wage</td><td>'+money(g.p25)+'</td><td>'+money(g.p50)+'</td><td>'+money(g.p75)+'</td></tr></table>';
+  var proxyRoles = roles.filter(function(r){ return r.band_status==='proxy'; });
+  if(proxyRoles.length){
+    h += '<p class="fine">Closest-match pay band for '+esc(proxyRoles.map(function(r){ return r.title; }).join(', '))+': these figures were measured for '+esc(o.title)+'.</p>';
+  }
   h += '<p class="fine">'+CAVEATS+'</p>';
   roles.forEach(function(r){
     if(r.band_status==='proxy')
