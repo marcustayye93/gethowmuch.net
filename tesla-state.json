@@ -1,12 +1,12 @@
 {
-  "battery_level": 52,
-  "battery_range_km": 225.1,
+  "battery_level": 53,
+  "battery_range_km": 228.9,
   "charging_state": "Charging",
   "charge_limit_soc": 100,
-  "odometer_km": 90.5,
-  "locked": true,
-  "sentry_mode": true,
+  "odometer_km": 0.0,
+  "locked": false,
+  "sentry_mode": false,
   "vin": "LRWYHCFJXVC060383",
   "display_name": "Model Y",
-  "updated_at_sgt": "2026-11-27T19:27:37+08:00"
+  "updated_at_sgt": "2026-11-27T19:33:05+08:00"
 }
