@@ -1,6 +1,6 @@
 {
   "battery_level": 52,
-  "battery_range_km": 226.2,
+  "battery_range_km": 225.8,
   "charging_state": "Disconnected",
   "charge_limit_soc": 100,
   "odometer_km": 181.4,
@@ -8,7 +8,7 @@
   "sentry_mode": true,
   "vin": "LRWYHCFJXVC060383",
   "display_name": "Model Y",
-  "updated_at_sgt": "2026-11-28T21:07:11+08:00",
+  "updated_at_sgt": "2026-11-28T21:27:13+08:00",
   "energy_lifetime_kwh": 19.9,
   "energy_week_kwh": 19.9,
   "energy_dads_kwh": 14.3,
